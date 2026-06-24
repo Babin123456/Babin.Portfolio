@@ -122,6 +122,14 @@ export const achievementsData: AchievementCategory[] = [
             { title: "Swachh Bharat Mission Grameen Phase-II Quiz", file: "/Achievements/myGov/Swachh_Bharat_Mission_Grameen_Phase-II_Quiz.jpg" },
             { title: "Swachh Bharat Quiz", file: "/Achievements/myGov/Swachh_Bharat_Quiz.jpg" },
             { title: "Viksit Bharat 2025 Quiz", file: "/Achievements/myGov/Viksit_Bharat_2025_Quiz_English.jpg" },
+            { title: "6th National Online Quiz (PDF)", file: "/Achievements/myGov/6th_National_Online_Quiz.pdf" },
+            { title: "Chandrayaan - 3 (PDF)", file: "/Achievements/myGov/Chandrayaan_-_3.pdf" },
+            { title: "Ending Plastic Pollution Quiz (PDF)", file: "/Achievements/myGov/Ending_Plastic_Pollution_Quiz.pdf" },
+            { title: "Mission LiFE Quiz", file: "/Achievements/myGov/Mission_LiFE_Quiz.jpg" },
+            { title: "PM Internship Quiz", file: "/Achievements/myGov/PM%20Internship%20Quiz.jpg" },
+            { title: "Pledge to Eliminate Malaria from India 2026", file: "/Achievements/myGov/Pledge_to_Eliminate_Malaria_from_India_2026.jpg" },
+            { title: "Pledge to support Mother Earth", file: "/Achievements/myGov/Pledge_to_support_Mother_Earth.jpg" },
+            { title: "Road Safety Pledge", file: "/Achievements/myGov/Road_Safety_Pledge.jpg" }
         ]
     },
     {
@@ -134,6 +142,9 @@ export const achievementsData: AchievementCategory[] = [
             { title: "Viksit Bharat Young Leaders Dialogue VBYLD 2026", file: "/Achievements/MyBharat/Viksit_Bharat_Young_Leaders_Dialogue_VBYLD_2026.png" },
             { title: "Know More About DFPD II", file: "/Achievements/MyBharat/Know_More_About_DFPD—II.png" },
             { title: "My Constitution Quiz", file: "/Achievements/MyBharat/My_Bharat_My_Constitution_Quiz.png" },
+            { title: "National Organ Donation Awareness Quiz", file: "/Achievements/MyBharat/National_Organ_Donation_Awareness_Quiz.png" },
+            { title: "Quiz on Major Milestone of Modern India", file: "/Achievements/MyBharat/Quiz_on_Major_Milestone_of_Modern_India.png" },
+            { title: "Viksit Vibrant Village Program 2026 Quiz", file: "/Achievements/MyBharat/Viksit_Vibrant_Village_Program_2026_Quiz.png" }
         ]
     },
     {
@@ -222,6 +233,11 @@ export const achievementsData: AchievementCategory[] = [
         items: [
             { title: "SQL Basic Certificate", file: "/Achievements/HackerRank/SQL_Basic_Certificate_Hackerrank.pdf" },
             { title: "SQL Intermediate Certificate", file: "/Achievements/HackerRank/SQL_Intermediate_Certificate_Hackerrank.pdf" },
+            { title: "Frontend Developer (React) Certificate", file: "/Achievements/HackerRank/Frontend_Developer_(React)_Certificate.pdf" },
+            { title: "Problem Solving Basic Certificate", file: "/Achievements/HackerRank/Problem_Solving_Basic_Certificate.pdf" },
+            { title: "Python Basic Certificate", file: "/Achievements/HackerRank/Python_Basic_Certificate.pdf" },
+            { title: "Software Engineer Certificate", file: "/Achievements/HackerRank/Software_Engineer_Certificate.pdf" },
+            { title: "Software Engineer Intern Certificate", file: "/Achievements/HackerRank/Software_Engineer_Intern_Certificate.pdf" },
         ]
     },
     {
@@ -253,6 +269,10 @@ export const achievementsData: AchievementCategory[] = [
         items: [
             { title: "Cybersecurity Fundamentals", file: "/Achievements/IBM/IBMDesign20250616-26-5qh6st.pdf" },
             { title: "Web Development Fundamentals", file: "/Achievements/IBM/IBMDesign20250612-28-nhj93e.pdf" },
+            { title: "AI-Enabled Applications for Customer Service Certificate", file: "/Achievements/IBM/AI-Enabled_Applications_for_Customer_Service.pdf" },
+            { title: "Cybersecurity Fundamentals Certificate (Official)", file: "/Achievements/IBM/Cybersecurity_Fundamentals.pdf" },
+            { title: "Data Science Foundations - Level 1 Certificate", file: "/Achievements/IBM/Data_Science_Foundations-Level_1.pdf" },
+            { title: "Web Development Fundamentals Certificate (Official)", file: "/Achievements/IBM/Web_Development_Fundamentals.pdf" }
         ]
     },
     {
@@ -281,6 +301,18 @@ export const achievementsData: AchievementCategory[] = [
             { title: "Prompt Engineering", file: "/Achievements/Infosys%20Springboard/1-b0f8b804-5295-46be-b4f8-d5958f569007.pdf" },
             { title: "Python for Data Science", file: "/Achievements/Infosys%20Springboard/1-239ec735-7c77-484b-b687-bfb85d834b02.pdf" },
             { title: "Time Management", file: "/Achievements/Infosys%20Springboard/1-49e4f4a0-49b1-49b4-93bd-69cadc709628.pdf" },
+            { title: "Evaluating Large Language Models (Official)", file: "/Achievements/Infosys%20Springboard/1-1bde93f9-dd5d-4b02-ac88-9e9a95142af5.pdf" },
+            { title: "Agile Scrum in Practice (Clear)", file: "/Achievements/Infosys%20Springboard/Agile_Scrum_in_Practice.pdf" },
+            { title: "Basics of Python", file: "/Achievements/Infosys%20Springboard/Basics_of_Python.pdf" },
+            { title: "Database Management System Part-1", file: "/Achievements/Infosys%20Springboard/Database_Management_System_Part-1.pdf" },
+            { title: "Database Management System Part-2", file: "/Achievements/Infosys%20Springboard/Database_Management_System_Part-2.pdf" },
+            { title: "Evaluating Large Language Model", file: "/Achievements/Infosys%20Springboard/Evaluating_Large_Language_Model.pdf" },
+            { title: "Introduction to NoSQL databases", file: "/Achievements/Infosys%20Springboard/Introduction_to_NoSQL_databases.pdf" },
+            { title: "Object Oriented Programming using Python", file: "/Achievements/Infosys%20Springboard/Object_Oriented_Programming_using_Python.pdf" },
+            { title: "Programming Fundamentals using Python - Part 1", file: "/Achievements/Infosys%20Springboard/Programming_Fundamentals_using_Python-Part_1.pdf" },
+            { title: "Programming Fundamentals using Python - Part 2", file: "/Achievements/Infosys%20Springboard/Programming_Fundamentals_using_Python-Part_2.pdf" },
+            { title: "Python Foundation Certification", file: "/Achievements/Infosys%20Springboard/Python_Foundation_Certification.pdf" },
+            { title: "Software Engineering and Agile Software Development", file: "/Achievements/Infosys%20Springboard/Software_Engineering_and_Agile_Software_Development.pdf" }
         ]
     },
     {
@@ -325,6 +357,7 @@ export const achievementsData: AchievementCategory[] = [
             { title: "Design Thinking for Beginners", file: "/Achievements/SimpliLearn/4615986_1698733297.pdf" },
             { title: "Free Data Scientist Course", file: "/Achievements/SimpliLearn/Free_Data_Scientist_Course.pdf" },
             { title: "Gemini in Gmail SimpliLearn", file: "/Achievements/SimpliLearn/Gemini_in_Gmail_SimpliLearn.pdf" },
+            { title: "SkillQuest Generative AI Literacy Certificate", file: "/Achievements/SimpliLearn/SkillQuest_Generative-AI-Literacy.pdf" }
         ]
     },
     {
@@ -337,6 +370,7 @@ export const achievementsData: AchievementCategory[] = [
         category: "Udemy",
         items: [
             { title: "Graphic Design Masterclass Bootcamp from Beginner to Expert", file: "/Achievements/Udemy/Graphic_Design_Masterclass_Bootcamp_from_Beginner_to_Expert.jpg" },
+            { title: "Graphic Design Masterclass Bootcamp Certificate (Official)", file: "/Achievements/Udemy/UC-cf6a1cb0-6305-43b7-a64f-0f3957aa62ec.pdf" }
         ]
     },
     {
@@ -363,6 +397,11 @@ export const achievementsData: AchievementCategory[] = [
             { title: "Unstop Prediction League Match 15 Participation Certificate", file: "/Achievements/Unstop/Unstop_Prediction_League_Week_1-KKR_vs_LSG_(Match_15).pdf"},
             { title: "Unstop Prediction League Match 17 Participation Certificate", file: "/Achievements/Unstop/Unstop_Prediction_League_Week_1-PBKS_vs_SRH_(Match_17).pdf"},
             { title: "Unstop Prediction League Match 21 Participation Certificate", file: "/Achievements/Unstop/Unstop_Prediction_League_Week_2-SRH_vs_RR_(Match_21).pdf"},
+            { title: "Day 1 GIVA of Unstop Week-of-Wins", file: "/Achievements/Unstop/Day_1_GIVA_of_Unstop_Week-of-Wins.pdf" },
+            { title: "Google Cloud Arcade Program 2026 Guide by Buildon", file: "/Achievements/Unstop/Google_Cloud_Arcade_Program_2026_Guide_by_Buildon.pdf" },
+            { title: "Infosys Interview Preparation Certificate", file: "/Achievements/Unstop/Infosys_Interview_Preparation_Certificate.pdf" },
+            { title: "Protex Hack-2-Win Hackathon Certificate", file: "/Achievements/Unstop/Protex_Hack-2-Win_Hackathon.pdf" },
+            { title: "Python Basics", file: "/Achievements/Unstop/Python_Basics.jpg" }
         ]
     },
 
@@ -402,6 +441,8 @@ export const achievementsData: AchievementCategory[] = [
             { title: "Gemini Certified Student", file: "/Achievements/Google/Gemini_Certified_Student.png" },
             { title: "Google ADs AI-Powered Performance Badge", file: "/Achievements/Google/19ae5a64-7138-4ec2-a9fc-9d65b53d09ac.png" },
             { title: "Shopping Ads Badge", file: "/Achievements/Google/7c2be6e0-3895-4baf-946f-3c61969c27ec.png" },
+            { title: "Cloud Run Badge", file: "/Achievements/Google/Cloud_Run_Badge.png" },
+            { title: "Gemini Certified Student Badge", file: "/Achievements/Google/Gemini_Certified_Student_Badge.png" },
         ]
     },
     {
@@ -427,6 +468,7 @@ export const achievementsData: AchievementCategory[] = [
     {
         category: "Microsoft Badges",
         items: [
+            { title: "AI Skills Fest 2026", file: "/Achievements/Microsoft/BADGES/ai-skills-fest-2026.png" },
             { title: "Badge-Gold", file: "/Achievements/Microsoft/BADGES/Badge-Gold.png" },
             { title: "Badge-Platinum", file: "/Achievements/Microsoft/BADGES/Badge-Platinum.png" },
             { title: "Badge-Silver", file: "/Achievements/Microsoft/BADGES/Badge-Silver.png" },
@@ -567,6 +609,28 @@ export const achievementsData: AchievementCategory[] = [
         items: [
             { title: "Nexus Spring of Code Contributor Badge", file: "/Achievements/Badges/NSoC_2026/NSOC_Contributor.png" },
             { title: "Nexus Spring of Code 1st Badge", file: "/Achievements/Badges/NSoC_2026/NSOC_1st_Badge.png" }
+        ]
+    },
+    {
+        category: "IBM Badges",
+        items: [
+            { title: "AI-Enabled Applications for Customer Service Badge", file: "/Achievements/IBM/ai-enabled-applications-for-customer-service.png" },
+            { title: "Cybersecurity Fundamentals Badge", file: "/Achievements/IBM/cybersecurity-fundamentals.png" },
+            { title: "Data Science Foundations - Level 1 Badge", file: "/Achievements/IBM/data-science-foundations-level-1.png" },
+            { title: "Web Development Fundamentals Badge", file: "/Achievements/IBM/web-development-fundamentals.png" }
+        ]
+    },
+    {
+        category: "Oracle Badges",
+        items: [
+            { title: "Oracle AIDP Essentials Badge", file: "/Achievements/Oracle/Oracle_AIDP_Essentials_Badge.png" }
+        ]
+    },
+    {
+        category: "ETS",
+        items: [
+            { title: "Global Employability Test 2025 Assessment Report", file: "/Achievements/ets/Global_Employability_Test_2025_Assessment_Report.pdf" },
+            { title: "Global Employability Test Certificate", file: "/Achievements/ets/Global_Employability_Test_Certificate.pdf" }
         ]
     },
 

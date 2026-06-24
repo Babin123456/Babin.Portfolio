@@ -11,11 +11,11 @@ import styles from './Achievements.module.css';
 type FilterType = 'All' | 'Awards' | 'Certificates | Technical Courses' | 'Bootcamps | Events | Competitions' | 'Internship Certificates' | 'Badges' | 'Trophies';
 
 const awardCategories = ["Awards & Recognitions"];
-const certificateCategories = ["AWS", "CISCO", "Cognitive Class", "GeeksforGeeks", "Google", "GTech Learn", "HackerRank", "HCL Guvi", "HP Life", "IBM", "Infosys Springboard", "Microsoft", "Pantech e Learning", "Qualcomm", "Saylor Academy", "Scaler", "SimpliLearn", "Skill Nation", "Udemy"];
+const certificateCategories = ["AWS", "CISCO", "Cognitive Class", "GeeksforGeeks", "Google", "GTech Learn", "HackerRank", "HCL Guvi", "HP Life", "IBM", "Infosys Springboard", "Microsoft", "Pantech e Learning", "Qualcomm", "Saylor Academy", "Scaler", "SimpliLearn", "Skill Nation", "Udemy", "ETS"];
 const bootcampCategories = ["Events & Hackathons", "Hack2Skill", "Kaggle", "Let's Upgrade", "MyBharat", "myGov", "Skill India", "Unstop"];
 const internshipCategories = ["Oasis Infobyte", "Infosys Springboard Internships", "The Developers Arena"];
 const trophyCategories = ["Microsoft Trophies"];
-const badgeCategories = ["AWS Badges", "GFG Badges", "Google Badges", "Holopin Badges", "HP Life Badges", "IndiaAI Badges", "LeetCode Badges", "Microsoft Badges", "Qualcomm Badges", "GirlScript Summer of Code 2026 (GSSoC) Badges", "EduLinkUp Summer of Code (ELUSoC) Badges", "Nexus Spring of Code (NSoC) Badges", "Unstop Badges"];
+const badgeCategories = ["AWS Badges", "GFG Badges", "Google Badges", "Holopin Badges", "HP Life Badges", "IndiaAI Badges", "LeetCode Badges", "Microsoft Badges", "Qualcomm Badges", "GirlScript Summer of Code 2026 (GSSoC) Badges", "EduLinkUp Summer of Code (ELUSoC) Badges", "Nexus Spring of Code (NSoC) Badges", "Unstop Badges", "Oracle Badges", "IBM Badges"];
 
 const Achievements = () => {
     const { ref, inView } = useInView({
