@@ -1,0 +1,11 @@
+# Dependencies
+node_modules/
+
+# Build outputs
+dist/
+
+# Editor settings (personal)
+.vscode/
+.vercel/
+.env
+.env.local

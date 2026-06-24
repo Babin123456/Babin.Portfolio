@@ -1,0 +1,258 @@
+/* Interactive animations for enhanced interactivity */
+
+@keyframes fade-in-up {
+    from {
+        opacity: 0;
+        transform: translateY(1rem);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-fade-in-up {
+    animation: fade-in-up 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes slide-in-left {
+    from {
+        opacity: 0;
+        transform: translateX(-1rem);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.animate-slide-in-left {
+    animation: slide-in-left 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes scale-in {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.animate-scale-in {
+    animation: scale-in 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* Enhanced hover glow effect */
+@keyframes glow-expand {
+    0% {
+        box-shadow: 0 0 0 0 rgba(108, 92, 231, 0.4);
+    }
+
+    50% {
+        box-shadow: 0 0 0 10px rgba(108, 92, 231, 0.2);
+    }
+
+    100% {
+        box-shadow: 0 0 0 20px rgba(108, 92, 231, 0);
+    }
+}
+
+.animate-glow-expand {
+    animation: glow-expand 1.5s infinite;
+}
+
+/* Smooth number counter animation */
+@keyframes count-up {
+    0% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.animate-count-up {
+    animation: count-up 2s ease-out forwards;
+}
+
+/* Pulse animation for interactive elements */
+@keyframes pulse-subtle {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.8;
+    }
+}
+
+.animate-pulse-subtle {
+    animation: pulse-subtle 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Bounce animation for scroll indicators */
+@keyframes bounce-smooth {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-0.5rem);
+    }
+}
+
+.animate-bounce {
+    animation: bounce-smooth 1s ease-in-out infinite;
+}
+
+/* Horizontal bounce animation for swipe indicators */
+@keyframes bounce-x {
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    50% {
+        transform: translateX(0.25rem);
+    }
+}
+
+.animate-bounce-x {
+    animation: bounce-x 1s ease-in-out infinite;
+}
+
+/* Re-enter animation for stats cards */
+@keyframes re-enter {
+    from {
+        opacity: 0;
+        transform: translateX(calc(var(--offset) * 48px * 2)) translateY(16px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(calc(var(--offset) * 48px)) translateY(0px);
+    }
+}
+
+.re-enter {
+    animation: re-enter 700ms cubic-bezier(0.2, 0.9, 0.2, 1) forwards;
+}
+
+@keyframes close-image {
+    0% {
+        opacity: 1;
+        transform: scale(1) rotate(0deg);
+        filter: blur(0);
+    }
+
+    50% {
+        opacity: 0.7;
+        transform: scale(0.7) rotate(6deg);
+        filter: blur(1px);
+    }
+
+    100% {
+        opacity: 0;
+        transform: scale(0.5) rotate(12deg);
+        filter: blur(2px);
+    }
+}
+
+.animate-close-image {
+    animation: close-image 2.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* Mind-blowing Hover Effect */
+@keyframes ripple-expand {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7);
+    }
+
+    50% {
+        transform: scale(1.05);
+        box-shadow: 0 0 0 10px rgba(34, 197, 94, 0), 0 0 0 20px rgba(59, 130, 246, 0.3);
+    }
+
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(59, 130, 246, 0), 0 0 0 30px rgba(139, 92, 246, 0);
+    }
+}
+
+.mind-blowing-hover {
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.mind-blowing-hover::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.mind-blowing-hover:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+.mind-blowing-hover:hover {
+    animation: ripple-expand 0.8s ease-out;
+    background: #22c55e;
+    animation: ripple-expand 0.8s ease-out;
+    color: white;
+    border: none;
+}
+
+@keyframes bg-wave {
+
+    0%,
+    100% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+/* Slideshow Entrance Animation */
+@keyframes slide-in-right-stagger {
+    from {
+        opacity: 0;
+        transform: translateX(100px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.animate-slide-show {
+    animation: slide-in-right-stagger 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}

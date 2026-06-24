@@ -1,0 +1,222 @@
+import { TypeAnimation } from "react-type-animation";
+import { Button } from "@/components/ui/button";
+import { Download, Github, Linkedin, Mail, ChevronDown, User, Globe, Compass, Zap, Brain, Users, Cpu, Atom, Microscope, BarChart3, Rocket, Search, Code, Puzzle, Bot, FlaskConical, type LucideIcon } from "lucide-react";
+import StudyBackground from "./StudyBackground";
+import { motion } from "framer-motion";
+import { previewThenDownload } from "@/lib/utils";
+import SectionTitle from "./SectionTitle";
+import AnimatedIcon from "./AnimatedIcon";
+import { useState, useEffect } from "react";
+
+const Hero = () => {
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [currentIcon, setCurrentIcon] = useState<LucideIcon>(Code);
+
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      setMousePosition({ x: e.clientX, y: e.clientY });
+    };
+
+    window.addEventListener("mousemove", handleMouseMove);
+    return () => window.removeEventListener("mousemove", handleMouseMove);
+  }, []);
+
+  const handleDownloadResume = () => previewThenDownload("/Babin_Bid_Resume.pdf", "Babin_Bid_Resume.pdf");
+
+  const scrollToSection = (sectionId: string) => {
+    const element = document.querySelector(`#${sectionId}`);
+    element?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  return (
+    <section
+      id="home" className="min-h-[80vh] md:min-h-screen flex items-center justify-center relative overflow-hidden pt-10 md:pt-16"
+    >      <div className="container mx-auto px-4 py-8 md:py-12 z-10">
+        <motion.div
+          className="max-w-4xl mx-auto text-center space-y-4 md:space-y-6 mt-4 md:mt-12"
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, ease: "easeOut" }}
+        >
+          <div className="space-y-4">
+            <h2 className="text-xl md:text-2xl text-muted-foreground font-medium" role="status" aria-live="polite">
+              Hi, I'm
+            </h2>
+            <h1 className="text-5xl md:text-5xl font-bold mb-2 md:mb-4 max-w-[280px] mx-auto md:max-w-none">
+              <SectionTitle
+                segments={[
+                  { text: "Babin", className: "text-sky-600 dark:text-cyan-300" },
+                  { text: " Bid", className: "text-sky-600 dark:text-cyan-300" },
+                ]}
+              />
+            </h1>
+            <div className="text-2xl md:text-3xl lg:text-3xl font-semibold text-foreground min-h-[110px] md:min-h-[160px] flex items-center justify-center">
+              <div className="flex flex-col md:flex-row items-center gap-3 max-w-[90vw] md:max-w-none">
+                <div className="flex items-center gap-3">
+                  <AnimatedIcon
+                    Icon={currentIcon}
+                    size={32}
+                    className="text-blue-700 dark:text-[#89D3BD]"
+                    glowColor="transparent"
+                    animationType="bounce"
+                  />
+                  <span className="text-blue-700 dark:text-[#89D3BD] whitespace-nowrap"> </span>
+                </div>
+                <div className="text-blue-700 dark:text-[#89D3BD] text-center md:text-left leading-tight md:leading-normal">
+                  <TypeAnimation
+                    sequence={[
+                      () => setCurrentIcon(Code),
+                      'Computer Science Engineer',
+                      1600,
+                      () => setCurrentIcon(Globe),
+                      'Learning Web Development',
+                      1500,
+                      () => setCurrentIcon(Compass),
+                      'Mathematics Lover',
+                      1400,
+                      () => setCurrentIcon(Puzzle),
+                      'Problem Solver',
+                      1200,
+                      () => setCurrentIcon(Microscope),
+                      'Research on various aspects',
+                      1500,
+                      () => setCurrentIcon(Zap),
+                      'Tech Enthusiast',
+                      1200,
+                      () => setCurrentIcon(Brain),
+                      'Brainstorming',
+                      1200,
+                      () => setCurrentIcon(Users),
+                      'Radical Collaboration',
+                      1400,
+                      () => setCurrentIcon(Bot),
+                      'Exploring AI & Machine Learning',
+                      1500,
+                      () => setCurrentIcon(Atom),
+                      'Quantum & Edge Computing',
+                      1700,
+                      () => setCurrentIcon(FlaskConical),
+                      'Gathering knowledge in Quantum Physics',
+                      1400,
+                      () => setCurrentIcon(BarChart3),
+                      'Interested in Data Analysis & Data Science',
+                      1400,
+                      () => setCurrentIcon(Rocket),
+                      'Always Eager to Learn, Collaborate & Innovate',
+                      1600,
+                      () => setCurrentIcon(Search),
+                      'Open to Internships, Papers & Opportunities',
+                      2200,
+                    ]}
+                    wrapper="span"
+                    speed={50}
+                    repeat={Infinity}
+                  />
+                </div>
+                <AnimatedIcon
+                  Icon={currentIcon}
+                  size={32}
+                  className="scale-x-[-1] text-blue-700 dark:text-[#89D3BD]"
+                  glowColor="transparent"
+                  animationType="bounce"
+                />
+              </div>
+            </div>
+          </div>
+
+          <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed -mt-2 md:-mt-4">
+            B.Tech 3rd Year Student at Adamas University, Kolkata, India. Passionate
+            about building innovative solutions and contributing to cutting-edge
+            research.
+          </p>
+
+          <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 md:gap-4 justify-center flex-wrap">
+            <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.96 }}>
+              <Button
+                size="lg"
+                className="gradient-primary text-primary-foreground shadow-glow transition-all duration-300 active:scale-95 w-full sm:w-auto"
+                onClick={handleDownloadResume}
+                aria-label="Download Babin Bid Resume"
+              >
+                <Download className="mr-2 h-5 w-5" />
+                Resume
+              </Button>
+            </motion.div>
+
+            <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.96 }}>
+              <Button
+                size="lg"
+                variant="outline"
+                className="border-primary/50 hover:bg-primary/10 hover:text-black dark:text-white transition-all duration-300 active:scale-95 w-full sm:w-auto"
+                onClick={() => scrollToSection('contact')}
+                aria-label="Navigate to contact section"
+              >
+                <Mail className="mr-2 h-5 w-5" />
+                Contact
+              </Button>
+            </motion.div>
+          </div>
+
+          <div className="flex items-center justify-center gap-4 pt-8 flex-wrap">
+            <a
+              href="https://github.com/KGFCH2"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Visit GitHub profile"
+              title="GitHub"
+              className="relative group p-3 rounded-lg transition-all duration-300 hover:scale-110 active:scale-95"
+            >
+              {/* Grey background box on hover - dark mode */}
+              <div className="absolute inset-0 bg-gray-600/20 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-xl dark:block hidden" />
+              <div className="absolute inset-0 bg-gray-500/30 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 dark:block hidden" />
+              {/* Grey background box on hover - light mode */}
+              <div className="absolute inset-0 bg-gray-400/30 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 block dark:hidden" />
+              <div className="absolute inset-0 bg-gray-300/40 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 block dark:hidden" />
+              <Github className="h-6 w-6 text-foreground/60 group-hover:text-gray-700 dark:group-hover:text-gray-300 transition-colors relative z-10" />
+            </a>
+            <a
+              href="https://www.linkedin.com/in/babin-bid-853728293"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Visit LinkedIn profile"
+              title="LinkedIn"
+              className="relative group p-3 rounded-lg transition-all duration-300 hover:scale-110 active:scale-95"
+            >
+              {/* Blue background box on hover - dark mode (using primary which is cyan) */}
+              <div className="absolute inset-0 bg-primary/20 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-xl dark:block hidden" />
+              <div className="absolute inset-0 bg-primary/30 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 dark:block hidden" />
+              {/* Blue background box on hover - light mode (using primary which is blue-700) */}
+              <div className="absolute inset-0 bg-primary/30 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 block dark:hidden" />
+              <div className="absolute inset-0 bg-primary/40 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 block dark:hidden" />
+              <Linkedin className="h-6 w-6 text-foreground/60 group-hover:text-blue-600 dark:group-hover:text-[#89D3BD] transition-colors relative z-10" />
+            </a>
+            <a
+              href="mailto:babin.bid@stu.adamasuniversity.ac.in"
+              aria-label="Send email"
+              title="Email"
+              className="relative group p-3 rounded-lg transition-all duration-300 hover:scale-110 active:scale-95"
+            >
+              {/* Red background box on hover - dark mode */}
+              <div className="absolute inset-0 bg-red-600/20 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-xl dark:block hidden" />
+              <div className="absolute inset-0 bg-red-500/30 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 dark:block hidden" />
+              {/* Red background box on hover - light mode */}
+              <div className="absolute inset-0 bg-red-400/30 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 block dark:hidden" />
+              <div className="absolute inset-0 bg-red-300/40 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 block dark:hidden" />
+              <Mail className="h-6 w-6 text-foreground/60 group-hover:text-red-700 dark:group-hover:text-red-300 transition-colors relative z-10" />
+            </a>
+          </div>
+
+          {/* Interactive scroll indicator */}
+          <div className="pt-4 md:pt-6 animate-bounce cursor-pointer" onClick={() => scrollToSection('about')}>
+            <div className="text-center">
+              <p className="text-sm text-muted-foreground mb-0">Explore More</p>
+              <ChevronDown className="h-6 w-6 text-primary mx-auto" />
+            </div>
+          </div>
+        </motion.div>
+      </div>
+    </section>
+  );
+};
+
+export default Hero;
