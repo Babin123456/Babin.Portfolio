@@ -16,38 +16,38 @@ const featuredAchievements: FeaturedAchievement[] = [
   {
     title: "Best Paper Award in SSWC-2025",
     category: "Awards & Recognitions",
-    file: "/Achievements/SSWC'2025/SSWC'2025_Award.jpeg",
+    file: "/Achievements/Awards/SSWC'2025_Award.jpeg",
     icon: Trophy,
   },
   {
     title: "Merit Scholarship Award (2023)",
     category: "Awards & Recognitions",
-    file: "/Achievements/Merit_Scholarship_Award.jpeg",
+    file: "/Achievements/Awards/Merit_Scholarship_Award.jpeg",
     icon: Medal,
   },
   {
     title: "Google Solution Challenge 2024",
     category: "Awards & Recognitions",
-    file: "/Achievements/Google_Solution_Challenge_2024.jpeg",
+    file: "/Achievements/Awards/Google_Solution_Challenge_2024.jpeg",
     icon: Star,
   },
   {
     title: "SSWC'25 Best Paper Certificate",
     category: "Awards & Recognitions",
-    file: "/Achievements/SSWC'2025/SSWC'25_Best_Paper_Certificate.jpg",
+    file: "/Achievements/Awards/SSWC'25_Best_Paper_Certificate.jpg",
     icon: Award,
   },
   {
     title: "Merit Certificate for Academic Excellence (2023)",
     category: "Awards & Recognitions",
-    file: "/Achievements/Babin_Bid_Merit_Scholarship_2023.jpeg",
+    file: "/Achievements/Awards/Babin_Bid_Merit_Scholarship_2023.jpeg",
     icon: Medal,
   },
   {
-    title: "Gemini Certified Student",
-    category: "Google Certified",
-    file: "/Achievements/Google/Gemini_Certified_Student.png",
-    icon: Star,
+    title: "Nexus Spring of Code (NSoC) Certificate (2026)",
+    category: "Awards & Recognitions",
+    file: "/Achievements/Awards/NSoC_Certificate_Babin-Bid_2026.png",
+    icon: Award,
   },
 ];
 
