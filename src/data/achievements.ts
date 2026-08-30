@@ -1015,6 +1015,15 @@ export const achievementsData: AchievementCategory[] = [
         ]
     },
     {
+        "category": "Codec Technologies",
+        "items": [
+            {
+                "title": "Internship Certificate",
+                "file": "/Achievements/Internship/Codec Technologies/Internship_Certificate.png"
+            }
+        ]
+    },
+    {
         "category": "Infosys Springboard Internships",
         "items": [
             {
