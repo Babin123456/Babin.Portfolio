@@ -162,9 +162,10 @@ function buildAchievements() {
     // 20. Infosys Springboard
     addItems("Infosys Springboard", getValidFiles(path.join(baseDir, 'Infosys Springboard'), 'Infosys Springboard'));
 
-    // 21. Internship (Infosys Springboard, Oasis Infobyte & The Developers Arena)
+    // 21. Internship (Codec Technologies, Infosys Springboard, Oasis Infobyte & The Developers Arena)
     const internDir = path.join(baseDir, 'Internship');
     if (fs.existsSync(internDir)) {
+        addItems("Codec Technologies", getValidFiles(path.join(internDir, 'Codec Technologies'), 'Internship/Codec Technologies'));
         addItems("Infosys Springboard Internships", getValidFiles(path.join(internDir, 'Infosys Springboard'), 'Internship/Infosys Springboard'));
         addItems("Oasis Infobyte", getValidFiles(path.join(internDir, 'Oasis Infobyte'), 'Internship/Oasis Infobyte'));
         addItems("The Developers Arena", getValidFiles(path.join(internDir, 'The Developers Arena'), 'Internship/The Developers Arena'));
