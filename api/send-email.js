@@ -106,7 +106,7 @@ export default async function handler(req, res) {
                         
                         <!-- Premium Header -->
                         <div style="background: linear-gradient(135deg, #2563eb 0%, #0891b2 100%); padding: 48px 32px; text-align: center;" class="header">
-                            <img src="https://avatars.githubusercontent.com/KGFCH2" alt="Babin" style="width: 72px; height: 72px; border-radius: 50%; border: 3px solid rgba(255, 255, 255, 0.3); margin-bottom: 16px; background-color: white;">
+                            <img src="https://avatars.githubusercontent.com/Babin123456" alt="Babin" style="width: 72px; height: 72px; border-radius: 50%; border: 3px solid rgba(255, 255, 255, 0.3); margin-bottom: 16px; background-color: white;">
                             <h1 style="color: white; margin: 0; font-size: 24px; font-weight: 800; letter-spacing: -0.025em; text-transform: uppercase;">BABIN BID</h1>
                             <p style="color: rgba(255, 255, 255, 0.8); margin: 4px 0 0 0; font-size: 14px; font-weight: 500;">SYSTEM NOTIFICATION ~~ NEW CONTACT INBOUND</p>
                         </div>
