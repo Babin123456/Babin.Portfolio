@@ -8,14 +8,13 @@ import { achievementsData } from "../data/achievements";
 import StudyBackground from "./StudyBackground";
 import styles from './Achievements.module.css';
 
-type FilterType = 'All' | 'Awards' | 'Certificates | Technical Courses' | 'Bootcamps | Events | Competitions' | 'Internship Certificates' | 'Badges' | 'Trophies';
+type FilterType = 'All' | 'Awards' | 'Certificates | Technical Courses' | 'Bootcamps | Events | Competitions' | 'Internship Certificates' | 'Badges';
 
 const awardCategories = ["Awards & Recognitions"];
-const certificateCategories = ["AWS", "CISCO", "Cognitive Class", "GeeksforGeeks", "Google", "GTech Learn", "HackerRank", "HCL Guvi", "HP Life", "IBM", "Infosys Springboard", "Microsoft", "Pantech e Learning", "Qualcomm", "Saylor Academy", "Scaler", "SimpliLearn", "Skill Nation", "Udemy", "ETS"];
+const certificateCategories = ["AWS", "CISCO", "Cognitive Class", "GeeksforGeeks", "Google", "GTech Learn", "HackerRank", "HCL Guvi", "HP Life", "IBM", "Infosys Springboard", "Microsoft", "Microsoft Certificates", "Microsoft Certifications", "Pantech e Learning", "Qualcomm", "Saylor Academy", "Scaler", "SimpliLearn", "Skill Nation", "Udemy", "ETS", "Oracle", "FutureSkillsPrime"];
 const bootcampCategories = ["Events & Hackathons", "Hack2Skill", "Kaggle", "Let's Upgrade", "MyBharat", "myGov", "Skill India", "Unstop"];
 const internshipCategories = ["Oasis Infobyte", "Infosys Springboard Internships", "The Developers Arena"];
-const trophyCategories = ["Microsoft Trophies"];
-const badgeCategories = ["AWS Badges", "GFG Badges", "Google Badges", "Holopin Badges", "HP Life Badges", "IndiaAI Badges", "LeetCode Badges", "Microsoft Badges", "Qualcomm Badges", "GirlScript Summer of Code 2026 (GSSoC) Badges", "EduLinkUp Summer of Code (ELUSoC) Badges", "Nexus Spring of Code (NSoC) Badges", "Unstop Badges", "Oracle Badges", "IBM Badges"];
+const badgeCategories = ["AWS Badges", "CISCO Badges", "GFG Badges", "Google Badges", "Holopin Badges", "HP Life Badges", "IndiaAI Badges", "LeetCode Badges", "Microsoft Badges", "Qualcomm Badges", "GirlScript Summer of Code (GSSoC) Badges", "EduLinkUp Summer of Code (ELUSoC) Badges", "Nexus Spring of Code (NSoC) Badges", "Elite Coders Summer of Code (ECSoC) Badges", "Unstop Badges", "Oracle Badges", "IBM Badges", "Agents League Badges"];
 
 const Achievements = () => {
     const { ref, inView } = useInView({
@@ -23,7 +22,7 @@ const Achievements = () => {
         triggerOnce: true,
     });
 
-    const [selectedItem, setSelectedItem] = useState<{ file: string; type: 'image' | 'pdf' } | null>(null);
+    const [selectedItem, setSelectedItem] = useState<{ file: string; title: string; type: 'image' | 'pdf' } | null>(null);
     const [zoomLevel, setZoomLevel] = useState(1);
     const [isClosing, setIsClosing] = useState(false);
     const [imageErrors, setImageErrors] = useState<Set<string>>(new Set());
@@ -44,32 +43,39 @@ const Achievements = () => {
     };
 
     const getFilteredAchievements = (achievements: typeof achievementsData, filter: FilterType) => {
+        let filtered: typeof achievementsData = [];
         switch (filter) {
             case 'All':
                 return achievements;
             case 'Awards':
-                return achievements.filter(cat => awardCategories.includes(cat.category));
+                filtered = achievements.filter(cat => awardCategories.includes(cat.category));
+                break;
             case 'Certificates | Technical Courses':
-                return achievements.filter(cat => certificateCategories.includes(cat.category));
+                filtered = achievements.filter(cat => certificateCategories.includes(cat.category));
+                break;
             case 'Bootcamps | Events | Competitions':
-                return achievements.filter(cat => bootcampCategories.includes(cat.category));
+                filtered = achievements.filter(cat => bootcampCategories.includes(cat.category));
+                break;
             case 'Internship Certificates':
-                return achievements.filter(cat => internshipCategories.includes(cat.category));
+                filtered = achievements.filter(cat => internshipCategories.includes(cat.category));
+                break;
             case 'Badges':
-                return achievements.filter(cat => badgeCategories.includes(cat.category));
-            case 'Trophies':
-                return achievements.filter(cat => trophyCategories.includes(cat.category));
+                filtered = achievements.filter(cat => badgeCategories.includes(cat.category));
+                break;
             default:
                 return achievements;
         }
+
+        return [...filtered].sort((a, b) => a.category.localeCompare(b.category, undefined, { sensitivity: 'base' }));
     };
 
     const allAchievements = getAllAchievements();
     const filteredAchievements = getFilteredAchievements(allAchievements, activeFilter);
-    const badgeAchievements = getFilteredAchievements(allAchievements, 'Badges');
-    const trophyAchievements = getFilteredAchievements(allAchievements, 'Trophies');
-    const regularAchievements = filteredAchievements.filter(
-        (cat) => !badgeCategories.includes(cat.category) && !trophyCategories.includes(cat.category)
+    const allRegularAchievements = allAchievements.filter(
+        (cat) => !badgeCategories.includes(cat.category)
+    );
+    const allBadgeAchievements = allAchievements.filter(
+        (cat) => badgeCategories.includes(cat.category)
     );
 
     if (!allAchievements || allAchievements.length === 0) {
@@ -131,10 +137,16 @@ const Achievements = () => {
         setImageErrors(prev => new Set(prev).add(file));
     };
 
-    const handleItemClick = (file: string) => {
-        const type = getFileType(file);
+    const handleItemClick = (item: { file: string; title: string }) => {
+        const type = getFileType(item.file);
         if (type === 'pdf') {
-            window.open(file, '_blank');
+            const link = document.createElement('a');
+            link.href = encodeURI(item.file);
+            link.target = '_blank';
+            link.rel = 'noopener noreferrer';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
         } else {
             // Immediately close previous image if one is open
             if (selectedItem) {
@@ -143,10 +155,10 @@ const Achievements = () => {
                 setIsClosing(false);
                 // Open new image after state clears
                 setTimeout(() => {
-                    setSelectedItem({ file, type });
+                    setSelectedItem({ file: item.file, title: item.title, type });
                 }, 50);
             } else {
-                setSelectedItem({ file, type });
+                setSelectedItem({ file: item.file, title: item.title, type });
             }
         }
     };
@@ -185,7 +197,7 @@ const Achievements = () => {
                             transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
                         >
                             <motion.h3
-                                className="text-2xl font-bold text-blue-700 dark:text-[#89D3BD] border-l-4 border-primary pl-4 whitespace-normal break-words max-w-full cursor-default"
+                                className="text-2xl font-bold text-blue-700 dark:text-[#89D3BD] border-l-4 border-primary pl-4 whitespace-normal break-words max-w-full cursor-default flex items-center gap-2 flex-wrap"
                                 initial={{ opacity: 0, x: -30 }}
                                 whileInView={{ opacity: 1, x: 0 }}
                                 whileHover={{
@@ -199,7 +211,10 @@ const Achievements = () => {
                                 viewport={{ once: false, amount: 0.3 }}
                                 transition={{ duration: 0.5, ease: "easeOut" }}
                             >
-                                {category.category}
+                                <span>{category.category}</span>
+                                <span className="text-sm md:text-base font-semibold text-muted-foreground/80 font-mono bg-blue-700/10 dark:bg-[#89D3BD]/10 px-2.5 py-0.5 rounded-full">
+                                    ({category.items.length})
+                                </span>
                             </motion.h3>
                             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                                 {category.items.map((item, index) => {
@@ -220,12 +235,12 @@ const Achievements = () => {
                                         >
                                             <Card
                                                 className="overflow-hidden border border-white/20 dark:border-white/10 bg-white/40 dark:bg-white/5 backdrop-blur-md shadow-card hover:shadow-glow transition-all duration-300 group cursor-pointer flex flex-col h-full hover:-translate-y-2 hover:scale-[1.02]"
-                                                onClick={() => handleItemClick(item.file)}
+                                                onClick={() => handleItemClick(item)}
                                             >
                                                 <div className="h-48 overflow-hidden bg-muted/10 relative flex items-center justify-center p-4">
                                                     {type === 'image' ? (
                                                         <>
-                                                            {!imageErrors.has(item.file) ? (
+                                                             {!imageErrors.has(item.file) ? (
                                                                 <img
                                                                     src={item.file}
                                                                     alt={item.title}
@@ -243,7 +258,7 @@ const Achievements = () => {
                                                         </>
                                                     ) : (
                                                         <div className="text-primary/50 group-hover:text-primary transition-colors">
-                                                            <FileText className="w-16 h-16" />
+                                                             <FileText className="w-16 h-16" />
                                                         </div>
                                                     )}
 
@@ -255,7 +270,7 @@ const Achievements = () => {
                                                     </div>
                                                 </div>
                                                 <div className="p-4 flex-grow flex flex-col justify-center items-center text-center">
-                                                    <h4 className="text-lg font-semibold text-foreground leading-tight mb-2">{item.title}</h4>
+                                                    <h4 className="text-base md:text-lg font-semibold text-foreground leading-snug mb-2 w-full break-words whitespace-normal">{item.title}</h4>
                                                     {type === 'pdf' && (
                                                         <p className="text-xs text-muted-foreground flex items-center gap-1">
                                                             <FileText className="w-3 h-3" /> PDF Document
@@ -312,53 +327,46 @@ const Achievements = () => {
                         viewport={{ once: true, amount: 0.3 }}
                         transition={{ duration: 0.6, ease: "easeOut" }}
                     >
-                        {(['All', 'Awards', 'Certificates | Technical Courses', 'Bootcamps | Events | Competitions', 'Internship Certificates', 'Badges', 'Trophies'] as FilterType[]).map((filter) => (
-                            <button
-                                key={filter}
-                                onClick={() => setActiveFilter(filter)}
-                                className={`px-4 py-2 rounded-full font-semibold transition-all duration-300 text-sm md:text-base ${activeFilter === filter
-                                    ? 'bg-blue-700 dark:bg-[#89D3BD] text-white dark:text-black shadow-lg scale-105 font-black'
-                                    : 'bg-muted/50 text-foreground hover:bg-muted border border-border/50 hover:border-primary/20'
-                                    }`}
-                            >
-                                {filter}
-                            </button>
-                        ))}
+                        {(['All', 'Awards', 'Certificates | Technical Courses', 'Bootcamps | Events | Competitions', 'Internship Certificates', 'Badges'] as FilterType[]).map((filter) => {
+                            const count = getItemCount(getFilteredAchievements(allAchievements, filter));
+                            return (
+                                <button
+                                    key={filter}
+                                    onClick={() => setActiveFilter(filter)}
+                                    className={`px-4 py-2 rounded-full font-semibold transition-all duration-300 text-sm md:text-base flex items-center gap-1.5 ${activeFilter === filter
+                                        ? 'bg-blue-700 dark:bg-[#89D3BD] text-white dark:text-black shadow-lg scale-105 font-black'
+                                        : 'bg-muted/50 text-foreground hover:bg-muted border border-border/50 hover:border-primary/20'
+                                        }`}
+                                >
+                                    <span>{filter}</span>
+                                    <span className={`text-xs px-2 py-0.5 rounded-full font-mono font-bold ${activeFilter === filter ? 'bg-white/20 dark:bg-black/20 text-white dark:text-black' : 'bg-muted text-muted-foreground'}`}>
+                                        {count}
+                                    </span>
+                                </button>
+                            );
+                        })}
                     </motion.div>
 
                     <div className="space-y-16">
                         {activeFilter === 'All' ? (
                             <>
-                                {renderAchievementGroups(regularAchievements)}
+                                {renderAchievementGroups(allRegularAchievements)}
                                 {renderAchievementGroups(
-                                    badgeAchievements,
+                                    allBadgeAchievements,
                                     'Badges',
                                     'Verified skill badges, challenge milestones, and platform-earned visual credentials from the achievements archive.',
                                     'achievement-badges'
                                 )}
-                                {renderAchievementGroups(
-                                    trophyAchievements,
-                                    'Trophies',
-                                    'Long-form Microsoft trophy achievements collected separately for clearer browsing.',
-                                    'achievement-trophies'
-                                )}
                             </>
                         ) : activeFilter === 'Badges' ? (
                             renderAchievementGroups(
-                                badgeAchievements,
+                                filteredAchievements,
                                 'Badges',
                                 'Platform badges, milestone rewards, and challenge completions organized into a dedicated section.',
                                 'achievement-badges'
                             )
-                        ) : activeFilter === 'Trophies' ? (
-                            renderAchievementGroups(
-                                trophyAchievements,
-                                'Trophies',
-                                'Trophy-style achievement records separated from badges for easier scanning.',
-                                'achievement-trophies'
-                            )
                         ) : (
-                            renderAchievementGroups(regularAchievements)
+                            renderAchievementGroups(filteredAchievements)
                         )}
                     </div>
                 </div>
@@ -425,10 +433,15 @@ const Achievements = () => {
                         >
                             <img
                                 src={selectedItem.file}
-                                alt="Achievement Full View"
-                                className={`relative max-w-[85vw] max-h-[75vh] object-contain rounded-lg transition-all duration-300 ${isClosing ? 'border-0 shadow-none opacity-90' : 'border-2 border-white/10 shadow-[0_12px_40px_rgba(29,78,216,0.5)] dark:shadow-[0_12px_40px_rgba(6,182,212,0.6)]'}`}
+                                alt={selectedItem.title}
+                                className={`relative max-w-[85vw] max-h-[72vh] object-contain rounded-lg transition-all duration-300 ${isClosing ? 'border-0 shadow-none opacity-90' : 'border-2 border-white/10 shadow-[0_12px_40px_rgba(29,78,216,0.5)] dark:shadow-[0_12px_40px_rgba(6,182,212,0.6)]'}`}
                             />
                         </div>
+                    </div>
+
+                    {/* Fully Visible Caption Banner */}
+                    <div className={`absolute bottom-5 left-1/2 -translate-x-1/2 px-6 py-2.5 bg-black/85 dark:bg-black/90 backdrop-blur-md rounded-2xl border border-white/20 text-white text-center max-w-[92vw] z-50 shadow-2xl transition-all duration-300 pointer-events-none ${isClosing ? 'opacity-0 translate-y-6' : 'opacity-100 translate-y-0'}`}>
+                        <p className="text-sm md:text-base font-semibold leading-snug break-words whitespace-normal tracking-wide">{selectedItem.title}</p>
                     </div>
                 </div>
             )}
