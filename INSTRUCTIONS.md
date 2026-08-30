@@ -50,7 +50,7 @@ Follow these steps to get the project running on your machine:
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/KGFCH2/Babin.Portfolio.git
+git clone https://github.com/Babin123456/Babin.Portfolio.git
 cd Babin.Portfolio
 ```
 
