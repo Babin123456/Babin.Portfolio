@@ -212,7 +212,7 @@ const About = () => {
                     onClick={() => setShowImageModal(true)}
                   >
                     <img
-                      src="/Babin_New.jpeg"
+                      src="/Babin_New.webp"
                       alt="Babin Bid"
                       className="w-56 h-56 md:w-[18rem] md:h-[18rem] rounded-[2.5rem] object-cover border-[8px] border-background relative z-10"
                     />
@@ -406,7 +406,7 @@ const About = () => {
             <div className="relative">
               <div className="absolute -inset-4 bg-primary rounded-3xl blur-2xl opacity-50 animate-pulse" />
               <img
-                src="/Babin_New.jpeg"
+                src="/Babin_New.webp"
                 alt="Babin Bid"
                 loading="lazy"
                 decoding="async"

@@ -184,7 +184,7 @@ const Projects = () => {
         "Fare estimate before booking",
         "Mobile-responsive UI",
       ],
-      thumbnail: "/projects/CargoConnect.png",
+      thumbnail: "/projects/CargoConnect.webp",
     },
     {
       title: "CareerGo",
@@ -206,7 +206,7 @@ const Projects = () => {
         "Secure password reset with verification codes",
         "Fast performance with PWA-ready architecture",
       ],
-      thumbnail: "/projects/Career_Go.png",
+      thumbnail: "/projects/Career_Go.webp",
     },
     {
       title: "SkyCast AI",
@@ -223,7 +223,7 @@ const Projects = () => {
         "AI-driven insights & alerts",
         "Unit conversion (Celsius/Fahrenheit)",
       ],
-      thumbnail: "/projects/SkyCast_AI.png",
+      thumbnail: "/projects/SkyCast_AI.webp",
     },
     {
       title: "AquaWatch",
@@ -238,7 +238,7 @@ const Projects = () => {
         "Verified government resources integration",
         "Emergency helpline & email support",
       ],
-      thumbnail: "/projects/AquaWatch.png",
+      thumbnail: "/projects/AquaWatch.webp",
     },
     {
       title: "ImpactSense (Earthquake Impact Prediction)",
@@ -252,7 +252,7 @@ const Projects = () => {
         "Government disaster response prioritization",
         "Data preprocessing, feature engineering, model training",
       ],
-      thumbnail: "/projects/ImpactSense.png",
+      thumbnail: "/projects/ImpactSense.webp",
     },
     {
       title: "AI Powered ChatBot",
@@ -266,7 +266,7 @@ const Projects = () => {
         "Optional web-search context (DuckDuckGo)",
         "Light/Dark theme, demo login, UI micro-interactions",
       ],
-      thumbnail: "/projects/AI_Powered_ChatBot.png",
+      thumbnail: "/projects/AI_Powered_ChatBot.webp",
     },
     {
       title: "India Stock Dashboard",
@@ -280,7 +280,7 @@ const Projects = () => {
         "Interactive Plotly charts and technical indicators",
         "Simple ensemble-based prediction fallback",
       ],
-      thumbnail: "/projects/India_Stock_Dashboard.png",
+      thumbnail: "/projects/India_Stock_Dashboard.webp",
     },
     {
       title: "Heart Disease Prediction System",
@@ -298,7 +298,7 @@ const Projects = () => {
         "Input Features: 7 health parameters",
         "Status: Production Ready",
       ],
-      thumbnail: "/projects/Heart_Disease_Prediction_System_New.png",
+      thumbnail: "/projects/Heart_Disease_Prediction_System_New.webp",
     },
     {
       title: "CropAI India",
@@ -312,7 +312,7 @@ const Projects = () => {
         "Market intelligence & yield insights",
         "Scalable platform ready for ML integration",
       ],
-      thumbnail: "/projects/CropAI.png",
+      thumbnail: "/projects/CropAI.webp",
     },
     {
       title: "BharatBus (in progress)",
@@ -322,7 +322,7 @@ const Projects = () => {
       github: "https://github.com/KGFCH2/BharatBus",
       demo: "https://bharat-bus.vercel.app/",
       features: ["Booking flow, live tracking mockups, operator dashboard"],
-      thumbnail: "/projects/BharatBus.png",
+      thumbnail: "/projects/BharatBus.webp",
     },
   ];
 

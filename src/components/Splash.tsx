@@ -80,7 +80,7 @@ const <span class="highlight">Babin</span> = await Developer.awaken({
                 <div className="ide-body">
                     <div className="ide-avatar-container">
                         <img
-                            src="/Babin_New.jpeg"
+                            src="/Babin_New.webp"
                             alt="Babin"
                             className={`ide-avatar ${percent === 100 ? 'ide-avatar--loaded' : ''}`}
                             onError={(e) => {

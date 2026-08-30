@@ -16,37 +16,37 @@ const featuredAchievements: FeaturedAchievement[] = [
   {
     title: "Best Paper Award in SSWC-2025",
     category: "Awards & Recognitions",
-    file: "/Achievements/Awards/SSWC'2025_Award.jpeg",
+    file: "/Achievements/Awards/SSWC'2025_Award.webp",
     icon: Trophy,
   },
   {
     title: "Merit Scholarship Award (2023)",
     category: "Awards & Recognitions",
-    file: "/Achievements/Awards/Merit_Scholarship_Award.jpeg",
+    file: "/Achievements/Awards/Merit_Scholarship_Award.webp",
     icon: Medal,
   },
   {
     title: "Google Solution Challenge 2024",
     category: "Awards & Recognitions",
-    file: "/Achievements/Awards/Google_Solution_Challenge_2024.jpeg",
+    file: "/Achievements/Awards/Google_Solution_Challenge_2024.webp",
     icon: Star,
   },
   {
     title: "SSWC'25 Best Paper Certificate",
     category: "Awards & Recognitions",
-    file: "/Achievements/Awards/SSWC'25_Best_Paper_Certificate.jpg",
+    file: "/Achievements/Awards/SSWC'25_Best_Paper_Certificate.webp",
     icon: Award,
   },
   {
     title: "Merit Certificate for Academic Excellence (2023)",
     category: "Awards & Recognitions",
-    file: "/Achievements/Awards/Babin_Bid_Merit_Scholarship_2023.jpeg",
+    file: "/Achievements/Awards/Babin_Bid_Merit_Scholarship_2023.webp",
     icon: Medal,
   },
   {
     title: "Nexus Spring of Code (NSoC) Certificate (2026)",
     category: "Awards & Recognitions",
-    file: "/Achievements/Awards/NSoC_Certificate_Babin-Bid_2026.png",
+    file: "/Achievements/Awards/NSoC_Certificate_Babin-Bid_2026.webp",
     icon: Award,
   },
 ];
