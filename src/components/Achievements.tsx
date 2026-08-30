@@ -13,7 +13,7 @@ type FilterType = 'All' | 'Awards' | 'Certificates | Technical Courses' | 'Bootc
 const awardCategories = ["Awards & Recognitions"];
 const certificateCategories = ["AWS", "CISCO", "Cognitive Class", "GeeksforGeeks", "Google", "GTech Learn", "HackerRank", "HCL Guvi", "HP Life", "IBM", "Infosys Springboard", "Microsoft", "Microsoft Certificates", "Microsoft Certifications", "Pantech e Learning", "Qualcomm", "Saylor Academy", "Scaler", "SimpliLearn", "Skill Nation", "Udemy", "ETS", "Oracle", "FutureSkillsPrime"];
 const bootcampCategories = ["Events & Hackathons", "Hack2Skill", "Kaggle", "Let's Upgrade", "MyBharat", "myGov", "Skill India", "Unstop"];
-const internshipCategories = ["Oasis Infobyte", "Infosys Springboard Internships", "The Developers Arena"];
+const internshipCategories = ["Codec Technologies", "Infosys Springboard Internships", "Oasis Infobyte", "The Developers Arena"];
 const badgeCategories = ["AWS Badges", "CISCO Badges", "GFG Badges", "Google Badges", "Holopin Badges", "HP Life Badges", "IndiaAI Badges", "LeetCode Badges", "Microsoft Badges", "Qualcomm Badges", "GirlScript Summer of Code (GSSoC) Badges", "EduLinkUp Summer of Code (ELUSoC) Badges", "Nexus Spring of Code (NSoC) Badges", "Elite Coders Summer of Code (ECSoC) Badges", "Unstop Badges", "Oracle Badges", "IBM Badges", "Agents League Badges"];
 
 const Achievements = () => {
