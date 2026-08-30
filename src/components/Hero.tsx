@@ -159,7 +159,7 @@ const Hero = () => {
 
           <div className="flex items-center justify-center gap-4 pt-8 flex-wrap">
             <a
-              href="https://github.com/KGFCH2"
+              href="https://github.com/Babin123456"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Visit GitHub profile"
