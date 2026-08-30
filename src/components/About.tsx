@@ -6,7 +6,6 @@ import { motion, AnimatePresence, Variants } from "framer-motion";
 import SectionTitle from "./SectionTitle";
 import AnimatedIcon from "./AnimatedIcon";
 import StudyBackground from "./StudyBackground";
-import CinematicScrollyCanvas from "./CinematicScrollyCanvas";
 
 const About = () => {
   const [openPanel, setOpenPanel] = useState<string | null>(null);
@@ -212,9 +211,11 @@ const About = () => {
                     className="relative cursor-pointer rounded-[2.5rem]"
                     onClick={() => setShowImageModal(true)}
                   >
-                    <div className="w-56 h-56 md:w-[18rem] md:h-[18rem] rounded-[2.5rem] overflow-hidden border-[8px] border-background relative z-10 shadow-2xl bg-black">
-                      <CinematicScrollyCanvas totalFrames={102} className="w-full h-full" />
-                    </div>
+                    <img
+                      src="/Babin_New.jpeg"
+                      alt="Babin Bid"
+                      className="w-56 h-56 md:w-[18rem] md:h-[18rem] rounded-[2.5rem] object-cover border-[8px] border-background relative z-10"
+                    />
                     {/* Floating Orbits */}
                     <div className="absolute -inset-2 border border-primary/10 rounded-[3rem] animate-[spin_20s_linear_infinite] pointer-events-none" />
                   </motion.div>
