@@ -186,30 +186,22 @@ const Achievements = () => {
                     </div>
                 ) : null}
 
-                <div className="space-y-16 animate-slide-show">
+                <div className="space-y-16">
                     {categories.map((category, catIndex) => (
                         <motion.div
                             key={`${sectionTitle || 'achievements'}-${category.category}-${catIndex}`}
                             className="space-y-6"
-                            initial={{ opacity: 0, y: 50 }}
+                            initial={{ opacity: 0, y: 30 }}
                             whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: false, amount: 0.05 }}
-                            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                            viewport={{ once: true, amount: 0.02, margin: "150px 0px" }}
+                            transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
                         >
                             <motion.h3
                                 className="text-2xl font-bold text-blue-700 dark:text-[#89D3BD] border-l-4 border-primary pl-4 whitespace-normal break-words max-w-full cursor-default flex items-center gap-2 flex-wrap"
-                                initial={{ opacity: 0, x: -30 }}
+                                initial={{ opacity: 0, x: -20 }}
                                 whileInView={{ opacity: 1, x: 0 }}
-                                whileHover={{
-                                    x: 30,
-                                    transition: {
-                                        type: "spring",
-                                        stiffness: 300,
-                                        damping: 20
-                                    }
-                                }}
-                                viewport={{ once: false, amount: 0.3 }}
-                                transition={{ duration: 0.5, ease: "easeOut" }}
+                                viewport={{ once: true, amount: 0.1 }}
+                                transition={{ duration: 0.4, ease: "easeOut" }}
                             >
                                 <span>{category.category}</span>
                                 <span className="text-sm md:text-base font-semibold text-muted-foreground/80 font-mono bg-blue-700/10 dark:bg-[#89D3BD]/10 px-2.5 py-0.5 rounded-full">
@@ -224,17 +216,18 @@ const Achievements = () => {
                                     return (
                                         <motion.div
                                             key={`${category.category}-${item.title}-${index}`}
-                                            initial={{ opacity: 0, y: 30, scale: 0.95 }}
-                                            whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                                            viewport={{ once: false, amount: 0.1 }}
+                                            className="achievement-card-contain"
+                                            initial={{ opacity: 0, y: 20 }}
+                                            whileInView={{ opacity: 1, y: 0 }}
+                                            viewport={{ once: true, amount: 0.02, margin: "100px 0px" }}
                                             transition={{
-                                                duration: 0.5,
-                                                delay: index * 0.08,
+                                                duration: 0.35,
+                                                delay: Math.min(index * 0.02, 0.2),
                                                 ease: [0.22, 1, 0.36, 1],
                                             }}
                                         >
                                             <Card
-                                                className="overflow-hidden border border-white/20 dark:border-white/10 bg-white/40 dark:bg-white/5 backdrop-blur-md shadow-card hover:shadow-glow transition-all duration-300 group cursor-pointer flex flex-col h-full hover:-translate-y-2 hover:scale-[1.02]"
+                                                className="overflow-hidden border border-white/20 dark:border-white/10 bg-white/40 dark:bg-white/5 backdrop-blur-sm shadow-card hover:shadow-glow transition-all duration-300 group cursor-pointer flex flex-col h-full hover:-translate-y-1.5 hover:scale-[1.01]"
                                                 onClick={() => handleItemClick(item)}
                                             >
                                                 <div className="h-48 overflow-hidden bg-muted/10 relative flex items-center justify-center p-4">
@@ -246,7 +239,7 @@ const Achievements = () => {
                                                                     alt={item.title}
                                                                     loading="lazy"
                                                                     decoding="async"
-                                                                    className={`w-full h-full object-contain transition-transform duration-500 group-hover:scale-110 ${isSelected ? 'shadow-[0_8px_30px_rgba(29,78,216,0.35)] dark:shadow-[0_8px_30px_rgba(6,182,212,0.35)]' : ''}`}
+                                                                    className={`w-full h-full object-contain transition-transform duration-300 group-hover:scale-105 ${isSelected ? 'shadow-[0_8px_30px_rgba(29,78,216,0.35)] dark:shadow-[0_8px_30px_rgba(6,182,212,0.35)]' : ''}`}
                                                                     onError={() => handleImageError(item.file)}
                                                                 />
                                                             ) : (
@@ -262,7 +255,7 @@ const Achievements = () => {
                                                         </div>
                                                     )}
 
-                                                    <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                                                    <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex items-center justify-center">
                                                         <p className="text-white font-semibold text-lg flex items-center gap-2">
                                                             {type === 'pdf' ? <ExternalLink className="w-5 h-5" /> : null}
                                                             {type === 'pdf' ? 'Open PDF' : 'View Image'}

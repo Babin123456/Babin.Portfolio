@@ -334,7 +334,7 @@ const Projects = () => {
           variants={sectionVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: false, amount: 0.1 }}
+          viewport={{ once: true, amount: 0.1 }}
           className="max-w-6xl mx-auto space-y-12"
         >
           <motion.div variants={itemVariants} className="text-center space-y-4">

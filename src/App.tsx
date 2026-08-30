@@ -7,6 +7,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Splash from "./components/Splash";
 import ErrorBoundary from "./components/ErrorBoundary";
 
+import SmoothScroll from "./components/SmoothScroll";
+
 const Index = lazy(() => import("./pages/Index"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 const AchievementsPage = lazy(() => import("./pages/AchievementsPage"));
@@ -20,26 +22,28 @@ const App = () => {
     <ErrorBoundary>
       <QueryClientProvider client={queryClient}>
         <TooltipProvider>
-          <Toaster />
-          <Sonner />
-          {showSplash && (
-            <Splash
-              durationMs={3500}
-              onFinish={() => {
-                setShowSplash(false);
-              }}
-            />
-          )}
-          <BrowserRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
-            <Suspense fallback={null}>
-              <Routes>
-                <Route path="/" element={<Index />} />
-                <Route path="/achievements" element={<AchievementsPage />} />
-                {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-                <Route path="*" element={<NotFound />} />
-              </Routes>
-            </Suspense>
-          </BrowserRouter>
+          <SmoothScroll>
+            <Toaster />
+            <Sonner />
+            {showSplash && (
+              <Splash
+                durationMs={3500}
+                onFinish={() => {
+                  setShowSplash(false);
+                }}
+              />
+            )}
+            <BrowserRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
+              <Suspense fallback={null}>
+                <Routes>
+                  <Route path="/" element={<Index />} />
+                  <Route path="/achievements" element={<AchievementsPage />} />
+                  {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+                  <Route path="*" element={<NotFound />} />
+                </Routes>
+              </Suspense>
+            </BrowserRouter>
+          </SmoothScroll>
         </TooltipProvider>
       </QueryClientProvider>
     </ErrorBoundary>

@@ -67,7 +67,7 @@ const About = () => {
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: false, amount: 0.1 }}
+          viewport={{ once: true, amount: 0.1 }}
           className="max-w-6xl mx-auto space-y-12"
         >
           <div className="text-center space-y-4">
@@ -266,7 +266,7 @@ const About = () => {
                     key={skill.name}
                     initial={{ opacity: 0, x: -20 }}
                     whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: false }}
+                    viewport={{ once: true }}
                     transition={{ delay: i * 0.1 }}
                     whileHover={{
                       scale: 1.02,
@@ -288,7 +288,7 @@ const About = () => {
                       <motion.div
                         initial={{ width: 0 }}
                         whileInView={{ width: `${skill.val}%` }}
-                        viewport={{ once: false }}
+                        viewport={{ once: true }}
                         transition={{ duration: 1, delay: 0.5 + (i * 0.1), ease: "circOut" }}
                         className={`h-full ${skill.styles.bg} rounded-full`}
                       />
@@ -331,7 +331,7 @@ const About = () => {
                     key={item.id}
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: false }}
+                    viewport={{ once: true }}
                     transition={{ delay: i * 0.1 }}
                     whileHover={{
                       y: -5,
