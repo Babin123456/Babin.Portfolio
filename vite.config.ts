@@ -61,6 +61,7 @@ function localApiPlugin(): Plugin {
             }
 
             try {
+              // @ts-expect-error - Runtime serverless function
               const { default: handler } = await import("./api/send-email.js");
               await handler(apiReq, enhancedRes);
             } catch (err) {
