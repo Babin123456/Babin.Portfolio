@@ -30,8 +30,8 @@ const InteractiveStats: React.FC = () => {
             glowColor: 'rgba(29, 78, 216, 0.6)'
         },
         {
-            label: 'Technologies',
-            value: 20,
+            label: 'Skills & Technologies',
+            value: 40,
             suffix: '+',
             description: 'Languages, frameworks, and tools',
             Icon: Zap,
@@ -39,9 +39,9 @@ const InteractiveStats: React.FC = () => {
         },
         {
             label: 'Experience',
-            value: 2,
+            value: 2.5,
             suffix: '+',
-            description: 'Years in web and software development',
+            description: 'Years in coding, web dev, internship & open source',
             Icon: Clock,
             glowColor: 'rgba(29, 78, 216, 0.6)'
         },
@@ -85,7 +85,7 @@ interface StatCardProps {
 }
 
 const StatCard: React.FC<StatCardProps> = ({ stat, index, totalCount, isVisible }) => {
-    const [count, setCount] = useState(0);
+    const [count, setCount] = useState<number | string>(0);
 
     // Reset count when card leaves viewport so it re-animates on re-entry
     useEffect(() => {
@@ -98,6 +98,7 @@ const StatCard: React.FC<StatCardProps> = ({ stat, index, totalCount, isVisible 
         if (!isVisible) return;
 
         const target = stat.value;
+        const isDecimal = target % 1 !== 0;
         const duration = 2000;
         const steps = 60;
         const increment = target / steps;
@@ -107,10 +108,10 @@ const StatCard: React.FC<StatCardProps> = ({ stat, index, totalCount, isVisible 
         const interval = setInterval(() => {
             current += increment;
             if (current >= target) {
-                setCount(target);
+                setCount(isDecimal ? target.toFixed(1) : target);
                 clearInterval(interval);
             } else {
-                setCount(Math.floor(current));
+                setCount(isDecimal ? current.toFixed(1) : Math.floor(current));
             }
         }, stepDuration);
 
@@ -160,7 +161,7 @@ const StatCard: React.FC<StatCardProps> = ({ stat, index, totalCount, isVisible 
                 },
             }}
         >
-            <div className="relative p-4 md:p-6 rounded-lg border border-border/50 bg-card/50 backdrop-blur-sm hover:bg-card/80 hover:shadow-[0_20px_10px_rgba(29,78,216,0.3)] dark:hover:shadow-[0_10px_20px_rgba(137,211,189,0.3)] transition-all duration-300 h-32 md:h-40 flex flex-col justify-between">
+            <div className="relative p-4 md:p-6 rounded-lg border border-border/50 bg-card/50 backdrop-blur-sm hover:bg-card/80 hover:shadow-[0_20px_10px_rgba(29,78,216,0.3)] dark:hover:shadow-[0_10px_20px_rgba(137,211,189,0.3)] transition-all duration-300 min-h-[9rem] md:min-h-[10.5rem] h-full flex flex-col justify-between">
                 <div className="space-y-3">
                     <div className="flex items-center justify-between">
                         <div className="text-3xl md:text-4xl font-bold text-primary transition-all duration-300">

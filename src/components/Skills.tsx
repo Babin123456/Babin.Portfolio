@@ -49,7 +49,7 @@ const Skills: React.FC = () => {
             'Node.js': { image: '/Skills_Images/Node.js_logo.webp', alt: 'Node.js' },
             'Flask': { icon: SiFlask, color: '#000000' },
             'FastAPI': { icon: SiFastapi, color: '#009688' },
-            'MySQL': { image: '/Skills_Images/MySQL_Logo.png', alt: 'MySQL' },
+            'MySQL': { image: '/Skills_Images/MySQL_logo.webp', alt: 'MySQL' },
             'MongoDB': { image: '/Skills_Images/MongoDB_logo.webp', alt: 'MongoDB' },
             'SQLite': { image: '/Skills_Images/SQLite_logo.webp', alt: 'SQLite' },
             'Firebase': { image: '/Skills_Images/Firebase_logo.webp', alt: 'Firebase' },

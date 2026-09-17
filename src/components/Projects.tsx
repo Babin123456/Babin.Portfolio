@@ -45,7 +45,7 @@ import type { EmblaPluginType } from "embla-carousel";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
-import { ExternalLink, Github, Star } from "lucide-react";
+import { ExternalLink, Github, Star, Hand, ChevronsLeftRight } from "lucide-react";
 import SectionTitle from "./SectionTitle";
 import { motion, Variants } from "framer-motion";
 
@@ -471,17 +471,10 @@ const Projects = () => {
           </div>
 
           {/* Mobile swipe hint */}
-          <div className="md:hidden flex items-center justify-center gap-2 mt-4 text-muted-foreground animate-pulse">
-            <img
-              src="https://cdn-icons-png.flaticon.com/128/11441/11441317.png"
-              alt="swipe icon"
-              className="w-5 h-5"
-              loading="lazy"
-            />
-            <span className="text-sm">Swipe to explore more projects</span>
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="animate-bounce-x">
-              <path d="m9 18 6-6-6-6" />
-            </svg>
+          <div className="md:hidden flex items-center justify-center gap-2 mt-4 text-muted-foreground select-none">
+            <Hand className="w-4 h-4 text-blue-700 dark:text-[#89D3BD] -rotate-12" />
+            <span className="text-sm font-medium">Swipe to explore more projects</span>
+            <ChevronsLeftRight className="w-4 h-4 text-blue-700 dark:text-[#89D3BD] animate-pulse" />
           </div>
         </motion.div>
       </div>

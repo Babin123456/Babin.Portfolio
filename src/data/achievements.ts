@@ -98,8 +98,16 @@ export const achievementsData: AchievementCategory[] = [
                 "file": "/Achievements/Events/Elite_Her_Hackathon_Certificate_Babin Bid.webp"
             },
             {
-                "title": "ELUCode 2026",
-                "file": "/Achievements/Events/ELUCode_2026.webp"
+                "title": "ELUCode 2026 Edition 1",
+                "file": "/Achievements/Events/ELUCode_2026_Edition_1.webp"
+            },
+            {
+                "title": "ELUCode 2026 Edition 2",
+                "file": "/Achievements/Events/ELUCode_2026_Edition_2.webp"
+            },
+            {
+                "title": "ELUSoC 2026 TruScholar Certificate",
+                "file": "/Achievements/Events/TruScholar_ELUSoC_Certificate.webp"
             },
             {
                 "title": "GDSC Cloud Campaign",
@@ -1067,12 +1075,20 @@ export const achievementsData: AchievementCategory[] = [
         "category": "LeetCode Badges",
         "items": [
             {
-                "title": "100 Day",
-                "file": "/Achievements/LeetCode/100_Day.gif"
+                "title": "100 Days",
+                "file": "/Achievements/LeetCode/100_Days.gif"
             },
             {
                 "title": "100 Days Badge 2026",
                 "file": "/Achievements/LeetCode/100_Days_Badge_2026.webp"
+            },
+            {
+                "title": "200 Days",
+                "file": "/Achievements/LeetCode/200_Days.gif"
+            },
+            {
+                "title": "200 Days Badge 2026",
+                "file": "/Achievements/LeetCode/200_Days_Badge_2026.webp"
             },
             {
                 "title": "50 Days",
@@ -1089,6 +1105,14 @@ export const achievementsData: AchievementCategory[] = [
             {
                 "title": "April LeetCode",
                 "file": "/Achievements/LeetCode/April_LeetCode.webp"
+            },
+            {
+                "title": "August LeetCode",
+                "file": "/Achievements/LeetCode/August_LeetCode_Badge.gif"
+            },
+            {
+                "title": "August LeetCode",
+                "file": "/Achievements/LeetCode/August_LeetCode.webp"
             },
             {
                 "title": "July LeetCode",
@@ -1532,6 +1556,10 @@ export const achievementsData: AchievementCategory[] = [
                 "file": "/Achievements/MyBharat/Viksit_Bharat_Young_Leaders_Dialogue_VBYLD_2026.webp"
             },
             {
+                "title": "Viksit Bharat Young Leaders Dialogue VBYLD 2027",
+                "file": "/Achievements/MyBharat/Viksit_Bharat_Young_Leaders_Dialogue_VBYLD_2027.webp"
+            },
+            {
                 "title": "Viksit Vibrant Village Program 2026 Quiz",
                 "file": "/Achievements/MyBharat/Viksit_Vibrant_Village_Program_2026_Quiz.webp"
             }
@@ -1908,6 +1936,10 @@ export const achievementsData: AchievementCategory[] = [
             {
                 "title": "Python Basics",
                 "file": "/Achievements/Unstop/Python_Basics.webp"
+            },
+            {
+                "title": "Summer of Code 2026 ELUSoC",
+                "file": "/Achievements/Unstop/Summer_of_Code_2026_ELUSoC.webp"
             },
             {
                 "title": "Treasure Hunt December Series",

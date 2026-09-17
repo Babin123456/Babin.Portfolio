@@ -9,4 +9,5 @@ dist/
 .vercel/
 .env
 .env.local
+.env.*.local
 scratch/
