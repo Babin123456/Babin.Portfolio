@@ -1,41 +1,44 @@
 import { Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
+import { AnimatedThemeToggler } from "./ui/animated-theme-toggler";
 
 const ThemeToggle = () => {
-  const { theme, setTheme } = useTheme();
+  const { theme, setTheme, resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
-  const [isToggling, setIsToggling] = useState(false);
 
   useEffect(() => {
     setMounted(true);
   }, []);
 
   if (!mounted) {
-    return null;
+    return (
+      <div
+        className="w-12 h-12 rounded-full"
+        aria-hidden="true"
+      />
+    );
   }
 
-  const handleToggle = () => {
-    setIsToggling(true);
-    setTimeout(() => {
-      setTheme(theme === "dark" ? "light" : "dark");
-    }, 200);
-    setTimeout(() => setIsToggling(false), 500);
-  };
-
-  const isDark = theme === "dark";
+  const currentTheme = ((resolvedTheme || theme || "dark") === "dark" ? "dark" : "light") as "light" | "dark";
+  const isDark = currentTheme === "dark";
 
   return (
-    <button
-      onClick={handleToggle}
-      className={`relative w-12 h-12 rounded-full overflow-hidden transition-all duration-500 ease-out group
+    <AnimatedThemeToggler
+      variant="circle"
+      duration={850}
+      theme={currentTheme}
+      onThemeChange={(newTheme) => {
+        setTheme(newTheme);
+      }}
+      className={`theme-toggle-btn relative w-12 h-12 rounded-full overflow-hidden transition-all duration-300 ease-out group
         ${isDark
           ? 'bg-slate-800 shadow-lg shadow-primary/70'
           : 'bg-yellow-300 shadow-lg shadow-red-400/80'}
         hover:scale-110 hover:rotate-12 hover:rotate-y-12 hover:-rotate-x-6
         hover:shadow-2xl hover:shadow-primary/80 dark:hover:shadow-primary/50
+        active:scale-95
         transform-gpu perspective-1000 will-change-transform transform-style-3d
-        ${isToggling ? 'scale-90 rotate-180' : 'scale-100 rotate-0'}
       `}
       title={`Switch to ${isDark ? "light" : "dark"} mode`}
       aria-label="Toggle theme"
@@ -75,9 +78,7 @@ const ThemeToggle = () => {
       </div>
 
       {/* Sun/Moon container with smooth transition */}
-      <div className={`absolute inset-0 flex items-center justify-center transition-all duration-500 ease-out
-        ${isToggling ? 'rotate-[360deg] scale-0' : 'rotate-0 scale-100'}`}
-      >
+      <div className="absolute inset-0 flex items-center justify-center transition-all duration-300 ease-out">
         {isDark ? (
           <Moon className="h-5 w-5 text-yellow-100 drop-shadow-[0_0_8px_rgba(254,249,195,0.8)] transition-all duration-300 group-hover:drop-shadow-[0_0_12px_rgba(254,249,195,1)]" />
         ) : (
@@ -107,8 +108,9 @@ const ThemeToggle = () => {
           50% { transform: translateX(3px); }
         }
       `}</style>
-    </button>
+    </AnimatedThemeToggler>
   );
 };
 
+export { AnimatedThemeToggler };
 export default ThemeToggle;

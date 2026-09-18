@@ -512,6 +512,88 @@ All colors MUST be HSL.
   }
 }
 
+/* ==========================================================================
+   AnimatedThemeToggler View Transitions (Rectangle / Shape Mode)
+   ========================================================================== */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  will-change: clip-path;
+}
+
+::view-transition-image-pair(root) {
+  isolation: isolate;
+  will-change: clip-path, transform;
+}
+
+/* Scoped to AnimatedThemeToggler — the toggler sets the data-attribute and the variable only during a theme toggle. */
+html[data-magicui-theme-vt="active"]::view-transition-group(root) {
+  animation-duration: var(--magicui-theme-toggle-vt-duration, 850ms);
+}
+
+/* Pin clip-path so new theme is clipped before animation starts */
+html[data-magicui-theme-vt="active"]::view-transition-new(root) {
+  clip-path: var(--magicui-theme-vt-clip-from);
+}
+
+/* Ensure background/color transitions do not fight the View Transition */
+html[data-magicui-theme-vt="active"],
+html[data-magicui-theme-vt="active"] body,
+html[data-magicui-theme-vt="active"] *,
+html[data-magicui-theme-vt="active"] *::before,
+html[data-magicui-theme-vt="active"] *::after {
+  transition: none !important;
+}
+
+/* Theme toggle button View Transition isolation and animation */
+.theme-toggle-btn {
+  view-transition-name: theme-toggle;
+}
+
+::view-transition-group(theme-toggle) {
+  animation-duration: var(--magicui-theme-toggle-vt-duration, 850ms);
+  z-index: 9999;
+}
+
+::view-transition-old(theme-toggle) {
+  animation: theme-toggle-exit var(--magicui-theme-toggle-vt-duration, 850ms) cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  will-change: transform, opacity;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+::view-transition-new(theme-toggle) {
+  animation: theme-toggle-enter var(--magicui-theme-toggle-vt-duration, 850ms) cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  will-change: transform, opacity;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+@keyframes theme-toggle-exit {
+  0% {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0.88) rotate(-180deg);
+    opacity: 0;
+  }
+}
+
+@keyframes theme-toggle-enter {
+  0% {
+    transform: scale(0.88) rotate(180deg);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+}
+
 /* Mobile-friendly overrides */
 @media (max-width: 640px) {
 

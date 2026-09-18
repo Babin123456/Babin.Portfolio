@@ -65,120 +65,178 @@ export default async function handler(req, res) {
         const istTimeFull = now.toLocaleString('en-US', { dateStyle: 'full', timeStyle: 'short', timeZone: 'Asia/Kolkata' });
 
         const mailOptions = {
-            from: `"Babin Bid" <${process.env.EMAIL_USER}>`,
+            from: `"Babin Bid Portfolio" <${process.env.EMAIL_USER}>`,
             to: process.env.EMAIL_USER,
-            subject: `Portfolio Contact ~ New Message from ${email}`,
+            subject: `Portfolio Contact ~ ${senderName || 'New Message'} (${email})`,
             html: `
                 <!DOCTYPE html>
                 <html lang="en">
                 <head>
                     <meta charset="UTF-8">
                     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                    <title>Babin Bid Contact</title>
+                    <title>Portfolio Contact</title>
                     <style>
                         :root {
                             color-scheme: light dark;
                         }
-                        @media (prefers-color-scheme: dark) {
-                            body { background-color: #0f172a !important; color: #f8fafc !important; }
-                            .container { background-color: #1e293b !important; border: 1px solid #334155 !important; }
-                            .header { background: linear-gradient(135deg, #1d4ed8 0%, #06b6d4 100%) !important; }
-                            .content-title { color: #f1f5f9 !important; }
-                            .info-box { background-color: #334155 !important; border: 1px solid #0891b2 !important; }
-                            .info-label { color: #94a3b8 !important; }
-                            .info-value { color: #22d3ee !important; }
-                            .message-box { background-color: #1e293b !important; border: 1px solid #334155 !important; color: #cbd5e1 !important; }
-                            .footer { border-top: 1px solid #334155 !important; color: #94a3b8 !important; }
-                        }
-                        @media screen and (max-width: 480px) {
-                            .social-button-container { display: block !important; }
-                            .social-button { display: block !important; margin: 10px auto !important; width: 80% !important; text-align: center !important; }
-                        }
-                        @media (prefers-color-scheme: light) {
-                            body { background-color: #f1f5f9 !important; color: #1e293b !important; }
-                            .container { background-color: #ffffff !important; border: 1px solid #e2e8f0 !important; }
-                            .header { background: linear-gradient(135deg, #2563eb 0%, #0891b2 100%) !important; }
-                        }
                     </style>
                 </head>
-                <body style="margin: 0; padding: 40px 20px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; line-height: 1.5; background-color: #f1f5f9;">
-                    <div style="max-width: 600px; margin: 0 auto; background-color: #ffffff; border-radius: 16px; overflow: hidden; box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);" class="container">
-                        
-                        <!-- Premium Header -->
-                        <div style="background: linear-gradient(135deg, #2563eb 0%, #0891b2 100%); padding: 48px 32px; text-align: center;" class="header">
-                            <img src="https://avatars.githubusercontent.com/Babin123456" alt="Babin" style="width: 72px; height: 72px; border-radius: 50%; border: 3px solid rgba(255, 255, 255, 0.3); margin-bottom: 16px; background-color: white;">
-                            <h1 style="color: white; margin: 0; font-size: 24px; font-weight: 800; letter-spacing: -0.025em; text-transform: uppercase;">BABIN BID</h1>
-                            <p style="color: rgba(255, 255, 255, 0.8); margin: 4px 0 0 0; font-size: 14px; font-weight: 500;">SYSTEM NOTIFICATION ~~ NEW CONTACT INBOUND</p>
-                        </div>
+                <body style="margin: 0; padding: 36px 14px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased;">
+                    
+                    <!-- Outer Envelope Postcard with Custom Blue & Cyan Striped Border -->
+                    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="max-width: 620px; margin: 0 auto; background: repeating-linear-gradient(135deg, #2563eb 0px, #2563eb 16px, #ffffff 16px, #ffffff 26px, #06b6d4 26px, #06b6d4 42px, #ffffff 42px, #ffffff 52px); border-radius: 16px; padding: 10px; box-shadow: 0 20px 45px -10px rgba(37, 99, 235, 0.25), 0 4px 12px rgba(0, 0, 0, 0.08);">
+                        <tr>
+                            <td>
+                                <!-- Inner Parchment Card -->
+                                <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color: #fdfbf7; border-radius: 10px; border: 1px solid #e7e3d8; overflow: hidden;">
+                                    
+                                    <!-- Top Postal Header -->
+                                    <tr>
+                                        <td style="padding: 26px 28px 18px 28px;">
+                                            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                                                <tr>
+                                                    <!-- Left: Dispatch Title Header -->
+                                                    <td valign="middle" align="left" style="width: 65%;">
+                                                        <div style="font-family: Georgia, 'Times New Roman', serif; font-size: 26px; font-weight: 900; color: #1e293b; letter-spacing: -0.02em; line-height: 1.15;">
+                                                            <a href="https://babinbid.xyz" target="_blank" style="color: #1e293b; text-decoration: none;">PORTFOLIO DISPATCH</a>
+                                                        </div>
+                                                        <div style="font-family: 'Courier New', Courier, monospace; font-size: 11px; font-weight: 700; color: #0891b2; margin-top: 6px; letter-spacing: 0.05em; text-transform: uppercase;">
+                                                            INCOMING TRANSMISSION &middot; <a href="https://babinbid.xyz" target="_blank" style="color: #0891b2; text-decoration: underline; font-weight: 800;">BABINBID.XYZ</a>
+                                                        </div>
+                                                    </td>
 
-                        <!-- Main Content Body -->
-                        <div style="padding: 32px;">
-                            
-                            <!-- Section: Welcome Message -->
-                            <div style="margin-bottom: 32px; text-align: center;">
-                                <div style="display: inline-block; padding: 8px 16px; background-color: #ecfeff; color: #0891b2; border-radius: 9999px; font-size: 12px; font-weight: 700; margin-bottom: 16px;">NEW INQUIRY</div>
-                                <div style="display: block; margin-bottom: 12px;">
-                                    <img src="https://cdn-icons-png.flaticon.com/128/10677/10677796.png" alt="Inquiry" style="width: 32px; height: 32px; margin-bottom: 8px;">
-                                    <h2 style="margin: 0; font-size: 20px; font-weight: 700; color: #1e293b;" class="content-title">Message Received</h2>
-                                </div>
-                                <p style="margin: 8px 0 0 0; color: #64748b; font-size: 15px;">A visitor has reached out through your professional portfolio website.</p>
-                            </div>
+                                                    <!-- Right: Postage Stamp (BB Logo Only) -->
+                                                    <td valign="middle" align="right" style="width: 35%;">
+                                                        <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="display: inline-table; vertical-align: middle;">
+                                                            <tr>
+                                                                <!-- Authentic HTML/CSS Perforated Postage Stamp (BB Logo Only) -->
+                                                                <td valign="middle">
+                                                                    <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="width: 66px; height: 66px; background-color: #ecfeff; border: 2px dashed #0891b2; border-radius: 6px; box-shadow: 1px 2px 5px rgba(0,0,0,0.08);">
+                                                                        <tr>
+                                                                            <td align="center" valign="middle" style="padding: 5px;">
+                                                                                <table role="presentation" width="100%" height="100%" cellpadding="0" cellspacing="0" border="0" style="background-color: #f0fdff; border: 1px solid #a5f3fc; border-radius: 4px;">
+                                                                                    <tr>
+                                                                                        <td align="center" valign="middle" style="padding: 8px 0;">
+                                                                                            <table role="presentation" cellpadding="0" cellspacing="0" border="0" align="center">
+                                                                                                <tr>
+                                                                                                    <td align="center" valign="middle" style="width: 38px; height: 38px; border-radius: 50%; background: linear-gradient(135deg, #2563eb 0%, #06b6d4 100%); color: #ffffff; font-family: Georgia, serif; font-size: 16px; font-weight: 900; line-height: 38px; text-align: center; box-shadow: 0 2px 6px rgba(6, 182, 212, 0.35); letter-spacing: -0.5px;">
+                                                                                                        BB
+                                                                                                    </td>
+                                                                                                </tr>
+                                                                                            </table>
+                                                                                        </td>
+                                                                                    </tr>
+                                                                                </table>
+                                                                            </td>
+                                                                        </tr>
+                                                                    </table>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
 
-                            <!-- Section: Sender Profile -->
-                            <div style="background-color: #f0f9ff; border-radius: 12px; padding: 24px; margin-bottom: 24px; text-align: center;" class="info-box">
-                                <div style="display: block; margin-bottom: 20px;">
-                                    <img src="https://cdn-icons-png.flaticon.com/128/9187/9187532.png" alt="User" style="width: 24px; height: 24px; margin-bottom: 8px;">
-                                    <h3 style="margin: 0; font-size: 16px; font-weight: 700; color: #1e293b;" class="content-title">Sender Identification</h3>
-                                </div>
-                                
-                                <div style="display: block;">
-                                    <div style="margin-bottom: 16px;">
-                                        <div style="font-size: 11px; font-weight: 700; color: #0369a1; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 4px;" class="info-label">Contact Email</div>
-                                        <div style="font-size: 15px; font-weight: 600; color: #1d4ed8;" class="info-value">${email}</div>
-                                    </div>
-                                    <div>
-                                        <div style="font-size: 11px; font-weight: 700; color: #0369a1; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 4px;" class="info-label">Submission Timestamp</div>
-                                        <div style="font-size: 15px; font-weight: 600; color: #1d4ed8;" class="info-value">${istTimeFull}</div>
-                                    </div>
-                                </div>
-                            </div>
+                                    <!-- Perforated Postcard Divider -->
+                                    <tr>
+                                        <td style="padding: 0 28px;">
+                                            <div style="border-top: 2px dashed #d1cbb8; height: 1px; font-size: 1px; line-height: 1px;">&nbsp;</div>
+                                        </td>
+                                    </tr>
 
-                            <!-- Section: Message Content -->
-                            <div style="margin-bottom: 24px;">
-                                <div style="display: block; margin-bottom: 16px; text-align: center;">
-                                    <img src="https://cdn-icons-png.flaticon.com/128/16751/16751818.png" alt="Message" style="width: 24px; height: 24px; margin-bottom: 8px;">
-                                    <h3 style="margin: 0; font-size: 16px; font-weight: 700; color: #1e293b;" class="content-title">Communication Details</h3>
-                                    <div style="margin-top: 12px;">
-                                        <div style="font-size: 11px; font-weight: 700; color: #0891b2; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 4px;">Sender Name</div>
-                                        <div style="font-size: 15px; font-weight: 600; color: #06b6d4;">${senderName || 'Not Provided'}</div>
-                                    </div>
-                                </div>
-                                <div style="background-color: #ffffff; border: 1px solid #bae6fd; border-radius: 12px; padding: 20px; color: #334155; font-size: 15px; line-height: 1.6; white-space: pre-wrap; text-align: left;" class="message-box">${messageBody}</div>
-                            </div>
-                        </div>
+                                    <!-- Address & Metadata Section (Vintage Typewriter Style) -->
+                                    <tr>
+                                        <td style="padding: 20px 28px 12px 28px;">
+                                            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                                                <tr>
+                                                    <!-- Sender Details with Underlined Postcard Lines -->
+                                                    <td valign="top" style="width: 58%; padding-right: 18px;">
+                                                        <div style="font-family: 'Courier New', Courier, monospace; font-size: 11px; font-weight: 800; color: #0891b2; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 6px;">
+                                                            &gt;&gt; DISPATCH FROM:
+                                                        </div>
+                                                        <div style="font-family: 'Courier New', Courier, monospace; font-size: 16px; font-weight: 800; color: #0f172a; padding-bottom: 4px; border-bottom: 1.5px solid #d1cbb8; margin-bottom: 8px;">
+                                                            ${senderName || 'Anonymous Visitor'}
+                                                        </div>
+                                                        <div style="font-family: 'Courier New', Courier, monospace; font-size: 13px; font-weight: 700; color: #2563eb; padding-bottom: 4px; border-bottom: 1.5px solid #d1cbb8; margin-bottom: 8px;">
+                                                            <a href="mailto:${email}" style="color: #2563eb; text-decoration: none;">${email}</a>
+                                                        </div>
+                                                        <div style="font-family: 'Courier New', Courier, monospace; font-size: 12px; color: #475569; padding-bottom: 4px; border-bottom: 1.5px solid #d1cbb8;">
+                                                            Location: Online Portfolio Inbound
+                                                        </div>
+                                                    </td>
 
-                        <!-- Footer Section -->
-                        <div style="padding: 24px; text-align: center; border-top: 1px solid #f1f5f9; color: #94a3b8; font-size: 12px;" class="footer">
-                            <p style="margin: 0;">Automated Dispatch from <strong>Babin.Portfolio v1.0</strong></p>
-                            <p style="margin: 4px 0 0 0;">&copy; ${new Date().getFullYear()} Babin Bid. All systems operational.</p>
-                        </div>
-                    </div>
+                                                    <!-- Postal Seal & Timestamp Card -->
+                                                    <td valign="top" style="width: 42%; border-left: 1.5px solid #e7e3d8; padding-left: 18px;">
+                                                        <div style="font-family: 'Courier New', Courier, monospace; font-size: 11px; font-weight: 800; color: #2563eb; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 6px;">
+                                                            &gt;&gt; POSTAL LOG:
+                                                        </div>
+                                                        <div style="font-family: 'Courier New', Courier, monospace; font-size: 11px; line-height: 1.5; color: #334155;">
+                                                            <strong>RECEIVED:</strong><br>${istTimeFull}<br>
+                                                            <strong>ORIGIN:</strong> <a href="https://babinbid.xyz" target="_blank" style="color: #2563eb; text-decoration: underline; font-weight: 700;">babinbid.xyz</a><br>
+                                                            <strong>ROUTING:</strong> DIRECT DISPATCH
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+
+                                    <!-- Letter Body / Message Content -->
+                                    <tr>
+                                        <td style="padding: 14px 28px 24px 28px;">
+                                            <div style="background-color: #ffffff; border: 1.5px solid #d8d3c3; border-radius: 8px; padding: 20px 22px; box-shadow: inset 0 1px 3px rgba(0,0,0,0.03);">
+                                                <div style="font-family: 'Courier New', Courier, monospace; font-size: 10px; font-weight: 900; color: #0891b2; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 10px; border-bottom: 1px dotted #cbd5e1; padding-bottom: 6px;">
+                                                    <span style="display: inline-block; vertical-align: middle; width: 13px; height: 9px; border: 1.5px solid #0891b2; border-radius: 2px; line-height: 0; font-size: 0; margin-right: 6px; margin-top: -2px; box-sizing: border-box;"><span style="display: block; width: 0; height: 0; border-left: 5px solid transparent; border-right: 5px solid transparent; border-top: 4px solid #0891b2; margin: 0 auto;"></span></span>MESSAGE MEMORANDUM
+                                                </div>
+                                                <div style="font-family: 'Courier New', Courier, monospace; font-size: 15px; line-height: 1.7; color: #1e293b; font-weight: 600; white-space: pre-wrap; word-break: break-word;">${messageBody}</div>
+                                            </div>
+                                        </td>
+                                    </tr>
+
+                                    <!-- Quick Reply Action Button -->
+                                    <tr>
+                                        <td align="center" style="padding: 0 28px 26px 28px;">
+                                            <a href="mailto:${email}?subject=Re:%20Portfolio%20Contact%20-%20Babin%20Bid" style="display: inline-block; padding: 13px 32px; background: linear-gradient(135deg, #2563eb 0%, #06b6d4 100%); color: #ffffff; font-family: 'Courier New', Courier, monospace; font-size: 13px; font-weight: 900; text-decoration: none; border-radius: 8px; border: 1.5px solid #1e40af; box-shadow: 0 4px 12px rgba(37, 99, 235, 0.35); text-transform: uppercase; letter-spacing: 0.08em;">
+                                                <span style="display: inline-block; vertical-align: middle; width: 14px; height: 10px; border: 1.5px solid #ffffff; border-radius: 2px; line-height: 0; font-size: 0; margin-right: 8px; margin-top: -2px; box-sizing: border-box;"><span style="display: block; width: 0; height: 0; border-left: 5.5px solid transparent; border-right: 5.5px solid transparent; border-top: 4.5px solid #ffffff; margin: 0 auto;"></span></span>REPLY TO ${senderName ? senderName.split(' ')[0].toUpperCase() : 'SENDER'} &rarr;
+                                            </a>
+                                        </td>
+                                    </tr>
+
+                                    <!-- Vintage Postal Footer -->
+                                    <tr>
+                                        <td style="padding: 16px 24px; background-color: #f4efe4; border-top: 1px solid #e7e3d8; text-align: center;">
+                                            <p style="margin: 0; font-family: 'Courier New', Courier, monospace; font-size: 11px; font-weight: 700; color: #475569; letter-spacing: 0.04em;">
+                                                OFFICIAL DISPATCH &middot; BABIN BID PORTFOLIO &middot; <a href="https://babinbid.xyz" target="_blank" style="color: #2563eb; text-decoration: underline; font-weight: 700;">babinbid.xyz</a>
+                                            </p>
+                                            <p style="margin: 3px 0 0 0; font-family: 'Courier New', Courier, monospace; font-size: 10px; color: #78716c;">
+                                                Belur, Howrah, West Bengal, India &middot; &copy; ${new Date().getFullYear()}
+                                            </p>
+                                        </td>
+                                    </tr>
+
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+
                 </body>
                 </html>
             `,
             text: `
-🔹 BABIN BID - NEW CONTACT MESSAGE
+BABIN BID · PORTFOLIO CONTACT
+===========================================
+From: ${senderName || 'Anonymous'} (${email})
+Date: ${istTimeFull}
 
-👤 Sender Information:
-• Name: ${senderName || 'Not Provided'}
-• Email: ${email}
-• Date: ${istTime}
-
-💬 Message Content:
+MESSAGE:
+-------------------------------------------
 ${messageBody}
 
----
-Email generated via Portfolio Contact System (Cyan-Blue Edition).
+-------------------------------------------
+Reply to: ${email}
+Sent via portfolio contact form at babinbid.xyz
             `,
             replyTo: email
         };
