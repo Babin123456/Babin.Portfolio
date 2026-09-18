@@ -382,42 +382,43 @@ const Achievements = () => {
                         }`}
                 >
                     {/* Controls */}
-                    <div className={`absolute top-4 right-4 flex items-center gap-2 z-50 transition-all duration-300 ${isClosing ? 'opacity-0 -translate-y-10' : 'opacity-100 translate-y-0'
+                    <div className={`fixed top-3 right-3 sm:top-4 sm:right-4 flex items-center gap-1.5 sm:gap-2 z-50 max-w-[calc(100vw-1.5rem)] flex-wrap justify-end transition-all duration-300 ${isClosing ? 'opacity-0 -translate-y-10' : 'opacity-100 translate-y-0'
                         }`}>
                         <button
                             onClick={handleZoomIn}
-                            className="p-2 bg-white/10 rounded-full text-white hover:bg-primary hover:text-white transition-all duration-300 backdrop-blur-md hover:scale-110"
+                            className="p-2 sm:p-2 bg-black/60 sm:bg-white/10 border border-white/20 sm:border-transparent rounded-full text-white hover:bg-primary hover:text-white transition-all duration-300 backdrop-blur-md hover:scale-110"
                             title="Zoom In"
                         >
-                            <ZoomIn className="h-6 w-6" />
+                            <ZoomIn className="h-5 w-5 sm:h-6 sm:w-6" />
                         </button>
                         <button
                             onClick={handleZoomOut}
-                            className="p-2 bg-white/10 rounded-full text-white hover:bg-primary hover:text-white transition-all duration-300 backdrop-blur-md hover:scale-110"
+                            className="p-2 sm:p-2 bg-black/60 sm:bg-white/10 border border-white/20 sm:border-transparent rounded-full text-white hover:bg-primary hover:text-white transition-all duration-300 backdrop-blur-md hover:scale-110"
                             title="Zoom Out"
                         >
-                            <ZoomOut className="h-6 w-6" />
+                            <ZoomOut className="h-5 w-5 sm:h-6 sm:w-6" />
                         </button>
                         <button
                             onClick={handleResetZoom}
-                            className="p-2 bg-white/10 rounded-full text-white hover:bg-primary hover:text-white transition-all duration-300 backdrop-blur-md hover:scale-110"
+                            className="p-2 sm:p-2 bg-black/60 sm:bg-white/10 border border-white/20 sm:border-transparent rounded-full text-white hover:bg-primary hover:text-white transition-all duration-300 backdrop-blur-md hover:scale-110"
                             title="Reset Zoom"
                         >
-                            <RotateCcw className="h-6 w-6" />
+                            <RotateCcw className="h-5 w-5 sm:h-6 sm:w-6" />
                         </button>
                         <button
                             onClick={handleDownload}
-                            className="p-2 bg-white/10 rounded-full text-white hover:bg-primary hover:text-white transition-all duration-300 backdrop-blur-md hover:scale-110"
+                            className="p-2 sm:p-2 bg-black/60 sm:bg-white/10 border border-white/20 sm:border-transparent rounded-full text-white hover:bg-primary hover:text-white transition-all duration-300 backdrop-blur-md hover:scale-110"
                             title="Download"
                         >
-                            <Download className="h-6 w-6" />
+                            <Download className="h-5 w-5 sm:h-6 sm:w-6" />
                         </button>
                         <button
                             onClick={closeLightbox}
-                            className="p-2 bg-blue-700/80 dark:bg-[#89D3BD]/80 rounded-full text-white dark:text-black hover:bg-blue-700 dark:hover:bg-[#89D3BD] transition-all duration-300 ml-2 backdrop-blur-md hover:scale-110 hover:rotate-90"
+                            className="p-2.5 sm:p-2 bg-black/75 sm:bg-blue-700/80 dark:sm:bg-[#89D3BD]/80 border border-white/30 rounded-full text-white dark:sm:text-black hover:bg-red-600 hover:text-white transition-all duration-300 sm:ml-2 backdrop-blur-md hover:scale-110 hover:rotate-90 shadow-2xl flex items-center justify-center"
                             title="Close"
+                            aria-label="Close modal"
                         >
-                            <X className="h-6 w-6" />
+                            <X className="h-5 w-5 sm:h-6 sm:w-6" />
                         </button>
                     </div>
 

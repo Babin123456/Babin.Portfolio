@@ -149,28 +149,32 @@ const SectionTitle = ({
     return (
         <div
             ref={scope}
-            onMouseEnter={handleHoverStart}
-            className={`relative flex flex-wrap justify-center items-center gap-x-[0.35em] gap-y-1 font-heading font-normal tracking-normal perspective-1000 cursor-pointer select-none ${className}`}
+            className={`w-full flex justify-center items-center ${className}`}
         >
-            {words.map((wordChars, wordIndex) => (
-                <span key={wordIndex} className="inline-flex whitespace-nowrap">
-                    {wordChars.map(({ char, className: charClass, index }) => (
-                        <span
-                            key={index}
-                            className={`inline-block will-change-transform ${charClass} ${isAnimating ? "animate-wave" : "opacity-0 translate-y-6"
-                                } [animation-fill-mode:both] [animation-timing-function:cubic-bezier(0.34,1.56,0.64,1)]`}
-                            data-index={index}
-                        >
-                            <CharBox
-                                char={char}
-                                textClassName={charClass}
-                                flipTextClassName={charClass}
-                                rotateDirection={rotateDirection}
-                            />
-                        </span>
-                    ))}
-                </span>
-            ))}
+            <div
+                onMouseEnter={handleHoverStart}
+                className="w-fit inline-flex flex-wrap justify-center items-center gap-x-[0.35em] gap-y-1 font-heading font-normal tracking-normal perspective-1000 cursor-default select-none"
+            >
+                {words.map((wordChars, wordIndex) => (
+                    <span key={wordIndex} className="inline-flex whitespace-nowrap cursor-default">
+                        {wordChars.map(({ char, className: charClass, index }) => (
+                            <span
+                                key={index}
+                                className={`inline-block will-change-transform cursor-default ${charClass} ${isAnimating ? "animate-wave" : "opacity-0 translate-y-6"
+                                    } [animation-fill-mode:both] [animation-timing-function:cubic-bezier(0.34,1.56,0.64,1)]`}
+                                data-index={index}
+                            >
+                                <CharBox
+                                    char={char}
+                                    textClassName={charClass}
+                                    flipTextClassName={charClass}
+                                    rotateDirection={rotateDirection}
+                                />
+                            </span>
+                        ))}
+                    </span>
+                ))}
+            </div>
         </div>
     );
 };

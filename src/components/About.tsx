@@ -396,10 +396,10 @@ const About = () => {
             {/* Close button */}
             <button
               onClick={handleCloseModal}
-              className="absolute -top-12 right-0 p-2 text-white/80 hover:text-red-500 hover:rotate-90 transition-all duration-300"
+              className="fixed top-4 right-4 z-50 p-2.5 sm:p-2 rounded-full bg-black/75 text-white hover:text-red-400 hover:bg-black/90 border border-white/30 backdrop-blur-md shadow-2xl transition-all duration-300 hover:scale-110 active:scale-95 flex items-center justify-center"
               aria-label="Close image"
             >
-              <X className="h-8 w-8" />
+              <X className="h-6 w-6 sm:h-7 sm:w-7" />
             </button>
 
             {/* Image with glow effect */}

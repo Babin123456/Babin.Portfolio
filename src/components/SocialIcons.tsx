@@ -55,14 +55,16 @@ const SocialIcons = () => {
 const StyledWrapper = styled.div`
   ul {
     list-style: none;
+    padding: 0;
+    margin: 0;
   }
 
   .example-2 {
     display: flex;
     justify-content: center;
     align-items: center;
-    /* slightly lower the icons under the "Let's Connect" heading */
-    margin-top: 14px;
+    padding: 0;
+    margin: 0;
   }
   .example-2 .icon-content {
     margin: 0 8px;

@@ -57,22 +57,12 @@ const Footer = () => {
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-12 mb-6 md:mb-8 relative z-10">
             <div className="space-y-3 md:space-y-6 text-center md:text-left">
-              <motion.h3
-                whileHover="hover"
-                className="text-2xl md:text-2xl font-bold flex items-center justify-center md:justify-start gap-2 group cursor-default"
-              >
-                <motion.div
-                  variants={{
-                    hover: { y: -8, scale: 1.2, transition: { type: "tween", duration: 0.4, repeat: Infinity, repeatType: 'reverse' } }
-                  }}
-                  className="transition-transform duration-300"
-                >
-                  <Terminal className="h-6 w-6 text-blue-700 dark:text-[#89D3BD]" />
-                </motion.div>
+              <h3 className="text-2xl md:text-2xl font-bold flex items-center justify-center md:justify-start gap-2 cursor-default">
+                <Terminal className="h-6 w-6 text-blue-700 dark:text-[#89D3BD]" />
                 <span className="text-blue-700 dark:text-[#89D3BD]">
                   Babin.Portfolio
                 </span>
-              </motion.h3>
+              </h3>
               <p className="text-foreground text-sm md:text-lg leading-relaxed font-medium">
                 B.Tech Student at Adamas University,
                 <br />passionate about <b className="text-blue-700 dark:text-[#89D3BD]">Technology</b>
@@ -81,23 +71,13 @@ const Footer = () => {
             </div>
 
             <div className="space-y-3 md:space-y-6 text-center relative z-10">
-              <motion.h3
-                whileHover="hover"
-                className="text-2xl md:text-2xl font-bold flex items-center justify-center gap-2 group cursor-default"
-              >
-                <motion.div
-                  variants={{
-                    hover: { y: -8, scale: 1.2, transition: { type: "tween", duration: 0.4, repeat: Infinity, repeatType: 'reverse' } }
-                  }}
-                  className="transition-transform duration-300"
-                >
-                  <LinkIcon className="h-6 w-6 text-blue-700 dark:text-[#89D3BD]" />
-                </motion.div>
+              <h3 className="text-2xl md:text-2xl font-bold flex items-center justify-center gap-2 cursor-default">
+                <LinkIcon className="h-6 w-6 text-blue-700 dark:text-[#89D3BD]" />
                 <span className="text-blue-700 dark:text-[#89D3BD]">
                   Quick Links
                 </span>
-              </motion.h3>
-              <ul className="flex flex-col md:flex-row md:flex-wrap justify-center items-center gap-4 md:gap-6">
+              </h3>
+              <ul className="grid grid-cols-3 gap-y-2.5 gap-x-2 max-w-xs mx-auto md:max-w-none md:flex md:flex-row md:flex-wrap md:justify-center md:items-center md:gap-6">
                 {[
                   "About",
                   "Skills",
@@ -108,12 +88,12 @@ const Footer = () => {
                 ].map((item) => {
                   const href = item === "Achievements" ? "#achievements-preview" : `#${item.toLowerCase()}`;
                   return (
-                    <li key={item} className="inline-block">
+                    <li key={item} className="inline-block text-center">
                       <motion.div whileHover={{ scale: 1.1, y: -2 }}>
                         <a
                           href={href}
                           onClick={(e) => handleSectionClick(e, href)}
-                          className="text-muted-foreground hover:text-blue-700 dark:hover:text-[#89D3BD] transition-smooth nav-underline text-base md:text-lg font-bold"
+                          className="text-muted-foreground hover:text-blue-700 dark:hover:text-[#89D3BD] transition-smooth nav-underline text-sm sm:text-base md:text-lg font-bold py-1 px-1.5 block"
                         >
                           {item}
                         </a>
@@ -124,25 +104,15 @@ const Footer = () => {
               </ul>
             </div>
 
-            <div className="space-y-3 md:space-y-6 text-center md:text-right relative z-10">
-              <motion.h3
-                whileHover="hover"
-                className="text-2xl md:text-2xl font-bold flex items-center justify-center md:justify-end gap-2 group cursor-default"
-              >
-                <motion.div
-                  variants={{
-                    hover: { y: -8, scale: 1.2, transition: { type: "tween", duration: 0.4, repeat: Infinity, repeatType: 'reverse' } }
-                  }}
-                  className="transition-transform duration-300"
-                >
+            <div className="space-y-4 md:space-y-6 flex flex-col items-center md:items-end relative z-10">
+              <div className="flex flex-col items-center w-fit">
+                <h3 className="text-2xl md:text-2xl font-bold flex items-center justify-center gap-2 cursor-default">
                   <MessageSquare className="h-6 w-6 text-blue-700 dark:text-[#89D3BD]" />
-                </motion.div>
-                <span className="text-blue-700 dark:text-[#89D3BD]">
-                  Let's Connect
-                </span>
-              </motion.h3>
-              <div className="flex justify-center md:justify-end mt-4 md:mt-8">
-                <div className="md:translate-x-0">
+                  <span className="text-blue-700 dark:text-[#89D3BD]">
+                    Let's Connect
+                  </span>
+                </h3>
+                <div className="flex justify-center mt-6 md:mt-8 w-full">
                   <SocialIcons />
                 </div>
               </div>
@@ -150,15 +120,15 @@ const Footer = () => {
           </div>
 
           <div className="pt-4 md:pt-8 border-t border-border text-center relative z-20">
-            <p className="text-foreground/90 italic text-sm md:text-base mb-3 md:mb-2 px-2 flex items-center justify-center gap-2">
-              <Star className="h-4 w-4 text-blue-700 dark:text-[#89D3BD] fill-blue-700 dark:fill-[#89D3BD] animate-pulse" />
-              <span className="text-blue-700 dark:text-[#89D3BD]">
+            <p className="text-foreground/90 italic text-[11px] sm:text-xs md:text-sm lg:text-base mb-3 md:mb-2 px-2 text-center whitespace-nowrap overflow-x-auto scrollbar-none flex items-center justify-center gap-1.5 sm:gap-2 max-w-full">
+              <Star className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-blue-700 dark:text-[#89D3BD] fill-blue-700 dark:fill-[#89D3BD] animate-pulse shrink-0" />
+              <span className="text-blue-700 dark:text-[#89D3BD] whitespace-nowrap">
                 <b>"I don't just write code, I build logic, solve problems, and shape the future — one line at a time."</b>
               </span>
-              <Star className="h-4 w-4 text-blue-700 dark:text-[#89D3BD] fill-blue-700 dark:fill-[#89D3BD] animate-pulse" />
+              <Star className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-blue-700 dark:text-[#89D3BD] fill-blue-700 dark:fill-[#89D3BD] animate-pulse shrink-0" />
             </p>
 
-            <p className="text-muted-foreground flex flex-wrap items-center justify-center gap-2 text-sm md:text-base px-2">
+            <p className="text-muted-foreground flex flex-wrap items-center justify-center gap-2 text-xs sm:text-sm md:text-base px-2">
               <Code2 className="h-4 w-4 text-green-400 fill-green-500 text-primary shrink-0" />
               <span className="font-medium text-blue-700 dark:text-[#89D3BD]">
                 © {currentYear} Crafted with Logic & Dedication by <b>Babin Bid</b>

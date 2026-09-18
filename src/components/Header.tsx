@@ -80,7 +80,7 @@ const Header = () => {
 
     const activeLink = navItemsRef.current[activeIndex];
 
-    if (activeLink && navListRef.current) {
+    if (activeLink && navListRef.current && window.innerWidth >= 768) {
       const listRect = navListRef.current.getBoundingClientRect();
       const linkRect = activeLink.getBoundingClientRect();
 
@@ -160,8 +160,8 @@ const Header = () => {
         </a>
 
         {/* Desktop Navigation */}
-        <div className="relative">
-          <ul ref={navListRef} className="hidden md:flex items-center gap-8 relative">
+        <div className="hidden md:block relative">
+          <ul ref={navListRef} className="flex items-center gap-8 relative">
             {navItems.map((item, index) => (
               <li key={item.name} className="relative">
                 {item.type === "route" ? (
@@ -190,11 +190,11 @@ const Header = () => {
             ))}
           </ul>
 
-          {/* Animated Line Indicator — only visible on homepage */}
+          {/* Animated Line Indicator — only visible on homepage on desktop */}
           {location.pathname === "/" && (
             <div
               ref={lineRef}
-              className="absolute bottom-0 h-0.5 bg-blue-700 dark:bg-[#89D3BD] transition-all duration-300 ease-out rounded-full"
+              className="hidden md:block absolute bottom-0 h-0.5 bg-blue-700 dark:bg-[#89D3BD] transition-all duration-300 ease-out rounded-full"
             />
           )}
         </div>

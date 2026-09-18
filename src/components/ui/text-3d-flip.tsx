@@ -108,18 +108,18 @@ export const CharBox = memo(
     rotateDirection,
   }: CharBoxProps) => (
     <span
-      className="text-3d-flip-char inline-block transform-3d select-none"
+      className="text-3d-flip-char inline-block transform-3d select-none cursor-default"
       style={{ transform: CONTAINER_TRANSFORMS[rotateDirection] }}
     >
       <span
-        className={cn("inline-block relative backface-hidden", textClassName)}
+        className={cn("inline-block relative backface-hidden cursor-default", textClassName)}
         style={{ transform: FRONT_FACE_TRANSFORMS[rotateDirection] }}
       >
         {char}
       </span>
       <span
         className={cn(
-          "inline-block absolute top-0 left-0 backface-hidden",
+          "inline-block absolute top-0 left-0 backface-hidden cursor-default",
           flipTextClassName
         )}
         style={{ transform: SECOND_FACE_TRANSFORMS[rotateDirection] }}
