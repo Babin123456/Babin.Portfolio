@@ -45,8 +45,8 @@ const Hero = () => {
             <h1 className="text-5xl md:text-5xl font-bold mb-2 md:mb-4 max-w-[280px] mx-auto md:max-w-none">
               <SectionTitle
                 segments={[
-                  { text: "Babin", className: "text-sky-600 dark:text-cyan-300" },
-                  { text: " Bid", className: "text-sky-600 dark:text-cyan-300" },
+                  { text: "Babin", className: "text-blue-700 dark:text-[#89D3BD]" },
+                  { text: " Bid", className: "text-blue-700 dark:text-[#89D3BD]" },
                 ]}
               />
             </h1>
@@ -191,7 +191,7 @@ const Hero = () => {
               <Linkedin className="h-6 w-6 text-foreground/60 group-hover:text-blue-600 dark:group-hover:text-[#89D3BD] transition-colors relative z-10" />
             </a>
             <a
-              href="mailto:babin.bid@stu.adamasuniversity.ac.in"
+              href="mailto:babinbid05@gmail.com"
               aria-label="Send email"
               title="Email"
               className="relative group p-3 rounded-lg transition-all duration-300 hover:scale-110 active:scale-95"

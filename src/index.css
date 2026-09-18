@@ -1,6 +1,8 @@
 /* stylelint-disable at-rule-no-unknown */
 /* stylelint-disable declaration-block-no-duplicate-properties */
 /* The file intentionally uses Tailwind directives and @apply which are not standard CSS rules */
+@import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -12,14 +14,36 @@ All colors MUST be HSL.
 @layer base {
   html {
     scroll-behavior: smooth;
-    font-family: 'Comic Sans MS', 'Cambria Math', sans-serif;
+    font-family: 'Times New Roman', 'Roca Two', 'Roca One', 'Roca', Times, serif;
   }
 
   /* Prevent horizontal scroll issues */
   body {
     overflow-x: hidden;
     width: 100%;
-    font-family: 'Comic Sans MS', 'Cambria Math', sans-serif;
+    font-family: 'Times New Roman', 'Roca Two', 'Roca One', 'Roca', Times, serif;
+  }
+
+  h1,
+  h2,
+  .font-heading,
+  .font-kaushan,
+  .section-title-font {
+    font-family: 'Kaushan Script', cursive, sans-serif !important;
+    letter-spacing: 0.02em;
+  }
+
+  .transform-3d {
+    transform-style: preserve-3d;
+  }
+
+  .backface-hidden {
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+  }
+
+  .perspective-1000 {
+    perspective: 1000px;
   }
 
   :root {
@@ -674,7 +698,7 @@ html[data-magicui-theme-vt="active"] *::after {
   body {
     background: hsl(var(--background));
     color: hsl(var(--foreground));
-    font-family: 'Comic Sans MS', 'Cambria Math', sans-serif;
+    font-family: 'Times New Roman', 'Roca Two', 'Roca One', 'Roca', Times, serif;
   }
 
   html {
@@ -1233,7 +1257,7 @@ html[data-magicui-theme-vt="active"] *::after {
     transform: translateX(-50%);
     color: #969696;
     font-size: 0.85rem;
-    font-family: 'Comic Sans MS', 'Cambria Math', sans-serif;
+    font-family: 'Times New Roman', 'Roca Two', 'Roca One', 'Roca', Times, serif;
   }
 
   .title-highlight {
@@ -1491,7 +1515,7 @@ html[data-magicui-theme-vt="active"] *::after {
     font-size: 1.1rem;
     font-weight: 600;
     color: #FFFFFF;
-    font-family: 'Comic Sans MS', 'Cambria Math', sans-serif;
+    font-family: 'Times New Roman', 'Roca Two', 'Roca One', 'Roca', Times, serif;
     letter-spacing: 0.08em;
     text-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
   }

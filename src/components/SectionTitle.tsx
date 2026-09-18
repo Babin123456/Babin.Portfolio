@@ -1,4 +1,10 @@
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useAnimate } from "framer-motion";
+import {
+    CharBox,
+    ROTATION_MAP,
+    DEFAULT_TRANSITION,
+} from "@/components/ui/text-3d-flip";
 
 interface ColorSegment {
     text: string;
@@ -9,14 +15,34 @@ interface SectionTitleProps {
     text?: string;
     segments?: ColorSegment[];
     className?: string;
+    rotateDirection?: "top" | "right" | "bottom" | "left";
+    staggerDuration?: number;
 }
 
-const SectionTitle = ({ text, segments, className = "" }: SectionTitleProps) => {
-    const containerRef = useRef<HTMLDivElement>(null);
+const SectionTitle = ({
+    text,
+    segments,
+    className = "",
+    rotateDirection = "right",
+    staggerDuration = 0.035,
+}: SectionTitleProps) => {
+    const [scope, animate] = useAnimate();
     const [isAnimating, setIsAnimating] = useState(false);
+    const isHoverAnimatingRef = useRef(false);
+    const isMountedRef = useRef(false);
+
+    const rotationTransform = ROTATION_MAP[rotateDirection];
+
+    useEffect(() => {
+        isMountedRef.current = true;
+        return () => {
+            isMountedRef.current = false;
+            isHoverAnimatingRef.current = false;
+        };
+    }, []);
 
     // Build character list with their respective classes
-    const buildCharacterList = () => {
+    const buildCharacterList = useCallback(() => {
         if (segments && segments.length > 0) {
             const chars: Array<{ char: string; className: string; index: number }> = [];
             let charIndex = 0;
@@ -38,27 +64,69 @@ const SectionTitle = ({ text, segments, className = "" }: SectionTitleProps) => 
             }));
         }
         return [];
-    };
+    }, [segments, text, className]);
 
-    const charList = buildCharacterList();
+    const charList = useMemo(() => buildCharacterList(), [buildCharacterList]);
 
     // Group characters into words to prevent breaking words and enable clean wrapping
-    const words: Array<typeof charList> = [];
-    let currentWord: typeof charList = [];
-    charList.forEach((charObj) => {
-        if (charObj.char.trim() === "") {
-            if (currentWord.length > 0) {
-                words.push(currentWord);
-                currentWord = [];
+    const words = useMemo(() => {
+        const wordList: Array<typeof charList> = [];
+        let currentWord: typeof charList = [];
+        charList.forEach((charObj) => {
+            if (charObj.char.trim() === "") {
+                if (currentWord.length > 0) {
+                    wordList.push(currentWord);
+                    currentWord = [];
+                }
+            } else {
+                currentWord.push(charObj);
             }
-        } else {
-            currentWord.push(charObj);
+        });
+        if (currentWord.length > 0) {
+            wordList.push(currentWord);
         }
-    });
-    if (currentWord.length > 0) {
-        words.push(currentWord);
-    }
+        return wordList;
+    }, [charList]);
 
+    // Total visible non-space characters that render .text-3d-flip-char
+    const totalVisibleChars = useMemo(() => {
+        return words.reduce((acc, word) => acc + word.length, 0);
+    }, [words]);
+
+    const handleHoverStart = useCallback(async () => {
+        if (isHoverAnimatingRef.current || totalVisibleChars === 0) return;
+        isHoverAnimatingRef.current = true;
+
+        try {
+            const delays = Array.from(
+                { length: totalVisibleChars },
+                (_, i) => i * staggerDuration
+            );
+
+            await animate(
+                ".text-3d-flip-char",
+                { transform: rotationTransform },
+                {
+                    ...DEFAULT_TRANSITION,
+                    delay: (i: number) => delays[i],
+                }
+            );
+
+            if (!isMountedRef.current) return;
+
+            await animate(
+                ".text-3d-flip-char",
+                { transform: "rotateX(0deg) rotateY(0deg)" },
+                { duration: 0 }
+            );
+        } finally {
+            if (isMountedRef.current) {
+                isHoverAnimatingRef.current = false;
+            }
+        }
+    }, [totalVisibleChars, staggerDuration, rotationTransform, animate]);
+
+    // Wave entrance animation observer
     useEffect(() => {
         const observer = new IntersectionObserver(
             ([entry]) => {
@@ -68,18 +136,22 @@ const SectionTitle = ({ text, segments, className = "" }: SectionTitleProps) => 
                     setIsAnimating(false);
                 }
             },
-            { threshold: 0.3 }
+            { threshold: 0.25 }
         );
 
-        if (containerRef.current) {
-            observer.observe(containerRef.current);
+        if (scope.current) {
+            observer.observe(scope.current);
         }
 
         return () => observer.disconnect();
-    }, []);
+    }, [scope]);
 
     return (
-        <div ref={containerRef} className="flex flex-wrap justify-center items-center gap-x-[0.3em] gap-y-1">
+        <div
+            ref={scope}
+            onMouseEnter={handleHoverStart}
+            className={`relative flex flex-wrap justify-center items-center gap-x-[0.35em] gap-y-1 font-heading font-normal tracking-normal perspective-1000 cursor-pointer select-none ${className}`}
+        >
             {words.map((wordChars, wordIndex) => (
                 <span key={wordIndex} className="inline-flex whitespace-nowrap">
                     {wordChars.map(({ char, className: charClass, index }) => (
@@ -89,7 +161,12 @@ const SectionTitle = ({ text, segments, className = "" }: SectionTitleProps) => 
                                 } [animation-fill-mode:both] [animation-timing-function:cubic-bezier(0.34,1.56,0.64,1)]`}
                             data-index={index}
                         >
-                            {char}
+                            <CharBox
+                                char={char}
+                                textClassName={charClass}
+                                flipTextClassName={charClass}
+                                rotateDirection={rotateDirection}
+                            />
                         </span>
                     ))}
                 </span>

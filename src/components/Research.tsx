@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { FileText, Award, Users, TrendingUp, Wrench, Leaf } from 'lucide-react';
+import { FileText, Award, Users, TrendingUp, Wrench, Leaf, Github } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import SectionTitle from "./SectionTitle";
@@ -149,7 +149,7 @@ const Research = () => {
                         aria-label="Open research paper in new tab"
                         className="flex items-center justify-center gap-2 w-full"
                       >
-                        <FileText className="mr-2 text-white dark:text-black hidden sm:block" size={18} />
+                        <FileText size={18} />
                         View Paper
                       </a>
                     </Button>
@@ -166,7 +166,14 @@ const Research = () => {
                       asChild
                       className="w-full border-2 border-blue-700 dark:border-[#89D3BD] text-blue-700 dark:text-[#89D3BD] hover:bg-blue-700 dark:hover:bg-[#89D3BD] hover:text-white dark:hover:text-black font-black bg-transparent text-xs md:text-sm transition-all duration-300 hover:shadow-[0_10px_20px_var(--shadow-color)]"
                     >
-                      <a href="https://github.com/KGFCH2/Price_Prediction" target="_blank" rel="noopener noreferrer">
+                      <a
+                        href="https://github.com/KGFCH2/Price_Prediction"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="View research codebase on GitHub"
+                        className="flex items-center justify-center gap-2 w-full"
+                      >
+                        <Github size={18} />
                         Codebase
                       </a>
                     </Button>

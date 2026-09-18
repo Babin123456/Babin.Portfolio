@@ -151,11 +151,11 @@ const Skills: React.FC = () => {
                         segments={[
                             {
                                 text: "Technical",
-                                className: "text-blue-900 dark:text-cyan-300",
+                                className: "text-blue-700 dark:text-[#89D3BD]",
                             },
                             {
                                 text: " Skills",
-                                className: "text-blue-700 dark:text-[#89D3BD]",
+                                className: "text-blue-900 dark:text-cyan-300",
                             },
                         ]}
                     />

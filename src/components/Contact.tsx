@@ -92,8 +92,8 @@ const Contact = () => {
     {
       icon: <MapPin className="h-6 w-6" />,
       title: "Location",
-      value: "Belur, Howrah, West Bengal, India",
-      link: "https://maps.app.goo.gl/T1Z1B5ThAnNqgBVc6",
+      value: "Belur, Howrah, West Bengal, India - 711202",
+      link: "https://maps.app.goo.gl/4FnpDiVwfYYyN7ov8?g_st=am",
     },
   ];
 

@@ -14,11 +14,20 @@ export default {
       },
     },
     fontFamily: {
-      sans: ["'Comic Sans MS'", "'Cambria Math'", 'sans-serif'],
+      sans: ["'Times New Roman'", "'Roca Two'", "'Roca One'", "'Roca'", 'Times', 'serif'],
+      serif: ["'Times New Roman'", "'Roca Two'", "'Roca One'", "'Roca'", 'Times', 'serif'],
+      body: ["'Times New Roman'", "'Roca Two'", "'Roca One'", "'Roca'", 'Times', 'serif'],
+      kaushan: ["'Kaushan Script'", 'cursive', 'sans-serif'],
+      heading: ["'Kaushan Script'", 'cursive', 'sans-serif'],
     },
     extend: {
       fontFamily: {
-        cosmic: ["'Comic Sans MS'", "'Cambria Math'", 'sans-serif'],
+        sans: ["'Times New Roman'", "'Roca Two'", "'Roca One'", "'Roca'", 'Times', 'serif'],
+        serif: ["'Times New Roman'", "'Roca Two'", "'Roca One'", "'Roca'", 'Times', 'serif'],
+        body: ["'Times New Roman'", "'Roca Two'", "'Roca One'", "'Roca'", 'Times', 'serif'],
+        cosmic: ["'Times New Roman'", "'Roca Two'", "'Roca One'", "'Roca'", 'Times', 'serif'],
+        kaushan: ["'Kaushan Script'", 'cursive', 'sans-serif'],
+        heading: ["'Kaushan Script'", 'cursive', 'sans-serif'],
       },
       colors: {
         border: "hsl(var(--border))",

@@ -32,6 +32,21 @@ const SocialIcons = () => {
           </a>
           <div className="tooltip">Email</div>
         </li>
+        <li className="icon-content">
+          <a
+            href="https://maps.app.goo.gl/4FnpDiVwfYYyN7ov8?g_st=am"
+            aria-label="Location: Belur, Howrah, West Bengal, India - 711202"
+            data-social="location"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <div className="filled" />
+            <svg xmlns="http://www.w3.org/2000/svg" width={16} height={16} fill="currentColor" className="bi bi-geo-alt-fill" viewBox="0 0 16 16" xmlSpace="preserve">
+              <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6" fill="currentColor" />
+            </svg>
+          </a>
+          <div className="tooltip">Home</div>
+        </li>
       </ul>
     </StyledWrapper>
   );
@@ -59,12 +74,17 @@ const StyledWrapper = styled.div`
     left: 50%;
     transform: translateX(-50%);
     color: #fff;
-    padding: 6px 10px;
-    border-radius: 5px;
+    padding: 6px 12px;
+    border-radius: 6px;
     opacity: 0;
     visibility: hidden;
-    font-size: 14px;
+    font-size: 13px;
+    font-weight: 500;
     transition: all 0.3s ease;
+    white-space: nowrap;
+    pointer-events: none;
+    z-index: 50;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
   }
   .example-2 .icon-content:hover .tooltip {
     opacity: 1;
@@ -123,6 +143,10 @@ const StyledWrapper = styled.div`
   .example-2 .icon-content a[data-social="email"] .filled,
   .example-2 .icon-content a[data-social="email"] ~ .tooltip {
     background-color: #ea4335;
+  }
+  .example-2 .icon-content a[data-social="location"] .filled,
+  .example-2 .icon-content a[data-social="location"] ~ .tooltip {
+    background-color: #34a853;
   }`;
 
 export default SocialIcons;
