@@ -22,7 +22,16 @@ const LazyImage = ({ src, alt, className, forceLoad, onClick }: { src: string; a
   }, [inView, forceLoad, src]);
 
   return (
-    <div ref={ref} className="w-full h-full" onClick={onClick}>
+    <div ref={ref} className="w-full h-full relative overflow-hidden rounded-xl" onClick={onClick}>
+      {/* Animated shimmer skeleton while loading */}
+      {!loaded && (
+        <div className="absolute inset-0 bg-slate-200/60 dark:bg-slate-800/60 flex items-center justify-center overflow-hidden">
+          <div className="absolute inset-0 -translate-x-full animate-shimmer bg-gradient-to-r from-transparent via-white/30 dark:via-white/10 to-transparent" />
+          <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center opacity-40">
+            <div className="w-4 h-4 rounded-full border-2 border-primary border-t-transparent animate-spin" />
+          </div>
+        </div>
+      )}
       {imgSrc ? (
         <img
           src={imgSrc}
@@ -34,10 +43,7 @@ const LazyImage = ({ src, alt, className, forceLoad, onClick }: { src: string; a
           onLoad={() => setLoaded(true)}
           className={`${className} ${loaded ? "opacity-100 blur-0 scale-100" : "opacity-0 blur-sm scale-105"} transition-all duration-500 object-contain object-center`}
         />
-      ) : (
-        // placeholder box to reserve space and avoid layout shifts
-        <div className="w-full h-full bg-muted/10 rounded" />
-      )}
+      ) : null}
     </div>
   );
 };

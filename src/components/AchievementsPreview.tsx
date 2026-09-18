@@ -77,6 +77,7 @@ const AchievementsPreview = () => {
   const [selectedImage, setSelectedImage] = useState<{ file: string; title: string } | null>(null);
   const [isClosing, setIsClosing] = useState(false);
   const [imageErrors, setImageErrors] = useState<Set<string>>(new Set());
+  const [loadedImages, setLoadedImages] = useState<Set<string>>(new Set());
 
   const handleCloseModal = () => {
     setIsClosing(true);
@@ -144,14 +145,22 @@ const AchievementsPreview = () => {
                 onClick={() => setSelectedImage({ file: achievement.file, title: achievement.title })}
               >
                 {/* Achievement Image */}
-                <div className="relative h-44 overflow-hidden">
+                <div className="relative h-44 overflow-hidden bg-slate-200/50 dark:bg-slate-800/50">
+                  {/* Shimmer loading skeleton */}
+                  {!loadedImages.has(achievement.file) && !imageErrors.has(achievement.file) && (
+                    <div className="absolute inset-0 z-0 flex items-center justify-center overflow-hidden">
+                      <div className="absolute inset-0 -translate-x-full animate-shimmer bg-gradient-to-r from-transparent via-white/30 dark:via-white/10 to-transparent" />
+                      <achievement.icon className="w-10 h-10 text-primary/25 animate-pulse" />
+                    </div>
+                  )}
                   {!imageErrors.has(achievement.file) ? (
                     <img
                       src={encodeURI(achievement.file)}
                       alt={achievement.title}
                       loading="lazy"
                       decoding="async"
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                      onLoad={() => setLoadedImages(prev => new Set(prev).add(achievement.file))}
+                      className={`w-full h-full object-cover transition-all duration-500 group-hover:scale-110 ${loadedImages.has(achievement.file) ? 'opacity-100' : 'opacity-0'}`}
                       onError={() => setImageErrors(prev => new Set(prev).add(achievement.file))}
                     />
                   ) : (

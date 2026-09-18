@@ -26,6 +26,7 @@ const Achievements = () => {
     const [zoomLevel, setZoomLevel] = useState(1);
     const [isClosing, setIsClosing] = useState(false);
     const [imageErrors, setImageErrors] = useState<Set<string>>(new Set());
+    const [loadedImages, setLoadedImages] = useState<Set<string>>(new Set());
     const [activeFilter, setActiveFilter] = useState<FilterType>('All');
 
     // Helper to determine type based on extension
@@ -230,16 +231,23 @@ const Achievements = () => {
                                                 className="overflow-hidden border border-white/20 dark:border-white/10 bg-white/40 dark:bg-white/5 backdrop-blur-sm shadow-card hover:shadow-glow transition-all duration-300 group cursor-pointer flex flex-col h-full hover:-translate-y-1.5 hover:scale-[1.01]"
                                                 onClick={() => handleItemClick(item)}
                                             >
-                                                <div className="h-48 overflow-hidden bg-muted/10 relative flex items-center justify-center p-4">
+                                                <div className="h-48 overflow-hidden bg-slate-200/50 dark:bg-slate-800/50 relative flex items-center justify-center p-4">
                                                     {type === 'image' ? (
                                                         <>
-                                                             {!imageErrors.has(item.file) ? (
+                                                            {!loadedImages.has(item.file) && !imageErrors.has(item.file) && (
+                                                                <div className="absolute inset-0 z-0 flex items-center justify-center overflow-hidden">
+                                                                    <div className="absolute inset-0 -translate-x-full animate-shimmer bg-gradient-to-r from-transparent via-white/30 dark:via-white/10 to-transparent" />
+                                                                    <FileText className="w-10 h-10 text-primary/20 animate-pulse" />
+                                                                </div>
+                                                            )}
+                                                            {!imageErrors.has(item.file) ? (
                                                                 <img
                                                                     src={item.file}
                                                                     alt={item.title}
                                                                     loading="lazy"
                                                                     decoding="async"
-                                                                    className={`w-full h-full object-contain transition-transform duration-300 group-hover:scale-105 ${isSelected ? 'shadow-[0_8px_30px_rgba(29,78,216,0.35)] dark:shadow-[0_8px_30px_rgba(6,182,212,0.35)]' : ''}`}
+                                                                    onLoad={() => setLoadedImages(prev => new Set(prev).add(item.file))}
+                                                                    className={`w-full h-full object-contain transition-all duration-300 group-hover:scale-105 ${loadedImages.has(item.file) ? 'opacity-100' : 'opacity-0'} ${isSelected ? 'shadow-[0_8px_30px_rgba(29,78,216,0.35)] dark:shadow-[0_8px_30px_rgba(6,182,212,0.35)]' : ''}`}
                                                                     onError={() => handleImageError(item.file)}
                                                                 />
                                                             ) : (
@@ -251,7 +259,7 @@ const Achievements = () => {
                                                         </>
                                                     ) : (
                                                         <div className="text-primary/50 group-hover:text-primary transition-colors">
-                                                             <FileText className="w-16 h-16" />
+                                                            <FileText className="w-16 h-16" />
                                                         </div>
                                                     )}
 
