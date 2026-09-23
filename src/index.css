@@ -1605,14 +1605,10 @@ html[data-magicui-theme-vt="active"] *::after {
     min-width: 48px;
   }
 
-  /* Make interactive elements tappable */
-  a,
-  button,
-  input,
-  textarea,
+  /* Make interactive button elements tappable without breaking inline links */
+  button:not([class*="p-"]),
   select {
     min-height: 44px;
-    padding: 0.75rem;
   }
 
   /* Reduce animation duration on mobile for better performance */
