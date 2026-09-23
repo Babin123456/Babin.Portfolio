@@ -8,13 +8,22 @@ import { achievementsData } from "../data/achievements";
 import StudyBackground from "./StudyBackground";
 import styles from './Achievements.module.css';
 
-type FilterType = 'All' | 'Awards' | 'Certificates | Technical Courses' | 'Bootcamps | Events | Competitions' | 'Internship Certificates' | 'Badges';
+type FilterType = 'All' | 'Awards' | 'Open Source Programs' | 'Technical Courses' | 'Bootcamps | Events | Competitions' | 'Internship Certificates' | 'Badges';
 
 const awardCategories = ["Awards & Recognitions"];
-const certificateCategories = ["AWS", "CISCO", "Cognitive Class", "GeeksforGeeks", "Google", "GTech Learn", "HackerRank", "HCL Guvi", "HP Life", "IBM", "Infosys Springboard", "Microsoft", "Microsoft Certificates", "Microsoft Certifications", "Pantech e Learning", "Qualcomm", "Saylor Academy", "Scaler", "SimpliLearn", "Skill Nation", "Udemy", "ETS", "Oracle", "FutureSkillsPrime"];
+const openSourceCategories = [
+    "GirlScript Summer of Code (GSSoC) Badges",
+    "EduLinkUp Summer of Code (ELUSoC) Badges",
+    "EduLinkUp Summer of Code (ELUSoC) Certificates",
+    "Nexus Spring of Code (NSoC) Badges",
+    "Nexus Spring of Code (NSoC) Certificates",
+    "Elite Coders Summer of Code (ECSoC) Badges",
+    "Elite Coders Summer of Code (ECSoC) Certificates",
+];
+const technicalCourseCategories = ["AWS", "CISCO", "Cognitive Class", "GeeksforGeeks", "Google", "GTech Learn", "HackerRank", "HCL Guvi", "HP Life", "IBM", "Infosys Springboard", "Microsoft", "Microsoft Certifications", "Pantech e Learning", "Qualcomm", "Saylor Academy", "Scaler", "SimpliLearn", "Skill Nation", "Udemy", "ETS", "Oracle", "FutureSkillsPrime"];
 const bootcampCategories = ["Events & Hackathons", "Hack2Skill", "Kaggle", "Let's Upgrade", "MyBharat", "myGov", "Skill India", "Unstop"];
 const internshipCategories = ["Codec Technologies", "Infosys Springboard Internships", "Oasis Infobyte", "The Developers Arena"];
-const badgeCategories = ["AWS Badges", "CISCO Badges", "GFG Badges", "Google Badges", "Holopin Badges", "HP Life Badges", "IndiaAI Badges", "LeetCode Badges", "Microsoft Badges", "Qualcomm Badges", "GirlScript Summer of Code (GSSoC) Badges", "EduLinkUp Summer of Code (ELUSoC) Badges", "Nexus Spring of Code (NSoC) Badges", "Elite Coders Summer of Code (ECSoC) Badges", "Unstop Badges", "Oracle Badges", "IBM Badges", "Agents League Badges"];
+const badgeCategories = ["AWS Badges", "CISCO Badges", "GFG Badges", "Google Badges", "Holopin Badges", "HP Life Badges", "IndiaAI Badges", "LeetCode Badges", "Microsoft Badges", "Qualcomm Badges", "Unstop Badges", "Oracle Badges", "IBM Badges", "Agents League Badges"];
 
 const Achievements = () => {
     const { ref, inView } = useInView({
@@ -51,8 +60,11 @@ const Achievements = () => {
             case 'Awards':
                 filtered = achievements.filter(cat => awardCategories.includes(cat.category));
                 break;
-            case 'Certificates | Technical Courses':
-                filtered = achievements.filter(cat => certificateCategories.includes(cat.category));
+            case 'Open Source Programs':
+                filtered = achievements.filter(cat => openSourceCategories.includes(cat.category));
+                break;
+            case 'Technical Courses':
+                filtered = achievements.filter(cat => technicalCourseCategories.includes(cat.category));
                 break;
             case 'Bootcamps | Events | Competitions':
                 filtered = achievements.filter(cat => bootcampCategories.includes(cat.category));
@@ -73,7 +85,10 @@ const Achievements = () => {
     const allAchievements = getAllAchievements();
     const filteredAchievements = getFilteredAchievements(allAchievements, activeFilter);
     const allRegularAchievements = allAchievements.filter(
-        (cat) => !badgeCategories.includes(cat.category)
+        (cat) => !badgeCategories.includes(cat.category) && !openSourceCategories.includes(cat.category)
+    );
+    const allOpenSourceAchievements = allAchievements.filter(
+        (cat) => openSourceCategories.includes(cat.category)
     );
     const allBadgeAchievements = allAchievements.filter(
         (cat) => badgeCategories.includes(cat.category)
@@ -198,14 +213,16 @@ const Achievements = () => {
                             transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
                         >
                             <motion.h3
-                                className="text-2xl font-bold text-blue-700 dark:text-[#89D3BD] border-l-4 border-primary pl-4 whitespace-normal break-words max-w-full cursor-default flex items-center gap-2 flex-wrap"
+                                className="group text-2xl font-bold text-blue-700 dark:text-[#89D3BD] border-l-4 border-primary hover:border-blue-500 dark:hover:border-[#89D3BD] pl-4 whitespace-normal break-words max-w-full cursor-default flex items-center gap-2 flex-wrap transition-all duration-300 hover:translate-x-1.5 select-none"
                                 initial={{ opacity: 0, x: -20 }}
                                 whileInView={{ opacity: 1, x: 0 }}
                                 viewport={{ once: true, amount: 0.1 }}
-                                transition={{ duration: 0.4, ease: "easeOut" }}
+                                transition={{ duration: 0.35, ease: "easeOut" }}
                             >
-                                <span>{category.category}</span>
-                                <span className="text-sm md:text-base font-semibold text-muted-foreground/80 font-mono bg-blue-700/10 dark:bg-[#89D3BD]/10 px-2.5 py-0.5 rounded-full">
+                                <span className="transition-colors duration-300 group-hover:text-blue-800 dark:group-hover:text-[#a5ebd5]">
+                                    {category.category}
+                                </span>
+                                <span className="text-sm md:text-base font-semibold text-muted-foreground/80 font-mono bg-blue-700/10 dark:bg-[#89D3BD]/10 px-2.5 py-0.5 rounded-full transition-all duration-300 group-hover:bg-blue-700/20 dark:group-hover:bg-[#89D3BD]/20 group-hover:scale-105 group-hover:text-blue-700 dark:group-hover:text-[#89D3BD]">
                                     ({category.items.length})
                                 </span>
                             </motion.h3>
@@ -328,7 +345,7 @@ const Achievements = () => {
                         viewport={{ once: true, amount: 0.3 }}
                         transition={{ duration: 0.6, ease: "easeOut" }}
                     >
-                        {(['All', 'Awards', 'Certificates | Technical Courses', 'Bootcamps | Events | Competitions', 'Internship Certificates', 'Badges'] as FilterType[]).map((filter) => {
+                        {(['All', 'Awards', 'Open Source Programs', 'Technical Courses', 'Bootcamps | Events | Competitions', 'Internship Certificates', 'Badges'] as FilterType[]).map((filter) => {
                             const count = getItemCount(getFilteredAchievements(allAchievements, filter));
                             return (
                                 <button
@@ -353,12 +370,25 @@ const Achievements = () => {
                             <>
                                 {renderAchievementGroups(allRegularAchievements)}
                                 {renderAchievementGroups(
+                                    allOpenSourceAchievements,
+                                    'Open Source Programs',
+                                    'Badges, challenge completions, and contribution certificates earned from open-source initiatives and community programs.',
+                                    'achievement-open-source'
+                                )}
+                                {renderAchievementGroups(
                                     allBadgeAchievements,
                                     'Badges',
                                     'Verified skill badges, challenge milestones, and platform-earned visual credentials from the achievements archive.',
                                     'achievement-badges'
                                 )}
                             </>
+                        ) : activeFilter === 'Open Source Programs' ? (
+                            renderAchievementGroups(
+                                filteredAchievements,
+                                'Open Source Programs',
+                                'Badges, challenge completions, and contribution certificates earned from open-source initiatives and community programs.',
+                                'achievement-open-source'
+                            )
                         ) : activeFilter === 'Badges' ? (
                             renderAchievementGroups(
                                 filteredAchievements,
