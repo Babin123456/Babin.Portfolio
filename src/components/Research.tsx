@@ -57,7 +57,7 @@ const Research = () => {
   const glowStyles = ``;
 
   return (
-    <section id="research" className="group py-20 relative">
+    <section id="research" className="group py-12 md:py-20 relative">
       <StudyBackground />
       <div className="container mx-auto px-4 relative z-10">
         <style>{glowStyles}</style>
@@ -66,9 +66,9 @@ const Research = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.1 }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-16"
+          className="text-center mb-8 sm:mb-12 md:mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 max-w-[280px] mx-auto md:max-w-none">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 md:mb-4 px-2">
             <SectionTitle
               segments={[
                 {
@@ -82,7 +82,7 @@ const Research = () => {
               ]}
             />
           </h2>
-          <p className="text-xl text-muted-foreground">
+          <p className="text-sm sm:text-base md:text-xl text-muted-foreground max-w-2xl mx-auto px-4">
             Contributing to academic knowledge and innovation
           </p>
         </motion.div>
@@ -91,38 +91,38 @@ const Research = () => {
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true, amount: 0.1 }}
-          className="-mt-14"
+          className="mt-0 md:-mt-8 lg:-mt-14"
           transition={{ duration: 0.8 }}
         >
-          <Card className="glass p-8 lg:p-12 transition-all">
-            <div className="grid lg:grid-cols-2 gap-8 items-center">
-              <div className="space-y-6">
-                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary">
-                  <FileText size={20} />
-                  <span className="font-semibold">Research Paper</span>
+          <Card className="glass p-4 sm:p-8 lg:p-12 transition-all">
+            <div className="grid lg:grid-cols-2 gap-6 lg:gap-8 items-center">
+              <div className="space-y-5 sm:space-y-6">
+                <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-semibold">
+                  <FileText size={18} />
+                  <span>Research Paper</span>
                 </div>
 
-                <h3 className="text-3xl lg:text-4xl font-bold leading-tight">
+                <h3 className="text-xl sm:text-2xl lg:text-4xl font-bold leading-snug sm:leading-tight break-words">
                   ML-Based Price Prediction for Agri-Horticultural Commodities
                 </h3>
 
-                <div className="space-y-2 text-muted-foreground">
-                  <p className="flex items-start gap-2">
-                    <span className="font-semibold text-foreground">Authors:</span>
-                    <span>Babin Bid, Dr. Debdutta Pal, Ritika Pramanick, Liza Ghosh</span>
-                  </p>
-                  <p className="flex items-start gap-2">
-                    <span className="font-semibold text-foreground">Conference:</span>
-                    <span>2nd International Conference on Smart Systems and Wireless Communication (SSWC2025)</span>
-                  </p>
+                <div className="space-y-3 text-muted-foreground text-xs sm:text-sm md:text-base">
+                  <div className="flex flex-col sm:flex-row sm:items-start gap-1 sm:gap-2">
+                    <span className="font-semibold text-foreground shrink-0">Authors:</span>
+                    <span className="break-words">Babin Bid, Dr. Debdutta Pal, Ritika Pramanick, Liza Ghosh</span>
+                  </div>
+                  <div className="flex flex-col sm:flex-row sm:items-start gap-1 sm:gap-2">
+                    <span className="font-semibold text-foreground shrink-0">Conference:</span>
+                    <span className="break-words">2nd International Conference on Smart Systems and Wireless Communication (SSWC2025)</span>
+                  </div>
                 </div>
 
-                <div className="prose prose-sm text-muted-foreground">
+                <div className="prose prose-sm text-muted-foreground text-xs sm:text-sm leading-relaxed">
                   <p>
                     This research presents machine learning models for predicting future prices of seasonal crops in India.
                     Comparing Support Vector Regressor (SVM) and Random Forest across different crop seasons.
                   </p>
-                  <p className="font-semibold text-foreground">Key Focus:</p>
+                  <p className="font-semibold text-foreground mt-2">Key Focus:</p>
                   <ul className="list-disc list-inside space-y-1">
                     <li>Analyze seasonal crop price trends (Summer, Rainy, Winter)</li>
                     <li>Predict future price variations using ML</li>
@@ -131,16 +131,16 @@ const Research = () => {
                   </ul>
                 </div>
 
-                <div className="flex flex-row gap-4 pt-4">
+                <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-2 sm:pt-4">
                   <motion.div
-                    whileHover={{ scale: 1.05, y: -2 }}
+                    whileHover={{ scale: 1.03, y: -2 }}
                     transition={{ type: "spring", stiffness: 500, damping: 25 }}
                     className="flex-1 sm:flex-initial"
                   >
                     <Button
                       size="lg"
                       asChild
-                      className="w-full bg-blue-700 dark:bg-[#89D3BD] text-white dark:text-black hover:opacity-90 font-black text-xs md:text-sm transition-all duration-300 hover:shadow-[0_10px_20px_var(--shadow-color)]"
+                      className="w-full min-h-[44px] bg-blue-700 dark:bg-[#89D3BD] text-white dark:text-black hover:opacity-90 font-black text-xs md:text-sm transition-all duration-300 hover:shadow-[0_10px_20px_var(--shadow-color)]"
                     >
                       <a
                         href="/ML-Based Price Prediction for Agri-Horticultural Commodities.pdf"
@@ -156,7 +156,7 @@ const Research = () => {
                   </motion.div>
 
                   <motion.div
-                    whileHover={{ scale: 1.05, y: -2 }}
+                    whileHover={{ scale: 1.03, y: -2 }}
                     transition={{ type: "spring", stiffness: 500, damping: 25 }}
                     className="flex-1 sm:flex-initial"
                   >
@@ -164,7 +164,7 @@ const Research = () => {
                       size="lg"
                       variant="outline"
                       asChild
-                      className="w-full border-2 border-blue-700 dark:border-[#89D3BD] text-blue-700 dark:text-[#89D3BD] hover:bg-blue-700 dark:hover:bg-[#89D3BD] hover:text-white dark:hover:text-black font-black bg-transparent text-xs md:text-sm transition-all duration-300 hover:shadow-[0_10px_20px_var(--shadow-color)]"
+                      className="w-full min-h-[44px] border-2 border-blue-700 dark:border-[#89D3BD] text-blue-700 dark:text-[#89D3BD] hover:bg-blue-700 dark:hover:bg-[#89D3BD] hover:text-white dark:hover:text-black font-black bg-transparent text-xs md:text-sm transition-all duration-300 hover:shadow-[0_10px_20px_var(--shadow-color)]"
                     >
                       <a
                         href="https://github.com/KGFCH2/Price_Prediction"
@@ -181,39 +181,39 @@ const Research = () => {
                 </div>
               </div>
 
-              <div className="space-y-6">
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                  {highlights.map((item, index) => {
+              <div className="space-y-4 sm:space-y-6 mt-6 lg:mt-0">
+                <div className="grid grid-cols-3 gap-2 sm:gap-4">
+                  {highlights.map((item) => {
                     const Icon = item.icon;
                     return (
                       <div
                         key={item.label}
-                        className={`group/section relative rounded-xl p-5 text-center bg-white/5 backdrop-blur-sm border border-white/5 transition-all duration-300 cursor-default shadow-sm`}
+                        className={`group/section relative rounded-xl p-2.5 sm:p-5 text-center bg-white/5 backdrop-blur-sm border border-white/5 transition-all duration-300 cursor-default shadow-sm flex flex-col items-center justify-center`}
                       >
-                        <div className="mx-auto mb-3 w-fit">
+                        <div className="mx-auto mb-1.5 sm:mb-3 w-fit">
                           <AnimatedIcon
                             Icon={Icon}
-                            size={32}
+                            size={24}
                             glowColor="transparent"
                             animationType="scale"
-                            className={`${getHighlightClass(item.label)} group-hover/section:-translate-y-1`}
+                            className={`${getHighlightClass(item.label)} group-hover/section:-translate-y-1 sm:w-8 sm:h-8`}
                           />
                         </div>
-                        <div className="mb-2 text-[10px] uppercase tracking-widest text-muted-foreground font-black">{item.label}</div>
-                        <div className="text-lg font-bold text-foreground">{item.value}</div>
+                        <div className="mb-1 text-[9px] sm:text-[10px] uppercase tracking-wider sm:tracking-widest text-muted-foreground font-black">{item.label}</div>
+                        <div className="text-xs sm:text-base md:text-lg font-bold text-foreground truncate w-full">{item.value}</div>
                       </div>
                     );
                   })}
                 </div>
 
-                <Card className="group/section bg-primary/5 p-6">
-                  <h4 className="font-bold text-lg mb-3 flex items-center gap-2">
+                <Card className="group/section bg-primary/5 p-4 sm:p-6">
+                  <h4 className="font-bold text-base sm:text-lg mb-2.5 sm:mb-3 flex items-center gap-2">
                     <AnimatedIcon Icon={Wrench} size={20} glowColor="transparent" animationType="scale" className="text-primary group-hover/section:-translate-y-1" />
                     Tech Stack
                   </h4>
-                  <div className="flex flex-wrap gap-2">
+                  <div className="flex flex-wrap gap-1.5 sm:gap-2">
                     {(() => {
-                      const defaultClass = 'px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium transition transform cursor-pointer';
+                      const defaultClass = 'px-2.5 py-1 rounded-full bg-primary/10 text-primary text-xs sm:text-sm font-medium transition transform cursor-pointer';
                       const techHoverClass = ' hover:scale-105 hover:text-white dark:hover:text-black hover:bg-blue-700 dark:hover:bg-[#89D3BD] hover:shadow-[0_10px_20px_var(--shadow-color)]';
 
                       return ['Python', 'Pandas', 'NumPy', 'Matplotlib', 'Seaborn', 'Scikit-Learn'].map((tech) => (
@@ -225,12 +225,12 @@ const Research = () => {
                   </div>
                 </Card>
 
-                <Card className="group/section bg-gradient-to-r from-blue-700/5 to-emerald-400/5 dark:from-[#89D3BD]/10 dark:to-emerald-700/10 p-6">
-                  <h4 className="font-bold text-lg mb-3 flex items-center gap-2">
+                <Card className="group/section bg-gradient-to-r from-blue-700/5 to-emerald-400/5 dark:from-[#89D3BD]/10 dark:to-emerald-700/10 p-4 sm:p-6">
+                  <h4 className="font-bold text-base sm:text-lg mb-2.5 sm:mb-3 flex items-center gap-2">
                     <AnimatedIcon Icon={Leaf} size={20} glowColor="transparent" animationType="scale" className="text-emerald-500 group-hover/section:-translate-y-2" />
                     Seasonal Coverage
                   </h4>
-                  <div className="space-y-2 text-sm">
+                  <div className="space-y-1.5 sm:space-y-2 text-xs sm:text-sm">
                     <p><span className="font-semibold">Summer:</span> Bhindi, Bitter Gourd, Brinjal, Mango, Spinach</p>
                     <p><span className="font-semibold">Rainy:</span> Banana, Guava, Papaya, Peach, Plum</p>
                     <p><span className="font-semibold">Winter:</span> Apple, Beetroot, Cabbage, Carrot, Cauliflower, Orange</p>
