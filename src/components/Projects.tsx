@@ -320,16 +320,6 @@ const Projects = () => {
       ],
       thumbnail: "/projects/CropAI.webp",
     },
-    {
-      title: "BharatBus (in progress)",
-      description:
-        "BharatBus — frontend in progress: booking & tracking UI built with React + TypeScript and Framer Motion.",
-      tech: ["React", "TypeScript", "Vite", "Framer Motion"],
-      github: "https://github.com/KGFCH2/BharatBus",
-      demo: "https://bharat-bus.vercel.app/",
-      features: ["Booking flow, live tracking mockups, operator dashboard"],
-      thumbnail: "/projects/BharatBus.webp",
-    },
   ];
 
   return (
