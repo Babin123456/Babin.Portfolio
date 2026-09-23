@@ -106,10 +106,6 @@ export const achievementsData: AchievementCategory[] = [
                 "file": "/Achievements/Events/ELUCode_2026_Edition_2.webp"
             },
             {
-                "title": "ELUSoC 2026 TruScholar Certificate",
-                "file": "/Achievements/Events/TruScholar_ELUSoC_Certificate.webp"
-            },
-            {
                 "title": "GDSC Cloud Campaign",
                 "file": "/Achievements/Events/GDSC_Cloud_Campaign.webp"
             },
@@ -303,6 +299,19 @@ export const achievementsData: AchievementCategory[] = [
         ]
     },
     {
+        "category": "EduLinkUp Summer of Code (ELUSoC) Certificates",
+        "items": [
+            {
+                "title": "ELUSOC 2026 Certificate - Babin Bid",
+                "file": "/Achievements/Open Source Programs/Certificates/ELUSoC_2026/ELUSOC_Certificate_ELUSOC-2026-CON-001.webp"
+            },
+            {
+                "title": "ELUSoC 2026 TruScholar Certificate",
+                "file": "/Achievements/Open Source Programs/Certificates/ELUSoC_2026/TruScholar_ELUSoC_Certificate.webp"
+            }
+        ]
+    },
+    {
         "category": "Nexus Spring of Code (NSoC) Badges",
         "items": [
             {
@@ -312,6 +321,15 @@ export const achievementsData: AchievementCategory[] = [
             {
                 "title": "NSOC Contributor",
                 "file": "/Achievements/Open Source Programs/Badges/NSoC_2026/NSOC_Contributor.webp"
+            }
+        ]
+    },
+    {
+        "category": "Nexus Spring of Code (NSoC) Certificates",
+        "items": [
+            {
+                "title": "Nexus Spring of Code (NSoC) Certificate 2026",
+                "file": "/Achievements/Open Source Programs/Certificates/NSoC_2026/NSoC_Certificate_Babin-Bid_2026.webp"
             }
         ]
     },
@@ -341,6 +359,15 @@ export const achievementsData: AchievementCategory[] = [
             {
                 "title": "Rookie",
                 "file": "/Achievements/Open Source Programs/Badges/ECSoC_2026/Rookie.webp"
+            }
+        ]
+    },
+    {
+        "category": "Elite Coders Summer of Code (ECSoC) Certificates",
+        "items": [
+            {
+                "title": "Elite Coders Summer of Code (ECSoC) Certificate",
+                "file": "/Achievements/Open Source Programs/Certificates/ECSoC_2026/ecsoc-certificate-babin_bid.webp"
             }
         ]
     },
