@@ -11,10 +11,17 @@ export default async function handler(req, res) {
         return res.status(200).end();
     }
 
+    const emailUser = process.env.EMAIL_USER || process.env.SMTP_USER;
+    const emailPass = process.env.EMAIL_PASS || process.env.SMTP_PASS || process.env.SMTP_PASSWORD;
+    const smtpHost = process.env.SMTP_HOST;
+    const smtpPort = process.env.SMTP_PORT ? parseInt(process.env.SMTP_PORT, 10) : (process.env.SMTP_SECURE === "true" ? 465 : 587);
+
     console.log("API called with method:", req.method);
     console.log("Environment variables:", {
-        EMAIL_USER: process.env.EMAIL_USER ? "SET" : "NOT SET",
-        EMAIL_PASS: process.env.EMAIL_PASS ? "SET" : "NOT SET"
+        EMAIL_USER: emailUser ? "SET" : "NOT SET",
+        EMAIL_PASS: emailPass ? "SET" : "NOT SET",
+        SMTP_HOST: smtpHost || "using gmail service",
+        SMTP_PORT: smtpPort
     });
 
     if (req.method !== "POST") {
@@ -38,20 +45,42 @@ export default async function handler(req, res) {
         return res.status(400).json({ error: "Email and message are required" });
     }
 
+    if (!emailUser || !emailPass) {
+        console.error("Missing email credentials. Set EMAIL_USER / SMTP_USER and EMAIL_PASS / SMTP_PASS in Vercel environment variables.");
+        return res.status(500).json({
+            error: "Email service is not configured. Please set EMAIL_USER (or SMTP_USER) and EMAIL_PASS (or SMTP_PASS) in Vercel Environment Variables.",
+            code: "MISSING_CREDENTIALS"
+        });
+    }
+
     try {
         console.log("Creating transporter...");
-        const transporter = nodemailer.createTransport({
-            service: "gmail",
-            auth: {
-                user: process.env.EMAIL_USER,
-                pass: process.env.EMAIL_PASS
-            },
-            // Add additional Gmail-specific settings
-            secure: true,
-            tls: {
-                rejectUnauthorized: false
+        const transporterConfig = smtpHost
+            ? {
+                host: smtpHost,
+                port: smtpPort,
+                secure: process.env.SMTP_SECURE === "true" || smtpPort === 465,
+                auth: {
+                    user: emailUser,
+                    pass: emailPass
+                },
+                tls: {
+                    rejectUnauthorized: false
+                }
             }
-        });
+            : {
+                service: "gmail",
+                auth: {
+                    user: emailUser,
+                    pass: emailPass
+                },
+                secure: true,
+                tls: {
+                    rejectUnauthorized: false
+                }
+            };
+
+        const transporter = nodemailer.createTransport(transporterConfig);
 
         console.log("Verifying transporter...");
         await transporter.verify();
@@ -65,8 +94,8 @@ export default async function handler(req, res) {
         const istTimeFull = now.toLocaleString('en-US', { dateStyle: 'full', timeStyle: 'short', timeZone: 'Asia/Kolkata' });
 
         const mailOptions = {
-            from: `"Babin Bid Portfolio" <${process.env.EMAIL_USER}>`,
-            to: process.env.EMAIL_USER,
+            from: `"Babin Bid Portfolio" <${emailUser}>`,
+            to: process.env.RECIPIENT_EMAIL || emailUser,
             subject: `Portfolio Contact ~ ${senderName || 'New Message'} (${email})`,
             html: `
                 <!DOCTYPE html>
