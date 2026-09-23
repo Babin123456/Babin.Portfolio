@@ -112,7 +112,7 @@ const Footer = () => {
                     Let's Connect
                   </span>
                 </h3>
-                <div className="flex justify-center mt-6 md:mt-8 w-full">
+                <div className="flex justify-center mt-8 md:mt-10 w-full">
                   <SocialIcons />
                 </div>
               </div>
@@ -120,12 +120,14 @@ const Footer = () => {
           </div>
 
           <div className="pt-4 md:pt-8 border-t border-border text-center relative z-20">
-            <p className="text-foreground/90 italic text-[11px] sm:text-xs md:text-sm lg:text-base mb-3 md:mb-2 px-2 text-center whitespace-nowrap overflow-x-auto scrollbar-none flex items-center justify-center gap-1.5 sm:gap-2 max-w-full">
-              <Star className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-blue-700 dark:text-[#89D3BD] fill-blue-700 dark:fill-[#89D3BD] animate-pulse shrink-0" />
-              <span className="text-blue-700 dark:text-[#89D3BD] whitespace-nowrap">
+            <p className="text-foreground/90 italic text-xs sm:text-sm md:text-base mb-3 md:mb-2 px-4 text-center flex items-center justify-center gap-1.5 sm:gap-2 max-w-3xl mx-auto leading-relaxed">
+              <Star className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-blue-700 dark:text-[#89D3BD] fill-blue-700 dark:fill-[#89D3BD] animate-pulse shrink-0 hidden sm:inline-block" />
+              <span className="text-blue-700 dark:text-[#89D3BD] whitespace-normal sm:whitespace-nowrap">
+                <Star className="h-3 w-3 text-blue-700 dark:text-[#89D3BD] fill-blue-700 dark:fill-[#89D3BD] inline-block sm:hidden mr-1.5 align-middle" />
                 <b>"I don't just write code, I build logic, solve problems, and shape the future — one line at a time."</b>
+                <Star className="h-3 w-3 text-blue-700 dark:text-[#89D3BD] fill-blue-700 dark:fill-[#89D3BD] inline-block sm:hidden ml-1.5 align-middle" />
               </span>
-              <Star className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-blue-700 dark:text-[#89D3BD] fill-blue-700 dark:fill-[#89D3BD] animate-pulse shrink-0" />
+              <Star className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-blue-700 dark:text-[#89D3BD] fill-blue-700 dark:fill-[#89D3BD] animate-pulse shrink-0 hidden sm:inline-block" />
             </p>
 
             <p className="text-muted-foreground flex flex-wrap items-center justify-center gap-2 text-xs sm:text-sm md:text-base px-2">
