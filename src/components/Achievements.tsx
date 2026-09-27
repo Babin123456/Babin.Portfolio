@@ -245,7 +245,7 @@ const Achievements = () => {
                                             }}
                                         >
                                             <Card
-                                                className="overflow-hidden border border-white/20 dark:border-white/10 bg-white/40 dark:bg-white/5 backdrop-blur-sm shadow-card hover:shadow-glow transition-all duration-300 group cursor-pointer flex flex-col h-full hover:-translate-y-1.5 hover:scale-[1.01]"
+                                                className="overflow-hidden border border-slate-200/80 dark:border-white/10 bg-white/70 dark:bg-white/5 backdrop-blur-sm shadow-card hover:border-blue-600 dark:hover:border-[#89D3BD] hover:shadow-[0_0_25px_rgba(29,78,216,0.45)] dark:hover:shadow-[0_0_25px_rgba(137,211,189,0.45)] transition-all duration-300 group cursor-pointer flex flex-col h-full hover:-translate-y-1.5 hover:scale-[1.01]"
                                                 onClick={() => handleItemClick(item)}
                                             >
                                                 <div className="h-48 overflow-hidden bg-slate-200/50 dark:bg-slate-800/50 relative flex items-center justify-center p-4">
@@ -406,7 +406,7 @@ const Achievements = () => {
             {/* Lightbox Modal for Images */}
             {selectedItem && selectedItem.type === 'image' && (
                 <div
-                    className={`fixed inset-0 z-50 flex items-center justify-center bg-black/95 backdrop-blur-sm p-4 transition-all duration-1000 ${isClosing
+                    className={`fixed inset-0 z-50 flex items-center justify-center bg-white/85 dark:bg-black/95 backdrop-blur-md p-4 transition-all duration-1000 ${isClosing
                         ? 'opacity-0 backdrop-blur-none'
                         : 'animate-fade-in'
                         }`}
@@ -416,35 +416,35 @@ const Achievements = () => {
                         }`}>
                         <button
                             onClick={handleZoomIn}
-                            className="p-2 sm:p-2 bg-black/60 sm:bg-white/10 border border-white/20 sm:border-transparent rounded-full text-white hover:bg-primary hover:text-white transition-all duration-300 backdrop-blur-md hover:scale-110"
+                            className="p-2 sm:p-2 bg-white/85 dark:bg-white/10 border border-slate-300 dark:border-white/20 sm:border-slate-300 sm:dark:border-transparent rounded-full text-slate-800 dark:text-white hover:bg-blue-700 hover:text-white dark:hover:bg-[#89D3BD] dark:hover:text-black hover:border-transparent transition-all duration-300 backdrop-blur-md hover:scale-110 shadow-sm"
                             title="Zoom In"
                         >
                             <ZoomIn className="h-5 w-5 sm:h-6 sm:w-6" />
                         </button>
                         <button
                             onClick={handleZoomOut}
-                            className="p-2 sm:p-2 bg-black/60 sm:bg-white/10 border border-white/20 sm:border-transparent rounded-full text-white hover:bg-primary hover:text-white transition-all duration-300 backdrop-blur-md hover:scale-110"
+                            className="p-2 sm:p-2 bg-white/85 dark:bg-white/10 border border-slate-300 dark:border-white/20 sm:border-slate-300 sm:dark:border-transparent rounded-full text-slate-800 dark:text-white hover:bg-blue-700 hover:text-white dark:hover:bg-[#89D3BD] dark:hover:text-black hover:border-transparent transition-all duration-300 backdrop-blur-md hover:scale-110 shadow-sm"
                             title="Zoom Out"
                         >
                             <ZoomOut className="h-5 w-5 sm:h-6 sm:w-6" />
                         </button>
                         <button
                             onClick={handleResetZoom}
-                            className="p-2 sm:p-2 bg-black/60 sm:bg-white/10 border border-white/20 sm:border-transparent rounded-full text-white hover:bg-primary hover:text-white transition-all duration-300 backdrop-blur-md hover:scale-110"
+                            className="p-2 sm:p-2 bg-white/85 dark:bg-white/10 border border-slate-300 dark:border-white/20 sm:border-slate-300 sm:dark:border-transparent rounded-full text-slate-800 dark:text-white hover:bg-blue-700 hover:text-white dark:hover:bg-[#89D3BD] dark:hover:text-black hover:border-transparent transition-all duration-300 backdrop-blur-md hover:scale-110 shadow-sm"
                             title="Reset Zoom"
                         >
                             <RotateCcw className="h-5 w-5 sm:h-6 sm:w-6" />
                         </button>
                         <button
                             onClick={handleDownload}
-                            className="p-2 sm:p-2 bg-black/60 sm:bg-white/10 border border-white/20 sm:border-transparent rounded-full text-white hover:bg-primary hover:text-white transition-all duration-300 backdrop-blur-md hover:scale-110"
+                            className="p-2 sm:p-2 bg-white/85 dark:bg-white/10 border border-slate-300 dark:border-white/20 sm:border-slate-300 sm:dark:border-transparent rounded-full text-slate-800 dark:text-white hover:bg-blue-700 hover:text-white dark:hover:bg-[#89D3BD] dark:hover:text-black hover:border-transparent transition-all duration-300 backdrop-blur-md hover:scale-110 shadow-sm"
                             title="Download"
                         >
                             <Download className="h-5 w-5 sm:h-6 sm:w-6" />
                         </button>
                         <button
                             onClick={closeLightbox}
-                            className="p-2.5 sm:p-2 bg-black/75 sm:bg-blue-700/80 dark:sm:bg-[#89D3BD]/80 border border-white/30 rounded-full text-white dark:sm:text-black hover:bg-red-600 hover:text-white transition-all duration-300 sm:ml-2 backdrop-blur-md hover:scale-110 hover:rotate-90 shadow-2xl flex items-center justify-center"
+                            className="p-2.5 sm:p-2 bg-white/90 dark:bg-black/75 sm:bg-blue-700/80 dark:sm:bg-[#89D3BD]/80 border border-slate-300 dark:border-white/30 rounded-full text-slate-800 dark:text-white sm:text-white dark:sm:text-black hover:bg-red-600 hover:text-white hover:border-red-600 dark:hover:bg-red-600 dark:hover:text-white dark:hover:border-red-600 transition-all duration-300 sm:ml-2 backdrop-blur-md hover:scale-110 hover:rotate-90 shadow-2xl flex items-center justify-center"
                             title="Close"
                             aria-label="Close modal"
                         >
@@ -457,22 +457,23 @@ const Achievements = () => {
                         onClick={closeLightbox}
                     >
                         <div
-                            className={`transition-all duration-300 ease-out ${isClosing
+                            className={`relative transition-all duration-300 ease-out ${isClosing
                                 ? 'animate-close-image'
                                 : ''
                                 } zoom-level-${zoomLevel.toString().replace('.', '-')}`}
                             onClick={(e) => e.stopPropagation()}
                         >
+                            <div className="absolute -inset-2.5 sm:-inset-4 bg-gradient-to-r from-blue-600 via-indigo-500 to-blue-700 dark:from-[#89D3BD] dark:to-cyan-400 rounded-2xl blur-2xl opacity-65 dark:opacity-50 animate-pulse pointer-events-none" />
                             <img
                                 src={selectedItem.file}
                                 alt={selectedItem.title}
-                                className={`relative max-w-[85vw] max-h-[72vh] object-contain rounded-lg transition-all duration-300 ${isClosing ? 'border-0 shadow-none opacity-90' : 'border-2 border-white/10 shadow-[0_12px_40px_rgba(29,78,216,0.5)] dark:shadow-[0_12px_40px_rgba(6,182,212,0.6)]'}`}
+                                className={`relative max-w-[85vw] max-h-[72vh] object-contain rounded-xl transition-all duration-300 ${isClosing ? 'border-0 shadow-none opacity-90' : 'border-2 sm:border-3 border-blue-600 dark:border-[#89D3BD] shadow-[0_0_35px_rgba(29,78,216,0.55),0_12px_40px_rgba(29,78,216,0.35)] dark:shadow-[0_0_35px_rgba(137,211,189,0.55),0_12px_40px_rgba(6,182,212,0.45)]'}`}
                             />
                         </div>
                     </div>
 
                     {/* Fully Visible Caption Banner */}
-                    <div className={`absolute bottom-5 left-1/2 -translate-x-1/2 px-6 py-2.5 bg-black/85 dark:bg-black/90 backdrop-blur-md rounded-2xl border border-white/20 text-white text-center max-w-[92vw] z-50 shadow-2xl transition-all duration-300 pointer-events-none ${isClosing ? 'opacity-0 translate-y-6' : 'opacity-100 translate-y-0'}`}>
+                    <div className={`absolute bottom-5 left-1/2 -translate-x-1/2 px-6 py-2.5 bg-white/90 dark:bg-black/90 backdrop-blur-md rounded-2xl border border-slate-300/80 dark:border-white/20 text-slate-900 dark:text-white text-center max-w-[92vw] z-50 shadow-2xl transition-all duration-300 pointer-events-none ${isClosing ? 'opacity-0 translate-y-6' : 'opacity-100 translate-y-0'}`}>
                         <p className="text-sm md:text-base font-semibold leading-snug break-words whitespace-normal tracking-wide">{selectedItem.title}</p>
                     </div>
                 </div>
