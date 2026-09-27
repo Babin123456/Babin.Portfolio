@@ -131,11 +131,11 @@ const Footer = () => {
             </p>
 
             <p className="text-muted-foreground flex flex-wrap items-center justify-center gap-2 text-xs sm:text-sm md:text-base px-2">
-              <Code2 className="h-4 w-4 text-green-400 fill-green-500 text-primary shrink-0" />
+              <Code2 className="h-4 w-4 text-blue-700 dark:text-[#89D3BD] fill-blue-700 dark:fill-[#89D3BD] shrink-0" />
               <span className="font-medium text-blue-700 dark:text-[#89D3BD]">
                 © {currentYear} Crafted with Logic & Dedication by <b>Babin Bid</b>
               </span>
-              <Code2 className="h-4 w-4 text-green-400 fill-green-500 text-primary shrink-0" />
+              <Code2 className="h-4 w-4 text-blue-700 dark:text-[#89D3BD] fill-blue-700 dark:fill-[#89D3BD] shrink-0" />
             </p>
           </div>
         </div>
