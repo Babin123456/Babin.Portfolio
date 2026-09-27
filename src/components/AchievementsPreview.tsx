@@ -138,10 +138,10 @@ const AchievementsPreview = () => {
                 whileHover={{
                   y: -8,
                   scale: 1.03,
-                  boxShadow: "0 25px 50px -12px var(--shadow-color-highlights)",
+                  boxShadow: "0 10px 30px -5px rgba(29, 78, 216, 0.4), 0 0 20px rgba(29, 78, 216, 0.3)",
                   transition: { type: "spring", stiffness: 400, damping: 17 },
                 }}
-                className="group relative bg-white dark:bg-white/5 backdrop-blur-md rounded-2xl border border-slate-200 dark:border-white/10 hover:border-blue-700 dark:hover:border-[#89D3BD] transition-all duration-300 overflow-hidden cursor-pointer"
+                className="group relative bg-white dark:bg-white/5 backdrop-blur-md rounded-2xl border border-slate-200 dark:border-white/10 hover:border-blue-600 dark:hover:border-[#89D3BD] hover:shadow-[0_0_25px_rgba(29,78,216,0.45)] dark:hover:shadow-[0_0_25px_rgba(137,211,189,0.45)] transition-all duration-300 overflow-hidden cursor-pointer"
                 onClick={() => setSelectedImage({ file: achievement.file, title: achievement.title })}
               >
                 {/* Achievement Image */}
@@ -220,32 +220,32 @@ const AchievementsPreview = () => {
       {/* Image Lightbox Modal */}
       {selectedImage && (
         <div
-          className={`fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm transition-all duration-300 ${isClosing ? "opacity-0" : "animate-fade-in"}`}
+          className={`fixed inset-0 z-50 flex items-center justify-center bg-white/85 dark:bg-black/80 backdrop-blur-md transition-all duration-300 ${isClosing ? "opacity-0" : "animate-fade-in"}`}
           onClick={handleCloseModal}
         >
           <div className={`relative max-w-[90vw] max-h-[90vh] transition-all duration-300 ${isClosing ? "scale-90 opacity-0" : "scale-100 opacity-100"}`}>
             <button
               onClick={handleCloseModal}
-              className="fixed top-4 right-4 z-50 p-2.5 sm:p-2 rounded-full bg-black/75 text-white hover:text-red-400 hover:bg-black/90 border border-white/30 backdrop-blur-md shadow-2xl transition-all duration-300 hover:scale-110 active:scale-95 flex items-center justify-center"
+              className="fixed top-4 right-4 z-50 p-2.5 sm:p-2 rounded-full bg-white/90 dark:bg-black/75 text-slate-800 dark:text-white hover:text-white hover:bg-red-600 hover:border-red-600 border border-slate-300 dark:border-white/30 backdrop-blur-md shadow-2xl transition-all duration-300 hover:scale-110 active:scale-95 flex items-center justify-center"
               aria-label="Close image"
             >
               <X className="h-6 w-6 sm:h-7 sm:w-7" />
             </button>
             <div className="relative">
-              <div className="absolute -inset-4 bg-primary rounded-3xl blur-2xl opacity-50 animate-pulse" />
+              <div className="absolute -inset-3 sm:-inset-5 bg-gradient-to-r from-blue-600 via-indigo-500 to-blue-700 dark:from-[#89D3BD] dark:to-cyan-400 rounded-3xl blur-2xl opacity-70 dark:opacity-50 animate-pulse pointer-events-none" />
               <img
                 src={encodeURI(selectedImage.file)}
                 alt={selectedImage.title}
                 loading="lazy"
                 decoding="async"
-                className="relative rounded-2xl shadow-2xl max-w-full max-h-[80vh] object-contain border-4 border-white/20"
+                className="relative rounded-2xl shadow-[0_0_35px_rgba(29,78,216,0.55),0_12px_40px_rgba(29,78,216,0.35)] dark:shadow-[0_0_35px_rgba(137,211,189,0.55),0_12px_40px_rgba(6,182,212,0.45)] max-w-full max-h-[80vh] object-contain border-2 sm:border-4 border-blue-600 dark:border-[#89D3BD]"
                 onClick={(e) => e.stopPropagation()}
               />
             </div>
-            <p className="text-center mt-4 text-white text-lg font-semibold">
+            <p className="text-center mt-4 text-slate-900 dark:text-white text-lg font-semibold">
               {selectedImage.title}
             </p>
-            <p className="text-center text-white/60 text-sm">
+            <p className="text-center text-slate-600 dark:text-white/60 text-sm">
               Click anywhere to close
             </p>
           </div>
