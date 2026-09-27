@@ -50,10 +50,9 @@ const LazyImage = ({ src, alt, className, forceLoad, onClick }: { src: string; a
 import type { EmblaPluginType } from "embla-carousel";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Dialog, DialogContent } from "@/components/ui/dialog";
-import { ExternalLink, Github, Star, Hand, ChevronsLeftRight } from "lucide-react";
+import { ExternalLink, Github, Star, Hand, ChevronsLeftRight, X } from "lucide-react";
 import SectionTitle from "./SectionTitle";
-import { motion, Variants } from "framer-motion";
+import { motion, AnimatePresence, Variants } from "framer-motion";
 
 const sectionVariants: Variants = {
   hidden: { opacity: 0, y: 60 },
@@ -86,6 +85,24 @@ const Projects = () => {
 
   const [isHovered, setIsHovered] = useState(false);
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setSelectedImage(null);
+      }
+    };
+    if (selectedImage) {
+      document.body.style.overflow = "hidden";
+      window.addEventListener("keydown", handleKeyDown);
+    } else {
+      document.body.style.overflow = "unset";
+    }
+    return () => {
+      document.body.style.overflow = "unset";
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [selectedImage]);
 
   // Autoplay plugin will be loaded dynamically to avoid build-time resolution issues on Vercel
   const [plugins, setPlugins] = useState<EmblaPluginType[]>([]);
@@ -475,20 +492,48 @@ const Projects = () => {
         </motion.div>
       </div>
 
-      {/* Full-size image modal */}
-      <Dialog open={!!selectedImage} onOpenChange={(open) => !open && setSelectedImage(null)}>
-        <DialogContent className="max-w-4xl w-full h-auto max-h-[90vh] flex items-center justify-center p-0 bg-black/95 border-0 overflow-visible [&>button]:text-red-500 [&>button]:opacity-100 [&>button]:bg-white/10 [&>button]:rounded-full [&>button]:p-1">
-          {selectedImage && (
-            <div className="relative w-full h-full flex items-center justify-center p-4">
+      {/* Full-size image modal with smooth pop-up animation */}
+      <AnimatePresence>
+        {selectedImage && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.22, ease: "easeOut" }}
+            className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-white/85 dark:bg-black/90 backdrop-blur-md"
+            onClick={() => setSelectedImage(null)}
+          >
+            {/* Smoothly animated close button */}
+            <motion.button
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.8 }}
+              transition={{ duration: 0.18 }}
+              onClick={() => setSelectedImage(null)}
+              className="fixed top-3 right-3 sm:top-5 sm:right-5 z-[70] w-11 h-11 sm:w-10 sm:h-10 flex items-center justify-center rounded-full bg-white/95 dark:bg-black/85 text-slate-800 dark:text-white border border-slate-300 dark:border-white/30 shadow-2xl backdrop-blur-md hover:bg-red-600 hover:text-white hover:border-red-600 dark:hover:bg-red-600 dark:hover:text-white dark:hover:border-red-600 active:scale-95 transition-all"
+              aria-label="Close project preview"
+            >
+              <X className="h-5 w-5" />
+            </motion.button>
+
+            {/* Smooth pop-up window */}
+            <motion.div
+              initial={{ scale: 0.88, opacity: 0, y: 15 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
+              exit={{ scale: 0.9, opacity: 0, y: 10 }}
+              transition={{ type: "spring", damping: 25, stiffness: 350 }}
+              onClick={(e) => e.stopPropagation()}
+              className="relative max-w-[94vw] sm:max-w-4xl max-h-[85vh] flex items-center justify-center rounded-2xl overflow-hidden shadow-2xl border-2 border-slate-200/90 dark:border-white/20 bg-card/60 dark:bg-card/40 backdrop-blur-sm"
+            >
               <img
                 src={encodeURI(selectedImage)}
                 alt="Full size project thumbnail"
-                className="max-w-full max-h-[85vh] object-contain rounded-lg shadow-2xl"
+                className="max-w-full max-h-[82vh] object-contain rounded-xl select-none"
               />
-            </div>
-          )}
-        </DialogContent>
-      </Dialog>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 };
