@@ -106,6 +106,10 @@ export const achievementsData: AchievementCategory[] = [
                 "file": "/Achievements/Events/ELUCode_2026_Edition_2.webp"
             },
             {
+                "title": "ELUCode 2026 Edition 3",
+                "file": "/Achievements/Events/ELUCode_2026_Edition_3.webp"
+            },
+            {
                 "title": "GDSC Cloud Campaign",
                 "file": "/Achievements/Events/GDSC_Cloud_Campaign.webp"
             },
@@ -724,8 +728,16 @@ export const achievementsData: AchievementCategory[] = [
         "category": "HackerRank",
         "items": [
             {
+                "title": "CSS Basic Certificate",
+                "file": "/Achievements/HackerRank/CSS_Basic.webp"
+            },
+            {
                 "title": "Frontend Developer (React) Certificate",
                 "file": "/Achievements/HackerRank/Frontend_Developer_(React)_Certificate.webp"
+            },
+            {
+                "title": "JavaScript Basic Certificate",
+                "file": "/Achievements/HackerRank/JavaScript_Basic.webp"
             },
             {
                 "title": "Problem Solving Basic Certificate",
@@ -734,6 +746,10 @@ export const achievementsData: AchievementCategory[] = [
             {
                 "title": "Python Basic Certificate",
                 "file": "/Achievements/HackerRank/Python_Basic_Certificate.webp"
+            },
+            {
+                "title": "React Basic Certificate",
+                "file": "/Achievements/HackerRank/React_Basic.webp"
             },
             {
                 "title": "Software Engineer Certificate",
