@@ -244,6 +244,10 @@ export const achievementsData: AchievementCategory[] = [
                 "file": "/Achievements/Open Source Programs/Badges/GSSoC_2026/gssoc-badge-role_contributor.webp"
             },
             {
+                "title": "GSSOC Badge Top 10",
+                "file": "/Achievements/Open Source Programs/Badges/GSSoC_2026/gssoc-badge-top_10.webp"
+            },
+            {
                 "title": "GSSOC Badge Top 100",
                 "file": "/Achievements/Open Source Programs/Badges/GSSoC_2026/gssoc-badge-top_100.webp"
             },
@@ -262,6 +266,15 @@ export const achievementsData: AchievementCategory[] = [
             {
                 "title": "Open",
                 "file": "/Achievements/Open Source Programs/Badges/GSSoC_2026/open.webp"
+            }
+        ]
+    },
+    {
+        "category": "GirlScript Summer of Code (GSSoC) Certificates",
+        "items": [
+            {
+                "title": "GirlScript Summer of Code (GSSoC) Certificate",
+                "file": "/Achievements/Open Source Programs/Certificates/GSSoC_2026/gssoc-certificate-babin_bid.webp"
             }
         ]
     },
@@ -1135,7 +1148,7 @@ export const achievementsData: AchievementCategory[] = [
             },
             {
                 "title": "50 Days",
-                "file": "/Achievements/LeetCode/50_Days_Badge.webp"
+                "file": "/Achievements/LeetCode/50_Days.gif"
             },
             {
                 "title": "50 Days Badge 2026",
@@ -1143,7 +1156,7 @@ export const achievementsData: AchievementCategory[] = [
             },
             {
                 "title": "April LeetCode",
-                "file": "/Achievements/LeetCode/April_LeetCode_Badge.webp"
+                "file": "/Achievements/LeetCode/April_LeetCode_Badge.gif"
             },
             {
                 "title": "April LeetCode",
@@ -1162,8 +1175,12 @@ export const achievementsData: AchievementCategory[] = [
                 "file": "/Achievements/LeetCode/July_LeetCode_Badge.gif"
             },
             {
+                "title": "July LeetCode",
+                "file": "/Achievements/LeetCode/July_LeetCode.webp"
+            },
+            {
                 "title": "March LeetCode",
-                "file": "/Achievements/LeetCode/March_LeetCode_Badge.webp"
+                "file": "/Achievements/LeetCode/March_LeetCode_Badge.gif"
             },
             {
                 "title": "March LeetCode",
@@ -1192,6 +1209,14 @@ export const achievementsData: AchievementCategory[] = [
             {
                 "title": "Quest Math",
                 "file": "/Achievements/LeetCode/Quest_Math.gif"
+            },
+            {
+                "title": "September LeetCode",
+                "file": "/Achievements/LeetCode/September_LeetCode_Badge.gif"
+            },
+            {
+                "title": "September LeetCode",
+                "file": "/Achievements/LeetCode/September_LeetCode.webp"
             }
         ]
     },
