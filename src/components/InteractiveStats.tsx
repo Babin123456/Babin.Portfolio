@@ -16,7 +16,7 @@ interface StatItem {
 
 const InteractiveStats: React.FC = () => {
     const { ref, inView } = useInView({
-        threshold: 0.5,
+        threshold: 0.25,
         triggerOnce: false,
     });
 
@@ -61,7 +61,13 @@ const InteractiveStats: React.FC = () => {
         <div ref={ref} className="mt-0 md:mt-0 py-8 md:py-16 relative overflow-hidden">
             <StudyBackground />
             <div className="container mx-auto px-4 relative z-10">
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-8 max-w-6xl mx-auto">
+                <div
+                    className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-8 max-w-6xl mx-auto"
+                    style={{
+                        perspective: 1200,
+                        transformStyle: 'preserve-3d',
+                    }}
+                >
                     {stats.map((stat, index) => (
                         <StatCard
                             key={index}
@@ -118,51 +124,48 @@ const StatCard: React.FC<StatCardProps> = ({ stat, index, totalCount, isVisible 
         return () => clearInterval(interval);
     }, [isVisible, stat.value]);
 
-    // Compute horizontal spread offset: items move outwards from center
+    // Compute 3D spread offset: cards swoop in from 3D depth and angles
     const center = (totalCount - 1) / 2;
-    const offset = index - center; // negative = left side, positive = right side
-    const spreadDistance = 500; // px - how far cards spread when disappearing
+    const offset = index - center; // -1.5, -0.5, 0.5, 1.5
 
-    // When visible: cards are in normal grid position (translateX = 0)
-    // When not visible: cards spread outward to sides
-    const translateX = isVisible ? 0 : offset * spreadDistance;
-    const scale = isVisible ? 1 : 0.8;
-    const opacity = isVisible ? 1 : 0;
-
-    // Stagger delays: outer cards move first when exiting, inner cards first when entering
-    const enterDelay = Math.abs(offset) * 500; // Center cards appear first
-    const exitDelay = (1.5 - Math.abs(offset)) * 500; // Outer cards disappear first
+    // Stagger delays: inner cards arrive first, outer cards swoop in from 3D sides
+    const enterDelay = Math.abs(offset) * 0.12;
+    const exitDelay = (1.5 - Math.abs(offset)) * 0.08;
     const transitionDelay = isVisible ? enterDelay : exitDelay;
 
     return (
         <motion.div
-            className="relative group/section"
+            className="relative group/card h-full"
+            style={{
+                transformStyle: 'preserve-3d',
+            }}
             initial={false}
             animate={{
-                x: isVisible ? 0 : offset * spreadDistance,
-                scale: isVisible ? 1 : 0.8,
+                z: isVisible ? 0 : -320,
+                rotateY: isVisible ? 0 : offset * -32,
+                rotateX: isVisible ? 0 : 25,
+                y: isVisible ? 0 : 50,
+                scale: isVisible ? 1 : 0.75,
                 opacity: isVisible ? 1 : 0,
             }}
             transition={{
-                x: {
-                    duration: 0.8,
-                    ease: [0.25, 0.8, 0.25, 1],
-                    delay: transitionDelay / 1000,
-                },
-                opacity: {
-                    duration: 0.6,
-                    ease: "easeOut",
-                    delay: transitionDelay / 1000,
-                },
-                scale: {
-                    duration: 0.8,
-                    ease: [0.25, 0.8, 0.25, 1],
-                    delay: transitionDelay / 1000,
-                },
+                duration: 0.85,
+                ease: [0.22, 1, 0.36, 1],
+                delay: transitionDelay,
             }}
         >
+            {/* 4 Corners Square Capture Reticle - OUTSIDE the box corners */}
+            {/* Top-Left */}
+            <div className="pointer-events-none absolute -top-1.5 -left-1.5 w-4 h-4 border-t-2 border-l-2 border-blue-700 dark:border-[#89D3BD] opacity-0 -translate-x-1.5 -translate-y-1.5 group-hover/card:opacity-100 group-hover/card:translate-x-0 group-hover/card:translate-y-0 transition-all duration-300 ease-out z-20" />
+            {/* Top-Right */}
+            <div className="pointer-events-none absolute -top-1.5 -right-1.5 w-4 h-4 border-t-2 border-r-2 border-blue-700 dark:border-[#89D3BD] opacity-0 translate-x-1.5 -translate-y-1.5 group-hover/card:opacity-100 group-hover/card:translate-x-0 group-hover/card:translate-y-0 transition-all duration-300 ease-out z-20" />
+            {/* Bottom-Left */}
+            <div className="pointer-events-none absolute -bottom-1.5 -left-1.5 w-4 h-4 border-b-2 border-l-2 border-blue-700 dark:border-[#89D3BD] opacity-0 -translate-x-1.5 translate-y-1.5 group-hover/card:opacity-100 group-hover/card:translate-x-0 group-hover/card:translate-y-0 transition-all duration-300 ease-out z-20" />
+            {/* Bottom-Right */}
+            <div className="pointer-events-none absolute -bottom-1.5 -right-1.5 w-4 h-4 border-b-2 border-r-2 border-blue-700 dark:border-[#89D3BD] opacity-0 translate-x-1.5 translate-y-1.5 group-hover/card:opacity-100 group-hover/card:translate-x-0 group-hover/card:translate-y-0 transition-all duration-300 ease-out z-20" />
+
             <div className="relative p-4 md:p-6 rounded-lg border border-border/50 bg-card/50 backdrop-blur-sm hover:bg-card/80 hover:shadow-[0_20px_10px_rgba(29,78,216,0.3)] dark:hover:shadow-[0_10px_20px_rgba(137,211,189,0.3)] transition-all duration-300 min-h-[9rem] md:min-h-[10.5rem] h-full flex flex-col justify-between">
-                <div className="space-y-3">
+                <div className="space-y-3 relative z-10">
                     <div className="flex items-center justify-between">
                         <div className="text-3xl md:text-4xl font-bold text-primary transition-all duration-300">
                             {count}
@@ -171,11 +174,10 @@ const StatCard: React.FC<StatCardProps> = ({ stat, index, totalCount, isVisible 
                         <AnimatedIcon Icon={stat.Icon} size={32} glowColor="transparent" animationType="bounce" />
                     </div>
                     <div>
-                        <p className="text-sm font-semibold text-foreground group-hover/section:text-primary transition-colors duration-300">{stat.label}</p>
+                        <p className="text-sm font-semibold text-foreground group-hover/card:text-primary transition-colors duration-300">{stat.label}</p>
                         <p className="text-xs text-muted-foreground mt-1">{stat.description}</p>
                     </div>
                 </div>
-                <div className="absolute inset-x-0 bottom-0 h-1 bg-primary scale-x-0 group-hover/section:scale-x-100 transition-transform duration-500 origin-left rounded-full" />
             </div>
         </motion.div>
     );

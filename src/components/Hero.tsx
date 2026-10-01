@@ -30,8 +30,11 @@ const Hero = () => {
 
   return (
     <section
-      id="home" className="min-h-[80vh] md:min-h-screen flex items-center justify-center relative overflow-hidden pt-10 md:pt-16"
-    >      <div className="container mx-auto px-4 py-8 md:py-12 z-10">
+      id="home"
+      className="min-h-[80vh] md:min-h-screen flex items-center justify-center relative overflow-hidden pt-10 md:pt-16"
+    >
+      <StudyBackground />
+      <div className="container mx-auto px-4 py-8 md:py-12 z-10">
         <motion.div
           className="max-w-4xl mx-auto text-center space-y-4 md:space-y-6 mt-4 md:mt-12"
           initial={{ opacity: 0, y: 12 }}
@@ -50,19 +53,29 @@ const Hero = () => {
                 ]}
               />
             </h1>
-            <div className="text-2xl md:text-3xl lg:text-3xl font-semibold text-foreground min-h-[110px] md:min-h-[160px] flex items-center justify-center">
-              <div className="flex flex-col md:flex-row items-center gap-3 max-w-[90vw] md:max-w-none">
-                <div className="flex items-center gap-3">
-                  <AnimatedIcon
-                    Icon={currentIcon}
-                    size={32}
-                    className="text-blue-700 dark:text-[#89D3BD]"
-                    glowColor="transparent"
-                    animationType="bounce"
-                  />
-                  <span className="text-blue-700 dark:text-[#89D3BD] whitespace-nowrap"> </span>
+            <div className="text-[11.5px] min-[360px]:text-[12.5px] min-[400px]:text-sm sm:text-lg md:text-2xl lg:text-3xl font-semibold text-foreground min-h-[46px] sm:min-h-[64px] md:min-h-[96px] flex items-center justify-center">
+              <div className="flex flex-row items-center justify-center gap-1.5 sm:gap-2.5 md:gap-3 max-w-[96vw] md:max-w-none">
+                <div className="flex items-center shrink-0">
+                  <span className="hidden sm:inline-block">
+                    <AnimatedIcon
+                      Icon={currentIcon}
+                      size={28}
+                      className="text-blue-700 dark:text-[#89D3BD]"
+                      glowColor="transparent"
+                      animationType="bounce"
+                    />
+                  </span>
+                  <span className="sm:hidden">
+                    <AnimatedIcon
+                      Icon={currentIcon}
+                      size={18}
+                      className="text-blue-700 dark:text-[#89D3BD]"
+                      glowColor="transparent"
+                      animationType="bounce"
+                    />
+                  </span>
                 </div>
-                <div className="text-blue-700 dark:text-[#89D3BD] text-center md:text-left leading-tight md:leading-normal">
+                <div className="text-blue-700 dark:text-[#89D3BD] text-center md:text-left whitespace-nowrap leading-tight md:leading-normal">
                   <TypeAnimation
                     sequence={[
                       () => setCurrentIcon(Code),
@@ -113,19 +126,32 @@ const Hero = () => {
                     repeat={Infinity}
                   />
                 </div>
-                <AnimatedIcon
-                  Icon={currentIcon}
-                  size={32}
-                  className="scale-x-[-1] text-blue-700 dark:text-[#89D3BD]"
-                  glowColor="transparent"
-                  animationType="bounce"
-                />
+                <div className="flex items-center shrink-0">
+                  <span className="hidden sm:inline-block">
+                    <AnimatedIcon
+                      Icon={currentIcon}
+                      size={28}
+                      className="scale-x-[-1] text-blue-700 dark:text-[#89D3BD]"
+                      glowColor="transparent"
+                      animationType="bounce"
+                    />
+                  </span>
+                  <span className="sm:hidden">
+                    <AnimatedIcon
+                      Icon={currentIcon}
+                      size={18}
+                      className="scale-x-[-1] text-blue-700 dark:text-[#89D3BD]"
+                      glowColor="transparent"
+                      animationType="bounce"
+                    />
+                  </span>
+                </div>
               </div>
             </div>
           </div>
 
           <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed -mt-2 md:-mt-4">
-            B.Tech 3rd Year Student at Adamas University, Kolkata, India. Passionate
+            B.Tech 4th Year Student at Adamas University, Kolkata, India. Passionate
             about building innovative solutions and contributing to cutting-edge
             research.
           </p>

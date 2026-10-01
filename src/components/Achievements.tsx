@@ -6,13 +6,13 @@ import { useState } from "react";
 import { X, FileText, ExternalLink, ZoomIn, ZoomOut, Download, RotateCcw } from "lucide-react";
 import { achievementsData } from "../data/achievements";
 import StudyBackground from "./StudyBackground";
-import styles from './Achievements.module.css';
 
 type FilterType = 'All' | 'Awards' | 'Open Source Programs' | 'Technical Courses' | 'Bootcamps | Events | Competitions' | 'Internship Certificates' | 'Badges';
 
 const awardCategories = ["Awards & Recognitions"];
 const openSourceCategories = [
     "GirlScript Summer of Code (GSSoC) Badges",
+    "GirlScript Summer of Code (GSSoC) Certificates",
     "EduLinkUp Summer of Code (ELUSoC) Badges",
     "EduLinkUp Summer of Code (ELUSoC) Certificates",
     "Nexus Spring of Code (NSoC) Badges",
@@ -245,10 +245,10 @@ const Achievements = () => {
                                             }}
                                         >
                                             <Card
-                                                className="overflow-hidden border border-slate-200/80 dark:border-white/10 bg-white/70 dark:bg-white/5 backdrop-blur-sm shadow-card hover:border-blue-600 dark:hover:border-[#89D3BD] hover:shadow-[0_0_25px_rgba(29,78,216,0.45)] dark:hover:shadow-[0_0_25px_rgba(137,211,189,0.45)] transition-all duration-300 group cursor-pointer flex flex-col h-full hover:-translate-y-1.5 hover:scale-[1.01]"
+                                                className="overflow-hidden border border-slate-200/80 dark:border-white/10 bg-white/70 dark:bg-white/5 backdrop-blur-sm shadow-card hover:border-blue-600 dark:hover:border-[#89D3BD] hover:shadow-[0_0_25px_rgba(29,78,216,0.3)] dark:hover:shadow-[0_0_25px_rgba(137,211,189,0.3)] transition-all duration-300 group cursor-pointer flex flex-col h-full hover:-translate-y-1.5 hover:scale-[1.01]"
                                                 onClick={() => handleItemClick(item)}
                                             >
-                                                <div className="h-48 overflow-hidden bg-slate-200/50 dark:bg-slate-800/50 relative flex items-center justify-center p-4">
+                                                <div className="h-48 overflow-hidden bg-white dark:bg-zinc-950 relative flex items-center justify-center p-4 border-b border-slate-100 dark:border-zinc-900">
                                                     {type === 'image' ? (
                                                         <>
                                                             {!loadedImages.has(item.file) && !imageErrors.has(item.file) && (
@@ -412,43 +412,49 @@ const Achievements = () => {
                         }`}
                 >
                     {/* Controls */}
-                    <div className={`fixed top-3 right-3 sm:top-4 sm:right-4 flex items-center gap-1.5 sm:gap-2 z-50 max-w-[calc(100vw-1.5rem)] flex-wrap justify-end transition-all duration-300 ${isClosing ? 'opacity-0 -translate-y-10' : 'opacity-100 translate-y-0'
-                        }`}>
+                    <div
+                        className={`fixed top-3 right-3 sm:top-4 sm:right-4 flex items-center gap-1.5 sm:gap-2 z-50 flex-nowrap transition-all duration-300 ${isClosing ? 'opacity-0 -translate-y-10 pointer-events-none' : 'opacity-100 translate-y-0'
+                            }`}
+                    >
                         <button
                             onClick={handleZoomIn}
-                            className="p-2 sm:p-2 bg-white/85 dark:bg-white/10 border border-slate-300 dark:border-white/20 sm:border-slate-300 sm:dark:border-transparent rounded-full text-slate-800 dark:text-white hover:bg-blue-700 hover:text-white dark:hover:bg-[#89D3BD] dark:hover:text-black hover:border-transparent transition-all duration-300 backdrop-blur-md hover:scale-110 shadow-sm"
+                            className="w-9 h-9 sm:w-10 sm:h-10 aspect-square rounded-full flex items-center justify-center shrink-0 bg-white/90 dark:bg-black/80 border border-slate-300/90 dark:border-white/20 text-slate-800 dark:text-slate-100 hover:bg-blue-700 hover:text-white dark:hover:bg-[#89D3BD] dark:hover:text-black hover:border-transparent transition-all duration-200 backdrop-blur-md hover:scale-110 active:scale-95 shadow-md touch-manipulation"
                             title="Zoom In"
+                            aria-label="Zoom In"
                         >
-                            <ZoomIn className="h-5 w-5 sm:h-6 sm:w-6" />
+                            <ZoomIn className="w-4 h-4 sm:w-5 sm:h-5 shrink-0" />
                         </button>
                         <button
                             onClick={handleZoomOut}
-                            className="p-2 sm:p-2 bg-white/85 dark:bg-white/10 border border-slate-300 dark:border-white/20 sm:border-slate-300 sm:dark:border-transparent rounded-full text-slate-800 dark:text-white hover:bg-blue-700 hover:text-white dark:hover:bg-[#89D3BD] dark:hover:text-black hover:border-transparent transition-all duration-300 backdrop-blur-md hover:scale-110 shadow-sm"
+                            className="w-9 h-9 sm:w-10 sm:h-10 aspect-square rounded-full flex items-center justify-center shrink-0 bg-white/90 dark:bg-black/80 border border-slate-300/90 dark:border-white/20 text-slate-800 dark:text-slate-100 hover:bg-blue-700 hover:text-white dark:hover:bg-[#89D3BD] dark:hover:text-black hover:border-transparent transition-all duration-200 backdrop-blur-md hover:scale-110 active:scale-95 shadow-md touch-manipulation"
                             title="Zoom Out"
+                            aria-label="Zoom Out"
                         >
-                            <ZoomOut className="h-5 w-5 sm:h-6 sm:w-6" />
+                            <ZoomOut className="w-4 h-4 sm:w-5 sm:h-5 shrink-0" />
                         </button>
                         <button
                             onClick={handleResetZoom}
-                            className="p-2 sm:p-2 bg-white/85 dark:bg-white/10 border border-slate-300 dark:border-white/20 sm:border-slate-300 sm:dark:border-transparent rounded-full text-slate-800 dark:text-white hover:bg-blue-700 hover:text-white dark:hover:bg-[#89D3BD] dark:hover:text-black hover:border-transparent transition-all duration-300 backdrop-blur-md hover:scale-110 shadow-sm"
+                            className="w-9 h-9 sm:w-10 sm:h-10 aspect-square rounded-full flex items-center justify-center shrink-0 bg-white/90 dark:bg-black/80 border border-slate-300/90 dark:border-white/20 text-slate-800 dark:text-slate-100 hover:bg-blue-700 hover:text-white dark:hover:bg-[#89D3BD] dark:hover:text-black hover:border-transparent transition-all duration-200 backdrop-blur-md hover:scale-110 active:scale-95 shadow-md touch-manipulation"
                             title="Reset Zoom"
+                            aria-label="Reset Zoom"
                         >
-                            <RotateCcw className="h-5 w-5 sm:h-6 sm:w-6" />
+                            <RotateCcw className="w-4 h-4 sm:w-5 sm:h-5 shrink-0" />
                         </button>
                         <button
                             onClick={handleDownload}
-                            className="p-2 sm:p-2 bg-white/85 dark:bg-white/10 border border-slate-300 dark:border-white/20 sm:border-slate-300 sm:dark:border-transparent rounded-full text-slate-800 dark:text-white hover:bg-blue-700 hover:text-white dark:hover:bg-[#89D3BD] dark:hover:text-black hover:border-transparent transition-all duration-300 backdrop-blur-md hover:scale-110 shadow-sm"
+                            className="w-9 h-9 sm:w-10 sm:h-10 aspect-square rounded-full flex items-center justify-center shrink-0 bg-white/90 dark:bg-black/80 border border-slate-300/90 dark:border-white/20 text-slate-800 dark:text-slate-100 hover:bg-blue-700 hover:text-white dark:hover:bg-[#89D3BD] dark:hover:text-black hover:border-transparent transition-all duration-200 backdrop-blur-md hover:scale-110 active:scale-95 shadow-md touch-manipulation"
                             title="Download"
+                            aria-label="Download"
                         >
-                            <Download className="h-5 w-5 sm:h-6 sm:w-6" />
+                            <Download className="w-4 h-4 sm:w-5 sm:h-5 shrink-0" />
                         </button>
                         <button
                             onClick={closeLightbox}
-                            className="p-2.5 sm:p-2 bg-white/90 dark:bg-black/75 sm:bg-blue-700/80 dark:sm:bg-[#89D3BD]/80 border border-slate-300 dark:border-white/30 rounded-full text-slate-800 dark:text-white sm:text-white dark:sm:text-black hover:bg-red-600 hover:text-white hover:border-red-600 dark:hover:bg-red-600 dark:hover:text-white dark:hover:border-red-600 transition-all duration-300 sm:ml-2 backdrop-blur-md hover:scale-110 hover:rotate-90 shadow-2xl flex items-center justify-center"
+                            className="w-9 h-9 sm:w-10 sm:h-10 aspect-square rounded-full flex items-center justify-center shrink-0 bg-red-500/10 dark:bg-red-500/20 border border-red-300/70 dark:border-red-500/30 text-red-600 dark:text-red-400 hover:bg-red-600 hover:text-white dark:hover:bg-red-600 dark:hover:text-white hover:border-red-600 transition-all duration-200 backdrop-blur-md hover:scale-110 active:scale-95 hover:rotate-90 shadow-md touch-manipulation sm:ml-1"
                             title="Close"
                             aria-label="Close modal"
                         >
-                            <X className="h-5 w-5 sm:h-6 sm:w-6" />
+                            <X className="w-4 h-4 sm:w-5 sm:h-5 shrink-0" />
                         </button>
                     </div>
 
@@ -463,12 +469,13 @@ const Achievements = () => {
                                 } zoom-level-${zoomLevel.toString().replace('.', '-')}`}
                             onClick={(e) => e.stopPropagation()}
                         >
-                            <div className="absolute -inset-2.5 sm:-inset-4 bg-gradient-to-r from-blue-600 via-indigo-500 to-blue-700 dark:from-[#89D3BD] dark:to-cyan-400 rounded-2xl blur-2xl opacity-65 dark:opacity-50 animate-pulse pointer-events-none" />
-                            <img
-                                src={selectedItem.file}
-                                alt={selectedItem.title}
-                                className={`relative max-w-[85vw] max-h-[72vh] object-contain rounded-xl transition-all duration-300 ${isClosing ? 'border-0 shadow-none opacity-90' : 'border-2 sm:border-3 border-blue-600 dark:border-[#89D3BD] shadow-[0_0_35px_rgba(29,78,216,0.55),0_12px_40px_rgba(29,78,216,0.35)] dark:shadow-[0_0_35px_rgba(137,211,189,0.55),0_12px_40px_rgba(6,182,212,0.45)]'}`}
-                            />
+                            <div className="bg-white dark:bg-black rounded-2xl p-2 sm:p-3.5 border border-slate-200/90 dark:border-zinc-800 shadow-2xl flex items-center justify-center">
+                                <img
+                                    src={selectedItem.file}
+                                    alt={selectedItem.title}
+                                    className={`relative max-w-[85vw] max-h-[72vh] object-contain rounded-xl transition-all duration-300 ${isClosing ? 'opacity-90' : 'opacity-100'}`}
+                                />
+                            </div>
                         </div>
                     </div>
 

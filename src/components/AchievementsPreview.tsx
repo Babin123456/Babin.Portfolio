@@ -145,7 +145,7 @@ const AchievementsPreview = () => {
                 onClick={() => setSelectedImage({ file: achievement.file, title: achievement.title })}
               >
                 {/* Achievement Image */}
-                <div className="relative h-44 overflow-hidden bg-slate-200/50 dark:bg-slate-800/50">
+                <div className="relative h-44 overflow-hidden bg-white dark:bg-zinc-950 border-b border-slate-100 dark:border-zinc-900">
                   {/* Shimmer loading skeleton */}
                   {!loadedImages.has(achievement.file) && !imageErrors.has(achievement.file) && (
                     <div className="absolute inset-0 z-0 flex items-center justify-center overflow-hidden">
@@ -226,19 +226,18 @@ const AchievementsPreview = () => {
           <div className={`relative max-w-[90vw] max-h-[90vh] transition-all duration-300 ${isClosing ? "scale-90 opacity-0" : "scale-100 opacity-100"}`}>
             <button
               onClick={handleCloseModal}
-              className="fixed top-4 right-4 z-50 p-2.5 sm:p-2 rounded-full bg-white/90 dark:bg-black/75 text-slate-800 dark:text-white hover:text-white hover:bg-red-600 hover:border-red-600 border border-slate-300 dark:border-white/30 backdrop-blur-md shadow-2xl transition-all duration-300 hover:scale-110 active:scale-95 flex items-center justify-center"
+              className="fixed top-3 right-3 sm:top-4 sm:right-4 z-50 w-9 h-9 sm:w-10 sm:h-10 aspect-square rounded-full bg-red-500/10 dark:bg-red-500/20 text-red-600 dark:text-red-400 hover:text-white hover:bg-red-600 hover:border-red-600 border border-red-300/70 dark:border-red-500/30 backdrop-blur-md shadow-md transition-all duration-200 hover:scale-110 active:scale-95 hover:rotate-90 flex items-center justify-center shrink-0 touch-manipulation cursor-pointer"
               aria-label="Close image"
             >
-              <X className="h-6 w-6 sm:h-7 sm:w-7" />
+              <X className="w-4 h-4 sm:w-5 sm:h-5 shrink-0" />
             </button>
-            <div className="relative">
-              <div className="absolute -inset-3 sm:-inset-5 bg-gradient-to-r from-blue-600 via-indigo-500 to-blue-700 dark:from-[#89D3BD] dark:to-cyan-400 rounded-3xl blur-2xl opacity-70 dark:opacity-50 animate-pulse pointer-events-none" />
+            <div className="bg-white dark:bg-black rounded-2xl p-2 sm:p-3.5 border border-slate-200/90 dark:border-zinc-800 shadow-2xl flex items-center justify-center">
               <img
                 src={encodeURI(selectedImage.file)}
                 alt={selectedImage.title}
                 loading="lazy"
                 decoding="async"
-                className="relative rounded-2xl shadow-[0_0_35px_rgba(29,78,216,0.55),0_12px_40px_rgba(29,78,216,0.35)] dark:shadow-[0_0_35px_rgba(137,211,189,0.55),0_12px_40px_rgba(6,182,212,0.45)] max-w-full max-h-[80vh] object-contain border-2 sm:border-4 border-blue-600 dark:border-[#89D3BD]"
+                className="relative rounded-xl max-w-full max-h-[80vh] object-contain"
                 onClick={(e) => e.stopPropagation()}
               />
             </div>

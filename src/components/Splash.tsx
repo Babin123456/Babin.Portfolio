@@ -76,6 +76,9 @@ const <span class="highlight">Babin</span> = await Developer.awaken({
                         <span className="ide-btn maximize"></span>
                     </div>
                     <div className="ide-title">Developer.ts — <span className="title-highlight">Babin.Portfolio</span></div>
+                    <div className="ide-header-right">
+                        <span className="ide-percent-tag">{percent}%</span>
+                    </div>
                 </div>
                 <div className="ide-body">
                     <div className="ide-avatar-container">
