@@ -20,7 +20,8 @@ const HAS_SEGMENTER = typeof Intl !== "undefined" && "Segmenter" in Intl
 
 export const splitIntoCharacters = (text: string): string[] => {
   if (HAS_SEGMENTER) {
-    const segmenter = new Intl.Segmenter("en", { granularity: "grapheme" })
+    const SegmenterClass = (Intl as unknown as { Segmenter: new (locales?: string, options?: { granularity?: string }) => { segment: (input: string) => Iterable<{ segment: string }> } }).Segmenter
+    const segmenter = new SegmenterClass("en", { granularity: "grapheme" })
     return Array.from(segmenter.segment(text), ({ segment }) => segment)
   }
   return Array.from(text)
