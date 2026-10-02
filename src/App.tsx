@@ -8,6 +8,7 @@ import Splash from "./components/Splash";
 import ErrorBoundary from "./components/ErrorBoundary";
 
 import SmoothScroll from "./components/SmoothScroll";
+import CursorSparkles from "./components/CursorSparkles";
 
 const Index = lazy(() => import("./pages/Index"));
 const NotFound = lazy(() => import("./pages/NotFound"));
@@ -23,6 +24,7 @@ const App = () => {
       <QueryClientProvider client={queryClient}>
         <TooltipProvider>
           <SmoothScroll>
+            <CursorSparkles />
             <Toaster />
             <Sonner />
             {showSplash && (
