@@ -1,9 +1,9 @@
+import { useState } from "react";
 import { useInView } from "react-intersection-observer";
 import { motion } from "framer-motion";
 import { Card } from "@/components/ui/card";
 import SectionTitle from "./SectionTitle";
-import { useState } from "react";
-import { X, FileText, ExternalLink, ZoomIn, ZoomOut, Download, RotateCcw } from "lucide-react";
+import { X, FileText, ExternalLink, Download } from "lucide-react";
 import { achievementsData } from "../data/achievements";
 import StudyBackground from "./StudyBackground";
 
@@ -416,30 +416,6 @@ const Achievements = () => {
                         className={`fixed top-3 right-3 sm:top-4 sm:right-4 flex items-center gap-1.5 sm:gap-2 z-50 flex-nowrap transition-all duration-300 ${isClosing ? 'opacity-0 -translate-y-10 pointer-events-none' : 'opacity-100 translate-y-0'
                             }`}
                     >
-                        <button
-                            onClick={handleZoomIn}
-                            className="w-9 h-9 sm:w-10 sm:h-10 aspect-square rounded-full flex items-center justify-center shrink-0 bg-white/90 dark:bg-black/80 border border-slate-300/90 dark:border-white/20 text-slate-800 dark:text-slate-100 hover:bg-blue-700 hover:text-white dark:hover:bg-[#89D3BD] dark:hover:text-black hover:border-transparent transition-all duration-200 backdrop-blur-md hover:scale-110 active:scale-95 shadow-md touch-manipulation"
-                            title="Zoom In"
-                            aria-label="Zoom In"
-                        >
-                            <ZoomIn className="w-4 h-4 sm:w-5 sm:h-5 shrink-0" />
-                        </button>
-                        <button
-                            onClick={handleZoomOut}
-                            className="w-9 h-9 sm:w-10 sm:h-10 aspect-square rounded-full flex items-center justify-center shrink-0 bg-white/90 dark:bg-black/80 border border-slate-300/90 dark:border-white/20 text-slate-800 dark:text-slate-100 hover:bg-blue-700 hover:text-white dark:hover:bg-[#89D3BD] dark:hover:text-black hover:border-transparent transition-all duration-200 backdrop-blur-md hover:scale-110 active:scale-95 shadow-md touch-manipulation"
-                            title="Zoom Out"
-                            aria-label="Zoom Out"
-                        >
-                            <ZoomOut className="w-4 h-4 sm:w-5 sm:h-5 shrink-0" />
-                        </button>
-                        <button
-                            onClick={handleResetZoom}
-                            className="w-9 h-9 sm:w-10 sm:h-10 aspect-square rounded-full flex items-center justify-center shrink-0 bg-white/90 dark:bg-black/80 border border-slate-300/90 dark:border-white/20 text-slate-800 dark:text-slate-100 hover:bg-blue-700 hover:text-white dark:hover:bg-[#89D3BD] dark:hover:text-black hover:border-transparent transition-all duration-200 backdrop-blur-md hover:scale-110 active:scale-95 shadow-md touch-manipulation"
-                            title="Reset Zoom"
-                            aria-label="Reset Zoom"
-                        >
-                            <RotateCcw className="w-4 h-4 sm:w-5 sm:h-5 shrink-0" />
-                        </button>
                         <button
                             onClick={handleDownload}
                             className="w-9 h-9 sm:w-10 sm:h-10 aspect-square rounded-full flex items-center justify-center shrink-0 bg-white/90 dark:bg-black/80 border border-slate-300/90 dark:border-white/20 text-slate-800 dark:text-slate-100 hover:bg-blue-700 hover:text-white dark:hover:bg-[#89D3BD] dark:hover:text-black hover:border-transparent transition-all duration-200 backdrop-blur-md hover:scale-110 active:scale-95 shadow-md touch-manipulation"
