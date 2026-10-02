@@ -21,7 +21,7 @@ const openSourceCategories = [
     "Elite Coders Summer of Code (ECSoC) Certificates",
 ];
 const technicalCourseCategories = ["AWS", "CISCO", "Cognitive Class", "GeeksforGeeks", "Google", "GTech Learn", "HackerRank", "HCL Guvi", "HP Life", "IBM", "Infosys Springboard", "Microsoft", "Microsoft Certifications", "Pantech e Learning", "Qualcomm", "Saylor Academy", "Scaler", "SimpliLearn", "Skill Nation", "Udemy", "ETS", "Oracle", "FutureSkillsPrime"];
-const bootcampCategories = ["Events & Hackathons", "Hack2Skill", "Kaggle", "Let's Upgrade", "MyBharat", "myGov", "Skill India", "Unstop"];
+const bootcampCategories = ["Events & Hackathons", "Hack2Skill", "Kaggle", "LU", "MyBharat", "myGov", "Skill India", "Unstop"];
 const internshipCategories = ["Codec Technologies", "Infosys Springboard Internships", "Oasis Infobyte", "The Developers Arena"];
 const badgeCategories = ["AWS Badges", "CISCO Badges", "GFG Badges", "Google Badges", "Holopin Badges", "HP Life Badges", "IndiaAI Badges", "LeetCode Badges", "Microsoft Badges", "Qualcomm Badges", "Unstop Badges", "Oracle Badges", "IBM Badges", "Agents League Badges"];
 
@@ -47,7 +47,7 @@ const Achievements = () => {
 
     const getAllAchievements = () => {
         return achievementsData.map(cat => {
-            const categoryName = cat.category === "LinkedIn Learning (LU)" ? "Let's Upgrade" : cat.category;
+            const categoryName = (cat.category === "Let's Upgrade" || cat.category === "LinkedIn Learning (LU)") ? "LU" : cat.category;
             return { ...cat, category: categoryName };
         }).filter(cat => cat.items.length > 0);
     };
