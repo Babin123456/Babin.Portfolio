@@ -159,39 +159,40 @@ const StudyBackground = () => {
         }
       }
 
-      // 2. Draw mouse quantum laser threads
+      // 2. Mouse interaction: Web spreading away from cursor on hover (repel force)
       if (mouse.active) {
-        const mouseMaxDist = 135;
-        const mouseMaxDistSq = mouseMaxDist * mouseMaxDist;
+        const mouseRepelDist = 150;
+        const mouseRepelDistSq = mouseRepelDist * mouseRepelDist;
         for (let i = 0; i < particles.length; i++) {
           const p = particles[i];
-          const dx = mouse.x - p.x;
-          const dy = mouse.y - p.y;
+          const dx = p.x - mouse.x;
+          const dy = p.y - mouse.y;
           const distSq = dx * dx + dy * dy;
 
-          if (distSq < mouseMaxDistSq) {
+          if (distSq < mouseRepelDistSq && distSq > 0.001) {
             const dist = Math.sqrt(distSq);
-            const factor = dark ? 0.55 : 0.7;
-            const laserAlpha = (1 - dist / mouseMaxDist) * factor;
+            // Strong dynamic repulsion pushing particles outward away from cursor
+            const force = ((mouseRepelDist - dist) / mouseRepelDist) * 1.8;
+            p.vx += (dx / dist) * force * 0.45;
+            p.vy += (dy / dist) * force * 0.45;
+
+            // Draw subtle tension web lines while pushing away
+            const factor = dark ? 0.4 : 0.55;
+            const laserAlpha = (1 - dist / mouseRepelDist) * factor;
             ctx.beginPath();
             ctx.moveTo(p.x, p.y);
             ctx.lineTo(mouse.x, mouse.y);
 
             const tealLaser = dark
-              ? `rgba(137, 211, 189, ${laserAlpha})`
-              : `rgba(13, 148, 136, ${laserAlpha})`;
+              ? `rgba(137, 211, 189, ${laserAlpha * 0.6})`
+              : `rgba(13, 148, 136, ${laserAlpha * 0.6})`;
             const blueLaser = dark
-              ? `rgba(59, 130, 246, ${laserAlpha})`
-              : `rgba(29, 78, 216, ${laserAlpha})`;
+              ? `rgba(59, 130, 246, ${laserAlpha * 0.6})`
+              : `rgba(29, 78, 216, ${laserAlpha * 0.6})`;
 
             ctx.strokeStyle = p.colorType === "teal" ? tealLaser : blueLaser;
-            ctx.lineWidth = dark ? 1.1 : 1.35;
+            ctx.lineWidth = dark ? 0.8 : 1.0;
             ctx.stroke();
-
-            // Magnetic soft pull on nearby particles
-            const force = ((mouseMaxDist - dist) / mouseMaxDist) * 0.016;
-            p.vx += (dx / dist) * force;
-            p.vy += (dy / dist) * force;
           }
         }
       }
