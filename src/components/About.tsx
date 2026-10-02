@@ -798,36 +798,40 @@ const About = () => {
             
             <p className="text-sm sm:text-base md:text-lg font-medium italic text-foreground/90 leading-relaxed px-1 sm:px-3">
               "Connecting{" "}
-              <span className="relative inline-block not-italic font-semibold text-blue-700 dark:text-[#89D3BD] px-0.5">
+              <span className="relative inline-block not-italic font-semibold text-blue-700 dark:text-[#89D3BD] px-0.5 pb-1">
                 computer science concepts
                 <svg
-                  className="absolute left-0 -bottom-1 w-full h-2 text-blue-600 dark:text-[#89D3BD] overflow-visible"
-                  viewBox="0 0 100 12"
+                  className="absolute left-0 bottom-0 w-full h-1.5 text-blue-600 dark:text-[#89D3BD] overflow-visible"
+                  viewBox="0 0 100 8"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
                   preserveAspectRatio="none"
                 >
                   <path
-                    d="M2 7C25 1 75 1 98 8C75 11 25 11 2 7Z"
-                    fill="currentColor"
-                    opacity="0.85"
+                    d="M0 4 Q 12.5 0, 25 4 T 50 4 T 75 4 T 100 4"
+                    stroke="currentColor"
+                    strokeWidth="1.25"
+                    strokeLinecap="round"
+                    fill="none"
                   />
                 </svg>
               </span>{" "}
               with hands-on coding to{" "}
-              <span className="relative inline-block not-italic font-semibold text-blue-700 dark:text-[#89D3BD] px-0.5">
+              <span className="relative inline-block not-italic font-semibold text-blue-700 dark:text-[#89D3BD] px-0.5 pb-1">
                 create software that makes a real difference.
                 <svg
-                  className="absolute left-0 -bottom-1 w-full h-2 text-blue-600 dark:text-[#89D3BD] overflow-visible"
-                  viewBox="0 0 100 12"
+                  className="absolute left-0 bottom-0 w-full h-1.5 text-blue-600 dark:text-[#89D3BD] overflow-visible"
+                  viewBox="0 0 100 8"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
                   preserveAspectRatio="none"
                 >
                   <path
-                    d="M2 7C25 1 75 1 98 8C75 11 25 11 2 7Z"
-                    fill="currentColor"
-                    opacity="0.85"
+                    d="M0 4 Q 12.5 0, 25 4 T 50 4 T 75 4 T 100 4"
+                    stroke="currentColor"
+                    strokeWidth="1.25"
+                    strokeLinecap="round"
+                    fill="none"
                   />
                 </svg>
               </span>"
