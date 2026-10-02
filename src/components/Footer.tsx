@@ -130,12 +130,12 @@ const Footer = () => {
               <Star className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-blue-700 dark:text-[#89D3BD] fill-blue-700 dark:fill-[#89D3BD] animate-pulse shrink-0 hidden sm:inline-block" />
             </p>
 
-            <p className="text-muted-foreground flex flex-wrap items-center justify-center gap-2 text-xs sm:text-sm md:text-base px-2">
-              <Code2 className="h-4 w-4 text-blue-700 dark:text-[#89D3BD] fill-blue-700 dark:fill-[#89D3BD] shrink-0" />
-              <span className="font-medium text-blue-700 dark:text-[#89D3BD]">
+            <p className="text-muted-foreground flex items-center justify-center gap-1 sm:gap-2 text-[10.5px] xs:text-[11.5px] sm:text-sm md:text-base px-1 whitespace-nowrap overflow-x-auto scrollbar-none text-center">
+              <Code2 className="h-3 w-3 sm:h-4 sm:w-4 text-blue-700 dark:text-[#89D3BD] fill-blue-700 dark:fill-[#89D3BD] shrink-0" />
+              <span className="font-medium text-blue-700 dark:text-[#89D3BD] tracking-tight sm:tracking-normal shrink-0">
                 © {currentYear} Crafted with Logic & Dedication by <b>Babin Bid</b>
               </span>
-              <Code2 className="h-4 w-4 text-blue-700 dark:text-[#89D3BD] fill-blue-700 dark:fill-[#89D3BD] shrink-0" />
+              <Code2 className="h-3 w-3 sm:h-4 sm:w-4 text-blue-700 dark:text-[#89D3BD] fill-blue-700 dark:fill-[#89D3BD] shrink-0" />
             </p>
           </div>
         </div>
