@@ -31,12 +31,12 @@ const Hero = () => {
   return (
     <section
       id="home"
-      className="min-h-[80vh] md:min-h-screen flex items-center justify-center relative overflow-hidden pt-10 md:pt-16"
+      className="min-h-screen flex items-center justify-center relative overflow-hidden pt-14 pb-4 md:pt-16 md:pb-8"
     >
       <StudyBackground />
-      <div className="container mx-auto px-4 py-8 md:py-12 z-10">
+      <div className="container mx-auto px-4 py-4 md:py-12 z-10">
         <motion.div
-          className="max-w-4xl mx-auto text-center space-y-4 md:space-y-6 mt-4 md:mt-12"
+          className="max-w-4xl mx-auto text-center space-y-3.5 md:space-y-6 mt-1 md:mt-12"
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: "easeOut" }}
@@ -183,7 +183,7 @@ const Hero = () => {
             </motion.div>
           </div>
 
-          <div className="flex items-center justify-center gap-4 pt-8 flex-wrap">
+          <div className="flex items-center justify-center gap-4 pt-4 md:pt-8 flex-wrap">
             <a
               href="https://github.com/Babin123456"
               target="_blank"
@@ -201,7 +201,7 @@ const Hero = () => {
               <Github className="h-6 w-6 text-foreground/60 group-hover:text-gray-700 dark:group-hover:text-gray-300 transition-colors relative z-10" />
             </a>
             <a
-              href="https://www.linkedin.com/in/babin-bid-853728293"
+              href="https://www.linkedin.com/in/babinbid123"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Visit LinkedIn profile"
@@ -233,10 +233,10 @@ const Hero = () => {
           </div>
 
           {/* Interactive scroll indicator */}
-          <div className="pt-4 md:pt-6 animate-bounce cursor-pointer" onClick={() => scrollToSection('about')}>
+          <div className="pt-3 md:pt-6 animate-bounce cursor-pointer" onClick={() => scrollToSection('about')}>
             <div className="text-center">
-              <p className="text-sm text-muted-foreground mb-0">Explore More</p>
-              <ChevronDown className="h-6 w-6 text-primary mx-auto" />
+              <p className="text-xs sm:text-sm text-muted-foreground mb-0">Explore More</p>
+              <ChevronDown className="h-5 w-5 sm:h-6 sm:w-6 text-primary mx-auto" />
             </div>
           </div>
         </motion.div>
