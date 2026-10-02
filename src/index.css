@@ -1703,22 +1703,23 @@ html[data-magicui-theme-vt="active"] *::after {
   }
 
   /* Increase touch target sizes to 48px minimum (Apple HIG), excluding compact chips and badges */
-  button:not(.terminal-chip-btn):not([class*="rounded-md"]):not([class*="rounded-full"]):not([class*="py-0.5"]):not([class*="py-1"]),
+  button:not(.terminal-chip-btn):not(.terminal-action-btn):not([class*="rounded-md"]):not([class*="rounded-full"]):not([class*="py-0.5"]):not([class*="py-1"]),
   .button,
   input[type="button"],
   input[type="submit"],
-  [role="button"]:not(.terminal-chip-btn) {
+  [role="button"]:not(.terminal-chip-btn):not(.terminal-action-btn) {
     min-height: 48px;
     min-width: 48px;
   }
 
-  .terminal-chip-btn {
+  .terminal-chip-btn,
+  .terminal-action-btn {
     min-height: unset !important;
     min-width: unset !important;
   }
 
   /* Make interactive button elements tappable without breaking inline links */
-  button:not([class*="p-"]),
+  button:not(.terminal-chip-btn):not(.terminal-action-btn):not([class*="p-"]),
   select {
     min-height: 44px;
   }
