@@ -569,7 +569,7 @@ const About = () => {
                         <button
                           type="button"
                           onClick={() => handleExecuteCommand("clear")}
-                          className="text-[10px] sm:text-[11px] text-slate-400 hover:text-white flex items-center gap-1 transition-colors px-2 py-0.5 rounded bg-white/5 hover:bg-white/10 shrink-0"
+                          className="terminal-action-btn text-[10px] sm:text-[11px] text-slate-400 hover:text-white flex items-center gap-1 transition-colors px-2 py-0.5 rounded bg-white/5 hover:bg-white/10 shrink-0"
                           title="Clear screen buffer"
                         >
                           <RotateCcw className="w-3 h-3" />
@@ -635,7 +635,7 @@ const About = () => {
                         ))}
                       </div>
 
-                      {/* Interactive Prompt Line - Pure PowerShell style, optimized for mobile */}
+                      {/* Interactive Prompt Line - Pure PowerShell style, identical in desktop and mobile */}
                       <div className="flex items-center gap-1.5 sm:gap-2 mt-3 pt-2.5 sm:mt-4 sm:pt-3 border-t border-white/10 text-xs sm:text-[13px] font-mono">
                         <span className="text-[#38bdf8] font-bold shrink-0 select-none text-[11px] sm:text-xs">
                           PS&gt;
@@ -656,7 +656,7 @@ const About = () => {
                           type="button"
                           onClick={() => handleExecuteCommand()}
                           disabled={isTypingAnimation}
-                          className="px-2.5 py-1 sm:px-3 sm:py-1 rounded bg-[#1d4ed8] hover:bg-blue-600 disabled:opacity-50 text-white text-[11px] sm:text-xs font-mono transition-colors shrink-0 shadow-sm"
+                          className="terminal-action-btn px-2.5 py-1 sm:px-3 sm:py-1 rounded bg-[#1d4ed8] hover:bg-blue-600 disabled:opacity-50 text-white text-[11px] sm:text-xs font-mono transition-colors shrink-0 shadow-sm"
                         >
                           Run
                         </button>
@@ -723,8 +723,8 @@ const About = () => {
                     </div>
 
                     {/* Right Column: Editorial Narrative */}
-                    <div className="lg:col-span-8 space-y-5">
-                      <div className="flex flex-wrap items-center gap-2">
+                    <div className="lg:col-span-8 space-y-5 text-center lg:text-left">
+                      <div className="flex flex-wrap items-center justify-center lg:justify-start gap-2">
                         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-blue-700/10 dark:bg-[#89D3BD]/10 text-blue-700 dark:text-[#89D3BD] text-xs font-semibold uppercase tracking-wider">
                           <GraduationCap className="w-4 h-4" />
                           B.Tech CSE • Adamas University
@@ -743,8 +743,8 @@ const About = () => {
                         I am a Final Year Computer Science student at Adamas University and a Transpiler Design Intern at TCG CREST. I enjoy solving challenging math problems, creating responsive web applications, and exploring AI, Data Science, and UI design. I actively contribute to open-source projects and love turning ideas into real-world software.
                       </p>
 
-                      {/* Editorial Tag Pills */}
-                      <div className="flex flex-wrap gap-2 pt-1">
+                      {/* Editorial Tag Pills - Centered on mobile, start-aligned on desktop */}
+                      <div className="flex flex-wrap items-center justify-center lg:justify-start gap-2 pt-1">
                         {[
                           { label: "Transpiler Design", icon: Cpu },
                           { label: "Quantum Computing", icon: Zap },
