@@ -418,19 +418,19 @@ const Achievements = () => {
                     >
                         <button
                             onClick={handleDownload}
-                            className="w-9 h-9 sm:w-10 sm:h-10 aspect-square rounded-full flex items-center justify-center shrink-0 bg-white/90 dark:bg-black/80 border border-slate-300/90 dark:border-white/20 text-slate-800 dark:text-slate-100 hover:bg-blue-700 hover:text-white dark:hover:bg-[#89D3BD] dark:hover:text-black hover:border-transparent transition-all duration-200 backdrop-blur-md hover:scale-110 active:scale-95 shadow-md touch-manipulation"
+                            className="w-10 h-10 min-w-[2.5rem] min-h-[2.5rem] rounded-full flex items-center justify-center shrink-0 bg-white/95 dark:bg-black/90 border-2 border-slate-300 dark:border-white/40 text-slate-800 dark:text-slate-100 hover:bg-blue-700 hover:text-white dark:hover:bg-[#89D3BD] dark:hover:text-black hover:border-blue-700 dark:hover:border-[#89D3BD] transition-all duration-200 backdrop-blur-md hover:scale-110 active:scale-95 shadow-lg touch-manipulation focus:outline-none"
                             title="Download"
                             aria-label="Download"
                         >
-                            <Download className="w-4 h-4 sm:w-5 sm:h-5 shrink-0" />
+                            <Download className="w-5 h-5 shrink-0" />
                         </button>
                         <button
                             onClick={closeLightbox}
-                            className="w-9 h-9 sm:w-10 sm:h-10 aspect-square rounded-full flex items-center justify-center shrink-0 bg-red-500/10 dark:bg-red-500/20 border border-red-300/70 dark:border-red-500/30 text-red-600 dark:text-red-400 hover:bg-red-600 hover:text-white dark:hover:bg-red-600 dark:hover:text-white hover:border-red-600 transition-all duration-200 backdrop-blur-md hover:scale-110 active:scale-95 hover:rotate-90 shadow-md touch-manipulation sm:ml-1"
+                            className="w-10 h-10 min-w-[2.5rem] min-h-[2.5rem] rounded-full flex items-center justify-center shrink-0 bg-red-500/10 dark:bg-red-500/20 border-2 border-red-500/70 dark:border-red-500/60 text-red-600 dark:text-red-400 hover:bg-red-600 hover:text-white dark:hover:bg-red-600 dark:hover:text-white hover:border-red-600 transition-all duration-200 backdrop-blur-md hover:scale-110 active:scale-95 hover:rotate-90 shadow-lg touch-manipulation focus:outline-none sm:ml-1"
                             title="Close"
                             aria-label="Close modal"
                         >
-                            <X className="w-4 h-4 sm:w-5 sm:h-5 shrink-0" />
+                            <X className="w-5 h-5 shrink-0" />
                         </button>
                     </div>
 
