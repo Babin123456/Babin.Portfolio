@@ -1702,14 +1702,19 @@ html[data-magicui-theme-vt="active"] *::after {
     padding-bottom: env(safe-area-inset-bottom);
   }
 
-  /* Increase touch target sizes to 48px minimum (Apple HIG) */
-  button,
+  /* Increase touch target sizes to 48px minimum (Apple HIG), excluding compact chips and badges */
+  button:not(.terminal-chip-btn):not([class*="rounded-md"]):not([class*="rounded-full"]):not([class*="py-0.5"]):not([class*="py-1"]),
   .button,
   input[type="button"],
   input[type="submit"],
-  [role="button"] {
+  [role="button"]:not(.terminal-chip-btn) {
     min-height: 48px;
     min-width: 48px;
+  }
+
+  .terminal-chip-btn {
+    min-height: unset !important;
+    min-width: unset !important;
   }
 
   /* Make interactive button elements tappable without breaking inline links */
@@ -1732,8 +1737,8 @@ html[data-magicui-theme-vt="active"] *::after {
     animation-duration: 0.4s !important;
   }
 
-  /* Stack flex items vertically on mobile when needed */
-  .flex-wrap {
+  /* Stack flex items vertically on mobile when needed, excluding compact badge rows */
+  .flex-wrap:not(.directives-container) {
     gap: 0.75rem;
   }
 
@@ -1808,5 +1813,35 @@ html[data-magicui-theme-vt="active"] *::after {
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* CLI Terminal Input - Pure PowerShell / CMD aesthetic (no bounding box on click) */
+  .cli-terminal-input,
+  .cli-terminal-input:focus,
+  .cli-terminal-input:focus-visible {
+    outline: none !important;
+    border: none !important;
+    box-shadow: none !important;
+    ring: 0 !important;
+  }
+
+  /* Terminal Scrollbar */
+  .terminal-custom-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.3) rgba(0, 0, 0, 0.4);
+  }
+  .terminal-custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+  }
+  .terminal-custom-scrollbar::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 3px;
+  }
+  .terminal-custom-scrollbar::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.25);
+    border-radius: 3px;
+  }
+  .terminal-custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: rgba(137, 211, 189, 0.6);
   }
 }
