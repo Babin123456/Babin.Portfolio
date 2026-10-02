@@ -2,7 +2,6 @@ import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence, Variants } from "framer-motion";
 import {
   FileText,
-  MessageCircle,
   GraduationCap,
   Quote,
   X,
@@ -26,7 +25,6 @@ import {
 } from "lucide-react";
 import SectionTitle from "./SectionTitle";
 import StudyBackground from "./StudyBackground";
-import { previewThenDownload } from "@/lib/utils";
 
 interface CommandOutput {
   id?: string;
@@ -766,26 +764,6 @@ const About = () => {
                   </motion.div>
                 )}
               </AnimatePresence>
-
-              {/* Action Buttons Below Either View */}
-              <div className="flex flex-col sm:flex-row gap-3 pt-6 border-t border-border/40 mt-6">
-                <button
-                  type="button"
-                  onClick={() => previewThenDownload('/Babin_Bid_Resume.pdf', 'Babin_Bid_Resume.pdf')}
-                  className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-blue-700 text-white dark:bg-[#89D3BD] dark:text-slate-900 font-bold text-sm shadow-sm hover:opacity-90 active:scale-95 transition-all"
-                >
-                  <FileText className="w-4 h-4" />
-                  Download Resume
-                </button>
-                <button
-                  type="button"
-                  onClick={() => document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' })}
-                  className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl border border-border/80 hover:border-blue-700 dark:hover:border-[#89D3BD] bg-background/60 text-foreground font-semibold text-sm hover:text-blue-700 dark:hover:text-[#89D3BD] active:scale-95 transition-all"
-                >
-                  <MessageCircle className="w-4 h-4" />
-                  Get In Touch
-                </button>
-              </div>
             </div>
           </motion.div>
 
