@@ -789,24 +789,47 @@ const About = () => {
             </div>
           </motion.div>
 
-          {/* Minimalist Editorial Quote Callout with Highlighter Effects */}
+          {/* Minimalist Editorial Quote Callout with Curved Underlines */}
           <motion.div
             variants={itemVariants}
             className="group rounded-2xl border border-border/50 bg-background/50 hover:bg-background/70 backdrop-blur-md p-5 sm:p-8 text-center max-w-2xl mx-auto relative overflow-hidden transition-all duration-300 hover:border-blue-500/40 dark:hover:border-[#89D3BD]/40 hover:shadow-[0_0_30px_rgba(29,78,216,0.12)] dark:hover:shadow-[0_0_30px_rgba(137,211,189,0.12)]"
           >
-            {/* Ambient Background Highlighter Aura */}
-            <div className="absolute -top-10 left-1/2 -translate-x-1/2 w-48 h-20 bg-blue-500/10 dark:bg-[#89D3BD]/10 rounded-full blur-2xl pointer-events-none group-hover:scale-125 transition-transform duration-500" />
-
             <Quote className="w-6 h-6 sm:w-8 sm:h-8 text-blue-600/30 dark:text-[#89D3BD]/30 mx-auto mb-3 group-hover:scale-110 transition-transform duration-300" />
             
             <p className="text-sm sm:text-base md:text-lg font-medium italic text-foreground/90 leading-relaxed px-1 sm:px-3">
               "Connecting{" "}
-              <span className="relative inline-block not-italic font-semibold text-blue-700 dark:text-[#89D3BD] px-1.5 py-0.5 rounded-md bg-blue-500/10 dark:bg-[#89D3BD]/10 border-b-2 border-blue-500/50 dark:border-[#89D3BD]/60 shadow-[0_2px_10px_rgba(29,78,216,0.15)] dark:shadow-[0_2px_10px_rgba(137,211,189,0.15)]">
+              <span className="relative inline-block not-italic font-semibold text-blue-700 dark:text-[#89D3BD] px-0.5">
                 computer science concepts
+                <svg
+                  className="absolute left-0 -bottom-1 w-full h-2 text-blue-600 dark:text-[#89D3BD] overflow-visible"
+                  viewBox="0 0 100 12"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  preserveAspectRatio="none"
+                >
+                  <path
+                    d="M2 7C25 1 75 1 98 8C75 11 25 11 2 7Z"
+                    fill="currentColor"
+                    opacity="0.85"
+                  />
+                </svg>
               </span>{" "}
               with hands-on coding to{" "}
-              <span className="relative inline-block not-italic font-semibold text-blue-700 dark:text-[#89D3BD] px-1.5 py-0.5 rounded-md bg-blue-500/10 dark:bg-[#89D3BD]/10 border-b-2 border-blue-500/50 dark:border-[#89D3BD]/60 shadow-[0_2px_10px_rgba(29,78,216,0.15)] dark:shadow-[0_2px_10px_rgba(137,211,189,0.15)]">
+              <span className="relative inline-block not-italic font-semibold text-blue-700 dark:text-[#89D3BD] px-0.5">
                 create software that makes a real difference.
+                <svg
+                  className="absolute left-0 -bottom-1 w-full h-2 text-blue-600 dark:text-[#89D3BD] overflow-visible"
+                  viewBox="0 0 100 12"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  preserveAspectRatio="none"
+                >
+                  <path
+                    d="M2 7C25 1 75 1 98 8C75 11 25 11 2 7Z"
+                    fill="currentColor"
+                    opacity="0.85"
+                  />
+                </svg>
               </span>"
             </p>
           </motion.div>
