@@ -237,7 +237,7 @@ const Skills: React.FC = () => {
                     className="mt-16 text-center"
                 >
                     <h3 className="text-xl md:text-2xl font-bold mb-6 text-blue-900 dark:text-cyan-300">Coding Profiles</h3>
-                    <div className="flex flex-wrap justify-center gap-4 md:gap-8">
+                    <div className="grid grid-cols-3 sm:flex sm:flex-wrap justify-center gap-2 sm:gap-4 md:gap-8 max-w-xl sm:max-w-4xl mx-auto">
                         {codingProfiles.map((profile, index) => (
                             <motion.a
                                 key={profile.name}
@@ -249,12 +249,12 @@ const Skills: React.FC = () => {
                                 viewport={{ once: true }}
                                 transition={{ duration: 0.4, delay: 0.3 + index * 0.1 }}
                                 whileHover={{ scale: 1.05, y: -2 }}
-                                className="flex items-center gap-3 px-6 py-3 rounded-xl bg-white/50 dark:bg-white/5 border border-slate-200 dark:border-white/10 hover:border-blue-500/50 dark:hover:border-[#89D3BD]/50 transition-all duration-300 shadow-sm hover:shadow-md backdrop-blur-sm group"
+                                className="flex flex-col sm:flex-row items-center justify-center gap-1.5 sm:gap-3 px-2 py-2.5 sm:px-6 sm:py-3 rounded-xl bg-white/50 dark:bg-white/5 border border-slate-200 dark:border-white/10 hover:border-blue-500/50 dark:hover:border-[#89D3BD]/50 transition-all duration-300 shadow-sm hover:shadow-md backdrop-blur-sm group text-center"
                             >
-                                <div className="p-1.5 rounded-lg bg-slate-100 dark:bg-white/5 group-hover:scale-110 transition-transform duration-300">
+                                <div className="p-1 sm:p-1.5 rounded-lg bg-slate-100 dark:bg-white/5 group-hover:scale-110 transition-transform duration-300 shrink-0">
                                     {getSkillIcon(profile.name)}
                                 </div>
-                                <span className="font-semibold text-slate-700 dark:text-slate-300 group-hover:text-blue-600 dark:group-hover:text-[#89D3BD]">
+                                <span className="font-semibold text-slate-700 dark:text-slate-300 group-hover:text-blue-600 dark:group-hover:text-[#89D3BD] text-[11px] sm:text-base leading-tight truncate max-w-full">
                                     {profile.name}
                                 </span>
                             </motion.a>
