@@ -1221,7 +1221,7 @@ export const achievementsData: AchievementCategory[] = [
         ]
     },
     {
-        "category": "Let's Upgrade",
+        "category": "LU",
         "items": [
             {
                 "title": "AI Agents Bootcamp",
