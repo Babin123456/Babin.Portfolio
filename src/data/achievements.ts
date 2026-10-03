@@ -749,6 +749,10 @@ export const achievementsData: AchievementCategory[] = [
                 "file": "/Achievements/HackerRank/Frontend_Developer_(React)_Certificate.webp"
             },
             {
+                "title": "Java Basic Certificate",
+                "file": "/Achievements/HackerRank/Java_Basic_Certificate.webp"
+            },
+            {
                 "title": "JavaScript Basic Certificate",
                 "file": "/Achievements/HackerRank/JavaScript_Basic.webp"
             },
