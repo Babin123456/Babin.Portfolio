@@ -145,7 +145,7 @@ const About = () => {
   const [isClosing, setIsClosing] = useState(false);
 
   // Interactive Hacker Terminal State
-  const [activeTab, setActiveTab] = useState<"terminal" | "bio">("terminal");
+  const [activeTab, setActiveTab] = useState<"terminal" | "bio">("bio");
   const [terminalInput, setTerminalInput] = useState("");
   const [isTypingAnimation, setIsTypingAnimation] = useState(false);
   const [history, setHistory] = useState<CommandOutput[]>([
@@ -515,27 +515,27 @@ const About = () => {
               <div className="grid grid-cols-2 sm:flex p-1 rounded-xl bg-muted/40 border border-border/50 text-xs font-semibold gap-1 shrink-0">
                 <button
                   type="button"
-                  onClick={() => setActiveTab("terminal")}
-                  className={`px-3 py-1.5 rounded-lg transition-all flex items-center justify-center gap-1.5 text-center text-xs ${
-                    activeTab === "terminal"
-                      ? "bg-blue-700 text-white dark:bg-[#89D3BD] dark:text-slate-900 shadow-sm"
-                      : "text-muted-foreground hover:text-foreground"
-                  }`}
-                >
-                  <TerminalIcon className="w-3.5 h-3.5" />
-                  <span>Terminal</span>
-                </button>
-                <button
-                  type="button"
                   onClick={() => setActiveTab("bio")}
-                  className={`px-3 py-1.5 rounded-lg transition-all flex items-center justify-center gap-1.5 text-center text-xs ${
+                  className={`px-3 py-1.5 rounded-lg transition-all flex items-center justify-center gap-1.5 text-center text-xs cursor-pointer ${
                     activeTab === "bio"
-                      ? "bg-blue-700 text-white dark:bg-[#89D3BD] dark:text-slate-900 shadow-sm"
+                      ? "bg-blue-700 text-white dark:bg-[#89D3BD] dark:text-slate-900 shadow-sm font-bold"
                       : "text-muted-foreground hover:text-foreground"
                   }`}
                 >
                   <FileText className="w-3.5 h-3.5" />
                   <span>Overview</span>
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setActiveTab("terminal")}
+                  className={`px-3 py-1.5 rounded-lg transition-all flex items-center justify-center gap-1.5 text-center text-xs cursor-pointer ${
+                    activeTab === "terminal"
+                      ? "bg-blue-700 text-white dark:bg-[#89D3BD] dark:text-slate-900 shadow-sm font-bold"
+                      : "text-muted-foreground hover:text-foreground"
+                  }`}
+                >
+                  <TerminalIcon className="w-3.5 h-3.5" />
+                  <span>Terminal</span>
                 </button>
               </div>
             </div>
@@ -727,9 +727,9 @@ const About = () => {
                           <GraduationCap className="w-4 h-4" />
                           B.Tech CSE • Adamas University
                         </div>
-                        <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-purple-500/10 border border-purple-500/20 text-purple-700 dark:text-purple-300 text-xs font-semibold">
-                          <Cpu className="w-3.5 h-3.5" />
-                          Transpiler Design Intern • TCG CREST
+                        <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-gradient-to-r from-blue-700/15 to-[#89D3BD]/20 dark:from-blue-700/25 dark:to-[#89D3BD]/20 border border-blue-700/30 dark:border-[#89D3BD]/35 text-slate-950 dark:text-[#89D3BD] font-bold text-xs shadow-sm">
+                          <Cpu className="w-3.5 h-3.5 text-blue-700 dark:text-[#89D3BD]" />
+                          <span className="font-extrabold">Transpiler Design Intern • TCG CREST</span>
                         </div>
                       </div>
 
@@ -841,10 +841,10 @@ const About = () => {
             >
               <button
                 onClick={handleCloseModal}
-                className="absolute -top-2 -right-2 sm:top-2 sm:right-2 p-2 rounded-full bg-black/70 text-white hover:text-red-400 border border-white/20 transition-all"
+                className="absolute -top-3 -right-3 sm:top-2 sm:right-2 w-10 h-10 aspect-square rounded-full bg-black/80 hover:bg-red-600 text-white border border-white/20 hover:border-red-600 flex items-center justify-center shadow-xl backdrop-blur-md transition-all duration-200 hover:scale-110 active:scale-95 cursor-pointer z-10"
                 aria-label="Close image"
               >
-                <X className="h-5 w-5" />
+                <X className="h-5 w-5 shrink-0" />
               </button>
 
               <img
