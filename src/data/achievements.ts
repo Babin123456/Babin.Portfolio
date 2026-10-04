@@ -827,7 +827,7 @@ export const achievementsData: AchievementCategory[] = [
             },
             {
                 "title": "No Code + AI How Testing Teams Can Automate Faster in 2026",
-                "file": "/Achievements/HCL Guvi/No_Code_+_AI_How_Testing_Teams_Can_Automate_Faster_in_2026.webp"
+                "file": "/Achievements/HCL Guvi/No_Code_and_AI_How_Testing_Teams_Can_Automate_Faster_in_2026.webp"
             },
             {
                 "title": "The Future of Full Stack Development Key Skills Needed in 2026",
