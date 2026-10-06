@@ -46,14 +46,12 @@ class ErrorBoundary extends Component<Props, State> {
             return (
                 <div className="min-h-screen flex items-center justify-center bg-background p-4">
                     <div className="max-w-md w-full text-center space-y-6">
-                        {/* Icon */}
                         <div className="flex justify-center">
                             <div className="p-4 rounded-full bg-destructive/10 border border-destructive/20">
                                 <AlertTriangle className="h-12 w-12 text-destructive" />
                             </div>
                         </div>
 
-                        {/* Message */}
                         <div className="space-y-2">
                             <h1 className="text-2xl font-bold text-foreground">
                                 Oops! Something went wrong
@@ -63,7 +61,6 @@ class ErrorBoundary extends Component<Props, State> {
                             </p>
                         </div>
 
-                        {/* Error details (development only) */}
                         {process.env.NODE_ENV === 'development' && this.state.error && (
                             <div className="p-4 rounded-lg bg-muted/50 border border-border text-left overflow-auto max-h-40">
                                 <p className="text-sm font-mono text-destructive">
@@ -77,7 +74,6 @@ class ErrorBoundary extends Component<Props, State> {
                             </div>
                         )}
 
-                        {/* Actions */}
                         <div className="flex flex-col sm:flex-row gap-3 justify-center">
                             <Button
                                 onClick={this.handleReload}
