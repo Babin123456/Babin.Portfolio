@@ -503,7 +503,7 @@ const About = () => {
     setTimeout(() => {
       setShowImageModal(false);
       setIsClosing(false);
-    }, 380);
+    }, 600);
   };
 
   return (
@@ -861,24 +861,30 @@ const About = () => {
         {showImageModal && (
           <motion.div
             initial={{ opacity: 0 }}
-            animate={{ opacity: isClosing ? 0 : 1 }}
+            animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.38, ease: "easeOut" }}
-            className={`fixed inset-0 z-50 flex items-center justify-center bg-[#FAF6EE]/90 dark:bg-black/90 backdrop-blur-2xl transition-opacity duration-380 ${
+            className={`fixed inset-0 z-50 flex items-center justify-center p-3 select-none ${
               isClosing ? "pointer-events-none" : ""
             }`}
-            onClick={handleCloseModal}
           >
+            {/* Backdrop background overlay */}
+            <div
+              className={`absolute inset-0 bg-[#FAF6EE]/90 dark:bg-black/90 backdrop-blur-2xl transition-all duration-600 ease-out ${
+                isClosing ? "opacity-0 backdrop-blur-none" : "opacity-100"
+              }`}
+              onClick={handleCloseModal}
+            />
+
             <motion.div
               initial={{ scale: 0.9, opacity: 0 }}
               animate={
                 isClosing
-                  ? { scale: 0.78, opacity: 0, y: 24, filter: "blur(4px)" }
-                  : { scale: 1, opacity: 1, y: 0, filter: "blur(0px)" }
+                  ? { scale: 0.68, opacity: 0, y: 36, rotate: -2, filter: "blur(6px)" }
+                  : { scale: 1, opacity: 1, y: 0, rotate: 0, filter: "blur(0px)" }
               }
-              exit={{ scale: 0.78, opacity: 0, y: 24, filter: "blur(4px)" }}
-              transition={{ duration: 0.38, ease: [0.25, 1, 0.5, 1] }}
-              className="relative max-w-[90vw] max-h-[90vh] p-3 sm:p-5 text-center bg-[#F5EDE0]/95 dark:bg-zinc-950/90 backdrop-blur-md rounded-3xl border border-[#E8DFC8] dark:border-zinc-800 shadow-2xl"
+              exit={{ scale: 0.68, opacity: 0, y: 36, filter: "blur(6px)" }}
+              transition={{ duration: 0.6, ease: [0.2, 0.9, 0.3, 1] }}
+              className="relative z-10 max-w-[90vw] max-h-[90vh] p-3 sm:p-5 text-center bg-[#F5EDE0]/95 dark:bg-zinc-950/90 backdrop-blur-md rounded-3xl border border-[#E8DFC8] dark:border-zinc-800 shadow-2xl"
               onClick={(e) => e.stopPropagation()}
             >
               <button
