@@ -12,12 +12,10 @@ const NotFound = () => {
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-background relative overflow-hidden">
-      {/* Background decorations */}
       <div className="absolute top-20 left-20 w-72 h-72 bg-primary/10 rounded-full blur-3xl animate-pulse" />
       <div className="absolute bottom-20 right-20 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl animate-pulse" />
 
       <div className="text-center z-10 px-4">
-        {/* Animated 404 */}
         <div className="relative mb-8">
           <h1 className="text-[10rem] md:text-[14rem] font-black text-blue-700 dark:text-[#89D3BD] leading-none select-none">
             404
@@ -27,14 +25,12 @@ const NotFound = () => {
           </div>
         </div>
 
-        {/* Icon */}
         <div className="mb-6 flex justify-center">
           <div className="p-4 rounded-full bg-muted/50 border border-border/50">
             <Search className="h-8 w-8 text-muted-foreground" />
           </div>
         </div>
 
-        {/* Message */}
         <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-3">
           Oops! Page Not Found
         </h2>
@@ -43,14 +39,12 @@ const NotFound = () => {
           Let's get you back on track!
         </p>
 
-        {/* Attempted path */}
         <div className="mb-8 p-3 rounded-lg bg-muted/30 border border-border/50 inline-block">
           <code className="text-sm text-muted-foreground">
             Attempted: <span className="text-primary">{location.pathname}</span>
           </code>
         </div>
 
-        {/* Action buttons */}
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
           <Button
             asChild
@@ -71,7 +65,6 @@ const NotFound = () => {
           </Button>
         </div>
 
-        {/* Quick links */}
         <div className="mt-12 pt-8 border-t border-border/30">
           <p className="text-sm text-muted-foreground mb-4">Or check out these sections:</p>
           <div className="flex flex-wrap gap-2 justify-center">
