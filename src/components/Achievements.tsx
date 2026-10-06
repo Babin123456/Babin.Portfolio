@@ -94,6 +94,18 @@ const Achievements = () => {
         setZoomLevel(1);
     }, [selectedItem]);
 
+    const closeLightbox = useCallback(() => {
+        setIsClosing(prev => {
+            if (prev) return prev;
+            setTimeout(() => {
+                setSelectedItem(null);
+                setZoomLevel(1);
+                setIsClosing(false);
+            }, 400);
+            return true;
+        });
+    }, []);
+
     // Keyboard navigation: Arrow keys & Escape
     useEffect(() => {
         const handleKeyDown = (e: KeyboardEvent) => {
@@ -129,7 +141,7 @@ const Achievements = () => {
                 window.removeEventListener("touchmove", preventScroll);
             };
         }
-    }, [selectedItem, handleNext, handlePrev]);
+    }, [selectedItem, handleNext, handlePrev, closeLightbox]);
 
     // Touch swipe handlers for mobile mode
     const handleTouchStart = (e: React.TouchEvent) => {
@@ -255,15 +267,6 @@ const Achievements = () => {
         }
     };
 
-    const closeLightbox = () => {
-        if (isClosing) return;
-        setIsClosing(true);
-        setTimeout(() => {
-            setSelectedItem(null);
-            setZoomLevel(1);
-            setIsClosing(false);
-        }, 400);
-    };
 
     const handleImageError = (file: string) => {
         setImageErrors(prev => new Set(prev).add(file));
