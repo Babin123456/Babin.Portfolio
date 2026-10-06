@@ -17,15 +17,12 @@ const Loader: React.FC<LoaderProps> = ({ minDurationMs = 5000, onFinish }) => {
     return (
         <div className="loader-container">
             <div className="loader-content">
-                {/* Main rotating ring */}
                 <div className="loader-ring">
                     <div className="loader-ring-inner"></div>
                 </div>
 
-                {/* Pulsing center circle */}
                 <div className="loader-pulse"></div>
 
-                {/* Loading text with animated dots */}
                 <div className="loader-text">
                     <span>Loading</span>
                     <span className="loader-dots">
