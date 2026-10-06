@@ -15,18 +15,17 @@ import Footer from "@/components/Footer";
 import BackToTop from "@/components/BackToTop";
 import SkipToContent from "@/components/SkipToContent";
 
+import ScrollStackSection from "@/components/ScrollStackSection";
+import { smoothScrollToTarget } from "@/lib/scrollUtils";
+
 const Index = () => {
   const location = useLocation();
 
   useEffect(() => {
-    // Handle hash-based navigation
     if (location.hash) {
-      const element = document.querySelector(location.hash);
-      if (element) {
-        setTimeout(() => {
-          element.scrollIntoView({ behavior: "smooth", block: "start" });
-        }, 100);
-      }
+      setTimeout(() => {
+        smoothScrollToTarget(location.hash, { headerOffset: 80 });
+      }, 150);
     }
   }, [location.hash]);
 
@@ -36,15 +35,35 @@ const Index = () => {
         <SkipToContent />
         <ParticlesBackground />
         <Header />
-        <main id="main-content">
-          <Hero />
-          <InteractiveStats />
-          <About />
-          <Skills />
-          <Projects />
-          <Research />
-          <AchievementsPreview />
-          <Contact />
+        <main id="main-content" className="relative overflow-x-clip">
+          <ScrollStackSection zIndex={1} isFirst>
+            <Hero />
+          </ScrollStackSection>
+
+          <ScrollStackSection zIndex={2}>
+            <InteractiveStats />
+            <About />
+          </ScrollStackSection>
+
+          <ScrollStackSection zIndex={3}>
+            <Skills />
+          </ScrollStackSection>
+
+          <ScrollStackSection zIndex={4}>
+            <Projects />
+          </ScrollStackSection>
+
+          <ScrollStackSection zIndex={5}>
+            <Research />
+          </ScrollStackSection>
+
+          <ScrollStackSection zIndex={6}>
+            <AchievementsPreview />
+          </ScrollStackSection>
+
+          <ScrollStackSection zIndex={7} isLast>
+            <Contact />
+          </ScrollStackSection>
         </main>
         <Footer />
         <BackToTop />
