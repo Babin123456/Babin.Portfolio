@@ -281,7 +281,7 @@ const Hero = () => {
               <Button
                 size="lg"
                 variant="outline"
-                className="border-primary/50 hover:bg-primary/10 hover:text-black dark:text-white transition-all duration-300 active:scale-95 w-full sm:w-auto rounded-full px-6"
+                className="border-primary/50 text-foreground hover:bg-primary/10 hover:text-blue-700 dark:hover:text-[#89D3BD] transition-all duration-300 active:scale-95 w-full sm:w-auto rounded-full px-6 font-semibold"
                 onClick={() => scrollToSection('contact')}
                 aria-label="Navigate to contact section"
               >
