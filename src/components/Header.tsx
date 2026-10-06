@@ -2,6 +2,7 @@ import { useState, useEffect, useRef, useMemo } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import ThemeToggle from "./ThemeToggle";
 import HamburgerMenu from "./HamburgerMenu";
+import { getElementTargetScroll, smoothScrollToTarget } from "@/lib/scrollUtils";
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -18,35 +19,55 @@ const Header = () => {
       setIsScrolled(window.scrollY > 50);
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Continuous, robust scroll-spy for active section detection & navbar marking
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveSection(entry.target.id);
-          }
-        });
-      },
-      {
-        rootMargin: "-50% 0px -50% 0px",
-        threshold: 0,
+    if (location.pathname !== "/") return;
+
+    const sectionIds = ["home", "about", "skills", "projects", "research", "achievements-preview", "contact"];
+
+    const updateActiveSection = () => {
+      const scrollY = window.scrollY;
+      const windowHeight = window.innerHeight;
+      const docHeight = document.documentElement.scrollHeight;
+
+      // At top of page -> Home
+      if (scrollY < 120) {
+        setActiveSection("home");
+        return;
       }
-    );
 
-    // Only observe sections on the home page
-    if (location.pathname === "/") {
-      const sections = ["home", "about", "skills", "projects", "research", "achievements-preview", "contact"];
-      sections.forEach((sectionId) => {
-        const element = document.getElementById(sectionId);
-        if (element) observer.observe(element);
-      });
-    }
+      // At bottom of page -> Contact
+      if (scrollY + windowHeight >= docHeight - 80) {
+        setActiveSection("contact");
+        return;
+      }
 
-    return () => observer.disconnect();
+      // Probe point at 35% from top of viewport for natural reading position
+      const probeY = scrollY + windowHeight * 0.35;
+      let current = "home";
+
+      for (const id of sectionIds) {
+        const top = getElementTargetScroll(`#${id}`, 0);
+        if (probeY >= top) {
+          current = id;
+        }
+      }
+
+      setActiveSection(current);
+    };
+
+    updateActiveSection();
+    window.addEventListener("scroll", updateActiveSection, { passive: true });
+    window.addEventListener("resize", updateActiveSection, { passive: true });
+
+    return () => {
+      window.removeEventListener("scroll", updateActiveSection);
+      window.removeEventListener("resize", updateActiveSection);
+    };
   }, [location.pathname]);
 
   const navItems = useMemo<{
@@ -95,16 +116,12 @@ const Header = () => {
     }
   }, [activeSection, navItems, location.pathname]);
 
-  const HEADER_OFFSET = 10; // px gap above section heading
+  const HEADER_OFFSET = 80; // 80px gap prevents header from obscuring section headings
 
   const smoothScrollTo = (href: string) => {
-    const element = document.querySelector(href);
-    if (element) {
-      const top = element.getBoundingClientRect().top + window.scrollY - HEADER_OFFSET;
-      window.scrollTo({ top, behavior: "smooth" });
-      setActiveSection(href.slice(1));
-      window.history.pushState(null, "", href);
-    }
+    smoothScrollToTarget(href, { headerOffset: HEADER_OFFSET });
+    setActiveSection(href === "/" || href === "#home" ? "home" : href.replace(/^#/, ""));
+    window.history.pushState(null, "", href === "#home" ? "/" : href);
   };
 
   const scrollToSection = (href: string) => {
@@ -130,13 +147,9 @@ const Header = () => {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-smooth ${isScrolled
-        ? isHomePage
-          ? "bg-background/05 backdrop-blur-xl shadow-card"
-          : "bg-background/95 shadow-sm border-b border-border/30"
-        : isHomePage
-          ? "bg-background/02 backdrop-blur-xl"
-          : "bg-background/95"
+      className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-300 ${isScrolled
+        ? "bg-background/85 dark:bg-[#070b14]/85 backdrop-blur-xl border-b border-slate-200/50 dark:border-white/10 shadow-sm"
+        : "bg-background/20 dark:bg-[#070b14]/20 backdrop-blur-md"
         }`}
     >
       <nav className="container mx-auto px-4 py-4 flex items-center justify-between">
@@ -159,7 +172,6 @@ const Header = () => {
           Babin.Portfolio
         </a>
 
-        {/* Desktop Navigation */}
         <div className="hidden md:block relative">
           <ul ref={navListRef} className="flex items-center gap-8 relative">
             {navItems.map((item, index) => (
@@ -190,7 +202,6 @@ const Header = () => {
             ))}
           </ul>
 
-          {/* Animated Line Indicator — only visible on homepage on desktop */}
           {location.pathname === "/" && (
             <div
               ref={lineRef}
@@ -202,7 +213,6 @@ const Header = () => {
         <div className="flex items-center gap-2">
           <ThemeToggle />
 
-          {/* Mobile Menu Button */}
           <HamburgerMenu
             isOpen={isMobileMenuOpen}
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -210,7 +220,6 @@ const Header = () => {
         </div>
       </nav>
 
-      {/* Mobile Menu */}
       <div
         className={`${isMobileMenuOpen ? '' : 'hidden'} md:hidden bg-background/10 backdrop-blur-2xl border-t border-border animate-fade-in`}
         id="mobile-menu"
