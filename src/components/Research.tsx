@@ -159,9 +159,7 @@ const Research = () => {
           transition={{ duration: 0.8 }}
         >
           <Card className="glass p-4 sm:p-8 lg:p-12 transition-all space-y-8 bg-[#FBF7F0]/90 dark:bg-black/50 border border-[#E8DFC8] dark:border-white/10 shadow-xl">
-            {/* Top Grid: Title, Authors, Badges, Links & Key Highlights (Equal 2 columns on lg) */}
             <div className="grid lg:grid-cols-2 gap-6 lg:gap-8 items-start">
-              {/* Left Column: Title, Affiliation, Authors & Abstract */}
               <div className="space-y-5 sm:space-y-6 text-center lg:text-left">
                 <div className="flex flex-wrap items-center justify-center lg:justify-start gap-2">
                   <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-700/10 dark:bg-[#89D3BD]/15 text-blue-700 dark:text-[#89D3BD] text-xs sm:text-sm font-bold border border-blue-700/30 dark:border-[#89D3BD]/30">
@@ -183,7 +181,6 @@ const Research = () => {
                   </p>
                 </div>
 
-                {/* Authors & Affiliation */}
                 <div className="p-3.5 sm:p-4 rounded-xl bg-[#F5EDE0] dark:bg-white/[0.04] border border-[#E8DFC8] dark:border-white/10 space-y-2.5 text-xs sm:text-sm shadow-sm text-left">
                   <div className="flex items-start gap-2">
                     <Users className="w-4 h-4 text-blue-700 dark:text-[#89D3BD] shrink-0 mt-0.5" />
@@ -226,7 +223,6 @@ const Research = () => {
                   </div>
                 </div>
 
-                {/* Abstract summary */}
                 <div className="text-slate-800 dark:text-slate-200 text-xs sm:text-sm leading-relaxed space-y-2">
                   <p>
                     The agricultural sector faces severe hardships due to uneven pricing of agri-horticultural commodities. 
@@ -248,9 +244,7 @@ const Research = () => {
                 </div>
               </div>
 
-              {/* Right Column: Highlights, Publication Metadata, Tech Stack & Action Buttons */}
               <div className="space-y-4">
-                {/* 3 Stat Badges */}
                 <div className="grid grid-cols-3 gap-2 sm:gap-3">
                   {highlights.map((item) => {
                     const Icon = item.icon;
@@ -279,7 +273,6 @@ const Research = () => {
                   })}
                 </div>
 
-                {/* Publication Details Card with gentle pop-up icon animation on hover */}
                 <Card className="group/section p-4 bg-[#F5EDE0] dark:bg-white/[0.04] border border-[#E8DFC8] dark:border-white/10 space-y-2.5 text-xs shadow-sm transition-all duration-300 hover:shadow-[0_10px_20px_rgba(29,78,216,0.18)] dark:hover:shadow-[0_10px_20px_rgba(137,211,189,0.18)]">
                   <div className="flex items-center gap-2 font-bold text-slate-900 dark:text-white border-b border-[#E8DFC8] dark:border-white/10 pb-2">
                     <div className="transition-transform duration-300 group-hover/section:scale-110 group-hover/section:-translate-y-0.5">
@@ -334,7 +327,6 @@ const Research = () => {
                   </div>
                 </Card>
 
-                {/* Tech Stack Matrix with ambient shadow effect on hover */}
                 <Card className="group/section bg-[#F5EDE0] dark:bg-white/[0.04] p-4 border border-[#E8DFC8] dark:border-white/10 shadow-sm transition-all duration-300 hover:shadow-[0_10px_20px_rgba(29,78,216,0.18)] dark:hover:shadow-[0_10px_20px_rgba(137,211,189,0.18)]">
                   <h4 className="font-bold text-xs sm:text-sm mb-2 flex items-center gap-1.5 text-slate-900 dark:text-white">
                     <div className="transition-transform duration-300 group-hover/section:scale-110 group-hover/section:-translate-y-0.5">
@@ -354,9 +346,7 @@ const Research = () => {
                   </div>
                 </Card>
 
-                {/* Action Buttons in 2 lines: Gradient strictly on Springer & EurekaMag */}
                 <div className="grid grid-cols-2 gap-2.5 pt-1">
-                  {/* Springer Link - Rich Gradient */}
                   <Button
                     size="sm"
                     asChild
@@ -374,7 +364,6 @@ const Research = () => {
                     </a>
                   </Button>
 
-                  {/* View PDF - Clean Non-Gradient Outline */}
                   <Button
                     size="sm"
                     variant="outline"
@@ -392,7 +381,6 @@ const Research = () => {
                     </a>
                   </Button>
 
-                  {/* Codebase - Clean Non-Gradient Outline */}
                   <Button
                     size="sm"
                     variant="outline"
@@ -410,7 +398,6 @@ const Research = () => {
                     </a>
                   </Button>
 
-                  {/* EurekaMag - Rich Gradient */}
                   <Button
                     size="sm"
                     asChild
@@ -430,7 +417,6 @@ const Research = () => {
               </div>
             </div>
 
-            {/* Middle Section: Performance Benchmark */}
             <div className="space-y-4 pt-4 border-t border-[#E8DFC8] dark:border-white/10">
               <div className="flex items-center gap-2">
                 <BarChart3 className="w-5 h-5 text-blue-700 dark:text-[#89D3BD]" />
@@ -444,14 +430,12 @@ const Research = () => {
                 </div>
               </div>
 
-              {/* MOBILE VIEW: Interactive Season Selector Tabs & Focused Active Season Card */}
               <div className="block md:hidden space-y-3">
                 <div className="p-3 rounded-lg bg-gradient-to-r from-blue-700/10 to-[#89D3BD]/15 border border-blue-700/20 dark:border-[#89D3BD]/30 text-xs text-slate-900 dark:text-slate-100 font-bold flex items-center gap-2">
                   <Trophy className="w-4 h-4 text-blue-700 dark:text-[#89D3BD] shrink-0" />
                   <span>Key Finding: <strong className="text-blue-700 dark:text-[#89D3BD]">Random Forest Regressor</strong> consistently achieves top accuracy (up to ~0.989 R²).</span>
                 </div>
 
-                {/* Mobile Season Selector Tabs */}
                 <div className="flex items-center justify-between gap-1 p-1 rounded-xl bg-[#EFE5D5] dark:bg-white/10 border border-[#E8DFC8] dark:border-white/10">
                   {(['Winter', 'Monsoon', 'Summer'] as const).map((season) => (
                     <button
@@ -468,7 +452,6 @@ const Research = () => {
                   ))}
                 </div>
 
-                {/* Active Season Card with AnimatePresence */}
                 {(() => {
                   const currentSeason = seasonsList.find((s) => s.key === activeSeasonTab) || seasonsList[0];
                   return (
@@ -495,7 +478,6 @@ const Research = () => {
                           <strong className="text-slate-950 dark:text-white font-extrabold">Crops Covered:</strong> {currentSeason.crops}
                         </div>
 
-                        {/* Top Performer Details Box */}
                         <div className="bg-[#FAF4E8] dark:bg-black/40 p-3 rounded-xl border border-[#E8DFC8] dark:border-white/10 space-y-2">
                           <div className="flex items-center justify-between text-xs pb-1 border-b border-[#E8DFC8]/60 dark:border-white/5">
                             <span className="font-black text-blue-800 dark:text-[#89D3BD] flex items-center gap-1.5">
@@ -529,13 +511,11 @@ const Research = () => {
                 })()}
               </div>
 
-              {/* DESKTOP VIEW: Interactive Tabbed Table */}
               <div className="hidden md:block space-y-4">
                 <div className="flex items-center justify-between">
                   <span className="text-xs text-slate-700 dark:text-slate-300 font-medium">
                     Select a harvest season to inspect detailed metrics:
                   </span>
-                  {/* Season Selector Tabs with Hover Glow */}
                   <div className="flex items-center gap-1.5 bg-[#EFE5D5] dark:bg-white/10 p-1 rounded-lg border border-[#E8DFC8] dark:border-white/10 w-fit">
                     {(['Winter', 'Monsoon', 'Summer'] as const).map((season) => (
                       <button
@@ -628,7 +608,6 @@ const Research = () => {
               </div>
             </div>
 
-            {/* Bottom Section: BibTeX Citation Box */}
             <div className="pt-4 border-t border-[#E8DFC8] dark:border-white/10 space-y-3">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2 text-xs sm:text-sm font-extrabold text-slate-900 dark:text-white">
