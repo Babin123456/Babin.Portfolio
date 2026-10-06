@@ -1,25 +1,22 @@
-/* stylelint-disable at-rule-no-unknown */
-/* stylelint-disable declaration-block-no-duplicate-properties */
-/* The file intentionally uses Tailwind directives and @apply which are not standard CSS rules */
+
+
 @import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
-
 @layer base {
-  html {
+  html:not(.lenis) {
     scroll-behavior: smooth;
+  }
+
+  html {
     font-family: 'Times New Roman', 'Roca Two', 'Roca One', 'Roca', Times, serif;
   }
 
-  /* Prevent horizontal scroll issues */
   body {
-    overflow-x: hidden;
+    overflow-x: clip;
     width: 100%;
     font-family: 'Times New Roman', 'Roca Two', 'Roca One', 'Roca', Times, serif;
   }
@@ -48,23 +45,22 @@ All colors MUST be HSL.
 
   :root {
     --background: 40 45% 94%;
-    /* Warm cream parchment */
+    
     --foreground: 30 15% 15%;
-    /* Rich warm charcoal */
 
     --card: 38 40% 90%;
-    /* Soft warm cream card surface */
+    
     --card-foreground: 30 15% 15%;
 
     --popover: 38 42% 92%;
     --popover-foreground: 30 15% 15%;
 
     --primary: 221 83% 48%;
-    /* blue-700 */
+    
     --primary-foreground: 0 0% 100%;
 
     --secondary: 187 92% 69%;
-    /* #89D3BD */
+    
     --secondary-foreground: 240 10% 10%;
 
     --muted: 36 25% 85%;
@@ -115,12 +111,11 @@ All colors MUST be HSL.
     --popover-foreground: 0 0% 98%;
 
     --primary: 162 46% 68%;
-    /* #89D3BD */
+    
     --primary-foreground: 240 10% 4%;
-    /* near black */
 
     --secondary: 221 83% 48%;
-    /* blue-700 */
+    
     --secondary-foreground: 0 0% 100%;
 
     --muted: 240 8% 20%;
@@ -174,7 +169,6 @@ All colors MUST be HSL.
     animation: wave 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
   }
 
-  /* Map attributes to delays to avoid inline styles while keeping the wave effect */
   [data-index="0"] {
     animation-delay: 0ms;
   }
@@ -457,7 +451,6 @@ All colors MUST be HSL.
     animation-delay: 1s;
   }
 
-  /* Scroll Animations */
   @keyframes fade-in-up {
     from {
       opacity: 0;
@@ -522,16 +515,11 @@ All colors MUST be HSL.
     animation: scale-in 0.6s ease-out forwards;
   }
 
-  /* Smooth, targeted theme transitions (short + GPU friendly)
-     Avoid broad attribute selectors which force large repaint/reflow
-     and cause lag. Use `.theme-transition` on components that should
-     animate colors when switching theme. */
   html,
   body {
     transition: background-color 110ms ease, color 110ms ease;
   }
 
-  /* Use a specific helper class for color transitions to limit scope */
   .theme-transition,
   .theme-transition * {
     transition: background-color 110ms ease, color 110ms ease, border-color 110ms ease;
@@ -539,9 +527,6 @@ All colors MUST be HSL.
   }
 }
 
-/* ==========================================================================
-   AnimatedThemeToggler View Transitions (Rectangle / Shape Mode)
-   ========================================================================== */
 ::view-transition-old(root),
 ::view-transition-new(root) {
   animation: none;
@@ -556,17 +541,14 @@ All colors MUST be HSL.
   will-change: clip-path, transform;
 }
 
-/* Scoped to AnimatedThemeToggler — the toggler sets the data-attribute and the variable only during a theme toggle. */
 html[data-magicui-theme-vt="active"]::view-transition-group(root) {
   animation-duration: var(--magicui-theme-toggle-vt-duration, 850ms);
 }
 
-/* Pin clip-path so new theme is clipped before animation starts */
 html[data-magicui-theme-vt="active"]::view-transition-new(root) {
   clip-path: var(--magicui-theme-vt-clip-from);
 }
 
-/* Ensure background/color transitions do not fight the View Transition */
 html[data-magicui-theme-vt="active"],
 html[data-magicui-theme-vt="active"] body,
 html[data-magicui-theme-vt="active"] *,
@@ -575,7 +557,6 @@ html[data-magicui-theme-vt="active"] *::after {
   transition: none !important;
 }
 
-/* Theme toggle button View Transition isolation and animation */
 .theme-toggle-btn {
   view-transition-name: theme-toggle;
 }
@@ -621,10 +602,8 @@ html[data-magicui-theme-vt="active"] *::after {
   }
 }
 
-/* Mobile-friendly overrides */
 @media (max-width: 640px) {
 
-  /* Reduce decorative blob sizes to avoid overflow */
   .about-blobs .blob-1 {
     width: 220px;
     height: 220px;
@@ -646,13 +625,11 @@ html[data-magicui-theme-vt="active"] *::after {
     bottom: -30px;
   }
 
-  /* Make container padding friendlier on small screens */
   .container {
     padding-left: 1rem;
     padding-right: 1rem;
   }
 
-  /* Scale down hero text and spacing */
   h1 {
     font-size: 1.75rem;
   }
@@ -661,13 +638,11 @@ html[data-magicui-theme-vt="active"] *::after {
     font-size: 1.25rem;
   }
 
-  /* Avatar should shrink and remain crisp */
   .avatar-glow img {
     width: 6.5rem;
     height: 6.5rem;
   }
 
-  /* Make buttons and inputs more tappable */
   .btn,
   button,
   .button,
@@ -677,17 +652,14 @@ html[data-magicui-theme-vt="active"] *::after {
     min-height: 44px;
   }
 
-  /* Stack grid columns into single column for narrow screens */
   .grid.md\:grid-cols-2 {
     grid-template-columns: 1fr !important;
   }
 
-  /* Reduce card paddings for small screens */
   .p-6 {
     padding: 1rem !important;
   }
 
-  /* Progress bars: ensure they fit */
   .progress-fill {
     height: 0.75rem !important;
   }
@@ -700,7 +672,7 @@ html[data-magicui-theme-vt="active"] *::after {
 
   body {
     background-color: hsl(var(--background));
-    /* Rich, tactile warm cream texture with micro-grain in light mode */
+    
     background-image: 
       radial-gradient(at 0% 0%, hsla(42, 55%, 96%, 0.9) 0px, transparent 50%),
       radial-gradient(at 100% 100%, hsla(36, 40%, 91%, 0.8) 0px, transparent 50%),
@@ -720,18 +692,14 @@ html[data-magicui-theme-vt="active"] *::after {
     scroll-behavior: smooth;
   }
 
-  /* Prevent horizontal overflow introduced by large decorative elements */
   html,
   body {
-    overflow-x: hidden;
+    overflow-x: clip;
   }
 
-  /* Visually hide scrollbars but preserve scrolling behavior */
   body {
     -ms-overflow-style: none;
-    /* IE and Edge */
-    /* intentionally omitted 'scrollbar-width' for broader browser compatibility */
-    /* Firefox */
+
   }
 
   body::-webkit-scrollbar {
@@ -740,12 +708,13 @@ html[data-magicui-theme-vt="active"] *::after {
     display: none;
   }
 
-  /* Lenis 120Hz/144Hz Smooth Scrolling Integration */
   html.lenis,
   html.lenis body {
     height: auto;
+    scroll-behavior: auto !important;
   }
 
+  html.lenis.lenis-smooth,
   .lenis.lenis-smooth {
     scroll-behavior: auto !important;
   }
@@ -762,7 +731,6 @@ html[data-magicui-theme-vt="active"] *::after {
     pointer-events: none;
   }
 
-  /* GPU Hardware Acceleration & Containment */
   .achievement-card-contain {
     content-visibility: auto;
     contain-intrinsic-size: 1px 320px;
@@ -795,7 +763,6 @@ html[data-magicui-theme-vt="active"] *::after {
     background-clip: text;
   }
 
-  /* Tricolor text gradient: saffron -> white -> green (use for headings/accents) */
   .text-tricolor {
     background: var(--gradient-tricolor-swipe);
     -webkit-background-clip: text;
@@ -803,15 +770,13 @@ html[data-magicui-theme-vt="active"] *::after {
     background-clip: text;
   }
 
-  /* Blue -> Violet heading gradient for primary section headings requested by user */
   :root {
     --blueviolet-start: 215 100% 50%;
-    /* blue */
+    
     --blueviolet-end: 262 83% 58%;
-    /* violet */
+    
   }
 
-  /* Make primary theme violet-forward: ensure gradients and shadows reflect violet palette */
   .theme-violet {
     --primary: 262 85% 55%;
     --gradient-primary: hsl(262 85% 55%);
@@ -830,7 +795,6 @@ html[data-magicui-theme-vt="active"] *::after {
     transition: var(--transition-smooth);
   }
 
-  /* navigation underline animation */
   .nav-underline {
     position: relative;
   }
@@ -858,7 +822,6 @@ html[data-magicui-theme-vt="active"] *::after {
     background: #67e8f9;
   }
 
-  /* Glassmorphism utility with subtle mandala overlay */
   .glass {
     position: relative;
     background: hsl(var(--card) / 0.55);
@@ -871,7 +834,7 @@ html[data-magicui-theme-vt="active"] *::after {
   }
 
   .glass::before {
-    /* subtle mandala SVG overlay (very low opacity) */
+    
     content: '';
     position: absolute;
     inset: 0;
@@ -885,7 +848,6 @@ html[data-magicui-theme-vt="active"] *::after {
     transform: translateZ(0);
   }
 
-  /* AnimatedIcon utilities */
   .ai {
     position: relative;
     display: inline-block;
@@ -945,13 +907,11 @@ html[data-magicui-theme-vt="active"] *::after {
     filter: drop-shadow(0 0 8px var(--ai-glow));
   }
 
-  /* darker subtle mandala when in dark mode */
   .dark .glass::before {
     filter: brightness(0.9) contrast(1.05) hue-rotate(-10deg);
     opacity: 0.08;
   }
 
-  /* Tricolor glow utility (saffron -> white -> green) */
   .tricolor-glow {
     position: relative;
     overflow: visible;
@@ -976,7 +936,6 @@ html[data-magicui-theme-vt="active"] *::after {
     transform: translateZ(0) scale(1);
   }
 
-  /* Tricolor divider top utility (for header/footer section dividers) */
   .tricolor-divider-top {
     position: relative;
     overflow: visible;
@@ -989,14 +948,12 @@ html[data-magicui-theme-vt="active"] *::after {
     right: 0;
     top: 0;
     height: 1.5px;
-    /* Use a single theme-aware color for the divider line.
-       `--primary` is blue in light mode and cyan in dark mode, so
-       the divider will be blue in light and cyan in dark automatically. */
+    
     background: hsl(var(--primary));
     overflow: visible;
-    /* distance from the top of the section to the divider line; components can override this variable */
+    
     --section-divider-offset: 1rem;
-    /* default: 16px */
+    
   }
 
   .section-divider-top::before {
@@ -1004,7 +961,7 @@ html[data-magicui-theme-vt="active"] *::after {
     position: absolute;
     left: 0;
     right: 0;
-    /* place the divider at a small offset from the top so headings/content keep consistent distance */
+    
     top: var(--section-divider-offset);
     height: 1px;
     background: hsl(var(--blueviolet-start));
@@ -1012,7 +969,6 @@ html[data-magicui-theme-vt="active"] *::after {
     z-index: 10;
   }
 
-  /* Helper classes to control the vertical offset of the section divider without inline styles */
   .section-divider-offset-sm {
     --section-divider-offset: 0.5rem;
   }
@@ -1029,7 +985,6 @@ html[data-magicui-theme-vt="active"] *::after {
     --section-divider-offset: 1.75rem;
   }
 
-  /* Tricolor left border for callouts / blockquotes */
   .tricolor-border-left {
     position: relative;
     padding-left: 1rem;
@@ -1048,13 +1003,11 @@ html[data-magicui-theme-vt="active"] *::after {
     pointer-events: none;
   }
 
-  /* Tricolor outline for card outlines (use sparingly) */
   .tricolor-outline {
     border: 2px solid hsl(var(--tricolor-saffron));
     border-radius: var(--radius);
   }
 
-  /* subtle pulse for icons / badges */
   @keyframes glow-pulse {
     0% {
       box-shadow: 0 0 0 rgba(255, 153, 51, 0.06);
@@ -1073,7 +1026,6 @@ html[data-magicui-theme-vt="active"] *::after {
     animation: glow-pulse 3.5s ease-in-out infinite;
   }
 
-  /* Mandala rotation utility (apply .mandala-rotate to container holding .glass::before) */
   @keyframes mandala-rotate {
     from {
       transform: rotate(0deg);
@@ -1089,7 +1041,6 @@ html[data-magicui-theme-vt="active"] *::after {
     transform-origin: 50% 50%;
   }
 
-  /* Typewriter effect utilities */
   @keyframes typing {
     from {
       width: 0;
@@ -1121,7 +1072,6 @@ html[data-magicui-theme-vt="active"] *::after {
     max-width: 100%;
   }
 
-  /* Avatar glow and ring */
   .avatar-glow {
     position: relative;
     border-radius: 9999px;
@@ -1147,7 +1097,6 @@ html[data-magicui-theme-vt="active"] *::after {
     opacity: 1;
   }
 
-  /* subtle pulse animation for avatar (2s interval) */
   @keyframes avatar-pulse {
     0% {
       transform: scale(1);
@@ -1168,7 +1117,6 @@ html[data-magicui-theme-vt="active"] *::after {
     will-change: transform;
   }
 
-  /* Floating skill badges around about card */
   .floating-badge {
     position: absolute;
     padding: .4rem .6rem;
@@ -1181,12 +1129,10 @@ html[data-magicui-theme-vt="active"] *::after {
     animation: float-slow 6s ease-in-out infinite;
   }
 
-  /* Animated progress fill (subtle width transition) */
   .progress-fill {
     transition: width .8s cubic-bezier(.2, .9, .2, 1);
   }
 
-  /* Reduce motion for users who prefer it */
   @media (prefers-reduced-motion: reduce) {
 
     .glow-pulse,
@@ -1198,10 +1144,6 @@ html[data-magicui-theme-vt="active"] *::after {
     }
   }
 }
-
-/* =========================
-   IDE Code Reveal Splash Styles
-   ========================= */
 
 @layer utilities {
   .splash {
@@ -1426,7 +1368,6 @@ html[data-magicui-theme-vt="active"] *::after {
     box-shadow: 0 0 6px rgba(137, 211, 189, 0.6);
   }
 
-  /* Mobile mode redesign for loader */
   @media (max-width: 640px) {
     .ide-window {
       width: 95%;
@@ -1514,10 +1455,6 @@ html[data-magicui-theme-vt="active"] *::after {
   }
 }
 
-/* ========================= 
-   Cool Loader Styles
-   ========================= */
-
 @layer utilities {
   .loader-container {
     position: fixed !important;
@@ -1539,7 +1476,6 @@ html[data-magicui-theme-vt="active"] *::after {
     z-index: 10;
   }
 
-  /* Main rotating ring loader */
   .loader-ring {
     position: relative;
     width: 100px;
@@ -1582,7 +1518,6 @@ html[data-magicui-theme-vt="active"] *::after {
     animation: spin-fast 1.5s linear infinite;
   }
 
-  /* dark mode loader */
   .dark .loader-ring::before {
     border-top-color: #67e8f9;
   }
@@ -1629,7 +1564,6 @@ html[data-magicui-theme-vt="active"] *::after {
     }
   }
 
-  /* Loading text with animated dots */
   .loader-text {
     display: flex;
     align-items: center;
@@ -1692,7 +1626,6 @@ html[data-magicui-theme-vt="active"] *::after {
     }
   }
 
-  /* Respect reduced motion */
   @media (prefers-reduced-motion: reduce) {
 
     .loader-ring::before,
@@ -1706,10 +1639,8 @@ html[data-magicui-theme-vt="active"] *::after {
   }
 }
 
-/* Mobile-First Optimizations - Safe Area & Touch Targets */
 @media (max-width: 640px) {
 
-  /* Ensure proper spacing for notch devices (iOS) */
   body {
     padding-top: env(safe-area-inset-top);
     padding-left: env(safe-area-inset-left);
@@ -1717,7 +1648,6 @@ html[data-magicui-theme-vt="active"] *::after {
     padding-bottom: env(safe-area-inset-bottom);
   }
 
-  /* Increase touch target sizes to 48px minimum (Apple HIG), excluding compact chips and badges */
   button:not(.terminal-chip-btn):not(.terminal-action-btn):not([class*="rounded-md"]):not([class*="rounded-full"]):not([class*="py-0.5"]):not([class*="py-1"]),
   .button,
   input[type="button"],
@@ -1733,13 +1663,11 @@ html[data-magicui-theme-vt="active"] *::after {
     min-width: unset !important;
   }
 
-  /* Make interactive button elements tappable without breaking inline links */
   button:not(.terminal-chip-btn):not(.terminal-action-btn):not([class*="p-"]),
   select {
     min-height: 44px;
   }
 
-  /* Reduce animation duration on mobile for better performance */
   .animate-fade-in-up {
     animation-duration: 0.4s !important;
   }
@@ -1753,21 +1681,17 @@ html[data-magicui-theme-vt="active"] *::after {
     animation-duration: 0.4s !important;
   }
 
-  /* Stack flex items vertically on mobile when needed, excluding compact badge rows */
   .flex-wrap:not(.directives-container) {
     gap: 0.75rem;
   }
 
-  /* Reduce bloat from decorative blobs */
   .absolute {
     will-change: auto;
   }
 }
 
-/* Accessibility Improvements */
 @layer utilities {
 
-  /* Enhanced focus styles for keyboard navigation ONLY */
   @supports selector(:focus-visible) {
 
     button:focus-visible,
@@ -1781,7 +1705,6 @@ html[data-magicui-theme-vt="active"] *::after {
     }
   }
 
-  /* High contrast mode support */
   @media (prefers-contrast: more) {
     .text-muted-foreground {
       color: hsl(var(--foreground));
@@ -1793,7 +1716,6 @@ html[data-magicui-theme-vt="active"] *::after {
     }
   }
 
-  /* Reduce motion for users who prefer it */
   @media (prefers-reduced-motion: reduce) {
 
     *,
@@ -1806,24 +1728,20 @@ html[data-magicui-theme-vt="active"] *::after {
     }
   }
 
-  /* Ensure sufficient color contrast for skill labels */
   .skill-label {
     color: hsl(var(--foreground));
   }
 
-  /* Add visible labels to form inputs */
   input::placeholder,
   textarea::placeholder {
     color: hsl(var(--muted-foreground));
     opacity: 1;
   }
 
-  /* Improve readability of code blocks */
   code {
     font-family: 'Comic Sans MS', 'Cambria Math', sans-serif;
   }
 
-  /* 120Hz Ultra Smooth Scrolling & GPU Acceleration */
   html {
     scroll-behavior: smooth;
     text-rendering: optimizeLegibility;
@@ -1831,7 +1749,6 @@ html[data-magicui-theme-vt="active"] *::after {
     -moz-osx-font-smoothing: grayscale;
   }
 
-  /* CLI Terminal Input - Pure PowerShell / CMD aesthetic (no bounding box on click) */
   .cli-terminal-input,
   .cli-terminal-input:focus,
   .cli-terminal-input:focus-visible {
@@ -1841,7 +1758,6 @@ html[data-magicui-theme-vt="active"] *::after {
     ring: 0 !important;
   }
 
-  /* Terminal Scrollbar */
   .terminal-custom-scrollbar {
     scrollbar-width: thin;
     scrollbar-color: rgba(255, 255, 255, 0.3) rgba(0, 0, 0, 0.4);
