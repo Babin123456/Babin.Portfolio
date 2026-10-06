@@ -74,13 +74,13 @@ const Skills: React.FC = () => {
             'Visual Studio Code': { image: "/Skills_Images/VS-Code_logo.webp", alt: 'Visual Studio Code' },
             'Antigravity': { image: '/Skills_Images/Antigravity_logo.webp', alt: 'Antigravity'},
             'LeetCode': { image: '/Platforms_Images/LeetCode_logo.webp', alt: 'LeetCode' },
-            'Codolio': { image: '/Platforms_Images/Codolio_logo.GIF', alt: 'Codolio' },
+            'Codolio': { image: '/Platforms_Images/Codolio_logo.webp', alt: 'Codolio' },
             'HackerRank': { image: '/Platforms_Images/HackerRank_logo.webp', alt: 'HackerRank' },
         };
 
         const iconConfig = iconMap[skillName];
         if (!iconConfig) {
-            return <AnimatedIcon Icon={Zap} size={24} glowColor="transparent" animationType="pulse" className="text-amber-500" />;
+            return <AnimatedIcon Icon={Zap} size={24} glowColor="transparent" animationType="pulse" className="text-blue-700 dark:text-[#89D3BD]" />;
         }
 
         if ('image' in iconConfig) {
@@ -162,7 +162,6 @@ const Skills: React.FC = () => {
                 </h2>
                 <p className="text-center text-muted-foreground mb-8 text-lg">Building the future with modern technologies</p>
 
-                {/* Filter Buttons */}
                 <div className="grid grid-cols-2 gap-2 sm:grid-cols-2 md:flex md:justify-center mb-10 max-w-6xl mx-auto place-items-center">
                     {filterOptions.map((filter) => (
                         <button
@@ -200,8 +199,7 @@ const Skills: React.FC = () => {
                             onMouseEnter={() => setHoveredSkill(skill)}
                             onMouseLeave={() => setHoveredSkill(null)}
                         >
-                            <div className="w-16 h-16 md:w-20 md:h-20 rounded-2xl bg-white/60 dark:bg-white/5 backdrop-blur-sm border border-slate-200 dark:border-white/10 flex items-center justify-center transition-all duration-300 group-hover:border-blue-700/50 dark:group-hover:border-[#89D3BD]/50 group-hover:shadow-[0_10px_30px_rgba(29,78,216,0.2)] dark:group-hover:shadow-[0_10px_30px_rgba(137,211,189,0.2)] cursor-pointer overflow-hidden relative">
-                                {/* Icon - visible by default */}
+                            <div className="w-16 h-16 md:w-20 md:h-20 rounded-2xl bg-[#F5EDE0]/80 dark:bg-white/5 backdrop-blur-md border border-[#E8DFC8] dark:border-white/10 flex items-center justify-center transition-all duration-300 group-hover:border-blue-700/50 dark:group-hover:border-[#89D3BD]/50 group-hover:shadow-[0_10px_30px_rgba(29,78,216,0.2)] dark:group-hover:shadow-[0_10px_30px_rgba(137,211,189,0.2)] cursor-pointer overflow-hidden relative">
                                 <div
                                     className={`transition-all duration-300 ${hoveredSkill === skill
                                         ? 'opacity-0 scale-75'
@@ -211,7 +209,6 @@ const Skills: React.FC = () => {
                                     {getSkillIcon(skill)}
                                 </div>
 
-                                {/* Skill name - appears on hover */}
                                 <div
                                     className={`absolute inset-0 flex items-center justify-center bg-blue-700/90 dark:bg-[#89D3BD]/90 rounded-2xl transition-all duration-300 ${hoveredSkill === skill
                                         ? 'opacity-100 scale-100'
@@ -228,7 +225,6 @@ const Skills: React.FC = () => {
                     ))}
                 </motion.div>
 
-                {/* Coding Profiles Section */}
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -236,7 +232,7 @@ const Skills: React.FC = () => {
                     transition={{ duration: 0.5, delay: 0.2 }}
                     className="mt-16 text-center"
                 >
-                    <h3 className="text-xl md:text-2xl font-bold mb-6 text-blue-900 dark:text-cyan-300">Coding Profiles</h3>
+                    <h3 className="text-xl md:text-2xl font-bold mb-6 text-blue-700 dark:text-[#89D3BD]">Coding Profiles</h3>
                     <div className="grid grid-cols-3 sm:flex sm:flex-wrap justify-center gap-2 sm:gap-4 md:gap-8 max-w-xl sm:max-w-4xl mx-auto">
                         {codingProfiles.map((profile, index) => (
                             <motion.a
@@ -249,12 +245,12 @@ const Skills: React.FC = () => {
                                 viewport={{ once: true }}
                                 transition={{ duration: 0.4, delay: 0.3 + index * 0.1 }}
                                 whileHover={{ scale: 1.05, y: -2 }}
-                                className="flex flex-col sm:flex-row items-center justify-center gap-1.5 sm:gap-3 px-2 py-2.5 sm:px-6 sm:py-3 rounded-xl bg-white/50 dark:bg-white/5 border border-slate-200 dark:border-white/10 hover:border-blue-500/50 dark:hover:border-[#89D3BD]/50 transition-all duration-300 shadow-sm hover:shadow-md backdrop-blur-sm group text-center"
+                                className="flex flex-col sm:flex-row items-center justify-center gap-1.5 sm:gap-3 px-2 py-2.5 sm:px-6 sm:py-3 rounded-xl bg-[#F5EDE0]/80 dark:bg-white/5 border border-[#E8DFC8] dark:border-white/10 hover:border-blue-700/50 dark:hover:border-[#89D3BD]/50 transition-all duration-300 shadow-sm hover:shadow-md backdrop-blur-md group text-center"
                             >
-                                <div className="p-1 sm:p-1.5 rounded-lg bg-slate-100 dark:bg-white/5 group-hover:scale-110 transition-transform duration-300 shrink-0">
+                                <div className="p-1 sm:p-1.5 rounded-lg bg-[#F5EDE0]/80 dark:bg-white/5 backdrop-blur-md border border-[#E8DFC8] dark:border-white/10 group-hover:scale-110 transition-transform duration-300 shrink-0">
                                     {getSkillIcon(profile.name)}
                                 </div>
-                                <span className="font-semibold text-slate-700 dark:text-slate-300 group-hover:text-blue-600 dark:group-hover:text-[#89D3BD] text-[11px] sm:text-base leading-tight truncate max-w-full">
+                                <span className="font-semibold text-slate-700 dark:text-slate-300 group-hover:text-blue-700 dark:group-hover:text-[#89D3BD] text-[11px] sm:text-base leading-tight truncate max-w-full">
                                     {profile.name}
                                 </span>
                             </motion.a>
@@ -262,7 +258,6 @@ const Skills: React.FC = () => {
                     </div>
                 </motion.div>
 
-                {/* Decorative Elements */}
                 <div className="absolute top-10 left-10 w-20 h-20 rounded-full bg-accent/10 blur-3xl animate-pulse" />
                 <div className="absolute bottom-10 right-10 w-32 h-32 rounded-full bg-primary/10 blur-3xl animate-pulse anim-delay-1000" />
             </motion.div>
