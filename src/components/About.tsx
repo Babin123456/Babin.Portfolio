@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, useCallback } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence, Variants } from "framer-motion";
 import {
   FileText,
@@ -494,126 +494,6 @@ const About = () => {
     },
   };
 
-  const canvasRef = useRef<HTMLCanvasElement | null>(null);
-  const particlesRef = useRef<
-    Array<{
-      x: number;
-      y: number;
-      vx: number;
-      vy: number;
-      size: number;
-      alpha: number;
-      decay: number;
-      color: string;
-      rotation: number;
-      rotationSpeed: number;
-    }>
-  >([]);
-  const animFrameRef = useRef<number | null>(null);
-
-  const spawnSparkles = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const rect = canvas.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-
-    const colors = ["#89D3BD", "#3b82f6", "#60a5fa", "#fde047", "#ffffff"];
-
-    for (let i = 0; i < 2; i++) {
-      particlesRef.current.push({
-        x: x + (Math.random() - 0.5) * 16,
-        y: y + (Math.random() - 0.5) * 16,
-        vx: (Math.random() - 0.5) * 1.6,
-        vy: -Math.random() * 1.5 - 0.5,
-        size: Math.random() * 7 + 4,
-        alpha: 1,
-        decay: Math.random() * 0.025 + 0.02,
-        color: colors[Math.floor(Math.random() * colors.length)],
-        rotation: Math.random() * Math.PI * 2,
-        rotationSpeed: (Math.random() - 0.5) * 0.15,
-      });
-    }
-
-    if (!animFrameRef.current) {
-      const render = () => {
-        const c = canvasRef.current;
-        if (!c) {
-          animFrameRef.current = null;
-          return;
-        }
-        const ctx = c.getContext("2d");
-        if (!ctx) {
-          animFrameRef.current = null;
-          return;
-        }
-
-        ctx.clearRect(0, 0, c.width, c.height);
-        const particles = particlesRef.current;
-
-        for (let i = particles.length - 1; i >= 0; i--) {
-          const p = particles[i];
-          p.x += p.vx;
-          p.y += p.vy;
-          p.rotation += p.rotationSpeed;
-          p.alpha -= p.decay;
-
-          if (p.alpha <= 0) {
-            particles.splice(i, 1);
-            continue;
-          }
-
-          ctx.save();
-          ctx.translate(p.x, p.y);
-          ctx.rotate(p.rotation);
-          ctx.globalAlpha = Math.max(0, p.alpha);
-          ctx.fillStyle = p.color;
-          ctx.shadowColor = p.color;
-          ctx.shadowBlur = 8;
-
-          ctx.beginPath();
-          const spikes = 4;
-          const outer = p.size;
-          const inner = p.size * 0.28;
-          for (let s = 0; s < spikes * 2; s++) {
-            const r = s % 2 === 0 ? outer : inner;
-            const angle = (s * Math.PI) / spikes;
-            if (s === 0) ctx.moveTo(Math.cos(angle) * r, Math.sin(angle) * r);
-            else ctx.lineTo(Math.cos(angle) * r, Math.sin(angle) * r);
-          }
-          ctx.closePath();
-          ctx.fill();
-          ctx.restore();
-        }
-
-        if (particles.length > 0) {
-          animFrameRef.current = requestAnimationFrame(render);
-        } else {
-          animFrameRef.current = null;
-        }
-      };
-
-      animFrameRef.current = requestAnimationFrame(render);
-    }
-  }, []);
-
-  useEffect(() => {
-    const handleResize = () => {
-      const canvas = canvasRef.current;
-      if (!canvas) return;
-      canvas.width = canvas.offsetWidth || 224;
-      canvas.height = canvas.offsetHeight || 224;
-    };
-    handleResize();
-    window.addEventListener("resize", handleResize);
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-      if (animFrameRef.current) {
-        cancelAnimationFrame(animFrameRef.current);
-      }
-    };
-  }, []);
 
   return (
     <section id="about" className="py-12 sm:py-16 md:py-28 relative overflow-hidden">
@@ -843,47 +723,14 @@ const About = () => {
                     className="grid lg:grid-cols-12 gap-8 md:gap-12 items-center text-left"
                   >
                     <div className="lg:col-span-4 flex flex-col items-center text-center">
-                      <div
-                        className="relative group select-none cursor-default"
-                        onMouseMove={spawnSparkles}
-                        onMouseEnter={spawnSparkles}
-                      >
-                        {/* Ambient floating sparkle stars around the frame on hover */}
-                        <div className="absolute -top-3 -right-3 z-30 pointer-events-none transition-all duration-300 opacity-0 group-hover:opacity-100 scale-50 group-hover:scale-100">
-                          <Sparkles className="w-6 h-6 text-yellow-400 dark:text-[#89D3BD] animate-sparkle-twinkle drop-shadow-[0_0_8px_rgba(250,204,21,0.8)]" />
-                        </div>
-                        <div className="absolute -top-2 -left-2 z-30 pointer-events-none transition-all duration-300 opacity-0 group-hover:opacity-100 scale-50 group-hover:scale-100 delay-75">
-                          <Sparkles className="w-5 h-5 text-blue-600 dark:text-cyan-300 animate-sparkle-float drop-shadow-[0_0_8px_rgba(59,130,246,0.8)]" />
-                        </div>
-                        <div className="absolute -bottom-2 -right-2 z-30 pointer-events-none transition-all duration-300 opacity-0 group-hover:opacity-100 scale-50 group-hover:scale-100 delay-100">
-                          <Sparkles className="w-5 h-5 text-blue-600 dark:text-[#89D3BD] animate-sparkle-float drop-shadow-[0_0_8px_rgba(137,211,189,0.8)]" />
-                        </div>
-                        <div className="absolute -bottom-3 -left-3 z-30 pointer-events-none transition-all duration-300 opacity-0 group-hover:opacity-100 scale-50 group-hover:scale-100 delay-150">
-                          <Sparkles className="w-6 h-6 text-yellow-400 dark:text-yellow-200 animate-sparkle-twinkle drop-shadow-[0_0_8px_rgba(250,204,21,0.8)]" />
-                        </div>
-                        <div className="absolute top-1/2 -left-3 z-30 pointer-events-none transition-all duration-300 opacity-0 group-hover:opacity-100 scale-50 group-hover:scale-100 delay-100 -translate-y-1/2">
-                          <span className="inline-block w-2.5 h-2.5 rounded-full bg-cyan-400 dark:bg-[#89D3BD] animate-pulse shadow-[0_0_8px_rgba(34,211,238,0.9)]" />
-                        </div>
-                        <div className="absolute top-1/2 -right-3 z-30 pointer-events-none transition-all duration-300 opacity-0 group-hover:opacity-100 scale-50 group-hover:scale-100 delay-200 -translate-y-1/2">
-                          <span className="inline-block w-2.5 h-2.5 rounded-full bg-yellow-400 dark:bg-yellow-300 animate-pulse shadow-[0_0_8px_rgba(250,204,21,0.9)]" />
-                        </div>
-
-                        {/* Interactive canvas sparkle particle overlay */}
-                        <canvas
-                          ref={canvasRef}
-                          className="absolute inset-0 w-full h-full pointer-events-none z-20 rounded-3xl"
-                        />
-
+                      <div className="relative group">
                         {/* Portrait Frame */}
-                        <div className="relative rounded-3xl overflow-hidden border-2 border-[#E8DFC8] dark:border-white/10 p-1.5 bg-[#F5EDE0]/80 dark:bg-black/50 backdrop-blur-md shadow-md group-hover:border-blue-600/60 dark:group-hover:border-[#89D3BD]/70 group-hover:shadow-[0_0_35px_rgba(29,78,216,0.35)] dark:group-hover:shadow-[0_0_35px_rgba(137,211,189,0.5)] transition-all duration-500">
-                          {/* Shimmer sweep line */}
-                          <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 bg-gradient-to-r from-transparent via-white/30 dark:via-white/20 to-transparent pointer-events-none z-10" />
-
+                        <div className="relative rounded-3xl overflow-hidden border-2 border-[#E8DFC8] dark:border-white/10 p-1.5 bg-[#F5EDE0]/80 dark:bg-black/50 backdrop-blur-md shadow-md transition-all duration-300">
                           <img
                             src="/Babin.webp"
                             alt="Babin Bid"
                             loading="lazy"
-                            className="w-48 h-48 sm:w-56 sm:h-56 object-cover rounded-2xl cursor-default group-hover:scale-[1.03] transition-transform duration-500 select-none"
+                            className="w-48 h-48 sm:w-56 sm:h-56 object-cover rounded-2xl select-none"
                             draggable={false}
                           />
                         </div>
