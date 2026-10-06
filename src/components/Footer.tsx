@@ -147,7 +147,7 @@ const Footer: React.FC = () => {
                 </h4>
               </div>
 
-              <div className="pt-6 sm:pt-7 pb-2 flex justify-center w-full">
+              <div className="pt-7 sm:pt-9 pb-2 flex justify-center w-full">
                 <SocialIcons />
               </div>
             </div>
