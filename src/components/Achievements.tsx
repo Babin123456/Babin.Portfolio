@@ -256,12 +256,13 @@ const Achievements = () => {
     };
 
     const closeLightbox = () => {
+        if (isClosing) return;
         setIsClosing(true);
         setTimeout(() => {
             setSelectedItem(null);
             setZoomLevel(1);
             setIsClosing(false);
-        }, 350);
+        }, 400);
     };
 
     const handleImageError = (file: string) => {
@@ -525,7 +526,7 @@ const Achievements = () => {
 
             {selectedItem && selectedItem.type === 'image' && (
                 <div
-                    className={`fixed inset-0 z-[100] flex items-center justify-center bg-[#FAF6EE]/90 dark:bg-black/95 backdrop-blur-2xl p-2 sm:p-4 select-none touch-none overscroll-contain transition-all duration-300 ${isClosing
+                    className={`fixed inset-0 z-[100] flex items-center justify-center bg-[#FAF6EE]/90 dark:bg-black/95 backdrop-blur-2xl p-2 sm:p-4 select-none touch-none overscroll-contain transition-all duration-400 ease-out ${isClosing
                         ? 'opacity-0 backdrop-blur-none pointer-events-none'
                         : 'animate-fade-in'
                         }`}
@@ -534,7 +535,7 @@ const Achievements = () => {
                     onWheel={(e) => e.stopPropagation()}
                 >
                     <div
-                        className={`fixed top-3 inset-x-3 sm:top-5 sm:inset-x-6 z-50 flex items-center justify-between pointer-events-none transition-all duration-300 ${isClosing ? 'opacity-0 -translate-y-8' : 'opacity-100 translate-y-0'
+                        className={`fixed top-3 inset-x-3 sm:top-5 sm:inset-x-6 z-50 flex items-center justify-between pointer-events-none transition-all duration-400 ease-out ${isClosing ? 'opacity-0 -translate-y-8' : 'opacity-100 translate-y-0'
                             }`}
                     >
                         <div className="pointer-events-auto flex items-center gap-1.5 sm:gap-2 px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-full bg-[#F5EDE0]/90 dark:bg-white/10 border border-[#E8DFC8] dark:border-white/20 backdrop-blur-md shadow-xl text-xs sm:text-sm font-semibold text-slate-900 dark:text-white max-w-[calc(100vw-110px)] sm:max-w-md">
@@ -574,7 +575,7 @@ const Achievements = () => {
                                 e.stopPropagation();
                                 handlePrev();
                             }}
-                            className="fixed left-2 sm:left-5 top-1/2 -translate-y-1/2 z-50 w-10 h-10 sm:w-12 sm:h-12 min-w-[40px] min-h-[40px] sm:min-w-[48px] sm:min-h-[48px] aspect-square p-0 rounded-full flex items-center justify-center shrink-0 bg-[#F5EDE0]/90 dark:bg-white/15 text-slate-900 dark:text-white border border-[#E8DFC8] dark:border-white/25 hover:bg-blue-700 hover:text-white dark:hover:bg-[#89D3BD] dark:hover:text-black hover:border-blue-700 dark:hover:border-[#89D3BD] transition-all duration-200 backdrop-blur-md hover:scale-110 active:scale-95 shadow-2xl focus:outline-none cursor-pointer group touch-manipulation"
+                            className={`fixed left-2 sm:left-5 top-1/2 -translate-y-1/2 z-50 w-10 h-10 sm:w-12 sm:h-12 min-w-[40px] min-h-[40px] sm:min-w-[48px] sm:min-h-[48px] aspect-square p-0 rounded-full flex items-center justify-center shrink-0 bg-[#F5EDE0]/90 dark:bg-white/15 text-slate-900 dark:text-white border border-[#E8DFC8] dark:border-white/25 hover:bg-blue-700 hover:text-white dark:hover:bg-[#89D3BD] dark:hover:text-black hover:border-blue-700 dark:hover:border-[#89D3BD] transition-all duration-300 backdrop-blur-md hover:scale-110 active:scale-95 shadow-2xl focus:outline-none cursor-pointer group touch-manipulation ${isClosing ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}
                             title="Previous Certificate"
                             aria-label="Previous Certificate"
                         >
@@ -588,7 +589,7 @@ const Achievements = () => {
                                 e.stopPropagation();
                                 handleNext();
                             }}
-                            className="fixed right-2 sm:right-5 top-1/2 -translate-y-1/2 z-50 w-10 h-10 sm:w-12 sm:h-12 min-w-[40px] min-h-[40px] sm:min-w-[48px] sm:min-h-[48px] aspect-square p-0 rounded-full flex items-center justify-center shrink-0 bg-[#F5EDE0]/90 dark:bg-white/15 text-slate-900 dark:text-white border border-[#E8DFC8] dark:border-white/25 hover:bg-blue-700 hover:text-white dark:hover:bg-[#89D3BD] dark:hover:text-black hover:border-blue-700 dark:hover:border-[#89D3BD] transition-all duration-200 backdrop-blur-md hover:scale-110 active:scale-95 shadow-2xl focus:outline-none cursor-pointer group touch-manipulation"
+                            className={`fixed right-2 sm:right-5 top-1/2 -translate-y-1/2 z-50 w-10 h-10 sm:w-12 sm:h-12 min-w-[40px] min-h-[40px] sm:min-w-[48px] sm:min-h-[48px] aspect-square p-0 rounded-full flex items-center justify-center shrink-0 bg-[#F5EDE0]/90 dark:bg-white/15 text-slate-900 dark:text-white border border-[#E8DFC8] dark:border-white/25 hover:bg-blue-700 hover:text-white dark:hover:bg-[#89D3BD] dark:hover:text-black hover:border-blue-700 dark:hover:border-[#89D3BD] transition-all duration-300 backdrop-blur-md hover:scale-110 active:scale-95 shadow-2xl focus:outline-none cursor-pointer group touch-manipulation ${isClosing ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}
                             title="Next Certificate"
                             aria-label="Next Certificate"
                         >
@@ -601,9 +602,9 @@ const Achievements = () => {
                         onClick={closeLightbox}
                     >
                         <div
-                            className={`relative transition-all duration-300 ease-out ${isClosing
-                                ? 'animate-close-image'
-                                : ''
+                            className={`relative ${isClosing
+                                ? 'animate-close-image pointer-events-none'
+                                : 'transition-transform duration-200 ease-out'
                                 } zoom-level-${zoomLevel.toString().replace('.', '-')}`}
                             onClick={(e) => e.stopPropagation()}
                         >
@@ -612,14 +613,14 @@ const Achievements = () => {
                                     key={selectedItem.file}
                                     src={selectedItem.file}
                                     alt={selectedItem.title}
-                                    className={`relative max-w-full max-h-[64vh] sm:max-h-[72vh] object-contain rounded-xl transition-all duration-200 select-none ${isClosing ? 'opacity-90' : 'opacity-100'}`}
+                                    className="relative max-w-full max-h-[64vh] sm:max-h-[72vh] object-contain rounded-xl select-none"
                                     draggable={false}
                                 />
                             </div>
                         </div>
                     </div>
 
-                    <div className={`fixed bottom-3 sm:bottom-5 left-1/2 -translate-x-1/2 px-5 sm:px-6 py-2 sm:py-2.5 bg-[#F5EDE0]/90 dark:bg-white/10 border border-[#E8DFC8] dark:border-white/20 backdrop-blur-md rounded-2xl text-slate-900 dark:text-white text-center max-w-[92vw] sm:max-w-[75vw] z-50 shadow-2xl transition-all duration-300 pointer-events-none ${isClosing ? 'opacity-0 translate-y-6' : 'opacity-100 translate-y-0'}`}>
+                    <div className={`fixed bottom-3 sm:bottom-5 left-1/2 -translate-x-1/2 px-5 sm:px-6 py-2 sm:py-2.5 bg-[#F5EDE0]/90 dark:bg-white/10 border border-[#E8DFC8] dark:border-white/20 backdrop-blur-md rounded-2xl text-slate-900 dark:text-white text-center max-w-[92vw] sm:max-w-[75vw] z-50 shadow-2xl transition-all duration-400 ease-out pointer-events-none ${isClosing ? 'opacity-0 translate-y-8' : 'opacity-100 translate-y-0'}`}>
                         <p className="text-xs sm:text-base font-semibold leading-snug break-words whitespace-normal tracking-wide text-slate-900 dark:text-white">
                             {selectedItem.title}
                         </p>
