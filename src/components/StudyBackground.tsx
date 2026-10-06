@@ -160,7 +160,8 @@ const StudyBackground = () => {
       }
 
       // 2. Mouse interaction: Web spreading away from cursor on hover (repel force)
-      if (mouse.active) {
+      const isScrolling = Boolean((window as any).lenis?.isScrolling);
+      if (mouse.active && !isScrolling) {
         const mouseRepelDist = 150;
         const mouseRepelDistSq = mouseRepelDist * mouseRepelDist;
         for (let i = 0; i < particles.length; i++) {
