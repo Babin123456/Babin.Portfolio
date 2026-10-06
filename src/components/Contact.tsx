@@ -168,7 +168,6 @@ const Contact = () => {
                           )}
                         </div>
                       </div>
-                      {/* Copy button for emails and phone */}
                       {info.link && (info.title.includes('Email') || info.title === 'Phone') && (
                         <button
                           onClick={() => copyToClipboard(info.value, info.title)}
@@ -177,9 +176,9 @@ const Contact = () => {
                           aria-label={`Copy ${info.title}: ${info.value}`}
                         >
                           {copiedField === info.title ? (
-                            <Check className="h-4 w-4 text-green-500" />
+                            <Check className="h-4 w-4 text-blue-700 dark:text-[#89D3BD]" />
                           ) : (
-                            <Copy className="h-4 w-4 text-muted-foreground" />
+                            <Copy className="h-4 w-4 text-blue-700 dark:text-[#89D3BD]" />
                           )}
                         </button>
                       )}
