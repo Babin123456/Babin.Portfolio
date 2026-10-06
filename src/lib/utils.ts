@@ -5,10 +5,6 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-/**
- * Open a file in a new tab for preview and optionally trigger a download prompt.
- * Keeps behavior consistent across components.
- */
 export function previewThenDownload(filePath: string, filename?: string) {
   const previewWin = window.open(encodeURI(filePath), "_blank", "noopener,noreferrer");
 
@@ -32,7 +28,6 @@ export function previewThenDownload(filePath: string, filename?: string) {
       link.click();
       link.remove();
     } catch (e) {
-      // ignore — preview already opened for manual download
     }
   }
 }
