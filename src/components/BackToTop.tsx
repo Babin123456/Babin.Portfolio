@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { ArrowUp } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { smoothScrollToTarget } from '@/lib/scrollUtils';
 
 const BackToTop = () => {
     const [isVisible, setIsVisible] = useState(false);
@@ -20,10 +21,7 @@ const BackToTop = () => {
     }, []);
 
     const scrollToTop = () => {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth',
-        });
+        smoothScrollToTarget('#home', { headerOffset: 0 });
     };
 
     return (
