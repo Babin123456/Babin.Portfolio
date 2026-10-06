@@ -60,7 +60,7 @@ export const smoothScrollToTarget = (
 ) => {
   const { headerOffset = 80, duration = 1.25, onComplete } = options;
   const targetY = getElementTargetScroll(target, headerOffset);
-  const lenis = (window as any).lenis;
+  const lenis = window.lenis;
 
   if (lenis) {
     lenis.scrollTo(targetY, {
