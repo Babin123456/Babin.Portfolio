@@ -10,7 +10,7 @@ import {
 } from "@/components/ui/carousel";
 
 // Lightweight lazy image component to avoid loading large thumbnails until needed
-const LazyImage = ({ src, alt, className, forceLoad, onClick }: { src: string; alt: string; className?: string; forceLoad?: boolean; onClick?: () => void }) => {
+const LazyImage = ({ src, alt, className, forceLoad }: { src: string; alt: string; className?: string; forceLoad?: boolean }) => {
   const { ref, inView } = useInView({ triggerOnce: true, rootMargin: "200px" });
   const [loaded, setLoaded] = useState(false);
   const [imgSrc, setImgSrc] = useState<string | null>(null);
@@ -22,8 +22,7 @@ const LazyImage = ({ src, alt, className, forceLoad, onClick }: { src: string; a
   }, [inView, forceLoad, src]);
 
   return (
-    <div ref={ref} className="w-full h-full relative overflow-hidden rounded-xl" onClick={onClick}>
-      {/* Animated shimmer skeleton while loading */}
+    <div ref={ref} className="w-full h-full relative overflow-hidden rounded-xl">
       {!loaded && (
         <div className="absolute inset-0 bg-slate-200/60 dark:bg-slate-800/60 flex items-center justify-center overflow-hidden">
           <div className="absolute inset-0 -translate-x-full animate-shimmer bg-gradient-to-r from-transparent via-white/30 dark:via-white/10 to-transparent" />
@@ -84,25 +83,6 @@ const Projects = () => {
   });
 
   const [isHovered, setIsHovered] = useState(false);
-  const [selectedImage, setSelectedImage] = useState<string | null>(null);
-
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape") {
-        setSelectedImage(null);
-      }
-    };
-    if (selectedImage) {
-      document.body.style.overflow = "hidden";
-      window.addEventListener("keydown", handleKeyDown);
-    } else {
-      document.body.style.overflow = "unset";
-    }
-    return () => {
-      document.body.style.overflow = "unset";
-      window.removeEventListener("keydown", handleKeyDown);
-    };
-  }, [selectedImage]);
 
   // Autoplay plugin will be loaded dynamically to avoid build-time resolution issues on Vercel
   const [plugins, setPlugins] = useState<EmblaPluginType[]>([]);
@@ -196,146 +176,119 @@ const Projects = () => {
     {
       title: "CargoConnect",
       description:
-        "CargoConnect is a responsive web app that helps users book vehicles for moving luggage and cargo across locations in India.",
-      tech: ["TypeScript", "React", "Vite", "Tailwind"],
-      github: "https://github.com/KGFCH2/CargoConnect",
+        "CargoConnect — India's Premier Logistics & Cargo Transfer Booking Platform connecting users with on-demand vehicles for seamless intra-city and inter-city moving with instant fare estimation.",
+      tech: ["React 18", "TypeScript", "Vite", "Tailwind CSS", "React Router", "jsPDF", "Nodemailer", "Vercel"],
+      github: "https://github.com/Babin123456/CargoConnect",
       demo: "https://cargo-connect-new.vercel.app/",
       features: [
-        "User registration and login",
-        "Browse available vehicles (Mini Tempo, Large Tempo, Cargo Truck)",
-        "Pickup & destination address input",
-        "Fare estimate before booking",
-        "Mobile-responsive UI",
+        "Browse verified vehicles (Mini Tempo, Large Tempo, Cargo Truck)",
+        "Instant fare estimation & pickup/destination mapping",
+        "PDF invoice & receipt generation using jsPDF",
+        "Email confirmation alerts via Vercel serverless functions (Nodemailer)",
+        "Mobile-first, responsive modern UI with React Router v6",
+        "Deployment on Vercel platform",
       ],
       thumbnail: "/projects/CargoConnect.webp",
     },
     {
-      title: "CareerGo",
+      title: "CivicSignal AI",
       description:
-        "CareerGo — Career Go is an AI-powered career guidance web app that analyzes user skills to deliver personalized career recommendations, real-time AI chat support, and curated learning paths through a secure, modern, and responsive interface.",
-      tech: ["Python", "Flask", "JavaScript", "Groq API (LLaMA)"],
-      github: "https://github.com/KGFCH2/Career_Go",
+        "CivicSignal AI — Autonomous Multi-Modal AI & Geospatial Civic Triage Engine built by Team Triangle to classify, prioritize, and route municipal hazards in real time.",
+      tech: ["FastAPI", "React 18", "TypeScript", "YOLO", "Hugging Face", "MongoDB", "Redis", "Docker"],
+      github: "https://github.com/Babin123456/CivicSignal",
       demo: null,
       features: [
-        "Secure user authentication with encrypted passwords",
-        "AI-powered career guidance with intelligent fallback system",
-        "Skill-based career matching across 700+ career entries",
-        "Interactive career dashboard with smart recommendations",
-        "Real-time career chat assistant",
-        "Dark and light mode with glassmorphism UI",
-        "Personalized user profiles with emoji-based avatars",
-        "Curated learning resources from top platforms",
-        "Mobile-friendly responsive design",
-        "Secure password reset with verification codes",
-        "Fast performance with PWA-ready architecture",
+        "Computer Vision hazard detection with YOLO",
+        "Zero-shot NLP issue classification via Hugging Face Transformers",
+        "OpenAI LLM-powered civic priority score & severity rating",
+        "Geospatial 2dsphere indexing on MongoDB Atlas with Leaflet maps",
+        "Asynchronous Celery worker queue with Upstash Redis rate limiting",
+        "Team Triangle: Babin Bid, Debasmita Bose, Pratik Giri",
       ],
-      thumbnail: "/projects/Career_Go.webp",
+      thumbnail: "/projects/CivicSignal.webp",
     },
     {
-      title: "SkyCast AI",
+      title: "ML-Based Price Prediction",
       description:
-        "Intelligent Real-Time Weather Dashboard built with Streamlit. Features real-time weather data, interactive forecasts with Plotly charts, auto-location detection, multi-provider support (OpenWeatherMap or WeatherAPI), and AI-driven insights. Deployable Streamlit app with unit conversion and responsive visualizations.",
-      tech: ["Python", "Streamlit", "AI/ML", "Data Visualization", "Plotly"],
-      github: "https://github.com/KGFCH2/SkyCast_AI",
-      demo: "https://sky-cast-ai-new.streamlit.app/",
+        "ML-Based Price Prediction for Agri-Horticultural Commodities — Peer-reviewed Springer Nature research paper & ML engine predicting seasonal vegetable & fruit market prices across harvest seasons.",
+      tech: ["Python", "scikit-learn", "Random Forest", "SVR", "Pandas", "NumPy", "Matplotlib", "Seaborn"],
+      github: "https://github.com/Babin123456/ML-Based-Price-Prediction",
+      demo: "https://link.springer.com/chapter/10.1007/978-3-032-21164-4_30",
       features: [
-        "Real-time weather data & forecasts",
-        "Interactive Plotly visualizations",
-        "Auto-location detection & manual input",
-        "Multi-provider API support",
-        "AI-driven insights & alerts",
-        "Unit conversion (Celsius/Fahrenheit)",
+        "Published in Springer Nature SIST (Vol. 484, pp. 378–389)",
+        "Best Paper Award at 2nd Int. Conf. on Smart Systems & Wireless Communication (SSWC 2025)",
+        "Random Forest Regressor (R² = 0.9893 Summer, 0.9855 Monsoon, 0.9799 Winter)",
+        "Support Vector Regressor (SVR) benchmark comparative analysis",
+        "Dynamic centralized configuration & headless multi-figure visualization pipeline",
+        "Academic Supervisors & Authors: Dr. Debdutta Pal, Babin Bid, Ritika Pramanick, Liza Ghosh",
       ],
-      thumbnail: "/projects/SkyCast_AI.webp",
+      thumbnail: "/projects/ML-Based_Price_Prediction.webp",
     },
     {
-      title: "AquaWatch",
+      title: "EduPilot AI",
       description:
-        "AquaWatch monitors and raises awareness about the water crisis across Indian states — alerts, resources, emergency contacts and actionable solutions.",
-      tech: ["TypeScript", "React", "Vite", "JSON"],
-      github: "https://github.com/KGFCH2/AquaWatch",
-      demo: "https://aqua-watch-smoky.vercel.app/",
+        "EduPilot AI — Intelligent Academic Operational Layer for Higher Education Institutions tailored for Adamas University, streamlining curriculum, document analysis, and campus operations.",
+      tech: ["React 18", "TypeScript 5", "FastAPI", "Groq LLaMA", "Gemini 1.5 Flash", "MongoDB", "Docker", "Vercel"],
+      github: "https://github.com/Babin123456/EduPilot-AI",
+      demo: "https://edupilot-ai-edtech.vercel.app/",
       features: [
-        "Alerts and timely warnings",
-        "Suggested solutions & awareness tips",
-        "Verified government resources integration",
-        "Emergency helpline & email support",
+        "Dual Groq LLM (LLaMA 3.3 70B) execution and intelligent routing",
+        "Google Gemini 1.5 Flash Vision Cloud API for handwriting, formulas & diagram analysis",
+        "Vector Search RAG engine using Hugging Face all-MiniLM-L6-v2 embeddings",
+        "JWT access/refresh token security & bcrypt password hashing",
+        "Tailored for Adamas University — VibeForge 1.0 Hackathon Submission",
+        "Team Triangle: Babin Bid (Team Leader), Baibhab Adhikari, Subhajyoti Halder",
       ],
-      thumbnail: "/projects/AquaWatch.webp",
+      thumbnail: "/projects/EduPilot-AI.webp",
     },
     {
-      title: "ImpactSense (Earthquake Impact Prediction)",
+      title: "KrishiBhoomi AI",
       description:
-        "ImpactSense is a machine-learning system to estimate earthquake impact using geophysical and environmental data — an internship project.",
-      tech: ["Python", "NumPy", "Pandas", "scikit-learn", "XGBoost"],
-      github: "https://github.com/KGFCH2/ImpactSense_Earthquake_Impact_Prediction",
+        "KrishiBhoomi AI — Production-Quality AI-Powered Agricultural Intelligence Platform delivering crop recommendations, leaf disease detection, and multilingual voice assistance in 11 Indian languages.",
+      tech: ["Next.js 15", "React 19", "FastAPI", "PostgreSQL", "XGBoost", "Gemini API", "Whisper", "Docker"],
+      github: "https://github.com/Babin123456/KrishiBhoomi-AI",
+      demo: "https://krishi-bhoomi-ai.vercel.app/",
+      features: [
+        "XGBoost machine learning engine for localized crop recommendation",
+        "EfficientNet CNN & Google Gemini API for real-time plant leaf disease detection",
+        "OpenAI Whisper & Gemini voice assistant supporting 11 Indian languages",
+        "FAISS & Gemini-powered RAG engine for government schemes & agricultural manuals",
+        "PostgreSQL with 15 relational tables, Redis caching, & Docker orchestration",
+        "Built for Build With AI program hosted by Hack2Skill (Author: Babin Bid)",
+      ],
+      thumbnail: "/projects/KrishiBhoomi-AI.webp",
+    },
+    {
+      title: "AI Data Analysis",
+      description:
+        "AI Data Analysis — Full Stack GenAI Data Analysis Platform allowing users to upload datasets, generate natural-language SQL queries, and visualize charts instantly.",
+      tech: ["React", "FastAPI", "DuckDB", "Groq LLaMA", "Plotly", "AG Grid", "MongoDB", "Firebase"],
+      github: "https://github.com/Babin123456/Ai-Data-Analysis",
+      demo: "https://ai-data-analysis-web-app.vercel.app/",
+      features: [
+        "In-memory analytical querying powered by DuckDB",
+        "Groq Cloud API (LLaMA 3.3 70B) for zero-shot text-to-SQL & data explanations",
+        "Interactive Plotly.js charts & high-performance data grid with AG Grid",
+        "Multi-provider authentication via Firebase Auth (Google OAuth & Email) & JWT",
+        "Dataset storage & metadata caching with MongoDB Atlas",
+      ],
+      thumbnail: "/projects/AI-Data-Analysis.webp",
+    },
+    {
+      title: "StudyBuddy AI",
+      description:
+        "StudyBuddy AI — Offline-First AI Study Companion converting lecture notes (PDF, Markdown, or text) into interactive MCQs, 3D flip flashcards, and mock viva practice using local AI models.",
+      tech: ["React 19", "Vite", "Tailwind CSS v4", "Framer Motion", "Node.js", "Express.js", "pdf-parse", "Ollama (Gemma)"],
+      github: "https://github.com/Babin123456/StudyBuddy_AI",
       demo: null,
       features: [
-        "Urban risk assessment & infrastructure planning",
-        "Government disaster response prioritization",
-        "Data preprocessing, feature engineering, model training",
+        "Local-first document parsing for PDF, Markdown, and plain text lecture notes",
+        "Interactive 3D flip flashcards powered by Framer Motion",
+        "Automated multiple-choice question (MCQ) quiz generation",
+        "Mock viva practice question simulator for oral exam preparation",
+        "Privacy-first offline AI execution via Ollama runner (Gemma 2B / 7B)",
       ],
-      thumbnail: "/projects/ImpactSense.webp",
-    },
-    {
-      title: "AI Powered ChatBot",
-      description:
-        "Gemini-only FastAPI chatbot with streaming responses, optional web search context, theme toggle and demo login — internship project.",
-      tech: ["Python", "FastAPI", "JS", "HTML", "CSS"],
-      github: "https://github.com/KGFCH2/AI_Powered_ChatBot",
-      demo: null,
-      features: [
-        "Gemini streaming responses",
-        "Optional web-search context (DuckDuckGo)",
-        "Light/Dark theme, demo login, UI micro-interactions",
-      ],
-      thumbnail: "/projects/AI_Powered_ChatBot.webp",
-    },
-    {
-      title: "India Stock Dashboard",
-      description:
-        "Interactive Streamlit dashboard showcasing Indian stock market data, charts, indicators and simple prediction helpers.",
-      tech: ["Python", "Streamlit", "Plotly", "Pandas"],
-      github: "https://github.com/KGFCH2/India_Stock_Dashboard",
-      demo: null,
-      features: [
-        "Real-time & historical price visualizations",
-        "Interactive Plotly charts and technical indicators",
-        "Simple ensemble-based prediction fallback",
-      ],
-      thumbnail: "/projects/India_Stock_Dashboard.webp",
-    },
-    {
-      title: "Heart Disease Prediction System",
-      description:
-        "A fast, accurate machine learning system for predicting heart disease risk using XGBoost on tabular health data. Intuitive GUI and production-ready performance.",
-      tech: ["Python", "XGBoost", "scikit-learn", "GUI"],
-      github: "https://github.com/KGFCH2/Heart_Disease_Prediction_System",
-      demo: null,
-      features: [
-        "Model: XGBoost (eXtreme Gradient Boosting)",
-        "Accuracy: 78.65% on test set",
-        "Training Time: 1.02 seconds",
-        "Prediction Speed: 0.34 ms (real-time)",
-        "Memory Usage: ~50 MB",
-        "Input Features: 7 health parameters",
-        "Status: Production Ready",
-      ],
-      thumbnail: "/projects/Heart_Disease_Prediction_System_New.webp",
-    },
-    {
-      title: "CropAI India",
-      description:
-        "CropAI India: AI-powered agricultural intelligence for Indian farming — crop analytics, market insights, and predictive features.",
-      tech: ["React", "TypeScript", "Vite", "JSON"],
-      github: "https://github.com/KGFCH2/CropAI_India",
-      demo: "https://crop-ai-india.vercel.app/",
-      features: [
-        "Pan-India crop analytics",
-        "Market intelligence & yield insights",
-        "Scalable platform ready for ML integration",
-      ],
-      thumbnail: "/projects/CropAI.webp",
+      thumbnail: "/projects/StudyBuddy-AI.webp",
     },
   ];
 
@@ -366,7 +319,7 @@ const Projects = () => {
               />
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-8">
-              Here are some of my recent and old projects showcasing my skills and experience
+              Here are some of my recent and featured projects showcasing my skills and experience
             </p>
           </motion.div>
 
@@ -384,31 +337,24 @@ const Projects = () => {
               className="w-full"
             >
               <CarouselContent>
-                {projects
-                  .slice()
-                  .sort((a, b) => a.title.localeCompare(b.title))
-                  .map((project, index) => (
+                {projects.map((project, index) => (
                     <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
                       <div className="p-2 h-full">
                         <Card tabIndex={0} className="relative h-full overflow-hidden border border-white/20 dark:border-white/10 shadow-card hover:shadow-glow transition-all duration-300 group flex flex-col bg-white/30 dark:bg-white/5 backdrop-blur-md hover:border-primary/30 hover:scale-[1.02] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 dark:focus-visible:ring-[#89D3BD] focus-visible:ring-offset-2 focus-visible:ring-offset-background">
-                          {/* Light mode gradient overlay on hover (subtle) */}
                           <div className="absolute inset-0 rounded-lg bg-violet-200/10 opacity-0 group-hover:opacity-100 dark:group-hover:opacity-0 transition-opacity duration-300 pointer-events-none" />
                           {project.thumbnail ? (
-                            <div className="h-40 flex items-center justify-center bg-muted/10 p-3 overflow-hidden rounded cursor-pointer">
+                            <div className="h-40 flex items-center justify-center bg-[#F5EDE0]/80 dark:bg-white/5 backdrop-blur-md p-3 overflow-hidden rounded-xl border border-[#E8DFC8] dark:border-white/10 shadow-sm">
                               <LazyImage
                                 src={project.thumbnail}
                                 alt={`${project.title} thumbnail`}
                                 className="w-full h-full rounded transform transition-transform duration-300 ease-out group-hover:scale-105"
-                                forceLoad={selectedImage === project.thumbnail}
-                                onClick={() => setSelectedImage(project.thumbnail)}
                               />
                             </div>
                           ) : (
-                            <div className="h-40 flex items-center justify-center bg-muted/10 p-3 overflow-hidden rounded">
+                            <div className="h-40 flex items-center justify-center bg-[#F5EDE0]/80 dark:bg-white/5 backdrop-blur-md p-3 overflow-hidden rounded-xl border border-[#E8DFC8] dark:border-white/10 shadow-sm">
                               <span className="text-foreground font-bold text-lg group-hover:text-blue-700 dark:group-hover:text-[#89D3BD] group-focus:text-blue-700 dark:group-focus:text-[#89D3BD] transition-colors duration-300">{project.title}</span>
                             </div>
                           )}
-                          {/* separator line between image and content (more visible) */}
                           <div className="w-full border-t-2 border-muted/30" />
                           <div className="p-4 flex flex-col flex-grow">
                             <div className="space-y-3 flex-grow">
@@ -483,7 +429,6 @@ const Projects = () => {
             </Carousel>
           </div>
 
-          {/* Mobile swipe hint */}
           <div className="md:hidden flex items-center justify-center gap-2 mt-4 text-muted-foreground select-none">
             <Hand className="w-4 h-4 text-blue-700 dark:text-[#89D3BD] -rotate-12" />
             <span className="text-sm font-medium">Swipe to explore more projects</span>
@@ -491,49 +436,6 @@ const Projects = () => {
           </div>
         </motion.div>
       </div>
-
-      {/* Full-size image modal with smooth pop-up animation */}
-      <AnimatePresence>
-        {selectedImage && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.22, ease: "easeOut" }}
-            className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-white/85 dark:bg-black/90 backdrop-blur-md"
-            onClick={() => setSelectedImage(null)}
-          >
-            {/* Smoothly animated close button */}
-            <motion.button
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.8 }}
-              transition={{ duration: 0.18 }}
-              onClick={() => setSelectedImage(null)}
-              className="fixed top-3 right-3 sm:top-5 sm:right-5 z-[70] w-11 h-11 sm:w-10 sm:h-10 flex items-center justify-center rounded-full bg-white/95 dark:bg-black/85 text-slate-800 dark:text-white border border-slate-300 dark:border-white/30 shadow-2xl backdrop-blur-md hover:bg-red-600 hover:text-white hover:border-red-600 dark:hover:bg-red-600 dark:hover:text-white dark:hover:border-red-600 active:scale-95 transition-all"
-              aria-label="Close project preview"
-            >
-              <X className="h-5 w-5" />
-            </motion.button>
-
-            {/* Smooth pop-up window */}
-            <motion.div
-              initial={{ scale: 0.88, opacity: 0, y: 15 }}
-              animate={{ scale: 1, opacity: 1, y: 0 }}
-              exit={{ scale: 0.9, opacity: 0, y: 10 }}
-              transition={{ type: "spring", damping: 25, stiffness: 350 }}
-              onClick={(e) => e.stopPropagation()}
-              className="relative max-w-[94vw] sm:max-w-4xl max-h-[85vh] flex items-center justify-center rounded-2xl overflow-hidden shadow-2xl border-2 border-slate-200/90 dark:border-white/20 bg-card/60 dark:bg-card/40 backdrop-blur-sm"
-            >
-              <img
-                src={encodeURI(selectedImage)}
-                alt="Full size project thumbnail"
-                className="max-w-full max-h-[82vh] object-contain rounded-xl select-none"
-              />
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
     </section>
   );
 };
