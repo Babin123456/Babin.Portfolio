@@ -498,11 +498,12 @@ const About = () => {
   };
 
   const handleCloseModal = () => {
+    if (isClosing) return;
     setIsClosing(true);
     setTimeout(() => {
       setShowImageModal(false);
       setIsClosing(false);
-    }, 280);
+    }, 380);
   };
 
   return (
@@ -860,19 +861,23 @@ const About = () => {
         {showImageModal && (
           <motion.div
             initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
+            animate={{ opacity: isClosing ? 0 : 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.2 }}
-            className={`fixed inset-0 z-50 flex items-center justify-center bg-[#FAF6EE]/90 dark:bg-black/90 backdrop-blur-2xl ${
-              isClosing ? "opacity-0" : ""
+            transition={{ duration: 0.38, ease: "easeOut" }}
+            className={`fixed inset-0 z-50 flex items-center justify-center bg-[#FAF6EE]/90 dark:bg-black/90 backdrop-blur-2xl transition-opacity duration-380 ${
+              isClosing ? "pointer-events-none" : ""
             }`}
             onClick={handleCloseModal}
           >
             <motion.div
               initial={{ scale: 0.9, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.9, opacity: 0 }}
-              transition={{ duration: 0.25, ease: "easeOut" }}
+              animate={
+                isClosing
+                  ? { scale: 0.78, opacity: 0, y: 24, filter: "blur(4px)" }
+                  : { scale: 1, opacity: 1, y: 0, filter: "blur(0px)" }
+              }
+              exit={{ scale: 0.78, opacity: 0, y: 24, filter: "blur(4px)" }}
+              transition={{ duration: 0.38, ease: [0.25, 1, 0.5, 1] }}
               className="relative max-w-[90vw] max-h-[90vh] p-3 sm:p-5 text-center bg-[#F5EDE0]/95 dark:bg-zinc-950/90 backdrop-blur-md rounded-3xl border border-[#E8DFC8] dark:border-zinc-800 shadow-2xl"
               onClick={(e) => e.stopPropagation()}
             >
