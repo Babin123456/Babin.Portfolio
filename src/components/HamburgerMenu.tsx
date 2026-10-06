@@ -19,19 +19,16 @@ const HamburgerMenu: React.FC<HamburgerMenuProps> = ({ isOpen, onClick }) => {
     <button
       ref={btnRef}
       onClick={onClick}
-      className="md:hidden p-2 min-h-[48px] min-w-[48px] flex items-center justify-center"
+      className="md:hidden w-11 h-11 rounded-full border border-border/70 hover:border-primary/50 bg-background/60 hover:bg-background/90 flex items-center justify-center transition-all duration-300 shadow-sm backdrop-blur-md active:scale-95"
       aria-label={isOpen ? "Close navigation menu" : "Open navigation menu"}
     >
       <div className="relative w-6 h-6">
-        {/* Top line */}
         <span
           className={`absolute left-0 top-1/2 w-6 h-0.5 bg-primary origin-center transition-all duration-300 ease-in-out ${isOpen ? 'rotate-45' : '-translate-y-2'}`}
         />
-        {/* Middle line */}
         <span
           className={`absolute left-0 top-1/2 w-6 h-0.5 bg-primary origin-center transition-all duration-300 ease-in-out ${isOpen ? 'opacity-0' : '-translate-y-0.25'}`}
         />
-        {/* Bottom line */}
         <span
           className={`absolute left-0 top-1/2 w-6 h-0.5 bg-primary origin-center transition-all duration-300 ease-in-out ${isOpen ? '-rotate-45' : 'translate-y-2'}`}
         />
