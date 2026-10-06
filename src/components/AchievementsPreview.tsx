@@ -1,5 +1,5 @@
 import { motion, Variants } from "framer-motion";
-import { Award, Trophy, Medal, Star, ArrowRight, X } from "lucide-react";
+import { Award, Trophy, Medal, Star, ArrowRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import SectionTitle from "./SectionTitle";
@@ -74,24 +74,13 @@ const itemVariants: Variants = {
 
 const AchievementsPreview = () => {
   const navigate = useNavigate();
-  const [selectedImage, setSelectedImage] = useState<{ file: string; title: string } | null>(null);
-  const [isClosing, setIsClosing] = useState(false);
   const [imageErrors, setImageErrors] = useState<Set<string>>(new Set());
   const [loadedImages, setLoadedImages] = useState<Set<string>>(new Set());
-
-  const handleCloseModal = () => {
-    setIsClosing(true);
-    setTimeout(() => {
-      setSelectedImage(null);
-      setIsClosing(false);
-    }, 300);
-  };
 
   return (
     <section id="achievements-preview" className="py-20 relative overflow-hidden">
       <StudyBackground />
 
-      {/* Background Decorative Elements */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
         <div className="absolute top-1/3 -left-20 w-80 h-80 bg-blue-700/10 dark:bg-[#89D3BD]/10 rounded-full blur-[100px] animate-pulse" />
         <div className="absolute bottom-1/3 -right-20 w-80 h-80 bg-blue-700/10 dark:bg-[#89D3BD]/10 rounded-full blur-[100px] animate-pulse [animation-delay:1.5s]" />
@@ -105,7 +94,6 @@ const AchievementsPreview = () => {
           viewport={{ once: true, amount: 0.1 }}
           className="max-w-6xl mx-auto space-y-12"
         >
-          {/* Section Header */}
           <motion.div variants={itemVariants} className="text-center space-y-4">
             <h2 className="text-4xl md:text-6xl font-black mb-3 tracking-tighter max-w-xs mx-auto md:max-w-none">
               <SectionTitle
@@ -129,24 +117,20 @@ const AchievementsPreview = () => {
             </motion.p>
           </motion.div>
 
-          {/* Achievement Cards Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
             {featuredAchievements.map((achievement, index) => (
               <motion.div
                 key={index}
                 variants={itemVariants}
                 whileHover={{
-                  y: -8,
-                  scale: 1.03,
+                  y: -6,
+                  scale: 1.02,
                   boxShadow: "0 10px 30px -5px rgba(29, 78, 216, 0.4), 0 0 20px rgba(29, 78, 216, 0.3)",
                   transition: { type: "spring", stiffness: 400, damping: 17 },
                 }}
-                className="group relative bg-white dark:bg-white/5 backdrop-blur-md rounded-2xl border border-slate-200 dark:border-white/10 hover:border-blue-600 dark:hover:border-[#89D3BD] hover:shadow-[0_0_25px_rgba(29,78,216,0.45)] dark:hover:shadow-[0_0_25px_rgba(137,211,189,0.45)] transition-all duration-300 overflow-hidden cursor-pointer"
-                onClick={() => setSelectedImage({ file: achievement.file, title: achievement.title })}
+                className="group relative bg-white dark:bg-white/5 backdrop-blur-md rounded-2xl border border-slate-200 dark:border-white/10 hover:border-blue-600 dark:hover:border-[#89D3BD] hover:shadow-[0_0_25px_rgba(29,78,216,0.45)] dark:hover:shadow-[0_0_25px_rgba(137,211,189,0.45)] transition-all duration-300 overflow-hidden select-none"
               >
-                {/* Achievement Image */}
-                <div className="relative h-44 overflow-hidden bg-white dark:bg-zinc-950 border-b border-slate-100 dark:border-zinc-900">
-                  {/* Shimmer loading skeleton */}
+                <div className="relative h-44 overflow-hidden bg-[#F5EDE0]/80 dark:bg-zinc-950/80 backdrop-blur-md border-b border-[#E8DFC8] dark:border-zinc-900">
                   {!loadedImages.has(achievement.file) && !imageErrors.has(achievement.file) && (
                     <div className="absolute inset-0 z-0 flex items-center justify-center overflow-hidden">
                       <div className="absolute inset-0 -translate-x-full animate-shimmer bg-gradient-to-r from-transparent via-white/30 dark:via-white/10 to-transparent" />
@@ -160,7 +144,7 @@ const AchievementsPreview = () => {
                       loading="lazy"
                       decoding="async"
                       onLoad={() => setLoadedImages(prev => new Set(prev).add(achievement.file))}
-                      className={`w-full h-full object-cover transition-all duration-500 group-hover:scale-110 ${loadedImages.has(achievement.file) ? 'opacity-100' : 'opacity-0'}`}
+                      className={`w-full h-full object-cover transition-all duration-500 group-hover:scale-105 ${loadedImages.has(achievement.file) ? 'opacity-100' : 'opacity-0'}`}
                       onError={() => setImageErrors(prev => new Set(prev).add(achievement.file))}
                     />
                   ) : (
@@ -168,10 +152,8 @@ const AchievementsPreview = () => {
                       <achievement.icon className="w-16 h-16 text-blue-700/30 dark:text-[#89D3BD]/30" />
                     </div>
                   )}
-                  {/* Gradient overlay */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
 
-                  {/* Category badge */}
                   <div className="absolute top-3 right-3">
                     <span className="px-2.5 py-1 rounded-full text-[10px] font-bold bg-white/90 dark:bg-black/70 text-blue-700 dark:text-[#89D3BD] backdrop-blur-sm border border-blue-700/20 dark:border-[#89D3BD]/20">
                       {achievement.category}
@@ -179,7 +161,6 @@ const AchievementsPreview = () => {
                   </div>
                 </div>
 
-                {/* Content */}
                 <div className="p-5">
                   <div className="flex items-center justify-center gap-3 text-center">
                     <div className="p-2 rounded-xl bg-blue-700/10 dark:bg-[#89D3BD]/10 shrink-0 group-hover:scale-110 transition-all duration-300">
@@ -194,7 +175,6 @@ const AchievementsPreview = () => {
             ))}
           </div>
 
-          {/* View More Button */}
           <motion.div variants={itemVariants} className="text-center pt-4">
             <motion.button
               whileHover={{
@@ -204,9 +184,9 @@ const AchievementsPreview = () => {
               }}
               whileTap={{ scale: 0.98 }}
               onClick={() => navigate("/achievements")}
-              className="group relative inline-flex items-center gap-3 px-8 py-3.5 rounded-xl border-2 border-blue-900 dark:border-cyan-300 text-blue-700 dark:text-cyan-300 font-black text-sm transition-all duration-300 overflow-hidden bg-transparent"
+              className="group relative inline-flex items-center gap-3 px-8 py-3.5 rounded-full border-2 border-blue-700 dark:border-[#89D3BD] text-blue-700 dark:text-[#89D3BD] font-black text-sm transition-all duration-300 overflow-hidden bg-transparent cursor-pointer shadow-sm hover:shadow-[0_10px_25px_rgba(29,78,216,0.3)] dark:hover:shadow-[0_10px_25px_rgba(137,211,189,0.3)]"
             >
-              <div className="absolute inset-0 bg-blue-900 dark:bg-cyan-300 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
+              <div className="absolute inset-0 bg-blue-700 dark:bg-[#89D3BD] translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
               <span className="relative z-10 flex items-center gap-2 group-hover:text-white dark:group-hover:text-black transition-colors duration-300">
                 <Award className="w-4 h-4 group-hover:scale-110 transition-transform duration-200" />
                 View All Achievements
@@ -216,40 +196,6 @@ const AchievementsPreview = () => {
           </motion.div>
         </motion.div>
       </div>
-
-      {/* Image Lightbox Modal */}
-      {selectedImage && (
-        <div
-          className={`fixed inset-0 z-50 flex items-center justify-center bg-white/85 dark:bg-black/80 backdrop-blur-md transition-all duration-300 ${isClosing ? "opacity-0" : "animate-fade-in"}`}
-          onClick={handleCloseModal}
-        >
-          <div className={`relative max-w-[90vw] max-h-[90vh] transition-all duration-300 ${isClosing ? "scale-90 opacity-0" : "scale-100 opacity-100"}`}>
-            <button
-              onClick={handleCloseModal}
-              className="fixed top-3 right-3 sm:top-4 sm:right-4 z-50 w-9 h-9 sm:w-10 sm:h-10 aspect-square rounded-full bg-red-500/10 dark:bg-red-500/20 text-red-600 dark:text-red-400 hover:text-white hover:bg-red-600 hover:border-red-600 border border-red-300/70 dark:border-red-500/30 backdrop-blur-md shadow-md transition-all duration-200 hover:scale-110 active:scale-95 hover:rotate-90 flex items-center justify-center shrink-0 touch-manipulation cursor-pointer"
-              aria-label="Close image"
-            >
-              <X className="w-4 h-4 sm:w-5 sm:h-5 shrink-0" />
-            </button>
-            <div className="bg-white dark:bg-black rounded-2xl p-2 sm:p-3.5 border border-slate-200/90 dark:border-zinc-800 shadow-2xl flex items-center justify-center">
-              <img
-                src={encodeURI(selectedImage.file)}
-                alt={selectedImage.title}
-                loading="lazy"
-                decoding="async"
-                className="relative rounded-xl max-w-full max-h-[80vh] object-contain"
-                onClick={(e) => e.stopPropagation()}
-              />
-            </div>
-            <p className="text-center mt-4 text-slate-900 dark:text-white text-lg font-semibold">
-              {selectedImage.title}
-            </p>
-            <p className="text-center text-slate-600 dark:text-white/60 text-sm">
-              Click anywhere to close
-            </p>
-          </div>
-        </div>
-      )}
     </section>
   );
 };
