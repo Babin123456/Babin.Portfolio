@@ -22,6 +22,8 @@ import {
   Mail,
   HelpCircle,
   Sparkles,
+  Download,
+  ExternalLink,
 } from "lucide-react";
 import SectionTitle from "./SectionTitle";
 import StudyBackground from "./StudyBackground";
@@ -135,6 +137,7 @@ const COMMAND_SUGGESTIONS = [
   { cmd: "focus", icon: Target },
   { cmd: "hobbies", icon: Heart },
   { cmd: "education", icon: GraduationCap },
+  { cmd: "resume", icon: FileText },
   { cmd: "contact", icon: Mail },
   { cmd: "clear", icon: RotateCcw },
   { cmd: "help", icon: HelpCircle },
@@ -194,20 +197,21 @@ const About = () => {
       case "help":
         response = (
           <div className="space-y-1.5 font-mono text-xs">
-            <div className="flex items-center gap-1.5 text-blue-400 dark:text-[#89D3BD] font-bold">
+            <div className="flex items-center gap-1.5 text-blue-700 dark:text-[#89D3BD] font-bold">
               <HelpCircle className="w-3.5 h-3.5" />
               <span>Available System Directives:</span>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-1 pl-1">
-              <p className="flex items-center gap-1.5"><User className="w-3 h-3 text-cyan-400" /><span className="text-cyan-300 font-semibold">whoami</span> : Identity & roles</p>
-              <p className="flex items-center gap-1.5"><Code className="w-3 h-3 text-blue-400" /><span className="text-blue-300 font-semibold">skills</span> : Tech stack & tools</p>
-              <p className="flex items-center gap-1.5"><Trophy className="w-3 h-3 text-[#89D3BD]" /><span className="text-[#89D3BD] font-semibold">achievements</span> : Awards, scholarship & roles</p>
-              <p className="flex items-center gap-1.5"><Target className="w-3 h-3 text-cyan-400" /><span className="text-cyan-300 font-semibold">focus</span> : Research & web goals</p>
-              <p className="flex items-center gap-1.5"><GraduationCap className="w-3 h-3 text-blue-400" /><span className="text-blue-300 font-semibold">education</span> : Degree & honors</p>
-              <p className="flex items-center gap-1.5"><Sparkles className="w-3 h-3 text-[#89D3BD]" /><span className="text-[#89D3BD] font-semibold">highlights</span> : Open-source ranks & PRs</p>
-              <p className="flex items-center gap-1.5"><Heart className="w-3 h-3 text-cyan-400" /><span className="text-cyan-300 font-semibold">hobbies</span> : Personal interests</p>
-              <p className="flex items-center gap-1.5"><Mail className="w-3 h-3 text-blue-400" /><span className="text-blue-300 font-semibold">contact</span> : Verified channels</p>
-              <p className="flex items-center gap-1.5"><RotateCcw className="w-3 h-3 text-slate-400" /><span className="text-slate-300 font-semibold">clear</span> : Flush terminal buffer</p>
+              <p className="flex items-center gap-1.5"><User className="w-3 h-3 text-blue-700 dark:text-[#89D3BD]" /><span className="text-cyan-300 font-semibold">whoami</span> : Identity & roles</p>
+              <p className="flex items-center gap-1.5"><Code className="w-3 h-3 text-blue-700 dark:text-[#89D3BD]" /><span className="text-blue-300 font-semibold">skills</span> : Tech stack & tools</p>
+              <p className="flex items-center gap-1.5"><Trophy className="w-3 h-3 text-blue-700 dark:text-[#89D3BD]" /><span className="text-[#89D3BD] font-semibold">achievements</span> : Awards, scholarship & roles</p>
+              <p className="flex items-center gap-1.5"><Target className="w-3 h-3 text-blue-700 dark:text-[#89D3BD]" /><span className="text-cyan-300 font-semibold">focus</span> : Research & web goals</p>
+              <p className="flex items-center gap-1.5"><GraduationCap className="w-3 h-3 text-blue-700 dark:text-[#89D3BD]" /><span className="text-blue-300 font-semibold">education</span> : Degree & honors</p>
+              <p className="flex items-center gap-1.5"><Sparkles className="w-3 h-3 text-blue-700 dark:text-[#89D3BD]" /><span className="text-[#89D3BD] font-semibold">highlights</span> : Open-source ranks & PRs</p>
+              <p className="flex items-center gap-1.5"><Heart className="w-3 h-3 text-blue-700 dark:text-[#89D3BD]" /><span className="text-cyan-300 font-semibold">hobbies</span> : Personal interests</p>
+              <p className="flex items-center gap-1.5"><FileText className="w-3 h-3 text-blue-700 dark:text-[#89D3BD]" /><span className="text-[#89D3BD] font-semibold">resume</span> : LaTeX & Canva CVs</p>
+              <p className="flex items-center gap-1.5"><Mail className="w-3 h-3 text-blue-700 dark:text-[#89D3BD]" /><span className="text-blue-300 font-semibold">contact</span> : Verified channels</p>
+              <p className="flex items-center gap-1.5"><RotateCcw className="w-3 h-3 text-blue-700 dark:text-[#89D3BD]" /><span className="text-slate-300 font-semibold">clear</span> : Flush terminal buffer</p>
             </div>
           </div>
         );
@@ -216,12 +220,12 @@ const About = () => {
       case "whoami":
         response = (
           <div className="space-y-1 font-mono text-xs">
-            <div className="flex items-center gap-1.5 text-blue-400 dark:text-[#89D3BD] font-bold">
+            <div className="flex items-center gap-1.5 text-blue-700 dark:text-[#89D3BD] font-bold">
               <User className="w-3.5 h-3.5" />
               <span>Babin Bid</span>
             </div>
             <p className="text-slate-300">
-              B.Tech CSE student at Adamas University | Transpiler Design Intern at TCG CREST | Passionate about Mathematical Problem Solving | Exploring AI & ML, Quantum Computing, Data Science & UI/UX Design.
+              B.Tech in CSE (Core) at Adamas University | Transpiler Design Intern at TCG CREST | Passionate about Mathematical Problem Solving | Exploring Quantum Computing, Data Science & UI/UX Design.
             </p>
           </div>
         );
@@ -230,14 +234,14 @@ const About = () => {
       case "skills":
         response = (
           <div className="space-y-1 font-mono text-xs">
-            <div className="flex items-center gap-1.5 text-blue-400 dark:text-[#89D3BD] font-bold">
+            <div className="flex items-center gap-1.5 text-blue-700 dark:text-[#89D3BD] font-bold">
               <Code className="w-3.5 h-3.5" />
               <span>Technical Stack & Ecosystem:</span>
             </div>
-            <p className="flex items-center gap-1.5 flex-wrap"><Cpu className="w-3 h-3 text-cyan-400 shrink-0" /><span className="text-cyan-300 font-semibold">Languages:</span> C | C++ | Java | Python | JavaScript | TypeScript | SQL</p>
-            <p className="flex items-center gap-1.5 flex-wrap"><Rocket className="w-3 h-3 text-blue-400 shrink-0" /><span className="text-blue-300 font-semibold">Web & UI:</span> HTML | CSS | Tailwind CSS | React | Vite</p>
-            <p className="flex items-center gap-1.5 flex-wrap"><Brain className="w-3 h-3 text-[#89D3BD] shrink-0" /><span className="text-[#89D3BD] font-semibold">Data Science & ML:</span> NumPy | Pandas | Matplotlib | Seaborn | Scikit-learn</p>
-            <p className="flex items-center gap-1.5 flex-wrap"><Palette className="w-3 h-3 text-cyan-400 shrink-0" /><span className="text-cyan-300 font-semibold">Developer Tools:</span> Git | GitHub | VS Code | Antigravity | Canva</p>
+            <p className="flex items-center gap-1.5 flex-wrap"><Cpu className="w-3 h-3 text-blue-700 dark:text-[#89D3BD] shrink-0" /><span className="text-cyan-300 font-semibold">Languages:</span> C | C++ | Java | Python | JavaScript | TypeScript | SQL</p>
+            <p className="flex items-center gap-1.5 flex-wrap"><Rocket className="w-3 h-3 text-blue-700 dark:text-[#89D3BD] shrink-0" /><span className="text-blue-300 font-semibold">Web & UI:</span> HTML | CSS | Tailwind CSS | React | Vite</p>
+            <p className="flex items-center gap-1.5 flex-wrap"><Brain className="w-3 h-3 text-blue-700 dark:text-[#89D3BD] shrink-0" /><span className="text-[#89D3BD] font-semibold">Data Science & ML:</span> NumPy | Pandas | Matplotlib | Seaborn | Scikit-learn</p>
+            <p className="flex items-center gap-1.5 flex-wrap"><Palette className="w-3 h-3 text-blue-700 dark:text-[#89D3BD] shrink-0" /><span className="text-cyan-300 font-semibold">Developer Tools:</span> Git | GitHub | VS Code | Antigravity | Canva</p>
           </div>
         );
         break;
@@ -245,12 +249,12 @@ const About = () => {
       case "education":
         response = (
           <div className="space-y-1 font-mono text-xs">
-            <div className="flex items-center gap-1.5 text-blue-400 dark:text-[#89D3BD] font-bold">
+            <div className="flex items-center gap-1.5 text-blue-700 dark:text-[#89D3BD] font-bold">
               <GraduationCap className="w-3.5 h-3.5" />
               <span>Academic Credentials:</span>
             </div>
             <p className="text-slate-300">
-              B.Tech in Computer Science & Engineering • Adamas University, Kolkata, India • Final Year Student (2023 - 2027) • Merit Scholarship (3rd position in CSE Department in 1st Sem) • Belur, Howrah, West Bengal
+              B.Tech in Computer Science & Engineering (Core) • Adamas University, Kolkata, India • Final Year Student (2023 - 2027) • Merit Scholarship (3rd position in CSE Department in 1st Sem) • Belur, Howrah, West Bengal
             </p>
           </div>
         );
@@ -259,14 +263,14 @@ const About = () => {
       case "achievements":
         response = (
           <div className="space-y-1 font-mono text-xs">
-            <div className="flex items-center gap-1.5 text-blue-400 dark:text-[#89D3BD] font-bold">
+            <div className="flex items-center gap-1.5 text-blue-700 dark:text-[#89D3BD] font-bold">
               <Trophy className="w-3.5 h-3.5" />
               <span>Competitions, Honors & Ranks:</span>
             </div>
-            <p className="flex items-start gap-1.5"><Trophy className="w-3 h-3 text-[#89D3BD] shrink-0 mt-0.5" /><span><strong className="text-[#89D3BD]">Best Paper Award:</strong> 2nd Int. Conf. on Smart Systems & Wireless Communication (SSWC 2025) for ML predictive modeling</span></p>
-            <p className="flex items-start gap-1.5"><GraduationCap className="w-3 h-3 text-blue-400 shrink-0 mt-0.5" /><span><strong className="text-blue-300">Merit Scholarship:</strong> Secured 3rd position in CSE Department in 1st Semester</span></p>
-            <p className="flex items-start gap-1.5"><Cpu className="w-3 h-3 text-cyan-400 shrink-0 mt-0.5" /><span><strong className="text-cyan-300">Industry Experience:</strong> Transpiler Design Intern at TCG CREST</span></p>
-            <p className="flex items-start gap-1.5"><Rocket className="w-3 h-3 text-[#89D3BD] shrink-0 mt-0.5" /><span><strong className="text-[#89D3BD]">Student Leadership:</strong> Treasurer — Society for Data Science (S4DS) Student Chapter</span></p>
+            <p className="flex items-start gap-1.5"><Trophy className="w-3 h-3 text-blue-700 dark:text-[#89D3BD] shrink-0 mt-0.5" /><span><strong className="text-[#89D3BD]">Best Paper Award:</strong> 2nd Int. Conf. on Smart Systems & Wireless Communication (SSWC 2025) for ML predictive modeling</span></p>
+            <p className="flex items-start gap-1.5"><GraduationCap className="w-3 h-3 text-blue-700 dark:text-[#89D3BD] shrink-0 mt-0.5" /><span><strong className="text-blue-300">Merit Scholarship:</strong> Secured 3rd position in CSE Department in 1st Semester</span></p>
+            <p className="flex items-start gap-1.5"><Cpu className="w-3 h-3 text-blue-700 dark:text-[#89D3BD] shrink-0 mt-0.5" /><span><strong className="text-cyan-300">Industry Experience:</strong> Transpiler Design Intern at TCG CREST</span></p>
+            <p className="flex items-start gap-1.5"><Rocket className="w-3 h-3 text-blue-700 dark:text-[#89D3BD] shrink-0 mt-0.5" /><span><strong className="text-[#89D3BD]">Student Leadership:</strong> Treasurer — Society for Data Science (S4DS) Student Chapter</span></p>
           </div>
         );
         break;
@@ -274,14 +278,14 @@ const About = () => {
       case "highlights":
         response = (
           <div className="space-y-1 font-mono text-xs">
-            <div className="flex items-center gap-1.5 text-blue-400 dark:text-[#89D3BD] font-bold">
+            <div className="flex items-center gap-1.5 text-blue-700 dark:text-[#89D3BD] font-bold">
               <Sparkles className="w-3.5 h-3.5" />
               <span>Open Source Milestones & Global Ranks:</span>
             </div>
-            <p className="flex items-start gap-1.5"><Sparkles className="w-3 h-3 text-cyan-400 shrink-0 mt-0.5" /><span><strong className="text-cyan-300">ELUSoC'26:</strong> Rank #1 Contributor with 896 merged PRs</span></p>
-            <p className="flex items-start gap-1.5"><Sparkles className="w-3 h-3 text-[#89D3BD] shrink-0 mt-0.5" /><span><strong className="text-[#89D3BD]">NSoC'26:</strong> Top 3 Contributor among 1,100+ developers</span></p>
-            <p className="flex items-start gap-1.5"><Sparkles className="w-3 h-3 text-blue-400 shrink-0 mt-0.5" /><span><strong className="text-blue-300">ECSoC'26:</strong> Global Rank #6 (Master Tier)</span></p>
-            <p className="flex items-start gap-1.5"><Sparkles className="w-3 h-3 text-cyan-400 shrink-0 mt-0.5" /><span><strong className="text-cyan-300">GSSoC'26:</strong> Global Rank #10 among 46,000+ participants</span></p>
+            <p className="flex items-start gap-1.5"><Sparkles className="w-3 h-3 text-blue-700 dark:text-[#89D3BD] shrink-0 mt-0.5" /><span><strong className="text-cyan-300">ELUSoC'26:</strong> Rank #1 Contributor with 896 merged PRs</span></p>
+            <p className="flex items-start gap-1.5"><Sparkles className="w-3 h-3 text-blue-700 dark:text-[#89D3BD] shrink-0 mt-0.5" /><span><strong className="text-[#89D3BD]">NSoC'26:</strong> Top 3 Contributor among 1,100+ developers</span></p>
+            <p className="flex items-start gap-1.5"><Sparkles className="w-3 h-3 text-blue-700 dark:text-[#89D3BD] shrink-0 mt-0.5" /><span><strong className="text-blue-300">ECSoC'26:</strong> Global Rank #6 (Master Tier)</span></p>
+            <p className="flex items-start gap-1.5"><Sparkles className="w-3 h-3 text-blue-700 dark:text-[#89D3BD] shrink-0 mt-0.5" /><span><strong className="text-cyan-300">GSSoC'26:</strong> Global Rank #10 among 46,000+ participants</span></p>
           </div>
         );
         break;
@@ -289,7 +293,7 @@ const About = () => {
       case "focus":
         response = (
           <div className="space-y-1 font-mono text-xs">
-            <div className="flex items-center gap-1.5 text-blue-400 dark:text-[#89D3BD] font-bold">
+            <div className="flex items-center gap-1.5 text-blue-700 dark:text-[#89D3BD] font-bold">
               <Target className="w-3.5 h-3.5" />
               <span>Professional Focus:</span>
             </div>
@@ -303,7 +307,7 @@ const About = () => {
       case "hobbies":
         response = (
           <div className="space-y-1 font-mono text-xs">
-            <div className="flex items-center gap-1.5 text-blue-400 dark:text-[#89D3BD] font-bold">
+            <div className="flex items-center gap-1.5 text-blue-700 dark:text-[#89D3BD] font-bold">
               <Heart className="w-3.5 h-3.5" />
               <span>Passions & Hobbies:</span>
             </div>
@@ -317,14 +321,64 @@ const About = () => {
       case "contact":
         response = (
           <div className="space-y-1 font-mono text-xs">
-            <div className="flex items-center gap-1.5 text-blue-400 dark:text-[#89D3BD] font-bold">
+            <div className="flex items-center gap-1.5 text-blue-700 dark:text-[#89D3BD] font-bold">
               <Mail className="w-3.5 h-3.5" />
               <span>Verified Contact Coordinates:</span>
             </div>
-            <p className="flex items-center gap-1.5"><Mail className="w-3 h-3 text-cyan-400" /><span className="text-slate-400">Email:</span> <a href="mailto:babinbid05@gmail.com" className="text-cyan-300 hover:underline">babinbid05@gmail.com</a></p>
-            <p className="flex items-center gap-1.5"><MapPin className="w-3 h-3 text-[#89D3BD]" /><span className="text-slate-400">Location:</span> Belur, Howrah, West Bengal, India (+91 9123777679)</p>
-            <p className="flex items-center gap-1.5"><Code className="w-3 h-3 text-blue-400" /><span className="text-slate-400">GitHub:</span> <a href="https://github.com/Babin123456" target="_blank" rel="noopener noreferrer" className="text-cyan-300 hover:underline">github.com/Babin123456</a></p>
-            <p className="flex items-center gap-1.5"><Rocket className="w-3 h-3 text-cyan-400" /><span className="text-slate-400">LinkedIn:</span> <a href="https://www.linkedin.com/in/babinbid123" target="_blank" rel="noopener noreferrer" className="text-cyan-300 hover:underline">linkedin.com/in/babinbid123</a></p>
+            <p className="flex items-center gap-1.5"><Mail className="w-3 h-3 text-blue-700 dark:text-[#89D3BD]" /><span className="text-slate-400">Email:</span> <a href="mailto:babinbid05@gmail.com" className="text-cyan-300 hover:underline">babinbid05@gmail.com</a></p>
+            <p className="flex items-center gap-1.5"><MapPin className="w-3 h-3 text-blue-700 dark:text-[#89D3BD]" /><span className="text-slate-400">Location:</span> Belur, Howrah, West Bengal, India (+91 9123777679)</p>
+            <p className="flex items-center gap-1.5"><Code className="w-3 h-3 text-blue-700 dark:text-[#89D3BD]" /><span className="text-slate-400">GitHub:</span> <a href="https://github.com/Babin123456" target="_blank" rel="noopener noreferrer" className="text-cyan-300 hover:underline">github.com/Babin123456</a></p>
+            <p className="flex items-center gap-1.5"><Rocket className="w-3 h-3 text-blue-700 dark:text-[#89D3BD]" /><span className="text-slate-400">LinkedIn:</span> <a href="https://www.linkedin.com/in/babinbid123" target="_blank" rel="noopener noreferrer" className="text-cyan-300 hover:underline">linkedin.com/in/babinbid123</a></p>
+          </div>
+        );
+        break;
+
+      case "resume":
+      case "cv":
+        response = (
+          <div className="space-y-2 font-mono text-xs">
+            <div className="flex items-center gap-1.5 text-blue-700 dark:text-[#89D3BD] font-bold">
+              <FileText className="w-3.5 h-3.5" />
+              <span>Available Resume Formats:</span>
+            </div>
+            <div className="p-2.5 rounded-lg bg-white/5 border border-white/10 space-y-1">
+              <div className="flex items-center justify-between flex-wrap gap-2">
+                <span className="text-cyan-300 font-semibold flex items-center gap-1.5">
+                  <Code className="w-3.5 h-3.5 text-blue-700 dark:text-[#89D3BD]" />
+                  <span>LaTeX Resume</span>
+                  <span className="text-[10px] px-1.5 py-0.2 rounded bg-emerald-500/20 text-emerald-300 font-medium">ATS-Friendly</span>
+                </span>
+                <div className="flex gap-2">
+                  <a href="/Babin_Resume_LATEX.pdf" target="_blank" rel="noopener noreferrer" className="text-[11px] text-[#89D3BD] hover:underline flex items-center gap-1">
+                    View <ExternalLink className="w-2.5 h-2.5 text-blue-700 dark:text-[#89D3BD]" />
+                  </a>
+                  <span className="text-slate-500">|</span>
+                  <a href="/Babin_Resume_LATEX.pdf" download="Babin_Bid_Resume_LATEX.pdf" className="text-[11px] text-cyan-300 hover:underline flex items-center gap-1">
+                    Download <Download className="w-2.5 h-2.5 text-blue-700 dark:text-[#89D3BD]" />
+                  </a>
+                </div>
+              </div>
+              <p className="text-[11px] text-slate-400">Single-column, clean ATS-parsed layout for corporate & technical roles.</p>
+            </div>
+            <div className="p-2.5 rounded-lg bg-gradient-to-r from-blue-700/10 to-[#89D3BD]/10 border border-blue-700/30 dark:border-[#89D3BD]/30 space-y-1">
+              <div className="flex items-center justify-between flex-wrap gap-2">
+                <span className="text-blue-300 dark:text-[#89D3BD] font-semibold flex items-center gap-1.5">
+                  <Palette className="w-3.5 h-3.5 text-blue-700 dark:text-[#89D3BD]" />
+                  <span>Canva Resume</span>
+                  <span className="text-[10px] px-1.5 py-0.2 rounded bg-blue-700/20 dark:bg-[#89D3BD]/20 text-blue-300 dark:text-[#89D3BD] font-medium border border-blue-700/30 dark:border-[#89D3BD]/35">Visual Design</span>
+                </span>
+                <div className="flex gap-2">
+                  <a href="/Babin_Bid_Resume.pdf" target="_blank" rel="noopener noreferrer" className="text-[11px] text-[#89D3BD] hover:underline flex items-center gap-1">
+                    View <ExternalLink className="w-2.5 h-2.5 text-blue-700 dark:text-[#89D3BD]" />
+                  </a>
+                  <span className="text-slate-500">|</span>
+                  <a href="/Babin_Bid_Resume.pdf" download="Babin_Bid_Resume.pdf" className="text-[11px] text-cyan-300 hover:underline flex items-center gap-1">
+                    Download <Download className="w-2.5 h-2.5 text-blue-700 dark:text-[#89D3BD]" />
+                  </a>
+                </div>
+              </div>
+              <p className="text-[11px] text-slate-400">Modern visual showcase layout with creative presentation.</p>
+            </div>
           </div>
         );
         break;
@@ -337,7 +391,7 @@ const About = () => {
       default:
         response = (
           <p className="text-cyan-300 dark:text-[#89D3BD] flex items-center gap-1.5">
-            <HelpCircle className="w-3.5 h-3.5 shrink-0 text-blue-400" />
+            <HelpCircle className="w-3.5 h-3.5 shrink-0 text-blue-700 dark:text-[#89D3BD]" />
             <span>Command not recognized: '{rawCmd}'. Type 'help' to inspect operational directives.</span>
           </p>
         );
@@ -455,7 +509,6 @@ const About = () => {
     <section id="about" className="py-12 sm:py-16 md:py-28 relative overflow-hidden">
       <StudyBackground />
 
-      {/* Subtle Ambient Light Gradients */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
         <div className="absolute top-1/4 -left-20 w-80 h-80 bg-blue-700/10 dark:bg-[#89D3BD]/10 rounded-full blur-[100px]" />
         <div className="absolute bottom-1/3 -right-20 w-80 h-80 bg-blue-700/10 dark:bg-[#89D3BD]/10 rounded-full blur-[100px]" />
@@ -469,7 +522,6 @@ const About = () => {
           viewport={{ once: true, amount: 0.1 }}
           className="space-y-8 sm:space-y-12 md:space-y-16"
         >
-          {/* Section Header */}
           <div className="text-center space-y-2 sm:space-y-3 px-2">
             <motion.div variants={itemVariants}>
               <h2 className="text-3xl sm:text-5xl md:text-6xl font-black tracking-tight">
@@ -485,16 +537,14 @@ const About = () => {
               variants={itemVariants}
               className="text-xs sm:text-base text-muted-foreground max-w-2xl mx-auto font-light leading-relaxed"
             >
-              B.Tech CSE Student at Adamas University • Transpiler Design Intern at TCG CREST • AI/ML & Quantum Computing
+              B.Tech in CSE (Core) at Adamas University • Transpiler Design Intern at TCG CREST • Passionate about Computing & Problem Solving
             </motion.p>
           </div>
 
-          {/* Editorial & Hacker Console Hybrid Card */}
           <motion.div
             variants={itemVariants}
             className="rounded-2xl sm:rounded-3xl border border-border/70 bg-card/70 dark:bg-card/40 backdrop-blur-md p-3 sm:p-6 md:p-8 shadow-card hover:shadow-[0_20px_40px_rgba(29,78,216,0.18)] dark:hover:shadow-[0_20px_40px_rgba(137,211,189,0.15)] hover:border-blue-700/40 dark:hover:border-[#89D3BD]/40 transition-all duration-300"
           >
-            {/* Top Header & Mode Switcher */}
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 pb-3.5 sm:pb-5 border-b border-border/50">
               <div className="flex items-center gap-2.5">
                 <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-xl bg-blue-700/10 dark:bg-[#89D3BD]/10 border border-blue-700/20 dark:border-[#89D3BD]/20 flex items-center justify-center text-blue-700 dark:text-[#89D3BD] shrink-0">
@@ -511,7 +561,6 @@ const About = () => {
                 </div>
               </div>
 
-              {/* View Switcher Pills */}
               <div className="grid grid-cols-2 sm:flex p-1 rounded-xl bg-muted/40 border border-border/50 text-xs font-semibold gap-1 shrink-0">
                 <button
                   type="button"
@@ -540,7 +589,6 @@ const About = () => {
               </div>
             </div>
 
-            {/* Main Interactive Body */}
             <div className="pt-3.5 sm:pt-5">
               <AnimatePresence mode="wait">
                 {activeTab === "terminal" ? (
@@ -552,9 +600,7 @@ const About = () => {
                     transition={{ duration: 0.25 }}
                     className="space-y-3.5 sm:space-y-4"
                   >
-                    {/* Terminal Window Box - Windows PowerShell / CMD Style */}
                     <div className="rounded-xl sm:rounded-2xl border border-slate-700/70 hover:border-blue-500/50 dark:hover:border-[#89D3BD]/50 bg-[#0c0c0c] dark:bg-[#0c0c0c] p-3 sm:p-5 font-mono shadow-2xl transition-all duration-300 text-left select-text">
-                      {/* Terminal Window Controls Bar */}
                       <div className="flex items-center justify-between pb-2.5 mb-2.5 border-b border-white/10 text-xs text-slate-400 gap-2">
                         <div className="flex items-center gap-1.5 sm:gap-2 overflow-hidden">
                           <span className="w-2.5 h-2.5 rounded-full bg-[#ff5f56] inline-block shadow-sm shrink-0" />
@@ -575,7 +621,6 @@ const About = () => {
                         </button>
                       </div>
 
-                      {/* Terminal Scrollable Logs - Contained inside scroll with visible scrollbar and natural boundary handoff */}
                       <div
                         ref={terminalLogsContainerRef}
                         onWheel={(e) => {
@@ -633,7 +678,6 @@ const About = () => {
                         ))}
                       </div>
 
-                      {/* Interactive Prompt Line - Pure PowerShell style, identical in desktop and mobile */}
                       <div className="flex items-center gap-1.5 sm:gap-2 mt-3 pt-2.5 sm:mt-4 sm:pt-3 border-t border-white/10 text-xs sm:text-[13px] font-mono">
                         <span className="text-[#38bdf8] font-bold shrink-0 select-none text-[11px] sm:text-xs">
                           PS&gt;
@@ -661,7 +705,6 @@ const About = () => {
                       </div>
                     </div>
 
-                    {/* Quick Command Chips with Interactive Typing Animation - Exact original desktop style */}
                     <div className="flex items-center gap-1.5 sm:gap-2 flex-wrap directives-container text-xs font-mono pt-1">
                       <span className="text-muted-foreground text-[10px] sm:text-[11px] font-semibold tracking-wider">
                         DIRECTIVES:
@@ -689,10 +732,9 @@ const About = () => {
                     transition={{ duration: 0.25 }}
                     className="grid lg:grid-cols-12 gap-8 md:gap-12 items-center text-left"
                   >
-                    {/* Left Column: Portrait & Badge */}
                     <div className="lg:col-span-4 flex flex-col items-center text-center">
                       <div className="relative group">
-                        <div className="relative rounded-3xl overflow-hidden border-2 border-border/80 p-1.5 bg-background/50 shadow-md">
+                        <div className="relative rounded-3xl overflow-hidden border-2 border-[#E8DFC8] dark:border-white/10 p-1.5 bg-[#F5EDE0]/80 dark:bg-black/50 backdrop-blur-md shadow-md">
                           <img
                             src="/Babin.webp"
                             alt="Babin Bid"
@@ -702,7 +744,6 @@ const About = () => {
                           />
                         </div>
 
-                        {/* Status Pill */}
                         <div className="mt-4 inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/25 text-emerald-700 dark:text-emerald-400 text-xs font-semibold">
                           <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
                           <span>Active for Hiring • 2027 Grad</span>
@@ -720,14 +761,13 @@ const About = () => {
                       </div>
                     </div>
 
-                    {/* Right Column: Editorial Narrative */}
                     <div className="lg:col-span-8 space-y-5 text-center lg:text-left">
                       <div className="flex flex-wrap items-center justify-center lg:justify-start gap-2">
-                        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-blue-700/10 dark:bg-[#89D3BD]/10 text-blue-700 dark:text-[#89D3BD] text-xs font-semibold uppercase tracking-wider">
+                        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-700/10 dark:bg-[#89D3BD]/10 text-blue-700 dark:text-[#89D3BD] text-xs font-semibold uppercase tracking-wider">
                           <GraduationCap className="w-4 h-4" />
-                          B.Tech CSE • Adamas University
+                          B.Tech in CSE (Core) • Adamas University
                         </div>
-                        <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-gradient-to-r from-blue-700/15 to-[#89D3BD]/20 dark:from-blue-700/25 dark:to-[#89D3BD]/20 border border-blue-700/30 dark:border-[#89D3BD]/35 text-slate-950 dark:text-[#89D3BD] font-bold text-xs shadow-sm">
+                        <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-gradient-to-r from-blue-700/15 to-[#89D3BD]/20 dark:from-blue-700/25 dark:to-[#89D3BD]/20 border border-blue-700/30 dark:border-[#89D3BD]/35 text-slate-950 dark:text-[#89D3BD] font-bold text-xs shadow-sm">
                           <Cpu className="w-3.5 h-3.5 text-blue-700 dark:text-[#89D3BD]" />
                           <span className="font-extrabold">Transpiler Design Intern • TCG CREST</span>
                         </div>
@@ -741,7 +781,6 @@ const About = () => {
                         I am a Final Year Computer Science student at Adamas University and a Transpiler Design Intern at TCG CREST. I enjoy solving challenging math problems, creating responsive web applications, and exploring AI, Data Science, and UI design. I actively contribute to open-source projects and love turning ideas into real-world software.
                       </p>
 
-                      {/* Editorial Tag Pills - Centered on mobile, start-aligned on desktop */}
                       <div className="flex flex-wrap items-center justify-center lg:justify-start gap-2 pt-1">
                         {[
                           { label: "Transpiler Design", icon: Cpu },
@@ -767,7 +806,6 @@ const About = () => {
             </div>
           </motion.div>
 
-          {/* Minimalist Editorial Quote Callout with Curved Underlines */}
           <motion.div
             variants={itemVariants}
             className="group rounded-2xl border border-border/50 bg-background/50 hover:bg-background/70 backdrop-blur-md p-5 sm:p-8 text-center max-w-2xl mx-auto relative overflow-hidden transition-all duration-300 hover:border-blue-500/40 dark:hover:border-[#89D3BD]/40 hover:shadow-[0_0_30px_rgba(29,78,216,0.12)] dark:hover:shadow-[0_0_30px_rgba(137,211,189,0.12)]"
@@ -818,7 +856,6 @@ const About = () => {
         </motion.div>
       </div>
 
-      {/* Image Modal Lightbox */}
       <AnimatePresence>
         {showImageModal && (
           <motion.div
@@ -826,7 +863,7 @@ const About = () => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className={`fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm ${
+            className={`fixed inset-0 z-50 flex items-center justify-center bg-[#FAF6EE]/90 dark:bg-black/90 backdrop-blur-2xl ${
               isClosing ? "opacity-0" : ""
             }`}
             onClick={handleCloseModal}
@@ -836,12 +873,12 @@ const About = () => {
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.9, opacity: 0 }}
               transition={{ duration: 0.25, ease: "easeOut" }}
-              className="relative max-w-[90vw] max-h-[90vh] p-4 text-center"
+              className="relative max-w-[90vw] max-h-[90vh] p-3 sm:p-5 text-center bg-[#F5EDE0]/95 dark:bg-zinc-950/90 backdrop-blur-md rounded-3xl border border-[#E8DFC8] dark:border-zinc-800 shadow-2xl"
               onClick={(e) => e.stopPropagation()}
             >
               <button
                 onClick={handleCloseModal}
-                className="absolute -top-3 -right-3 sm:top-2 sm:right-2 w-10 h-10 aspect-square rounded-full bg-black/80 hover:bg-red-600 text-white border border-white/20 hover:border-red-600 flex items-center justify-center shadow-xl backdrop-blur-md transition-all duration-200 hover:scale-110 active:scale-95 cursor-pointer z-10"
+                className="absolute -top-3 -right-3 sm:-top-3 sm:-right-3 w-10 h-10 aspect-square rounded-full bg-[#F5EDE0] dark:bg-zinc-900/90 hover:bg-blue-700 hover:text-white dark:hover:bg-[#89D3BD] dark:hover:text-black text-slate-900 dark:text-white border border-[#E8DFC8] dark:border-white/20 flex items-center justify-center shadow-xl backdrop-blur-md transition-all duration-200 hover:scale-110 active:scale-95 cursor-pointer z-10"
                 aria-label="Close image"
               >
                 <X className="h-5 w-5 shrink-0" />
@@ -850,11 +887,11 @@ const About = () => {
               <img
                 src="/Babin.webp"
                 alt="Babin Bid"
-                className="max-w-full max-h-[75vh] rounded-2xl shadow-2xl object-contain border-2 border-border/40"
+                className="max-w-full max-h-[72vh] rounded-2xl shadow-xl object-contain border border-[#E8DFC8] dark:border-white/10"
               />
 
-              <p className="mt-3 text-white text-base font-semibold">Babin Bid</p>
-              <p className="text-white/60 text-xs">Click anywhere outside to close</p>
+              <p className="mt-3 text-slate-900 dark:text-white text-base font-semibold">Babin Bid</p>
+              <p className="text-slate-600 dark:text-white/60 text-xs">Click anywhere outside to close</p>
             </motion.div>
           </motion.div>
         )}
