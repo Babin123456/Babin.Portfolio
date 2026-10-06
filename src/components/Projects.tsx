@@ -410,7 +410,7 @@ const Projects = () => {
                                 <Button
                                   size="sm"
                                   variant="outline"
-                                  className="flex-1 h-8 text-xs opacity-60 cursor-not-allowed bg-blue-300 text-blue-900 dark:bg-[#89D3BD]/20 dark:text-black"
+                                  className="flex-1 h-8 text-xs opacity-60 cursor-not-allowed bg-blue-100 dark:bg-white/10 text-blue-900 dark:text-white/70 border border-blue-200 dark:border-white/15"
                                   disabled
                                 >
                                   <ExternalLink className="mr-1 h-3 w-3" />
