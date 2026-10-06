@@ -24,7 +24,7 @@ const SmoothScroll: React.FC<SmoothScrollProps> = ({ children }) => {
 
     // Add lenis classes to html root so index.css scroll-behavior override takes effect
     document.documentElement.classList.add('lenis', 'lenis-smooth');
-    (window as any).lenis = lenis;
+    window.lenis = lenis;
 
     let rafId: number;
 
@@ -45,7 +45,7 @@ const SmoothScroll: React.FC<SmoothScrollProps> = ({ children }) => {
       cancelAnimationFrame(rafId);
       window.removeEventListener('resize', handleResize);
       document.documentElement.classList.remove('lenis', 'lenis-smooth');
-      delete (window as any).lenis;
+      delete window.lenis;
       lenis.destroy();
     };
   }, []);
