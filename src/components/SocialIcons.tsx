@@ -65,6 +65,7 @@ const StyledWrapper = styled.div`
     align-items: center;
     padding: 0;
     margin: 0;
+    margin-top: 10px;
   }
   .example-2 .icon-content {
     margin: 0 8px;
