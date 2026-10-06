@@ -154,14 +154,9 @@ const StatCard: React.FC<StatCardProps> = ({ stat, index, totalCount, isVisible 
                 delay: transitionDelay,
             }}
         >
-            {/* 4 Corners Square Capture Reticle - OUTSIDE the box corners */}
-            {/* Top-Left */}
             <div className="pointer-events-none absolute -top-1.5 -left-1.5 w-4 h-4 border-t-2 border-l-2 border-blue-700 dark:border-[#89D3BD] opacity-0 -translate-x-1.5 -translate-y-1.5 group-hover/card:opacity-100 group-hover/card:translate-x-0 group-hover/card:translate-y-0 transition-all duration-300 ease-out z-20" />
-            {/* Top-Right */}
             <div className="pointer-events-none absolute -top-1.5 -right-1.5 w-4 h-4 border-t-2 border-r-2 border-blue-700 dark:border-[#89D3BD] opacity-0 translate-x-1.5 -translate-y-1.5 group-hover/card:opacity-100 group-hover/card:translate-x-0 group-hover/card:translate-y-0 transition-all duration-300 ease-out z-20" />
-            {/* Bottom-Left */}
             <div className="pointer-events-none absolute -bottom-1.5 -left-1.5 w-4 h-4 border-b-2 border-l-2 border-blue-700 dark:border-[#89D3BD] opacity-0 -translate-x-1.5 translate-y-1.5 group-hover/card:opacity-100 group-hover/card:translate-x-0 group-hover/card:translate-y-0 transition-all duration-300 ease-out z-20" />
-            {/* Bottom-Right */}
             <div className="pointer-events-none absolute -bottom-1.5 -right-1.5 w-4 h-4 border-b-2 border-r-2 border-blue-700 dark:border-[#89D3BD] opacity-0 translate-x-1.5 translate-y-1.5 group-hover/card:opacity-100 group-hover/card:translate-x-0 group-hover/card:translate-y-0 transition-all duration-300 ease-out z-20" />
 
             <div className="relative p-4 md:p-6 rounded-lg border border-border/50 bg-card/50 backdrop-blur-sm hover:bg-card/80 hover:shadow-[0_20px_10px_rgba(29,78,216,0.3)] dark:hover:shadow-[0_10px_20px_rgba(137,211,189,0.3)] transition-all duration-300 min-h-[9rem] md:min-h-[10.5rem] h-full flex flex-col justify-between">
