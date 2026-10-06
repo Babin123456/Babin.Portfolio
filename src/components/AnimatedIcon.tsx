@@ -32,16 +32,12 @@ const AnimatedIcon: React.FC<AnimatedIconProps> = ({
         <span
             className={`ai ${glowClass} group/icon inline-block relative transition-all duration-300 ${className} ${animationClass}`}
         >
-            {/* Outer glow halo - large blur */}
             <div className="ai__halo-lg group-hover/section:opacity-80 group-hover/icon:opacity-80" />
 
-            {/* Middle glow - medium blur */}
             <div className="ai__halo-md group-hover/section:opacity-60 group-hover/icon:opacity-60" />
 
-            {/* Close glow - small blur */}
             <div className="ai__halo-sm group-hover/section:opacity-40 group-hover/icon:opacity-40" />
 
-            {/* Icon with animation and color transition */}
             <Icon
                 size={size}
                 className={`ai__icon transition-all duration-300 ${animationClass} group-hover/icon:drop-shadow-lg`}
