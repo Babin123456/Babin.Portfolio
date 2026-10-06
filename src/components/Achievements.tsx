@@ -101,7 +101,7 @@ const Achievements = () => {
                 setSelectedItem(null);
                 setZoomLevel(1);
                 setIsClosing(false);
-            }, 400);
+            }, 650);
             return true;
         });
     }, []);
@@ -529,16 +529,25 @@ const Achievements = () => {
 
             {selectedItem && selectedItem.type === 'image' && (
                 <div
-                    className={`fixed inset-0 z-[100] flex items-center justify-center bg-[#FAF6EE]/90 dark:bg-black/95 backdrop-blur-2xl p-2 sm:p-4 select-none touch-none overscroll-contain transition-all duration-400 ease-out ${isClosing
-                        ? 'opacity-0 backdrop-blur-none pointer-events-none'
+                    className={`fixed inset-0 z-[100] flex items-center justify-center p-2 sm:p-4 select-none touch-none overscroll-contain ${isClosing
+                        ? 'pointer-events-none'
                         : 'animate-fade-in'
                         }`}
                     onTouchStart={handleTouchStart}
                     onTouchEnd={handleTouchEnd}
                     onWheel={(e) => e.stopPropagation()}
                 >
+                    {/* Backdrop background overlay */}
                     <div
-                        className={`fixed top-3 inset-x-3 sm:top-5 sm:inset-x-6 z-50 flex items-center justify-between pointer-events-none transition-all duration-400 ease-out ${isClosing ? 'opacity-0 -translate-y-8' : 'opacity-100 translate-y-0'
+                        className={`absolute inset-0 bg-[#FAF6EE]/90 dark:bg-black/95 backdrop-blur-2xl transition-all duration-700 ease-out ${isClosing
+                            ? 'opacity-0 backdrop-blur-none'
+                            : 'opacity-100'
+                            }`}
+                        onClick={closeLightbox}
+                    />
+
+                    <div
+                        className={`fixed top-3 inset-x-3 sm:top-5 sm:inset-x-6 z-50 flex items-center justify-between pointer-events-none transition-all duration-500 ease-out ${isClosing ? 'opacity-0 -translate-y-8' : 'opacity-100 translate-y-0'
                             }`}
                     >
                         <div className="pointer-events-auto flex items-center gap-1.5 sm:gap-2 px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-full bg-[#F5EDE0]/90 dark:bg-white/10 border border-[#E8DFC8] dark:border-white/20 backdrop-blur-md shadow-xl text-xs sm:text-sm font-semibold text-slate-900 dark:text-white max-w-[calc(100vw-110px)] sm:max-w-md">
@@ -601,7 +610,7 @@ const Achievements = () => {
                     )}
 
                     <div
-                        className="relative w-full h-full flex items-center justify-center overflow-hidden px-3 sm:px-16 pt-14 pb-16 sm:py-20"
+                        className="relative z-10 w-full h-full flex items-center justify-center overflow-hidden px-3 sm:px-16 pt-14 pb-16 sm:py-20"
                         onClick={closeLightbox}
                     >
                         <div
@@ -623,7 +632,7 @@ const Achievements = () => {
                         </div>
                     </div>
 
-                    <div className={`fixed bottom-3 sm:bottom-5 left-1/2 -translate-x-1/2 px-5 sm:px-6 py-2 sm:py-2.5 bg-[#F5EDE0]/90 dark:bg-white/10 border border-[#E8DFC8] dark:border-white/20 backdrop-blur-md rounded-2xl text-slate-900 dark:text-white text-center max-w-[92vw] sm:max-w-[75vw] z-50 shadow-2xl transition-all duration-400 ease-out pointer-events-none ${isClosing ? 'opacity-0 translate-y-8' : 'opacity-100 translate-y-0'}`}>
+                    <div className={`fixed bottom-3 sm:bottom-5 left-1/2 -translate-x-1/2 px-5 sm:px-6 py-2 sm:py-2.5 bg-[#F5EDE0]/90 dark:bg-white/10 border border-[#E8DFC8] dark:border-white/20 backdrop-blur-md rounded-2xl text-slate-900 dark:text-white text-center max-w-[92vw] sm:max-w-[75vw] z-50 shadow-2xl transition-all duration-500 ease-out pointer-events-none ${isClosing ? 'opacity-0 translate-y-8' : 'opacity-100 translate-y-0'}`}>
                         <p className="text-xs sm:text-base font-semibold leading-snug break-words whitespace-normal tracking-wide text-slate-900 dark:text-white">
                             {selectedItem.title}
                         </p>
