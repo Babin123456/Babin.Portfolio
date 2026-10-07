@@ -9,15 +9,15 @@ const SmoothScroll: React.FC<SmoothScrollProps> = ({ children }) => {
   useEffect(() => {
     const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
 
-    // Initialize Lenis for buttery-smooth desktop scrolling, and let mobile use native touch
+    // Initialize Lenis for ultra-responsive buttery-smooth 120 FPS scrolling
     const lenis = new Lenis({
-      duration: 1.25,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      duration: 0.85,
+      easing: (t) => 1 - Math.pow(1 - t, 4),
       orientation: 'vertical',
       gestureOrientation: 'vertical',
       smoothWheel: true,
-      wheelMultiplier: 1.0,
-      touchMultiplier: 1.0,
+      wheelMultiplier: 1.1,
+      touchMultiplier: 1.5,
       syncTouch: false,
       autoResize: true,
     });
