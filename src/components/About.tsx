@@ -720,28 +720,28 @@ const About = () => {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -10 }}
                     transition={{ duration: 0.25 }}
-                    className="grid lg:grid-cols-12 gap-8 md:gap-12 items-center text-left"
+                    className="grid lg:grid-cols-12 gap-8 md:gap-12 items-center justify-items-center lg:justify-items-stretch text-center lg:text-left"
                   >
-                    <div className="lg:col-span-4 flex flex-col items-center text-center">
-                      <div className="relative group">
+                    <div className="lg:col-span-4 w-full flex flex-col items-center justify-center text-center mx-auto">
+                      <div className="relative w-full flex flex-col items-center justify-center text-center mx-auto group">
                         {/* Portrait Frame */}
-                        <div className="relative rounded-3xl overflow-hidden border-2 border-[#E8DFC8] dark:border-white/10 p-1.5 bg-[#F5EDE0]/80 dark:bg-black/50 backdrop-blur-md shadow-md transition-all duration-300">
+                        <div className="relative rounded-3xl overflow-hidden border-2 border-[#E8DFC8] dark:border-white/10 p-1.5 bg-[#F5EDE0]/80 dark:bg-black/50 backdrop-blur-md shadow-md transition-all duration-300 mx-auto flex items-center justify-center shrink-0">
                           <img
                             src="/Babin.webp"
                             alt="Babin Bid"
                             loading="lazy"
-                            className="w-48 h-48 sm:w-56 sm:h-56 object-cover rounded-2xl select-none"
+                            className="w-48 h-48 sm:w-56 sm:h-56 object-cover object-center rounded-2xl select-none block mx-auto shrink-0"
                             draggable={false}
                           />
                         </div>
 
-                        <div className="mt-4 inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/25 text-emerald-700 dark:text-emerald-400 text-xs font-semibold">
+                        <div className="mt-4 inline-flex items-center justify-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/25 text-emerald-700 dark:text-emerald-400 text-xs font-semibold mx-auto">
                           <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
                           <span>Active for Hiring • 2027 Grad</span>
                         </div>
                       </div>
 
-                      <div className="mt-4 space-y-1">
+                      <div className="mt-4 space-y-1 w-full text-center flex flex-col items-center justify-center mx-auto">
                         <h3 className="text-xl sm:text-2xl font-bold tracking-tight text-foreground">
                           Babin Bid
                         </h3>
