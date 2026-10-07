@@ -15,9 +15,13 @@ interface Particle {
 
 interface StudyBackgroundProps {
   particleCount?: number;
+  showLines?: boolean;
 }
 
-const StudyBackground = ({ particleCount: customParticleCount }: StudyBackgroundProps = {}) => {
+const StudyBackground = ({
+  particleCount: customParticleCount,
+  showLines = false,
+}: StudyBackgroundProps = {}) => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
   useEffect(() => {
@@ -59,10 +63,10 @@ const StudyBackground = ({ particleCount: customParticleCount }: StudyBackground
     handleResize();
     window.addEventListener("resize", handleResize);
 
-    // Particle pool - allow custom reduced particle count
+    // Particle pool - allow custom particle count
     const particleCount = customParticleCount !== undefined
       ? customParticleCount
-      : Math.min(50, Math.max(24, Math.floor((window.innerWidth * 45) / 1440)));
+      : Math.min(48, Math.max(20, Math.floor((window.innerWidth * 38) / 1440)));
     const particles: Particle[] = [];
 
     for (let i = 0; i < particleCount; i++) {
@@ -70,13 +74,13 @@ const StudyBackground = ({ particleCount: customParticleCount }: StudyBackground
       particles.push({
         x: Math.random() * (width || window.innerWidth),
         y: Math.random() * (height || 800),
-        vx: (Math.random() - 0.5) * 0.55,
-        vy: (Math.random() - 0.5) * 0.55,
-        radius: isTeal ? 1.8 + Math.random() * 1.6 : 1.5 + Math.random() * 1.5,
+        vx: (Math.random() - 0.5) * 0.45,
+        vy: (Math.random() - 0.5) * 0.45,
+        radius: isTeal ? 1.6 + Math.random() * 1.5 : 1.4 + Math.random() * 1.4,
         colorType: isTeal ? "teal" : "blue",
-        baseAlpha: 0.45 + Math.random() * 0.4,
-        alpha: 0.6,
-        pulseSpeed: 0.02 + Math.random() * 0.02,
+        baseAlpha: 0.35 + Math.random() * 0.35,
+        alpha: 0.5,
+        pulseSpeed: 0.018 + Math.random() * 0.018,
         pulseOffset: Math.random() * Math.PI * 2,
       });
     }
@@ -125,64 +129,65 @@ const StudyBackground = ({ particleCount: customParticleCount }: StudyBackground
         return;
       }
 
-      tick += 0.03;
+      tick += 0.025;
       ctx.clearRect(0, 0, width, height);
 
       const dark = isDarkMode();
-      const maxDist = 110;
-      const maxDistSq = maxDist * maxDist;
 
-      // 1. Draw entanglement connection lines (batched into single draw calls for 120 FPS performance)
-      ctx.lineWidth = dark ? 0.95 : 1.15;
-      const tealLines: Array<{ x1: number; y1: number; x2: number; y2: number }> = [];
-      const blueLines: Array<{ x1: number; y1: number; x2: number; y2: number }> = [];
+      // Optional: Draw connecting constellation lines if explicitly enabled
+      if (showLines) {
+        const maxDist = 110;
+        const maxDistSq = maxDist * maxDist;
+        ctx.lineWidth = dark ? 0.95 : 1.15;
+        const tealLines: Array<{ x1: number; y1: number; x2: number; y2: number }> = [];
+        const blueLines: Array<{ x1: number; y1: number; x2: number; y2: number }> = [];
 
-      for (let i = 0; i < particles.length; i++) {
-        const p1 = particles[i];
-        for (let j = i + 1; j < particles.length; j++) {
-          const p2 = particles[j];
-          const dx = p1.x - p2.x;
-          const dy = p1.y - p2.y;
-          const distSq = dx * dx + dy * dy;
+        for (let i = 0; i < particles.length; i++) {
+          const p1 = particles[i];
+          for (let j = i + 1; j < particles.length; j++) {
+            const p2 = particles[j];
+            const dx = p1.x - p2.x;
+            const dy = p1.y - p2.y;
+            const distSq = dx * dx + dy * dy;
 
-          if (distSq < maxDistSq) {
-            if (p1.colorType === "teal") {
-              tealLines.push({ x1: p1.x, y1: p1.y, x2: p2.x, y2: p2.y });
-            } else {
-              blueLines.push({ x1: p1.x, y1: p1.y, x2: p2.x, y2: p2.y });
+            if (distSq < maxDistSq) {
+              if (p1.colorType === "teal") {
+                tealLines.push({ x1: p1.x, y1: p1.y, x2: p2.x, y2: p2.y });
+              } else {
+                blueLines.push({ x1: p1.x, y1: p1.y, x2: p2.x, y2: p2.y });
+              }
             }
           }
         }
-      }
 
-      if (tealLines.length > 0) {
-        ctx.beginPath();
-        for (let i = 0; i < tealLines.length; i++) {
-          const l = tealLines[i];
-          ctx.moveTo(l.x1, l.y1);
-          ctx.lineTo(l.x2, l.y2);
+        if (tealLines.length > 0) {
+          ctx.beginPath();
+          for (let i = 0; i < tealLines.length; i++) {
+            const l = tealLines[i];
+            ctx.moveTo(l.x1, l.y1);
+            ctx.lineTo(l.x2, l.y2);
+          }
+          ctx.strokeStyle = dark ? "rgba(137, 211, 189, 0.22)" : "rgba(13, 148, 136, 0.28)";
+          ctx.stroke();
         }
-        ctx.strokeStyle = dark ? "rgba(137, 211, 189, 0.22)" : "rgba(13, 148, 136, 0.28)";
-        ctx.stroke();
-      }
 
-      if (blueLines.length > 0) {
-        ctx.beginPath();
-        for (let i = 0; i < blueLines.length; i++) {
-          const l = blueLines[i];
-          ctx.moveTo(l.x1, l.y1);
-          ctx.lineTo(l.x2, l.y2);
+        if (blueLines.length > 0) {
+          ctx.beginPath();
+          for (let i = 0; i < blueLines.length; i++) {
+            const l = blueLines[i];
+            ctx.moveTo(l.x1, l.y1);
+            ctx.lineTo(l.x2, l.y2);
+          }
+          ctx.strokeStyle = dark ? "rgba(59, 130, 246, 0.22)" : "rgba(29, 78, 216, 0.28)";
+          ctx.stroke();
         }
-        ctx.strokeStyle = dark ? "rgba(59, 130, 246, 0.22)" : "rgba(29, 78, 216, 0.28)";
-        ctx.stroke();
       }
 
-      // 2. Mouse interaction: Web spreading away from cursor on hover (repel force)
+      // Mouse interaction: Gentle organic repulsion away from cursor on hover (clean without lines)
       const isScrolling = Boolean(window.lenis?.isScrolling);
       if (mouse.active && !isScrolling) {
-        const mouseRepelDist = 150;
+        const mouseRepelDist = 130;
         const mouseRepelDistSq = mouseRepelDist * mouseRepelDist;
-        ctx.beginPath();
         for (let i = 0; i < particles.length; i++) {
           const p = particles[i];
           const dx = p.x - mouse.x;
@@ -191,17 +196,11 @@ const StudyBackground = ({ particleCount: customParticleCount }: StudyBackground
 
           if (distSq < mouseRepelDistSq && distSq > 0.001) {
             const dist = Math.sqrt(distSq);
-            const force = ((mouseRepelDist - dist) / mouseRepelDist) * 1.8;
-            p.vx += (dx / dist) * force * 0.45;
-            p.vy += (dy / dist) * force * 0.45;
-
-            ctx.moveTo(p.x, p.y);
-            ctx.lineTo(mouse.x, mouse.y);
+            const force = ((mouseRepelDist - dist) / mouseRepelDist) * 1.4;
+            p.vx += (dx / dist) * force * 0.35;
+            p.vy += (dy / dist) * force * 0.35;
           }
         }
-        ctx.strokeStyle = dark ? "rgba(137, 211, 189, 0.2)" : "rgba(29, 78, 216, 0.25)";
-        ctx.lineWidth = dark ? 0.8 : 1.0;
-        ctx.stroke();
       }
 
       // 3. Update & render particles
