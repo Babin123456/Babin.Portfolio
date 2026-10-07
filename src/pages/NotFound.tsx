@@ -26,9 +26,7 @@ const NotFound = () => {
         </div>
 
         <div className="mb-6 flex justify-center">
-          <div className="p-4 rounded-full bg-muted/50 border border-border/50">
-            <Search className="h-8 w-8 text-muted-foreground" />
-          </div>
+          <Search className="h-10 w-10 text-muted-foreground" />
         </div>
 
         <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-3">
