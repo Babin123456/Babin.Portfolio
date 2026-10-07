@@ -58,9 +58,6 @@ const CursorSparkles = () => {
       );
     };
 
-    const handleMouseOver = (e: MouseEvent) => {
-      isHoveringInteractive = checkInteractive(e.target);
-    };
 
     const handleMouseMove = (e: MouseEvent) => {
       const curX = e.clientX;
@@ -91,16 +88,32 @@ const CursorSparkles = () => {
             rotationSpeed: (Math.random() - 0.5) * 0.2,
           });
         }
+        startLoop();
         lastX = curX;
         lastY = curY;
+      }
+    };
+
+    const handleMouseOver = (e: MouseEvent) => {
+      isHoveringInteractive = checkInteractive(e.target);
+      if (isHoveringInteractive) {
+        startLoop();
       }
     };
 
     window.addEventListener("mousemove", handleMouseMove, { passive: true });
     window.addEventListener("mouseover", handleMouseOver, { passive: true });
 
-    let animId: number;
+    let animId: number = 0;
+    let isLoopRunning = false;
     let frameCount = 0;
+
+    const startLoop = () => {
+      if (!isLoopRunning) {
+        isLoopRunning = true;
+        animId = requestAnimationFrame(loop);
+      }
+    };
 
     const drawStar = (cx: number, cy: number, spikes: number, outerRadius: number, innerRadius: number) => {
       let rot = (Math.PI / 2) * 3;
@@ -126,12 +139,17 @@ const CursorSparkles = () => {
     };
 
     const loop = () => {
+      if (sparkles.length === 0 && !isHoveringInteractive) {
+        ctx.clearRect(0, 0, width, height);
+        isLoopRunning = false;
+        return;
+      }
+
       ctx.clearRect(0, 0, width, height);
       frameCount++;
 
       // When hovering over buttons, CTAs, or options, continuously emit sparkles spreading outward
       if (isHoveringInteractive && lastX >= 0 && lastY >= 0 && frameCount % 3 === 0) {
-        // Emit 1-2 spreading sparkles per tick
         const burstCount = Math.random() > 0.4 ? 2 : 1;
         for (let b = 0; b < burstCount; b++) {
           const colorBase = colors[Math.floor(Math.random() * colors.length)];
@@ -142,7 +160,7 @@ const CursorSparkles = () => {
             x: lastX + (Math.random() - 0.5) * 10,
             y: lastY + (Math.random() - 0.5) * 10,
             vx: Math.cos(angle) * spreadSpeed,
-            vy: Math.sin(angle) * spreadSpeed - 0.2, // gentle float upward
+            vy: Math.sin(angle) * spreadSpeed - 0.2,
             size: 3 + Math.random() * 4,
             alpha: 1,
             decay: 0.018 + Math.random() * 0.015,
@@ -179,7 +197,7 @@ const CursorSparkles = () => {
       animId = requestAnimationFrame(loop);
     };
 
-    animId = requestAnimationFrame(loop);
+    startLoop();
 
     return () => {
       cancelAnimationFrame(animId);
