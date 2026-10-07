@@ -5,6 +5,9 @@ import {
   Mail,
   Code2,
   Star,
+  Compass,
+  FolderGit2,
+  Share2,
 } from "lucide-react";
 import SocialIcons from "./SocialIcons";
 import { smoothScrollToTarget } from "@/lib/scrollUtils";
@@ -22,17 +25,15 @@ const Footer: React.FC = () => {
       window.history.pushState(null, "", targetHref === "#home" ? "/" : targetHref);
     };
 
-    if (href === "/") {
+    if (href === "/" || href === "#home") {
       if (location.pathname === "/") {
-        doScroll("/");
+        doScroll("#home");
       } else {
         navigate("/");
-        setTimeout(() => doScroll("/"), 150);
       }
     } else if (href.startsWith("#")) {
       if (location.pathname !== "/") {
-        navigate("/");
-        setTimeout(() => doScroll(href), 150);
+        navigate(`/${href}`);
       } else {
         doScroll(href);
       }
@@ -48,17 +49,15 @@ const Footer: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-10 pb-5 sm:pb-7">
           
           <div className="lg:col-span-4 space-y-3 sm:space-y-4 text-center sm:text-left">
-            <div className="flex items-center justify-center sm:justify-start gap-3">
-              <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white text-blue-700 shadow-[0_0_15px_rgba(255,255,255,0.4)] dark:bg-[#111318] dark:text-[#89D3BD] dark:shadow-md border border-white/20 dark:border-black/20 flex items-center justify-center font-black text-lg shrink-0 transition-colors">
-                <Code2 className="w-4 h-4 sm:w-5 sm:h-5 stroke-[2.5]" />
-              </div>
+            <div className="flex flex-col sm:flex-row items-center justify-center sm:justify-start gap-2.5 sm:gap-3">
+              <Code2 className="w-6 h-6 sm:w-6 sm:h-6 text-[#89D3BD] dark:text-blue-700 stroke-[2.5] shrink-0" />
               <span className="text-xl sm:text-2xl font-black tracking-tight text-white dark:text-[#111318] uppercase">
                 BABIN BID
               </span>
             </div>
 
             <div className="flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left gap-2 sm:gap-2.5 text-xs sm:text-sm text-slate-300 dark:text-stone-600 pt-1 leading-relaxed">
-              <MapPin className="w-4 h-4 text-blue-700 dark:text-[#89D3BD] shrink-0 mt-0.5" />
+              <MapPin className="w-4 h-4 text-[#89D3BD] dark:text-blue-700 shrink-0 mt-0.5" />
               <div>
                 <p className="font-semibold text-white dark:text-[#111318]">
                   Adamas University, Kolkata
@@ -73,18 +72,20 @@ const Footer: React.FC = () => {
                 href="mailto:babinbid05@gmail.com"
                 className="inline-flex items-center gap-2 text-xs sm:text-sm text-slate-300 hover:text-white dark:text-stone-700 dark:hover:text-black transition-colors"
               >
-                <Mail className="w-4 h-4 text-blue-700 dark:text-[#89D3BD] shrink-0" />
+                <Mail className="w-4 h-4 text-[#89D3BD] dark:text-blue-700 shrink-0" />
                 <span className="break-all">babinbid05@gmail.com</span>
               </a>
             </div>
           </div>
 
           <div className="grid grid-cols-2 gap-4 sm:gap-6 lg:col-span-5">
-            <div className="space-y-2.5 sm:space-y-3 text-center sm:text-left">
-              <h4 className="text-xs sm:text-sm font-bold uppercase tracking-wider text-white dark:text-[#111318]">
-                Navigation
+            <div className="space-y-2.5 sm:space-y-3 flex flex-col items-start text-left">
+              <h4 className="text-xs sm:text-sm font-bold uppercase tracking-wider text-white dark:text-[#111318] inline-flex items-center gap-1.5 text-left">
+                <Compass className="w-3.5 h-3.5 text-[#89D3BD] dark:text-blue-700 shrink-0" />
+                <span>Navigation</span>
+                <Compass className="w-3.5 h-3.5 text-[#89D3BD] dark:text-blue-700 shrink-0 scale-x-[-1]" />
               </h4>
-              <ul className="space-y-1.5 sm:space-y-2 text-xs sm:text-sm flex flex-col items-center sm:items-start">
+              <ul className="space-y-1.5 sm:space-y-2 text-xs sm:text-sm flex flex-col items-start text-left">
                 {[
                   { name: "Home", href: "#home" },
                   { name: "About Me", href: "#about" },
@@ -94,11 +95,11 @@ const Footer: React.FC = () => {
                   { name: "Achievements", href: "#achievements-preview" },
                   { name: "Contact", href: "#contact" },
                 ].map((item) => (
-                  <li key={item.name} className="w-full sm:w-auto">
+                  <li key={item.name} className="w-full text-left">
                     <a
                       href={item.href}
                       onClick={(e) => handleSectionClick(e, item.href)}
-                      className="text-slate-300 hover:text-white dark:text-stone-600 dark:hover:text-black transition-all hover:translate-x-1 inline-block py-0.5"
+                      className="text-slate-300 hover:text-white dark:text-stone-600 dark:hover:text-black transition-all hover:translate-x-1 inline-block py-0.5 text-left"
                     >
                       {item.name}
                     </a>
@@ -107,12 +108,15 @@ const Footer: React.FC = () => {
               </ul>
             </div>
 
-            <div className="space-y-2.5 sm:space-y-3 text-center sm:text-left">
-              <h4 className="text-xs sm:text-sm font-bold uppercase tracking-wider text-white dark:text-[#111318]">
-                Projects
+            <div className="space-y-2.5 sm:space-y-3 flex flex-col items-start text-left">
+              <h4 className="text-xs sm:text-sm font-bold uppercase tracking-wider text-white dark:text-[#111318] inline-flex items-center gap-1.5 text-left">
+                <FolderGit2 className="w-3.5 h-3.5 text-[#89D3BD] dark:text-blue-700 shrink-0" />
+                <span>Projects</span>
+                <FolderGit2 className="w-3.5 h-3.5 text-[#89D3BD] dark:text-blue-700 shrink-0 scale-x-[-1]" />
               </h4>
-              <ul className="space-y-1.5 sm:space-y-2 text-xs sm:text-sm flex flex-col items-center sm:items-start">
+              <ul className="space-y-1.5 sm:space-y-2 text-xs sm:text-sm flex flex-col items-start text-left">
                 {[
+                  { name: "OutboxOverdrive", desc: "Email Engine", href: "https://outbox-overdrive.vercel.app/" },
                   { name: "CargoConnect", desc: "Logistics Booking", href: "https://github.com/Babin123456/CargoConnect" },
                   { name: "CivicSignal AI", desc: "Triage Engine", href: "https://github.com/Babin123456/CivicSignal" },
                   { name: "EduPilot AI", desc: "Academic RAG", href: "https://github.com/Babin123456/EduPilot-AI" },
@@ -121,12 +125,12 @@ const Footer: React.FC = () => {
                   { name: "AI Data Analysis", desc: "Text-to-SQL", href: "https://github.com/Babin123456/Ai-Data-Analysis" },
                   { name: "ML Price Prediction", desc: "Springer SIST", href: "https://github.com/Babin123456/ML-Based-Price-Prediction" },
                 ].map((proj) => (
-                  <li key={proj.name} className="w-full sm:w-auto">
+                  <li key={proj.name} className="w-full text-left">
                     <a
                       href={proj.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-slate-300 hover:text-white dark:text-stone-600 dark:hover:text-black transition-all hover:translate-x-1 inline-flex items-center justify-center sm:justify-start gap-1 py-0.5"
+                      className="text-slate-300 hover:text-white dark:text-stone-600 dark:hover:text-black transition-all hover:translate-x-1 inline-flex items-center justify-start gap-1 py-0.5 text-left"
                     >
                       <span>{proj.name}</span>
                       <span className="hidden sm:inline text-[10px] text-slate-400 dark:text-stone-500 font-mono">
@@ -142,8 +146,10 @@ const Footer: React.FC = () => {
           <div className="lg:col-span-3 flex flex-col justify-start space-y-4 sm:space-y-5 text-center items-center">
             <div className="space-y-2 text-center w-full flex flex-col items-center">
               <div>
-                <h4 className="text-xs sm:text-sm font-bold uppercase tracking-wider text-white dark:text-[#111318] text-center">
-                  Let&apos;s Connect
+                <h4 className="text-xs sm:text-sm font-bold uppercase tracking-wider text-white dark:text-[#111318] inline-flex items-center justify-center gap-1.5">
+                  <Share2 className="w-3.5 h-3.5 text-[#89D3BD] dark:text-blue-700 shrink-0" />
+                  <span>Let&apos;s Connect</span>
+                  <Share2 className="w-3.5 h-3.5 text-[#89D3BD] dark:text-blue-700 shrink-0 scale-x-[-1]" />
                 </h4>
               </div>
 
@@ -180,11 +186,11 @@ const Footer: React.FC = () => {
 
         <div className="pt-4 sm:pt-5 text-center space-y-2 sm:space-y-2.5 max-w-4xl mx-auto flex flex-col items-center justify-center">
           <p className="text-xs sm:text-sm md:text-base font-serif italic text-slate-200 dark:text-stone-800 leading-relaxed px-4 flex items-center justify-center gap-1.5 sm:gap-2 text-center">
-            <Star className="h-3.5 w-3.5 text-blue-700 dark:text-[#89D3BD] fill-blue-700 dark:fill-[#89D3BD] shrink-0 hidden sm:inline-block" />
+            <Star className="h-3.5 w-3.5 text-[#89D3BD] dark:text-blue-700 fill-[#89D3BD] dark:fill-blue-700 shrink-0 hidden sm:inline-block" />
             <span>
               &ldquo;I don&apos;t just write code, I build logic, solve problems, and shape the future — <b className="not-italic font-bold text-white dark:text-[#111318]">one line at a time.</b>&rdquo;
             </span>
-            <Star className="h-3.5 w-3.5 text-blue-700 dark:text-[#89D3BD] fill-blue-700 dark:fill-[#89D3BD] shrink-0 hidden sm:inline-block" />
+            <Star className="h-3.5 w-3.5 text-[#89D3BD] dark:text-blue-700 fill-[#89D3BD] dark:fill-blue-700 shrink-0 hidden sm:inline-block" />
           </p>
 
           <p className="text-xs sm:text-sm text-slate-400 dark:text-stone-600 font-medium text-center">
