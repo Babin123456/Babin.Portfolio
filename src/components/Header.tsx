@@ -129,11 +129,9 @@ const Header = () => {
 
     // If it's a section link
     if (href.startsWith("#")) {
-      // If we're not on the home page, navigate to home first
+      // If we're not on the home page, navigate to home with hash
       if (location.pathname !== "/") {
-        navigate("/");
-        // Wait for navigation to complete before scrolling
-        setTimeout(() => smoothScrollTo(href), 500);
+        navigate(`/${href === "#home" ? "" : href}`);
       } else {
         smoothScrollTo(href);
       }
