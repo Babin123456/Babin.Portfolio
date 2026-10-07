@@ -48,10 +48,10 @@ export const extractTextFromChildren = (children: React.ReactNode): string => {
 }
 
 export const ROTATION_MAP = {
-  top: "rotateX(90deg)",
-  right: "rotateY(90deg)",
-  bottom: "rotateX(-90deg)",
-  left: "rotateY(-90deg)",
+  top: "rotateX(-360deg)",
+  right: "rotateY(360deg)",
+  bottom: "rotateX(360deg)",
+  left: "rotateY(-360deg)",
 } as const
 
 export const DEFAULT_TRANSITION: ValueAnimationTransition = {
@@ -105,25 +105,13 @@ export const CharBox = memo(
   ({
     char,
     textClassName,
-    flipTextClassName,
-    rotateDirection,
   }: CharBoxProps) => (
-    <span
-      className="text-3d-flip-char inline-block transform-3d select-none cursor-default"
-      style={{ transform: CONTAINER_TRANSFORMS[rotateDirection] }}
-    >
-      <span
-        className={cn("inline-block relative backface-hidden cursor-default", textClassName)}
-        style={{ transform: FRONT_FACE_TRANSFORMS[rotateDirection] }}
-      >
-        {char}
-      </span>
+    <span className="text-3d-flip-char inline-block will-change-transform select-none cursor-default overflow-visible">
       <span
         className={cn(
-          "inline-block absolute top-0 left-0 backface-hidden cursor-default",
-          flipTextClassName
+          "inline-block relative cursor-default overflow-visible leading-normal pt-[0.35em] pb-[0.6em] px-[0.08em] -mt-[0.35em] -mb-[0.6em] -mx-[0.08em] [box-decoration-break:clone] [-webkit-box-decoration-break:clone]",
+          textClassName
         )}
-        style={{ transform: SECOND_FACE_TRANSFORMS[rotateDirection] }}
       >
         {char}
       </span>
