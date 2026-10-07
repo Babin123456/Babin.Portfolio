@@ -708,8 +708,8 @@ export const achievementsData: AchievementCategory[] = [
         "category": "Hack2Skill",
         "items": [
             {
-                "title": "Build with AI",
-                "file": "/Achievements/Hack2Skill/Build_with_AI.webp"
+                "title": "Google Solution Challenge 2026: Build with AI",
+                "file": "/Achievements/Hack2Skill/Google_Solution_Challenge_2026_Build_with_AI.webp"
             },
             {
                 "title": "Gen AI Exchange Hackathon",
@@ -720,8 +720,8 @@ export const achievementsData: AchievementCategory[] = [
                 "file": "/Achievements/Hack2Skill/Google_Solution_challenge_2026_H2S_Badge.webp"
             },
             {
-                "title": "Hack2skill Certificate",
-                "file": "/Achievements/Hack2Skill/Hack2skill-Certificate.webp"
+                "title": "GDG on Campus Solution Challenge",
+                "file": "/Achievements/Hack2Skill/GDG_on_Campus_Solution_Challenge.webp"
             },
             {
                 "title": "Hack2skill Certificate GEN AI Exchange Program",
@@ -1181,6 +1181,14 @@ export const achievementsData: AchievementCategory[] = [
             {
                 "title": "July LeetCode",
                 "file": "/Achievements/LeetCode/July_LeetCode.webp"
+            },
+            {
+                "title": "June LeetCode",
+                "file": "/Achievements/LeetCode/June_LeetCode_Badge.gif"
+            },
+            {
+                "title": "June LeetCode",
+                "file": "/Achievements/LeetCode/June_LeetCode.webp"
             },
             {
                 "title": "March LeetCode",
