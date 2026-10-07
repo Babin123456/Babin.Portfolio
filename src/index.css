@@ -19,6 +19,11 @@
     overflow-x: clip;
     width: 100%;
     font-family: 'Times New Roman', 'Roca Two', 'Roca One', 'Roca', Times, serif;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  button, a, input, [role="button"] {
+    -webkit-tap-highlight-color: transparent;
   }
 
   h1,
