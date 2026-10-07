@@ -149,32 +149,18 @@
 @keyframes close-image {
     0% {
         opacity: 1;
-        transform: scale(1) translateY(0) rotate(0deg);
-        filter: blur(0px);
-    }
-
-    30% {
-        opacity: 0.95;
-        transform: scale(0.93) translateY(8px) rotate(-0.5deg);
-        filter: blur(0px);
-    }
-
-    65% {
-        opacity: 0.65;
-        transform: scale(0.82) translateY(22px) rotate(-1.5deg);
-        filter: blur(1.5px);
+        transform: scale(1) translateY(0);
     }
 
     100% {
         opacity: 0;
-        transform: scale(0.68) translateY(38px) rotate(-2.5deg);
-        filter: blur(6px);
+        transform: scale(0.92) translateY(12px);
     }
 }
 
 .animate-close-image {
-    animation: close-image 0.65s cubic-bezier(0.2, 0.9, 0.3, 1) forwards;
-    will-change: transform, opacity, filter;
+    animation: close-image 0.28s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    will-change: transform, opacity;
     transform-origin: center center;
 }
 
