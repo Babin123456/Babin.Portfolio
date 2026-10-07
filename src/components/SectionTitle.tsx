@@ -17,6 +17,8 @@ interface SectionTitleProps {
     className?: string;
     rotateDirection?: "top" | "right" | "bottom" | "left";
     staggerDuration?: number;
+    showUnderline?: boolean;
+    underlineClassName?: string;
 }
 
 const SectionTitle = ({
@@ -25,9 +27,11 @@ const SectionTitle = ({
     className = "",
     rotateDirection = "right",
     staggerDuration = 0.035,
+    showUnderline = true,
+    underlineClassName = "",
 }: SectionTitleProps) => {
     const [scope, animate] = useAnimate();
-    const [isAnimating, setIsAnimating] = useState(false);
+    const [isAnimating, setIsAnimating] = useState(true);
     const isHoverAnimatingRef = useRef(false);
     const isMountedRef = useRef(false);
 
@@ -149,31 +153,78 @@ const SectionTitle = ({
     return (
         <div
             ref={scope}
-            className={`w-full flex justify-center items-center ${className}`}
+            className={`w-full flex flex-col justify-center items-center ${className}`}
         >
-            <div
-                onMouseEnter={handleHoverStart}
-                className="w-fit inline-flex flex-wrap justify-center items-center gap-x-[0.35em] gap-y-1 font-heading font-normal tracking-normal perspective-1000 cursor-default select-none"
-            >
-                {words.map((wordChars, wordIndex) => (
-                    <span key={wordIndex} className="inline-flex whitespace-nowrap cursor-default">
-                        {wordChars.map(({ char, className: charClass, index }) => (
-                            <span
-                                key={index}
-                                className={`inline-block will-change-transform cursor-default ${charClass} ${isAnimating ? "animate-wave" : "opacity-0 translate-y-6"
+            <div className="relative inline-flex flex-col items-center overflow-visible">
+                <div
+                    onMouseEnter={handleHoverStart}
+                    className={`w-fit inline-flex flex-wrap justify-center items-center gap-x-[0.35em] gap-y-1 font-heading font-normal tracking-normal perspective-1000 cursor-default select-none overflow-visible py-2 pb-3 ${className}`}
+                >
+                    {words.map((wordChars, wordIndex) => (
+                        <span key={wordIndex} className="inline-flex whitespace-nowrap cursor-default overflow-visible py-1">
+                            {wordChars.map(({ char, className: charClass, index }) => (
+                                <span
+                                    key={index}
+                                    className={`inline-block will-change-transform cursor-default overflow-visible pb-1 ${
+                                        isAnimating ? "animate-wave" : "opacity-0 translate-y-6"
                                     } [animation-fill-mode:both] [animation-timing-function:cubic-bezier(0.34,1.56,0.64,1)]`}
-                                data-index={index}
-                            >
-                                <CharBox
-                                    char={char}
-                                    textClassName={charClass}
-                                    flipTextClassName={charClass}
-                                    rotateDirection={rotateDirection}
-                                />
-                            </span>
-                        ))}
-                    </span>
-                ))}
+                                    data-index={index}
+                                >
+                                    <CharBox
+                                        char={char}
+                                        textClassName={charClass}
+                                        flipTextClassName={charClass}
+                                        rotateDirection={rotateDirection}
+                                    />
+                                </span>
+                            ))}
+                        </span>
+                    ))}
+                </div>
+
+                {showUnderline && (
+                    <div
+                        className={`w-full max-w-[92%] sm:max-w-[85%] mt-1 sm:mt-2 h-2.5 sm:h-3.5 flex justify-center items-center overflow-visible pointer-events-none transition-all duration-700 ease-out ${
+                            isAnimating ? "opacity-100 scale-x-100" : "opacity-0 scale-x-75"
+                        } origin-center ${underlineClassName}`}
+                        aria-hidden="true"
+                    >
+                        <svg
+                            viewBox="0 0 320 18"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                            className="w-full h-full preserve-3d"
+                        >
+                            <defs>
+                                <linearGradient id="paintStrokeGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                                    <stop offset="0%" className="[stop-color:#1d4ed8] dark:[stop-color:#89D3BD]" stopOpacity="0.15" />
+                                    <stop offset="25%" className="[stop-color:#2563eb] dark:[stop-color:#89D3BD]" stopOpacity="0.85" />
+                                    <stop offset="60%" className="[stop-color:#0284c7] dark:[stop-color:#22d3ee]" stopOpacity="0.95" />
+                                    <stop offset="85%" className="[stop-color:#1d4ed8] dark:[stop-color:#89D3BD]" stopOpacity="0.8" />
+                                    <stop offset="100%" className="[stop-color:#1e40af] dark:[stop-color:#2dd4bf]" stopOpacity="0.1" />
+                                </linearGradient>
+                                <filter id="paintGlow" x="-10%" y="-30%" width="120%" height="160%">
+                                    <feGaussianBlur stdDeviation="1.5" result="glow" />
+                                    <feComposite in="SourceGraphic" in2="glow" operator="over" />
+                                </filter>
+                            </defs>
+                            {/* Artistic paint/brush textured underline stroke */}
+                            <path
+                                d="M3 13 C 45 6, 120 4, 185 8 C 240 11, 285 7, 317 11 C 290 14, 235 15, 175 12 C 110 9, 50 16, 3 13 Z"
+                                fill="url(#paintStrokeGrad)"
+                                filter="url(#paintGlow)"
+                            />
+                            {/* Secondary delicate dynamic brush flick */}
+                            <path
+                                d="M22 14.5 C 75 10.5, 160 8.5, 245 12.5 C 275 13.5, 298 12, 308 13.5"
+                                stroke="url(#paintStrokeGrad)"
+                                strokeWidth="1.2"
+                                strokeLinecap="round"
+                                opacity="0.6"
+                            />
+                        </svg>
+                    </div>
+                )}
             </div>
         </div>
     );
