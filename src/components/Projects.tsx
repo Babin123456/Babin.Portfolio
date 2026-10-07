@@ -258,23 +258,6 @@ const Projects = () => {
       thumbnail: "/projects/KrishiBhoomi-AI.webp",
     },
     {
-      title: "ML-Based Price Prediction",
-      description:
-        "ML-Based Price Prediction for Agri-Horticultural Commodities — Peer-reviewed Springer Nature research paper & ML engine predicting seasonal vegetable & fruit market prices across harvest seasons.",
-      tech: ["Python", "scikit-learn", "Random Forest", "SVR", "Pandas", "NumPy", "Matplotlib", "Seaborn"],
-      github: "https://github.com/Babin123456/ML-Based-Price-Prediction",
-      demo: "https://link.springer.com/chapter/10.1007/978-3-032-21164-4_30",
-      features: [
-        "Published in Springer Nature SIST (Vol. 484, pp. 378–389)",
-        "Best Paper Award at 2nd Int. Conf. on Smart Systems & Wireless Communication (SSWC 2025)",
-        "Random Forest Regressor (R² = 0.9893 Summer, 0.9855 Monsoon, 0.9799 Winter)",
-        "Support Vector Regressor (SVR) benchmark comparative analysis",
-        "Dynamic centralized configuration & headless multi-figure visualization pipeline",
-        "Academic Supervisors & Authors: Dr. Debdutta Pal, Babin Bid, Ritika Pramanick, Liza Ghosh",
-      ],
-      thumbnail: "/projects/ML-Based_Price_Prediction.webp",
-    },
-    {
       title: "OutboxOverdrive",
       description:
         "OutboxOverdrive — A high-throughput, fault-tolerant email scheduling and throttling engine featuring persistent queues, sliding-window rate limiting, full-text fuzzy search, and real-time monitoring.",
