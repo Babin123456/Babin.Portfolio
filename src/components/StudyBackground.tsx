@@ -13,7 +13,11 @@ interface Particle {
   pulseOffset: number;
 }
 
-const StudyBackground = () => {
+interface StudyBackgroundProps {
+  particleCount?: number;
+}
+
+const StudyBackground = ({ particleCount: customParticleCount }: StudyBackgroundProps = {}) => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
   useEffect(() => {
@@ -55,8 +59,10 @@ const StudyBackground = () => {
     handleResize();
     window.addEventListener("resize", handleResize);
 
-    // Particle pool
-    const particleCount = Math.min(50, Math.max(24, Math.floor((window.innerWidth * 45) / 1440)));
+    // Particle pool - allow custom reduced particle count
+    const particleCount = customParticleCount !== undefined
+      ? customParticleCount
+      : Math.min(50, Math.max(24, Math.floor((window.innerWidth * 45) / 1440)));
     const particles: Particle[] = [];
 
     for (let i = 0; i < particleCount; i++) {
