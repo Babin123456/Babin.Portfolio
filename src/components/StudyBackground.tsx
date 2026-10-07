@@ -261,7 +261,7 @@ const StudyBackground = ({
         section.removeEventListener("mouseleave", handleMouseLeave);
       }
     };
-  }, []);
+  }, [customParticleCount, showLines]);
 
   return (
     <canvas
