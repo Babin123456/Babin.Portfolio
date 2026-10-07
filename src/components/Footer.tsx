@@ -78,14 +78,14 @@ const Footer: React.FC = () => {
             </div>
           </div>
 
-          <div className="grid grid-cols-2 gap-4 sm:gap-6 lg:col-span-5">
-            <div className="space-y-2.5 sm:space-y-3 flex flex-col items-start text-left">
-              <h4 className="text-xs sm:text-sm font-bold uppercase tracking-wider text-white dark:text-[#111318] inline-flex items-center gap-1.5 text-left">
+          <div className="grid grid-cols-2 gap-4 sm:gap-6 lg:col-span-5 w-full max-w-md mx-auto lg:max-w-none justify-items-center sm:justify-items-start">
+            <div className="space-y-2.5 sm:space-y-3 flex flex-col items-center sm:items-start text-center sm:text-left w-full sm:w-auto">
+              <h4 className="text-xs sm:text-sm font-bold uppercase tracking-wider text-white dark:text-[#111318] inline-flex items-center justify-center sm:justify-start gap-1.5 text-center sm:text-left">
                 <Compass className="w-3.5 h-3.5 text-[#89D3BD] dark:text-blue-700 shrink-0" />
                 <span>Navigation</span>
                 <Compass className="w-3.5 h-3.5 text-[#89D3BD] dark:text-blue-700 shrink-0 scale-x-[-1]" />
               </h4>
-              <ul className="space-y-1.5 sm:space-y-2 text-xs sm:text-sm flex flex-col items-start text-left">
+              <ul className="space-y-1.5 sm:space-y-2 text-xs sm:text-sm flex flex-col items-center sm:items-start text-center sm:text-left w-full">
                 {[
                   { name: "Home", href: "#home" },
                   { name: "About Me", href: "#about" },
@@ -95,11 +95,11 @@ const Footer: React.FC = () => {
                   { name: "Achievements", href: "#achievements-preview" },
                   { name: "Contact", href: "#contact" },
                 ].map((item) => (
-                  <li key={item.name} className="w-full text-left">
+                  <li key={item.name} className="w-full text-center sm:text-left">
                     <a
                       href={item.href}
                       onClick={(e) => handleSectionClick(e, item.href)}
-                      className="text-slate-300 hover:text-white dark:text-stone-600 dark:hover:text-black transition-all hover:translate-x-1 inline-block py-0.5 text-left"
+                      className="text-slate-300 hover:text-white dark:text-stone-600 dark:hover:text-black transition-all hover:translate-x-0.5 sm:hover:translate-x-1 inline-block py-0.5 text-center sm:text-left"
                     >
                       {item.name}
                     </a>
@@ -108,13 +108,13 @@ const Footer: React.FC = () => {
               </ul>
             </div>
 
-            <div className="space-y-2.5 sm:space-y-3 flex flex-col items-start text-left">
-              <h4 className="text-xs sm:text-sm font-bold uppercase tracking-wider text-white dark:text-[#111318] inline-flex items-center gap-1.5 text-left">
+            <div className="space-y-2.5 sm:space-y-3 flex flex-col items-center sm:items-start text-center sm:text-left w-full sm:w-auto">
+              <h4 className="text-xs sm:text-sm font-bold uppercase tracking-wider text-white dark:text-[#111318] inline-flex items-center justify-center sm:justify-start gap-1.5 text-center sm:text-left">
                 <FolderGit2 className="w-3.5 h-3.5 text-[#89D3BD] dark:text-blue-700 shrink-0" />
                 <span>Projects</span>
                 <FolderGit2 className="w-3.5 h-3.5 text-[#89D3BD] dark:text-blue-700 shrink-0 scale-x-[-1]" />
               </h4>
-              <ul className="space-y-1.5 sm:space-y-2 text-xs sm:text-sm flex flex-col items-start text-left">
+              <ul className="space-y-1.5 sm:space-y-2 text-xs sm:text-sm flex flex-col items-center sm:items-start text-center sm:text-left w-full">
                 {[
                   { name: "OutboxOverdrive", desc: "Email Engine", href: "https://outbox-overdrive.vercel.app/" },
                   { name: "CargoConnect", desc: "Logistics Booking", href: "https://github.com/Babin123456/CargoConnect" },
@@ -125,12 +125,12 @@ const Footer: React.FC = () => {
                   { name: "AI Data Analysis", desc: "Text-to-SQL", href: "https://github.com/Babin123456/Ai-Data-Analysis" },
                   { name: "ML Price Prediction", desc: "Springer SIST", href: "https://github.com/Babin123456/ML-Based-Price-Prediction" },
                 ].map((proj) => (
-                  <li key={proj.name} className="w-full text-left">
+                  <li key={proj.name} className="w-full text-center sm:text-left">
                     <a
                       href={proj.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-slate-300 hover:text-white dark:text-stone-600 dark:hover:text-black transition-all hover:translate-x-1 inline-flex items-center justify-start gap-1 py-0.5 text-left"
+                      className="text-slate-300 hover:text-white dark:text-stone-600 dark:hover:text-black transition-all hover:translate-x-0.5 sm:hover:translate-x-1 inline-flex items-center justify-center sm:justify-start gap-1 py-0.5 text-center sm:text-left"
                     >
                       <span>{proj.name}</span>
                       <span className="hidden sm:inline text-[10px] text-slate-400 dark:text-stone-500 font-mono">
