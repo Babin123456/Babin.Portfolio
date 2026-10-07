@@ -158,14 +158,14 @@ const SectionTitle = ({
             <div className="relative inline-flex flex-col items-center overflow-visible">
                 <div
                     onMouseEnter={handleHoverStart}
-                    className={`w-fit inline-flex flex-wrap justify-center items-center gap-x-[0.35em] gap-y-1 font-heading font-normal tracking-normal perspective-1000 cursor-default select-none overflow-visible py-2 pb-3 ${className}`}
+                    className={`w-fit inline-flex flex-wrap justify-center items-center gap-x-[0.35em] font-heading font-normal tracking-normal perspective-1000 cursor-default select-none overflow-visible pt-1 pb-0 ${className}`}
                 >
                     {words.map((wordChars, wordIndex) => (
-                        <span key={wordIndex} className="inline-flex whitespace-nowrap cursor-default overflow-visible py-1">
+                        <span key={wordIndex} className="inline-flex whitespace-nowrap cursor-default overflow-visible py-0">
                             {wordChars.map(({ char, className: charClass, index }) => (
                                 <span
                                     key={index}
-                                    className={`inline-block will-change-transform cursor-default overflow-visible pb-1 ${
+                                    className={`inline-block will-change-transform cursor-default overflow-visible pb-0 ${
                                         isAnimating ? "animate-wave" : "opacity-0 translate-y-6"
                                     } [animation-fill-mode:both] [animation-timing-function:cubic-bezier(0.34,1.56,0.64,1)]`}
                                     data-index={index}
@@ -184,7 +184,7 @@ const SectionTitle = ({
 
                 {showUnderline && (
                     <div
-                        className={`w-full max-w-[92%] sm:max-w-[85%] mt-1 sm:mt-2 h-2.5 sm:h-3.5 flex justify-center items-center overflow-visible pointer-events-none transition-all duration-700 ease-out ${
+                        className={`w-full max-w-[92%] sm:max-w-[85%] -mt-1 sm:-mt-2 h-2.5 sm:h-3.5 flex justify-center items-center overflow-visible pointer-events-none transition-all duration-700 ease-out ${
                             isAnimating ? "opacity-100 scale-x-100" : "opacity-0 scale-x-75"
                         } origin-center ${underlineClassName}`}
                         aria-hidden="true"
