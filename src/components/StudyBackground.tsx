@@ -126,7 +126,11 @@ const StudyBackground = () => {
       const maxDist = 110;
       const maxDistSq = maxDist * maxDist;
 
-      // 1. Draw entanglement connection lines
+      // 1. Draw entanglement connection lines (batched into single draw calls for 120 FPS performance)
+      ctx.lineWidth = dark ? 0.95 : 1.15;
+      const tealLines: Array<{ x1: number; y1: number; x2: number; y2: number }> = [];
+      const blueLines: Array<{ x1: number; y1: number; x2: number; y2: number }> = [];
+
       for (let i = 0; i < particles.length; i++) {
         const p1 = particles[i];
         for (let j = i + 1; j < particles.length; j++) {
@@ -136,27 +140,35 @@ const StudyBackground = () => {
           const distSq = dx * dx + dy * dy;
 
           if (distSq < maxDistSq) {
-            const dist = Math.sqrt(distSq);
-            // In light mode, use higher contrast opacity
-            const factor = dark ? 0.35 : 0.45;
-            const lineAlpha = (1 - dist / maxDist) * factor * Math.min(p1.alpha, p2.alpha);
-            ctx.beginPath();
-            ctx.moveTo(p1.x, p1.y);
-            ctx.lineTo(p2.x, p2.y);
-
-            const isTeal = p1.colorType === "teal";
-            ctx.strokeStyle = isTeal
-              ? dark
-                ? `rgba(137, 211, 189, ${lineAlpha})`
-                : `rgba(13, 148, 136, ${lineAlpha * 1.2})`
-              : dark
-                ? `rgba(59, 130, 246, ${lineAlpha})`
-                : `rgba(29, 78, 216, ${lineAlpha * 1.2})`;
-
-            ctx.lineWidth = dark ? 0.95 : 1.15;
-            ctx.stroke();
+            if (p1.colorType === "teal") {
+              tealLines.push({ x1: p1.x, y1: p1.y, x2: p2.x, y2: p2.y });
+            } else {
+              blueLines.push({ x1: p1.x, y1: p1.y, x2: p2.x, y2: p2.y });
+            }
           }
         }
+      }
+
+      if (tealLines.length > 0) {
+        ctx.beginPath();
+        for (let i = 0; i < tealLines.length; i++) {
+          const l = tealLines[i];
+          ctx.moveTo(l.x1, l.y1);
+          ctx.lineTo(l.x2, l.y2);
+        }
+        ctx.strokeStyle = dark ? "rgba(137, 211, 189, 0.22)" : "rgba(13, 148, 136, 0.28)";
+        ctx.stroke();
+      }
+
+      if (blueLines.length > 0) {
+        ctx.beginPath();
+        for (let i = 0; i < blueLines.length; i++) {
+          const l = blueLines[i];
+          ctx.moveTo(l.x1, l.y1);
+          ctx.lineTo(l.x2, l.y2);
+        }
+        ctx.strokeStyle = dark ? "rgba(59, 130, 246, 0.22)" : "rgba(29, 78, 216, 0.28)";
+        ctx.stroke();
       }
 
       // 2. Mouse interaction: Web spreading away from cursor on hover (repel force)
@@ -164,6 +176,7 @@ const StudyBackground = () => {
       if (mouse.active && !isScrolling) {
         const mouseRepelDist = 150;
         const mouseRepelDistSq = mouseRepelDist * mouseRepelDist;
+        ctx.beginPath();
         for (let i = 0; i < particles.length; i++) {
           const p = particles[i];
           const dx = p.x - mouse.x;
@@ -172,30 +185,17 @@ const StudyBackground = () => {
 
           if (distSq < mouseRepelDistSq && distSq > 0.001) {
             const dist = Math.sqrt(distSq);
-            // Strong dynamic repulsion pushing particles outward away from cursor
             const force = ((mouseRepelDist - dist) / mouseRepelDist) * 1.8;
             p.vx += (dx / dist) * force * 0.45;
             p.vy += (dy / dist) * force * 0.45;
 
-            // Draw subtle tension web lines while pushing away
-            const factor = dark ? 0.4 : 0.55;
-            const laserAlpha = (1 - dist / mouseRepelDist) * factor;
-            ctx.beginPath();
             ctx.moveTo(p.x, p.y);
             ctx.lineTo(mouse.x, mouse.y);
-
-            const tealLaser = dark
-              ? `rgba(137, 211, 189, ${laserAlpha * 0.6})`
-              : `rgba(13, 148, 136, ${laserAlpha * 0.6})`;
-            const blueLaser = dark
-              ? `rgba(59, 130, 246, ${laserAlpha * 0.6})`
-              : `rgba(29, 78, 216, ${laserAlpha * 0.6})`;
-
-            ctx.strokeStyle = p.colorType === "teal" ? tealLaser : blueLaser;
-            ctx.lineWidth = dark ? 0.8 : 1.0;
-            ctx.stroke();
           }
         }
+        ctx.strokeStyle = dark ? "rgba(137, 211, 189, 0.2)" : "rgba(29, 78, 216, 0.25)";
+        ctx.lineWidth = dark ? 0.8 : 1.0;
+        ctx.stroke();
       }
 
       // 3. Update & render particles
