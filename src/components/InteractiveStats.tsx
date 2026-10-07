@@ -59,7 +59,7 @@ const InteractiveStats: React.FC = () => {
 
     return (
         <div ref={ref} className="mt-0 md:mt-0 py-8 md:py-16 relative overflow-hidden">
-            <StudyBackground />
+            <StudyBackground particleCount={14} />
             <div className="container mx-auto px-4 relative z-10">
                 <div
                     className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-8 max-w-6xl mx-auto"
