@@ -101,7 +101,7 @@ const Achievements = () => {
                 setSelectedItem(null);
                 setZoomLevel(1);
                 setIsClosing(false);
-            }, 650);
+            }, 280);
             return true;
         });
     }, []);
@@ -370,10 +370,10 @@ const Achievements = () => {
                                             }}
                                         >
                                             <Card
-                                                className="overflow-hidden border border-slate-200/80 dark:border-white/10 bg-white/70 dark:bg-white/5 backdrop-blur-sm shadow-card hover:border-blue-600 dark:hover:border-[#89D3BD] hover:shadow-[0_0_25px_rgba(29,78,216,0.3)] dark:hover:shadow-[0_0_25px_rgba(137,211,189,0.3)] transition-all duration-300 group cursor-pointer flex flex-col h-full hover:-translate-y-1.5 hover:scale-[1.01]"
+                                                className="overflow-hidden border border-slate-300 dark:border-white/10 bg-white dark:bg-white/5 backdrop-blur-sm shadow-sm hover:shadow-card hover:border-blue-600 dark:hover:border-[#89D3BD] hover:shadow-[0_0_25px_rgba(29,78,216,0.3)] dark:hover:shadow-[0_0_25px_rgba(137,211,189,0.3)] transition-all duration-300 group cursor-pointer flex flex-col h-full hover:-translate-y-1.5 hover:scale-[1.01]"
                                                 onClick={() => handleItemClick(item, category.category, category.items, index)}
                                             >
-                                                <div className="h-48 overflow-hidden bg-[#F5EDE0]/80 dark:bg-zinc-950/80 backdrop-blur-md relative flex items-center justify-center p-4 border-b border-[#E8DFC8] dark:border-zinc-900">
+                                                <div className="h-48 overflow-hidden bg-[#F5EDE0]/80 dark:bg-zinc-950/80 backdrop-blur-md relative flex items-center justify-center p-4 border-b border-slate-300 dark:border-zinc-900">
                                                     {type === 'image' ? (
                                                         <>
                                                             {!loadedImages.has(item.file) && !imageErrors.has(item.file) && (
@@ -389,7 +389,7 @@ const Achievements = () => {
                                                                     loading="lazy"
                                                                     decoding="async"
                                                                     onLoad={() => setLoadedImages(prev => new Set(prev).add(item.file))}
-                                                                    className={`w-full h-full object-contain transition-all duration-300 group-hover:scale-105 ${loadedImages.has(item.file) ? 'opacity-100' : 'opacity-0'} ${isSelected ? 'shadow-[0_8px_30px_rgba(29,78,216,0.35)] dark:shadow-[0_8px_30px_rgba(6,182,212,0.35)]' : ''}`}
+                                                                    className={`w-full h-full object-contain transition-all duration-300 group-hover:scale-105 rounded-lg ${loadedImages.has(item.file) ? 'opacity-100' : 'opacity-0'}`}
                                                                     onError={() => handleImageError(item.file)}
                                                                 />
                                                             ) : (
@@ -443,16 +443,16 @@ const Achievements = () => {
                         }`}
                 >
                     <div className="text-center space-y-3 mt-6 sm:mt-10 md:mt-0">
-                        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4 text-center">
+                        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4 text-center overflow-visible leading-normal">
                             <SectionTitle
                                 segments={[
                                     {
                                         text: "My",
-                                        className: "text-blue-700 dark:text-[#89D3BD]",
+                                        className: "bg-gradient-to-r from-blue-700 to-sky-500 dark:from-[#89D3BD] dark:to-cyan-400 bg-clip-text text-transparent",
                                     },
                                     {
                                         text: " Achievements",
-                                        className: "text-blue-700 dark:text-[#89D3BD]",
+                                        className: "bg-gradient-to-r from-blue-700 to-sky-500 dark:from-[#89D3BD] dark:to-cyan-400 bg-clip-text text-transparent",
                                     },
                                 ]}
                             />
@@ -539,7 +539,7 @@ const Achievements = () => {
                 >
                     {/* Backdrop background overlay */}
                     <div
-                        className={`absolute inset-0 bg-[#FAF6EE]/90 dark:bg-black/95 backdrop-blur-2xl transition-all duration-700 ease-out ${isClosing
+                        className={`absolute inset-0 bg-[#FAF6EE]/90 dark:bg-black/95 backdrop-blur-2xl transition-all duration-300 ease-out ${isClosing
                             ? 'opacity-0 backdrop-blur-none'
                             : 'opacity-100'
                             }`}
@@ -547,7 +547,7 @@ const Achievements = () => {
                     />
 
                     <div
-                        className={`fixed top-3 inset-x-3 sm:top-5 sm:inset-x-6 z-50 flex items-center justify-between pointer-events-none transition-all duration-500 ease-out ${isClosing ? 'opacity-0 -translate-y-8' : 'opacity-100 translate-y-0'
+                        className={`fixed top-3 inset-x-3 sm:top-5 sm:inset-x-6 z-50 flex items-center justify-between pointer-events-none transition-all duration-300 ease-out ${isClosing ? 'opacity-0 -translate-y-8' : 'opacity-100 translate-y-0'
                             }`}
                     >
                         <div className="pointer-events-auto flex items-center gap-1.5 sm:gap-2 px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-full bg-[#F5EDE0]/90 dark:bg-white/10 border border-[#E8DFC8] dark:border-white/20 backdrop-blur-md shadow-xl text-xs sm:text-sm font-semibold text-slate-900 dark:text-white max-w-[calc(100vw-110px)] sm:max-w-md">
@@ -620,19 +620,22 @@ const Achievements = () => {
                                 } zoom-level-${zoomLevel.toString().replace('.', '-')}`}
                             onClick={(e) => e.stopPropagation()}
                         >
-                            <div className="bg-[#F5EDE0]/95 dark:bg-zinc-950/90 backdrop-blur-md rounded-2xl p-1.5 sm:p-3.5 border border-[#E8DFC8] dark:border-zinc-800 shadow-[0_0_60px_rgba(29,78,216,0.2)] dark:shadow-[0_0_80px_rgba(137,211,189,0.3)] flex items-center justify-center max-w-[94vw] sm:max-w-[85vw]">
+                            {/* Prominent blue ambient glow aura behind the opened image in light mode */}
+                            <div className="absolute -inset-6 sm:-inset-10 rounded-3xl bg-blue-600/35 dark:bg-[#89D3BD]/20 blur-[50px] sm:blur-[70px] pointer-events-none animate-pulse" />
+
+                            <div className="bg-[#F5EDE0]/95 dark:bg-zinc-950/90 backdrop-blur-md rounded-2xl p-1.5 sm:p-3.5 border border-[#E8DFC8] dark:border-zinc-800 shadow-[0_0_50px_rgba(29,78,216,0.35)] dark:shadow-[0_0_80px_rgba(137,211,189,0.3)] flex items-center justify-center max-w-[94vw] sm:max-w-[85vw] relative z-10">
                                 <img
                                     key={selectedItem.file}
                                     src={selectedItem.file}
                                     alt={selectedItem.title}
-                                    className="relative max-w-full max-h-[64vh] sm:max-h-[72vh] object-contain rounded-xl select-none"
+                                    className="relative z-10 max-w-full max-h-[64vh] sm:max-h-[72vh] object-contain rounded-xl select-none drop-shadow-[0_4px_24px_rgba(29,78,216,0.4)] dark:drop-shadow-none"
                                     draggable={false}
                                 />
                             </div>
                         </div>
                     </div>
 
-                    <div className={`fixed bottom-3 sm:bottom-5 left-1/2 -translate-x-1/2 px-5 sm:px-6 py-2 sm:py-2.5 bg-[#F5EDE0]/90 dark:bg-white/10 border border-[#E8DFC8] dark:border-white/20 backdrop-blur-md rounded-2xl text-slate-900 dark:text-white text-center max-w-[92vw] sm:max-w-[75vw] z-50 shadow-2xl transition-all duration-500 ease-out pointer-events-none ${isClosing ? 'opacity-0 translate-y-8' : 'opacity-100 translate-y-0'}`}>
+                    <div className={`fixed bottom-3 sm:bottom-5 left-1/2 -translate-x-1/2 px-5 sm:px-6 py-2 sm:py-2.5 bg-[#F5EDE0]/90 dark:bg-white/10 border border-[#E8DFC8] dark:border-white/20 backdrop-blur-md rounded-2xl text-slate-900 dark:text-white text-center max-w-[92vw] sm:max-w-[75vw] z-50 shadow-2xl transition-all duration-300 ease-out pointer-events-none ${isClosing ? 'opacity-0 translate-y-8' : 'opacity-100 translate-y-0'}`}>
                         <p className="text-xs sm:text-base font-semibold leading-snug break-words whitespace-normal tracking-wide text-slate-900 dark:text-white">
                             {selectedItem.title}
                         </p>
