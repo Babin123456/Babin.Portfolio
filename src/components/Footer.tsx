@@ -121,7 +121,6 @@ const Footer: React.FC = () => {
                   { name: "CivicSignal AI", desc: "Triage Engine", href: "https://github.com/Babin123456/CivicSignal" },
                   { name: "EduPilot AI", desc: "Academic RAG", href: "https://github.com/Babin123456/EduPilot-AI" },
                   { name: "KrishiBhoomi AI", desc: "AgriTech", href: "https://github.com/Babin123456/KrishiBhoomi-AI" },
-                  { name: "ML Price Prediction", desc: "Springer SIST", href: "https://github.com/Babin123456/ML-Based-Price-Prediction" },
                   { name: "OutboxOverdrive", desc: "Email Engine", href: "https://outbox-overdrive.vercel.app/" },
                   { name: "StudyBuddy AI", desc: "Offline Ollama", href: "https://github.com/Babin123456/StudyBuddy_AI" },
                 ].map((proj) => (
