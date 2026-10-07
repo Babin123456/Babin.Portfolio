@@ -154,11 +154,11 @@ const Research = () => {
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true, amount: 0.1 }}
-          className="mt-0 md:-mt-8 lg:-mt-14 max-w-6xl mx-auto"
+          viewport={{ once: true, amount: 0.05 }}
+          className="mt-4 md:-mt-8 lg:-mt-14 max-w-6xl mx-auto w-full"
           transition={{ duration: 0.8 }}
         >
-          <Card className="glass p-4 sm:p-8 lg:p-12 transition-all space-y-8 bg-[#FBF7F0]/90 dark:bg-black/50 border border-[#E8DFC8] dark:border-white/10 shadow-xl">
+          <Card className="glass p-3.5 sm:p-8 lg:p-12 transition-all space-y-6 sm:space-y-8 bg-[#FBF7F0]/90 dark:bg-black/50 border border-[#E8DFC8] dark:border-white/10 shadow-xl overflow-hidden">
             <div className="grid lg:grid-cols-2 gap-6 lg:gap-8 items-start">
               <div className="space-y-5 sm:space-y-6 text-center lg:text-left">
                 <div className="flex flex-wrap items-center justify-center lg:justify-start gap-2">
@@ -177,7 +177,7 @@ const Research = () => {
                     ML-Based Price Prediction for Agri-Horticultural Commodities
                   </h3>
                   <p className="text-xs sm:text-sm font-semibold text-blue-800 dark:text-[#89D3BD] mt-1.5">
-                    Proceedings of Smart Systems and Wireless Communication (SSWC) • Springer, Cham
+                    Proceedings of Smart Systems and Wireless Communication (SSWC)
                   </p>
                 </div>
 
@@ -227,15 +227,14 @@ const Research = () => {
                   <p>
                     The agricultural sector faces severe hardships due to uneven pricing of agri-horticultural commodities. 
                     This research investigates machine learning models for forecasting seasonal market prices (Modal Price in ₹/kg) of vegetables and fruits across three major Indian harvest seasons.
-                  </p>
-                  <p>
+                  
                     By leveraging historical Mandi price records, weather patterns, and socioeconomic features, the study models and compares{" "}
                     <strong className="text-slate-950 dark:text-white font-bold">Random Forest Regressor</strong> and{" "}
                     <strong className="text-slate-950 dark:text-white font-bold">Support Vector Regressor (SVR)</strong>, 
                     offering critical predictive analytics for farmers and consumers.
                   </p>
                   <div className="flex flex-wrap justify-center lg:justify-start gap-1.5 pt-1">
-                    {["Agri-horticultural Commodities", "Random Forest", "Support Vector Machine", "Predictive Analytics"].map((kw) => (
+                    {["Random Forest", "Support Vector Machine", "Predictive Analytics"].map((kw) => (
                       <span key={kw} className="px-2.5 py-0.5 rounded text-[11px] bg-blue-700/10 dark:bg-[#89D3BD]/15 text-blue-800 dark:text-[#89D3BD] border border-blue-700/20 dark:border-[#89D3BD]/30 font-semibold">
                         #{kw}
                       </span>
@@ -335,7 +334,7 @@ const Research = () => {
                     <span>Methodology &amp; Tech Stack</span>
                   </h4>
                   <div className="flex flex-wrap justify-center sm:justify-start gap-1.5">
-                    {['Python', 'Scikit-Learn', 'Random Forest', 'SVM', 'Pandas', 'NumPy', 'Matplotlib', 'Seaborn'].map((tech) => (
+                    {['Python', 'Scikit-Learn', 'Random Forest', 'Support Vector Machine', 'Pandas', 'NumPy', 'Matplotlib', 'Seaborn'].map((tech) => (
                       <span
                         key={tech}
                         className="px-2.5 py-0.5 rounded-full bg-blue-700/10 dark:bg-[#89D3BD]/15 text-blue-700 dark:text-[#89D3BD] border border-blue-700/20 dark:border-[#89D3BD]/30 text-[11px] font-bold transition-all duration-300 hover:shadow-[0_6px_12px_rgba(29,78,216,0.25)] dark:hover:shadow-[0_6px_12px_rgba(137,211,189,0.25)] cursor-default"
