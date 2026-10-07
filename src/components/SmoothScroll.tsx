@@ -7,7 +7,9 @@ interface SmoothScrollProps {
 
 const SmoothScroll: React.FC<SmoothScrollProps> = ({ children }) => {
   useEffect(() => {
-    // Initialize Lenis for buttery-smooth 120Hz/144Hz physics-based inertial scrolling
+    const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+
+    // Initialize Lenis for buttery-smooth desktop scrolling, and let mobile use native touch
     const lenis = new Lenis({
       duration: 1.25,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
@@ -15,10 +17,8 @@ const SmoothScroll: React.FC<SmoothScrollProps> = ({ children }) => {
       gestureOrientation: 'vertical',
       smoothWheel: true,
       wheelMultiplier: 1.0,
-      touchMultiplier: 1.6,
-      syncTouch: true,
-      syncTouchLerp: 0.08,
-      touchInertiaExponent: 1.75,
+      touchMultiplier: 1.0,
+      syncTouch: false,
       autoResize: true,
     });
 
