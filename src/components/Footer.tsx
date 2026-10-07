@@ -116,14 +116,14 @@ const Footer: React.FC = () => {
               </h4>
               <ul className="space-y-1.5 sm:space-y-2 text-xs sm:text-sm flex flex-col items-center sm:items-start text-center sm:text-left w-full">
                 {[
-                  { name: "OutboxOverdrive", desc: "Email Engine", href: "https://outbox-overdrive.vercel.app/" },
+                  { name: "AI Data Analysis", desc: "Text-to-SQL", href: "https://github.com/Babin123456/Ai-Data-Analysis" },
                   { name: "CargoConnect", desc: "Logistics Booking", href: "https://github.com/Babin123456/CargoConnect" },
                   { name: "CivicSignal AI", desc: "Triage Engine", href: "https://github.com/Babin123456/CivicSignal" },
                   { name: "EduPilot AI", desc: "Academic RAG", href: "https://github.com/Babin123456/EduPilot-AI" },
                   { name: "KrishiBhoomi AI", desc: "AgriTech", href: "https://github.com/Babin123456/KrishiBhoomi-AI" },
-                  { name: "StudyBuddy AI", desc: "Offline Ollama", href: "https://github.com/Babin123456/StudyBuddy_AI" },
-                  { name: "AI Data Analysis", desc: "Text-to-SQL", href: "https://github.com/Babin123456/Ai-Data-Analysis" },
                   { name: "ML Price Prediction", desc: "Springer SIST", href: "https://github.com/Babin123456/ML-Based-Price-Prediction" },
+                  { name: "OutboxOverdrive", desc: "Email Engine", href: "https://outbox-overdrive.vercel.app/" },
+                  { name: "StudyBuddy AI", desc: "Offline Ollama", href: "https://github.com/Babin123456/StudyBuddy_AI" },
                 ].map((proj) => (
                   <li key={proj.name} className="w-full text-center sm:text-left">
                     <a
