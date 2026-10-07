@@ -19,7 +19,7 @@ const HamburgerMenu: React.FC<HamburgerMenuProps> = ({ isOpen, onClick }) => {
     <button
       ref={btnRef}
       onClick={onClick}
-      className="md:hidden w-11 h-11 rounded-full border border-border/70 hover:border-primary/50 bg-background/60 hover:bg-background/90 flex items-center justify-center transition-all duration-300 shadow-sm backdrop-blur-md active:scale-95"
+      className="md:hidden w-10 h-10 flex items-center justify-center transition-all duration-300 active:scale-95 outline-none focus:outline-none focus:ring-0 focus-visible:outline-none select-none [-webkit-tap-highlight-color:transparent]"
       aria-label={isOpen ? "Close navigation menu" : "Open navigation menu"}
     >
       <div className="relative w-6 h-6">
