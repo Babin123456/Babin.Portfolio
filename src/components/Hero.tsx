@@ -203,9 +203,7 @@ const Hero = () => {
                   <div className="space-y-3 pt-2">
                     <div className="p-3.5 sm:p-4 rounded-2xl border border-blue-500/25 dark:border-[#89D3BD]/25 bg-blue-500/5 dark:bg-[#89D3BD]/5 hover:bg-blue-500/10 dark:hover:bg-[#89D3BD]/10 transition-all">
                       <div className="flex items-start gap-3">
-                        <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-blue-700/10 dark:bg-[#89D3BD]/15 border border-blue-700/20 dark:border-[#89D3BD]/30 flex items-center justify-center text-blue-700 dark:text-[#89D3BD] shrink-0 mt-0.5">
-                          <FileText className="w-5 h-5" />
-                        </div>
+                        <FileText className="w-6 h-6 text-blue-700 dark:text-[#89D3BD] shrink-0 mt-0.5" />
                         <div className="flex-1 min-w-0">
                           <div className="flex items-center gap-2 flex-wrap">
                             <span className="text-sm sm:text-base font-bold text-foreground">LaTeX Resume</span>
@@ -218,7 +216,7 @@ const Hero = () => {
                           </p>
                         </div>
                       </div>
-                      <div className="flex gap-2.5 mt-3.5 pl-0 sm:pl-12">
+                      <div className="flex gap-2.5 mt-3.5 pl-0 sm:pl-9">
                         <Button
                           size="sm"
                           variant="outline"
@@ -239,9 +237,7 @@ const Hero = () => {
 
                     <div className="p-3.5 sm:p-4 rounded-2xl border border-blue-700/25 dark:border-[#89D3BD]/30 bg-gradient-to-r from-blue-700/10 to-[#89D3BD]/15 dark:from-blue-700/20 dark:to-[#89D3BD]/20 hover:from-blue-700/15 hover:to-[#89D3BD]/25 transition-all">
                       <div className="flex items-start gap-3">
-                        <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-gradient-to-br from-blue-700/20 to-[#89D3BD]/30 border border-blue-700/30 dark:border-[#89D3BD]/40 flex items-center justify-center text-blue-700 dark:text-[#89D3BD] shrink-0 mt-0.5">
-                          <Palette className="w-5 h-5" />
-                        </div>
+                        <Palette className="w-6 h-6 text-blue-700 dark:text-[#89D3BD] shrink-0 mt-0.5" />
                         <div className="flex-1 min-w-0">
                           <div className="flex items-center gap-2 flex-wrap">
                             <span className="text-sm sm:text-base font-bold text-foreground">Canva Resume</span>
@@ -336,9 +332,9 @@ const Hero = () => {
               type="button"
               onClick={() => scrollToSection('about')}
               aria-label="Explore more - scroll to about section"
-              className="animate-bounce w-10 h-10 aspect-square shrink-0 p-0 rounded-full border border-blue-700/40 dark:border-[#89D3BD]/40 hover:border-blue-700 dark:hover:border-[#89D3BD] bg-blue-700/5 dark:bg-[#89D3BD]/5 hover:bg-blue-700/15 dark:hover:bg-[#89D3BD]/15 flex items-center justify-center transition-all hover:scale-110 active:scale-95 cursor-pointer shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-700 dark:focus:ring-[#89D3BD]"
+              className="animate-bounce w-8 h-8 flex items-center justify-center transition-all hover:scale-125 active:scale-95 cursor-pointer outline-none focus:outline-none focus:ring-0 focus-visible:outline-none [-webkit-tap-highlight-color:transparent]"
             >
-              <ChevronDown className="h-5 w-5 text-blue-700 dark:text-[#89D3BD]" />
+              <ChevronDown className="h-6 w-6 text-blue-700 dark:text-[#89D3BD]" />
             </button>
           </div>
         </motion.div>
