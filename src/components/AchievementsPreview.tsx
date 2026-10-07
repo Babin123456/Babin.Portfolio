@@ -128,9 +128,9 @@ const AchievementsPreview = () => {
                   boxShadow: "0 10px 30px -5px rgba(29, 78, 216, 0.4), 0 0 20px rgba(29, 78, 216, 0.3)",
                   transition: { type: "spring", stiffness: 400, damping: 17 },
                 }}
-                className="group relative bg-white dark:bg-white/5 backdrop-blur-md rounded-2xl border border-slate-200 dark:border-white/10 hover:border-blue-600 dark:hover:border-[#89D3BD] hover:shadow-[0_0_25px_rgba(29,78,216,0.45)] dark:hover:shadow-[0_0_25px_rgba(137,211,189,0.45)] transition-all duration-300 overflow-hidden select-none"
+                className="group relative bg-white dark:bg-white/5 backdrop-blur-md rounded-2xl border border-slate-300 dark:border-white/10 hover:border-blue-600 dark:hover:border-[#89D3BD] hover:shadow-[0_0_25px_rgba(29,78,216,0.45)] dark:hover:shadow-[0_0_25px_rgba(137,211,189,0.45)] transition-all duration-300 overflow-hidden select-none"
               >
-                <div className="relative h-44 overflow-hidden bg-[#F5EDE0]/80 dark:bg-zinc-950/80 backdrop-blur-md border-b border-[#E8DFC8] dark:border-zinc-900">
+                <div className="relative h-44 overflow-hidden bg-[#F5EDE0]/80 dark:bg-zinc-950/80 backdrop-blur-md border-b border-slate-300 dark:border-zinc-900">
                   {!loadedImages.has(achievement.file) && !imageErrors.has(achievement.file) && (
                     <div className="absolute inset-0 z-0 flex items-center justify-center overflow-hidden">
                       <div className="absolute inset-0 -translate-x-full animate-shimmer bg-gradient-to-r from-transparent via-white/30 dark:via-white/10 to-transparent" />
