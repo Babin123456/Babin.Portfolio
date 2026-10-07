@@ -174,6 +174,38 @@ const Projects = () => {
 
   const projects = [
     {
+      title: "OutboxOverdrive",
+      description:
+        "OutboxOverdrive — A high-throughput, fault-tolerant email scheduling and throttling engine featuring persistent queues, sliding-window rate limiting, full-text fuzzy search, and real-time monitoring.",
+      tech: [
+        "React 18",
+        "TypeScript",
+        "Vite",
+        "Tailwind CSS",
+        "Node.js",
+        "Express",
+        "BullMQ",
+        "Redis",
+        "PostgreSQL",
+        "Prisma ORM",
+        "Elasticsearch",
+        "Nodemailer",
+        "Google OAuth 2.0",
+      ],
+      github: null,
+      githubPrivate: true,
+      demo: "https://outbox-overdrive.vercel.app/",
+      features: [
+        "High-throughput, persistent job queuing and background workers powered by BullMQ & Redis",
+        "Configurable sliding-window rate limiting and graceful delay handling per provider",
+        "Relational message orchestration with PostgreSQL and Prisma ORM",
+        "Sub-millisecond full-text and fuzzy search indexing via Elasticsearch",
+        "Secure Google OAuth 2.0 authentication and automated dispatch via Nodemailer",
+        "Live operational dashboard for tracking delivery health, retries, and failure states",
+      ],
+      thumbnail: "/projects/OutboxOverdrive.webp",
+    },
+    {
       title: "CargoConnect",
       description:
         "CargoConnect — India's Premier Logistics & Cargo Transfer Booking Platform connecting users with on-demand vehicles for seamless intra-city and inter-city moving with instant fare estimation.",
@@ -376,21 +408,34 @@ const Projects = () => {
                               </div>
                             </div>
                             <div className="flex gap-2 items-center mt-auto pt-3">
-                              <Button
-                                variant="outline"
-                                size="sm"
-                                className="flex-1 h-8 text-xs border-2 border-blue-700 dark:border-[#89D3BD] text-blue-700 dark:text-[#89D3BD] bg-transparent hover:bg-blue-700 dark:hover:bg-[#89D3BD] hover:text-white dark:hover:text-black font-black transform transition-all duration-300 ease-out hover:scale-105 hover:shadow-[0_12px_30px_rgba(29,78,216,0.42)] focus-visible:shadow-[0_12px_30px_rgba(29,78,216,0.42)] dark:hover:shadow-[0_10px_20px_rgba(6,182,212,0.32)] active:scale-95"
-                                asChild
-                              >
-                                <a
-                                  href={project.github}
-                                  target="_blank"
-                                  rel="noopener noreferrer"
+                              {project.githubPrivate || !project.github ? (
+                                <Button
+                                  variant="outline"
+                                  size="sm"
+                                  className="flex-1 h-8 text-[11px] opacity-60 cursor-not-allowed bg-blue-100/60 dark:bg-white/10 text-blue-900 dark:text-white/70 border border-blue-200 dark:border-white/15 font-semibold"
+                                  disabled
+                                  title="Repository is private"
                                 >
-                                  <Github className="mr-1 h-3 w-3" />
-                                  Code
-                                </a>
-                              </Button>
+                                  <Github className="mr-1 h-3 w-3 shrink-0" />
+                                  GitHub (Private)
+                                </Button>
+                              ) : (
+                                <Button
+                                  variant="outline"
+                                  size="sm"
+                                  className="flex-1 h-8 text-xs border-2 border-blue-700 dark:border-[#89D3BD] text-blue-700 dark:text-[#89D3BD] bg-transparent hover:bg-blue-700 dark:hover:bg-[#89D3BD] hover:text-white dark:hover:text-black font-black transform transition-all duration-300 ease-out hover:scale-105 hover:shadow-[0_12px_30px_rgba(29,78,216,0.42)] focus-visible:shadow-[0_12px_30px_rgba(29,78,216,0.42)] dark:hover:shadow-[0_10px_20px_rgba(6,182,212,0.32)] active:scale-95"
+                                  asChild
+                                >
+                                  <a
+                                    href={project.github}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                  >
+                                    <Github className="mr-1 h-3 w-3" />
+                                    Code
+                                  </a>
+                                </Button>
+                              )}
                               {project.demo ? (
                                 <Button
                                   size="sm"
