@@ -26,28 +26,40 @@ export const getElementTargetScroll = (
   if (!element) return 0;
   if (element.id === "home") return 0;
 
-  const stickyParent = element.closest(".sticky") as HTMLElement | null;
-  const main = document.getElementById("main-content") || stickyParent?.parentElement;
+  // On desktop with active sticky stacking sections
+  if (window.innerWidth >= 1024) {
+    const stackParent = (element.closest("[data-scroll-stack]") ||
+      element.closest(".lg\\:sticky, .sticky")) as HTMLElement | null;
 
-  if (stickyParent && main && main.contains(stickyParent)) {
-    const mainTop = main.getBoundingClientRect().top + window.scrollY;
+    const main = document.getElementById("main-content") || stackParent?.parentElement;
 
-    let stackTop = mainTop;
-    let sib = stickyParent.previousElementSibling as HTMLElement | null;
-    while (sib) {
-      stackTop += sib.offsetHeight || 0;
-      sib = sib.previousElementSibling as HTMLElement | null;
+    if (stackParent && main && main.contains(stackParent)) {
+      // Calculate total cumulative height of all preceding stack sections from document top of main
+      const mainDocTop = main.getBoundingClientRect().top + window.scrollY;
+
+      let accumulatedOffset = 0;
+      let curr = main.firstElementChild as HTMLElement | null;
+      while (curr && curr !== stackParent) {
+        accumulatedOffset += curr.offsetHeight || 0;
+        curr = curr.nextElementSibling as HTMLElement | null;
+      }
+
+      // Check if target is inside the stack container and has an internal offset (like About inside section 2)
+      const relativeTop =
+        element !== stackParent
+          ? Math.max(0, element.getBoundingClientRect().top - stackParent.getBoundingClientRect().top)
+          : 0;
+
+      const trueDocTop = mainDocTop + accumulatedOffset + relativeTop;
+      return Math.max(0, trueDocTop - headerOffset);
     }
-
-    const relativeOffset =
-      element.getBoundingClientRect().top - stickyParent.getBoundingClientRect().top;
-
-    const trueDocTop = stackTop + Math.max(0, relativeOffset);
-    return Math.max(0, trueDocTop - headerOffset);
   }
 
+  // Standard natural document coordinate (used on mobile and normal non-stacked views)
   const rect = element.getBoundingClientRect();
-  return Math.max(0, rect.top + window.scrollY - headerOffset);
+  const currentScrollY =
+    window.scrollY || window.pageYOffset || document.documentElement.scrollTop || 0;
+  return Math.max(0, rect.top + currentScrollY - headerOffset);
 };
 
 export const smoothScrollToTarget = (
@@ -58,20 +70,33 @@ export const smoothScrollToTarget = (
     onComplete?: () => void;
   } = {}
 ) => {
-  const { headerOffset = 80, duration = 1.25, onComplete } = options;
-  const targetY = getElementTargetScroll(target, headerOffset);
-  const lenis = window.lenis;
+  const { headerOffset = 80, duration = 1.0, onComplete } = options;
 
-  if (lenis) {
+  if (typeof window === "undefined" || !target) return;
+
+  const targetY = getElementTargetScroll(target, headerOffset);
+
+  // If Lenis is active on desktop, use Lenis scrollTo
+  const lenis = window.lenis;
+  if (lenis && window.innerWidth >= 1024) {
     lenis.scrollTo(targetY, {
       duration,
       easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       onComplete,
     });
   } else {
-    window.scrollTo({ top: targetY, behavior: "smooth" });
+    // Native smooth scroll for mobile & touch devices
+    try {
+      window.scrollTo({
+        top: targetY,
+        behavior: "smooth",
+      });
+    } catch {
+      window.scrollTo(0, targetY);
+    }
+
     if (onComplete) {
-      setTimeout(onComplete, duration * 1000);
+      setTimeout(onComplete, 500);
     }
   }
 };
