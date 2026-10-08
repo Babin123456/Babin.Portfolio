@@ -175,7 +175,10 @@ const Achievements = () => {
     const getAllAchievements = () => {
         return achievementsData.map(cat => {
             const categoryName = (cat.category === "Let's Upgrade" || cat.category === "LinkedIn Learning (LU)") ? "LU" : cat.category;
-            return { ...cat, category: categoryName };
+            const sortedItems = [...cat.items].sort((a, b) =>
+                a.title.localeCompare(b.title, undefined, { sensitivity: 'base', numeric: true })
+            );
+            return { ...cat, category: categoryName, items: sortedItems };
         }).filter(cat => cat.items.length > 0);
     };
 

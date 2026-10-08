@@ -13,32 +13,20 @@ export const achievementsData: AchievementCategory[] = [
         "category": "Awards & Recognitions",
         "items": [
             {
-                "title": "SSWC'25 Best Paper Award",
-                "file": "/Achievements/Awards/SSWC'25_Best_Paper_Award.webp"
-            },
-            {
-                "title": "SSWC'25 Best Paper Certificate",
-                "file": "/Achievements/Awards/SSWC'25_Best_Paper_Certificate.webp"
-            },
-            {
-                "title": "SSWC'2025 Award Ceremony",
-                "file": "/Achievements/Awards/SSWC'2025_Award.webp"
+                "title": "Author Certificate SSWC'2025",
+                "file": "/Achievements/Awards/Author_Certificate_SSWC'2025.webp"
             },
             {
                 "title": "Awards and Certificates in SSWC 2025",
                 "file": "/Achievements/Awards/Awards_and_Certificates_in_SSWC-2025.webp"
             },
             {
-                "title": "Author Certificate SSWC'2025",
-                "file": "/Achievements/Awards/Author_Certificate_SSWC'2025.webp"
-            },
-            {
-                "title": "SSWC'25 Presenter Certificate",
-                "file": "/Achievements/Awards/SSWC'25_Presenter_Certificate.webp"
-            },
-            {
                 "title": "Babin Bid Merit Scholarship 2023",
                 "file": "/Achievements/Awards/Babin_Bid_Merit_Scholarship_2023.webp"
+            },
+            {
+                "title": "ELUSoC 2026 - Rank #1 Outstanding Contributor Excellence Award",
+                "file": "/Achievements/Open Source Programs/Certificates/ELUSoC_2026/ELUSOC_Certificate_ELUSOC-2026-CON-001.webp"
             },
             {
                 "title": "Merit Scholarship Award Ceremony",
@@ -49,12 +37,24 @@ export const achievementsData: AchievementCategory[] = [
                 "file": "/Achievements/Awards/NSoC_Certificate_Babin-Bid_2026.webp"
             },
             {
-                "title": "ELUSoC 2026 - Rank #1 Outstanding Contributor Excellence Award",
-                "file": "/Achievements/Open Source Programs/Certificates/ELUSoC_2026/ELUSOC_Certificate_ELUSOC-2026-CON-001.webp"
-            },
-            {
                 "title": "Oasis Infobyte Internship - Star Performer Award",
                 "file": "/Achievements/Internship/Oasis Infobyte/Babin_Bid_Appreciation_Certificate.webp"
+            },
+            {
+                "title": "SSWC'25 Best Paper Award",
+                "file": "/Achievements/Awards/SSWC'25_Best_Paper_Award.webp"
+            },
+            {
+                "title": "SSWC'25 Best Paper Certificate",
+                "file": "/Achievements/Awards/SSWC'25_Best_Paper_Certificate.webp"
+            },
+            {
+                "title": "SSWC'25 Presenter Certificate",
+                "file": "/Achievements/Awards/SSWC'25_Presenter_Certificate.webp"
+            },
+            {
+                "title": "SSWC'2025 Award Ceremony",
+                "file": "/Achievements/Awards/SSWC'2025_Award.webp"
             },
             {
                 "title": "Unstop Treasure Hunt Monthly Challenge - Rank #99 Certificate of Excellence",
@@ -65,10 +65,6 @@ export const achievementsData: AchievementCategory[] = [
     {
         "category": "Events & Hackathons",
         "items": [
-            {
-                "title": "Google Solution Challenge 2024",
-                "file": "/Achievements/Awards/Google_Solution_Challenge_2024.webp"
-            },
             {
                 "title": "ACM Participation Certificate 2026",
                 "file": "/Achievements/Events/ACM_Participation_Certificate_2026.webp"
@@ -124,6 +120,10 @@ export const achievementsData: AchievementCategory[] = [
             {
                 "title": "GDSC Cloud Campaign",
                 "file": "/Achievements/Events/GDSC_Cloud_Campaign.webp"
+            },
+            {
+                "title": "Google Solution Challenge 2024",
+                "file": "/Achievements/Awards/Google_Solution_Challenge_2024.webp"
             },
             {
                 "title": "Hack Defence Summit 2026",
@@ -260,12 +260,12 @@ export const achievementsData: AchievementCategory[] = [
                 "file": "/Achievements/Open Source Programs/Badges/GSSoC_2026/gssoc-badge-top_10.webp"
             },
             {
-                "title": "GSSOC Badge Top 100",
-                "file": "/Achievements/Open Source Programs/Badges/GSSoC_2026/gssoc-badge-top_100.webp"
-            },
-            {
                 "title": "GSSOC Badge Top 50",
                 "file": "/Achievements/Open Source Programs/Badges/GSSoC_2026/gssoc-badge-top_50.webp"
+            },
+            {
+                "title": "GSSOC Badge Top 100",
+                "file": "/Achievements/Open Source Programs/Badges/GSSoC_2026/gssoc-badge-top_100.webp"
             },
             {
                 "title": "GSSOC Badge Unstoppable",
@@ -720,8 +720,8 @@ export const achievementsData: AchievementCategory[] = [
         "category": "Hack2Skill",
         "items": [
             {
-                "title": "Google Solution Challenge 2026: Build with AI",
-                "file": "/Achievements/Hack2Skill/Google_Solution_Challenge_2026_Build_with_AI.webp"
+                "title": "GDG on Campus Solution Challenge",
+                "file": "/Achievements/Hack2Skill/GDG_on_Campus_Solution_Challenge.webp"
             },
             {
                 "title": "Gen AI Exchange Hackathon",
@@ -732,8 +732,8 @@ export const achievementsData: AchievementCategory[] = [
                 "file": "/Achievements/Hack2Skill/Google_Solution_challenge_2026_H2S_Badge.webp"
             },
             {
-                "title": "GDG on Campus Solution Challenge",
-                "file": "/Achievements/Hack2Skill/GDG_on_Campus_Solution_Challenge.webp"
+                "title": "Google Solution Challenge 2026: Build with AI",
+                "file": "/Achievements/Hack2Skill/Google_Solution_Challenge_2026_Build_with_AI.webp"
             },
             {
                 "title": "Hack2skill Certificate GEN AI Exchange Program",
@@ -1147,6 +1147,14 @@ export const achievementsData: AchievementCategory[] = [
         "category": "LeetCode Badges",
         "items": [
             {
+                "title": "50 Days",
+                "file": "/Achievements/LeetCode/50_Days.gif"
+            },
+            {
+                "title": "50 Days Badge 2026",
+                "file": "/Achievements/LeetCode/50_Days_Badge_2026.webp"
+            },
+            {
                 "title": "100 Days",
                 "file": "/Achievements/LeetCode/100_Days.gif"
             },
@@ -1161,14 +1169,6 @@ export const achievementsData: AchievementCategory[] = [
             {
                 "title": "200 Days Badge 2026",
                 "file": "/Achievements/LeetCode/200_Days_Badge_2026.webp"
-            },
-            {
-                "title": "50 Days",
-                "file": "/Achievements/LeetCode/50_Days.gif"
-            },
-            {
-                "title": "50 Days Badge 2026",
-                "file": "/Achievements/LeetCode/50_Days_Badge_2026.webp"
             },
             {
                 "title": "April LeetCode",
