@@ -210,7 +210,7 @@ const CursorSparkles = () => {
   return (
     <canvas
       ref={canvasRef}
-      className="pointer-events-none fixed inset-0 z-50 overflow-hidden"
+      className="pointer-events-none fixed inset-0 z-[150] overflow-hidden"
       aria-hidden="true"
     />
   );
