@@ -13,30 +13,6 @@ export const achievementsData: AchievementCategory[] = [
         "category": "Awards & Recognitions",
         "items": [
             {
-                "title": "Author Certificate SSWC'2025",
-                "file": "/Achievements/Awards/Author_Certificate_SSWC'2025.webp"
-            },
-            {
-                "title": "Awards and Certificates in SSWC 2025",
-                "file": "/Achievements/Awards/Awards_and_Certificates_in_SSWC-2025.webp"
-            },
-            {
-                "title": "Babin Bid Merit Scholarship 2023",
-                "file": "/Achievements/Awards/Babin_Bid_Merit_Scholarship_2023.webp"
-            },
-            {
-                "title": "Google Solution Challenge 2024",
-                "file": "/Achievements/Awards/Google_Solution_Challenge_2024.webp"
-            },
-            {
-                "title": "Merit Scholarship Award",
-                "file": "/Achievements/Awards/Merit_Scholarship_Award.webp"
-            },
-            {
-                "title": "NSOC Certificate Babin Bid 2026",
-                "file": "/Achievements/Awards/NSoC_Certificate_Babin-Bid_2026.webp"
-            },
-            {
                 "title": "SSWC'25 Best Paper Award",
                 "file": "/Achievements/Awards/SSWC'25_Best_Paper_Award.webp"
             },
@@ -45,18 +21,54 @@ export const achievementsData: AchievementCategory[] = [
                 "file": "/Achievements/Awards/SSWC'25_Best_Paper_Certificate.webp"
             },
             {
+                "title": "SSWC'2025 Award Ceremony",
+                "file": "/Achievements/Awards/SSWC'2025_Award.webp"
+            },
+            {
+                "title": "Awards and Certificates in SSWC 2025",
+                "file": "/Achievements/Awards/Awards_and_Certificates_in_SSWC-2025.webp"
+            },
+            {
+                "title": "Author Certificate SSWC'2025",
+                "file": "/Achievements/Awards/Author_Certificate_SSWC'2025.webp"
+            },
+            {
                 "title": "SSWC'25 Presenter Certificate",
                 "file": "/Achievements/Awards/SSWC'25_Presenter_Certificate.webp"
             },
             {
-                "title": "SSWC'2025 Award",
-                "file": "/Achievements/Awards/SSWC'2025_Award.webp"
+                "title": "Babin Bid Merit Scholarship 2023",
+                "file": "/Achievements/Awards/Babin_Bid_Merit_Scholarship_2023.webp"
+            },
+            {
+                "title": "Merit Scholarship Award Ceremony",
+                "file": "/Achievements/Awards/Merit_Scholarship_Award.webp"
+            },
+            {
+                "title": "Nexus Spring of Code 2026 - Rank #3 Excellence Award",
+                "file": "/Achievements/Awards/NSoC_Certificate_Babin-Bid_2026.webp"
+            },
+            {
+                "title": "ELUSoC 2026 - Rank #1 Outstanding Contributor Excellence Award",
+                "file": "/Achievements/Open Source Programs/Certificates/ELUSoC_2026/ELUSOC_Certificate_ELUSOC-2026-CON-001.webp"
+            },
+            {
+                "title": "Oasis Infobyte Internship - Star Performer Award",
+                "file": "/Achievements/Internship/Oasis Infobyte/Babin_Bid_Appreciation_Certificate.webp"
+            },
+            {
+                "title": "Unstop Treasure Hunt Monthly Challenge - Rank #99 Certificate of Excellence",
+                "file": "/Achievements/Unstop/Certificate_of_Excellence_in_Treasure_Hunt_-_August_Series_2025.webp"
             }
         ]
     },
     {
         "category": "Events & Hackathons",
         "items": [
+            {
+                "title": "Google Solution Challenge 2024",
+                "file": "/Achievements/Awards/Google_Solution_Challenge_2024.webp"
+            },
             {
                 "title": "ACM Participation Certificate 2026",
                 "file": "/Achievements/Events/ACM_Participation_Certificate_2026.webp"

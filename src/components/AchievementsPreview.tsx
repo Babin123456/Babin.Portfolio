@@ -26,10 +26,10 @@ const featuredAchievements: FeaturedAchievement[] = [
     icon: Medal,
   },
   {
-    title: "Google Solution Challenge 2024",
+    title: "ELUSoC 2026 - Rank #1 Outstanding Contributor",
     category: "Awards & Recognitions",
-    file: "/Achievements/Awards/Google_Solution_Challenge_2024.webp",
-    icon: Star,
+    file: "/Achievements/Open Source Programs/Certificates/ELUSoC_2026/ELUSOC_Certificate_ELUSOC-2026-CON-001.webp",
+    icon: Trophy,
   },
   {
     title: "SSWC'25 Best Paper Certificate",
