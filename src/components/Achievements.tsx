@@ -466,7 +466,7 @@ const Achievements = () => {
                     </div>
 
                     <motion.div
-                        className="flex flex-nowrap sm:flex-wrap justify-start sm:justify-center gap-2 md:gap-3 mb-8 overflow-x-auto pb-2 sm:pb-0 px-1 sm:px-0 scrollbar-none"
+                        className="flex flex-wrap justify-center items-center gap-2 md:gap-3 mb-8 px-2 max-w-4xl mx-auto"
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true, amount: 0.3 }}
