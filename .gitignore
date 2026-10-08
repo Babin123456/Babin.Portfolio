@@ -12,4 +12,3 @@ dist/
 .env.*.local
 scratch/
 *.log
-vite.config.ts.timestamp-*
