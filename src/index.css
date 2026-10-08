@@ -708,17 +708,26 @@ html[data-magicui-theme-vt="active"] *::after {
   html,
   body {
     overflow-x: clip;
-  }
-
-  body {
+    scrollbar-width: none;
     -ms-overflow-style: none;
-
   }
 
+  html::-webkit-scrollbar,
   body::-webkit-scrollbar {
-    width: 0;
-    height: 0;
-    display: none;
+    width: 0 !important;
+    height: 0 !important;
+    display: none !important;
+  }
+
+  .scrollbar-none {
+    scrollbar-width: none !important;
+    -ms-overflow-style: none !important;
+  }
+
+  .scrollbar-none::-webkit-scrollbar {
+    width: 0 !important;
+    height: 0 !important;
+    display: none !important;
   }
 
   html.lenis,
