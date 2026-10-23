@@ -127,11 +127,25 @@ const Header = () => {
   const scrollToSection = (href: string) => {
     setIsMobileMenuOpen(false);
 
+    if (href === "#home" || href === "/") {
+      if (location.pathname !== "/") {
+        navigate("/");
+        window.scrollTo(0, 0);
+        if (window.lenis) {
+          window.lenis.scrollTo(0, { immediate: true });
+        }
+        setActiveSection("home");
+      } else {
+        smoothScrollTo("#home");
+      }
+      return;
+    }
+
     // If it's a section link
     if (href.startsWith("#")) {
       // If we're not on the home page, navigate to home with hash
       if (location.pathname !== "/") {
-        navigate(`/${href === "#home" ? "" : href}`);
+        navigate(`/${href}`);
       } else {
         smoothScrollTo(href);
       }
@@ -159,10 +173,11 @@ const Header = () => {
               scrollToSection("#home");
             } else {
               navigate("/");
-              setTimeout(() => {
-                setActiveSection("home");
-                window.history.pushState(null, "", "/");
-              }, 150);
+              window.scrollTo(0, 0);
+              if (window.lenis) {
+                window.lenis.scrollTo(0, { immediate: true });
+              }
+              setActiveSection("home");
             }
           }}
           className="text-2xl font-bold bg-gradient-to-r from-sky-600 to-blue-700 dark:from-[#89D3BD] dark:to-cyan-400 text-transparent bg-clip-text"
