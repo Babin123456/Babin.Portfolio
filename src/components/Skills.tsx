@@ -74,6 +74,7 @@ const Skills: React.FC = () => {
             'Visual Studio Code': { image: "/Skills_Images/VS-Code_logo.webp", alt: 'Visual Studio Code' },
             'Antigravity': { image: '/Skills_Images/Antigravity_logo.webp', alt: 'Antigravity'},
             'LeetCode': { image: '/Platforms_Images/LeetCode_logo.webp', alt: 'LeetCode' },
+            'GeeksforGeeks': { image: '/Platforms_Images/GeeksForGeeks_logo.webp', alt: 'GeeksforGeeks' },
             'Codolio': { image: '/Platforms_Images/Codolio_logo.webp', alt: 'Codolio' },
             'HackerRank': { image: '/Platforms_Images/HackerRank_logo.webp', alt: 'HackerRank' },
         };
@@ -126,6 +127,7 @@ const Skills: React.FC = () => {
 
     const codingProfiles = [
         { name: 'LeetCode', url: 'https://leetcode.com/u/Babin123/' },
+        { name: 'GeeksforGeeks', url: 'https://www.geeksforgeeks.org/profile/babinbid' },
         { name: 'Codolio', url: 'https://codolio.com/profile/Babin_KGF' },
         { name: 'HackerRank', url: 'https://www.hackerrank.com/profile/babinbid05' },
     ];
@@ -233,7 +235,7 @@ const Skills: React.FC = () => {
                     className="mt-16 text-center"
                 >
                     <h3 className="text-xl md:text-2xl font-bold mb-6 text-blue-700 dark:text-[#89D3BD]">Coding Profiles</h3>
-                    <div className="grid grid-cols-3 sm:flex sm:flex-wrap justify-center gap-2 sm:gap-4 md:gap-8 max-w-xl sm:max-w-4xl mx-auto">
+                    <div className="grid grid-cols-2 sm:flex sm:flex-wrap justify-center gap-2 sm:gap-4 md:gap-8 max-w-xl sm:max-w-4xl mx-auto">
                         {codingProfiles.map((profile, index) => (
                             <motion.a
                                 key={profile.name}
