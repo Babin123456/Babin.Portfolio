@@ -30,6 +30,10 @@ const Footer: React.FC = () => {
         doScroll("#home");
       } else {
         navigate("/");
+        window.scrollTo(0, 0);
+        if (window.lenis) {
+          window.lenis.scrollTo(0, { immediate: true });
+        }
       }
     } else if (href.startsWith("#")) {
       if (location.pathname !== "/") {
