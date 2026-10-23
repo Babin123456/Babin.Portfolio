@@ -437,26 +437,23 @@ const Achievements = () => {
     };
 
     return (
-        <section id="achievements" className="py-12 md:py-20 relative min-h-screen" ref={ref}>
+        <section id="achievements" className="pt-24 pb-16 sm:pt-28 sm:pb-20 md:pt-32 md:pb-24 relative min-h-screen" ref={ref}>
             <div className="fixed inset-0 -z-10 w-full h-full">
                 <StudyBackground />
             </div>
             <div className="container mx-auto px-4 relative z-10">
-                <div
-                    className={`max-w-6xl mx-auto space-y-10 ${inView ? "animate-fade-in-up" : "opacity-0"
-                        }`}
-                >
-                    <div className="flex items-center justify-start pt-2 sm:pt-4">
+                <div className="max-w-6xl mx-auto space-y-8 sm:space-y-10 animate-fade-in-up">
+                    <div className="flex items-center justify-start">
                         <Link
                             to="/"
-                            className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs sm:text-sm font-semibold bg-white/60 dark:bg-white/5 border border-slate-200 dark:border-white/10 text-slate-700 dark:text-slate-300 hover:text-blue-700 dark:hover:text-[#89D3BD] hover:border-blue-700/40 dark:hover:border-[#89D3BD]/40 transition-all duration-300 backdrop-blur-md group shadow-sm"
+                            className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-xs sm:text-sm font-semibold bg-white/90 dark:bg-white/10 border border-slate-300/80 dark:border-white/15 text-slate-800 dark:text-slate-100 hover:text-blue-700 dark:hover:text-[#89D3BD] hover:border-blue-700/50 dark:hover:border-[#89D3BD]/50 transition-all duration-300 backdrop-blur-md group shadow-sm active:scale-95"
                         >
                             <ChevronLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
                             <span>Back to Home</span>
                         </Link>
                     </div>
 
-                    <div className="text-center space-y-3 mt-2 sm:mt-4 md:mt-0">
+                    <div className="text-center space-y-3">
                         <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4 text-center overflow-visible leading-normal">
                             <SectionTitle
                                 segments={[
