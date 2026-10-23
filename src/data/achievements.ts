@@ -154,6 +154,10 @@ export const achievementsData: AchievementCategory[] = [
                 "file": "/Achievements/Events/Protex_Hack-2-Win_Hackathon.webp"
             },
             {
+                "title": "Smartly Labs GSSoC 2026 AI Track Certificate",
+                "file": "/Achievements/Events/smartly-labs-certificate.webp"
+            },
+            {
                 "title": "Synapse 2025",
                 "file": "/Achievements/Events/Synapse_2025.webp"
             },
