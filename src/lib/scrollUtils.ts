@@ -76,9 +76,9 @@ export const smoothScrollToTarget = (
 
   const targetY = getElementTargetScroll(target, headerOffset);
 
-  // If Lenis is active on desktop, use Lenis scrollTo
+  // If Lenis is active, use Lenis scrollTo
   const lenis = window.lenis;
-  if (lenis && window.innerWidth >= 1024) {
+  if (lenis) {
     lenis.scrollTo(targetY, {
       duration,
       easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
