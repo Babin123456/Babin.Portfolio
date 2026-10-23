@@ -22,12 +22,17 @@ const Index = () => {
   const location = useLocation();
 
   useEffect(() => {
-    if (location.hash) {
+    if (location.hash && location.hash !== "#home") {
       setTimeout(() => {
         smoothScrollToTarget(location.hash, { headerOffset: 80 });
       }, 150);
+    } else {
+      window.scrollTo(0, 0);
+      if (window.lenis) {
+        window.lenis.scrollTo(0, { immediate: true });
+      }
     }
-  }, [location.hash]);
+  }, [location.pathname, location.hash]);
 
   return (
     <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
