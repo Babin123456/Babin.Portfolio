@@ -5,6 +5,9 @@ import Achievements from "@/components/Achievements";
 const AchievementsPage = () => {
     useEffect(() => {
         window.scrollTo(0, 0);
+        if (window.lenis) {
+            window.lenis.scrollTo(0, { immediate: true });
+        }
     }, []);
 
     return (
