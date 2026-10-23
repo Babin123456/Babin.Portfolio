@@ -2018,6 +2018,10 @@ export const achievementsData: AchievementCategory[] = [
                 "file": "/Achievements/Unstop/HP_Power_Lab_2.0.webp"
             },
             {
+                "title": "India Innovates 2026",
+                "file": "/Achievements/Unstop/India_Innovates_2026.webp"
+            },
+            {
                 "title": "Infosys Interview Preparation Certificate",
                 "file": "/Achievements/Unstop/Infosys_Interview_Preparation_Certificate.webp"
             },
