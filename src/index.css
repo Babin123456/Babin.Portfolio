@@ -1,6 +1,7 @@
 
 
 @import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -1798,4 +1799,99 @@ html[data-magicui-theme-vt="active"] *::after {
   .terminal-custom-scrollbar::-webkit-scrollbar-thumb:hover {
     background: rgba(137, 211, 189, 0.6);
   }
+}
+
+/* ==========================================================================
+   Scroll Fill Text Effect - Babin Bid
+   ========================================================================== */
+
+.footer-section {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.scroll-fill-container {
+  position: relative;
+  display: inline-block;
+  font-family: 'Great Vibes', cursive !important;
+  font-size: clamp(2.75rem, 8vw, 6.5rem) !important;
+  font-weight: 400;
+  line-height: 1.15 !important;
+  padding: 0.25rem 1.5rem !important;
+  text-align: center;
+}
+
+/* Base text styling (Muted background track) */
+.scroll-fill-container .scroll-text-base,
+.scroll-fill-container .text-base {
+  display: block !important;
+  font-family: 'Great Vibes', cursive !important;
+  font-size: inherit !important;
+  line-height: inherit !important;
+  font-weight: inherit !important;
+  text-align: center !important;
+  color: rgba(17, 24, 39, 0.16) !important;
+  user-select: none;
+  white-space: nowrap;
+  pointer-events: none;
+  transition: color 0.3s ease;
+}
+
+.dark .scroll-fill-container .scroll-text-base,
+.dark .scroll-fill-container .text-base {
+  color: rgba(255, 255, 255, 0.16) !important;
+}
+
+/* Filled text layer stacked on top */
+.scroll-fill-container .scroll-text-fill,
+.scroll-fill-container .text-fill {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  display: block !important;
+  font-family: 'Great Vibes', cursive !important;
+  font-size: inherit !important;
+  line-height: inherit !important;
+  font-weight: inherit !important;
+  text-align: center !important;
+  user-select: none;
+  white-space: nowrap;
+  pointer-events: none;
+  padding: 0.25rem 1.5rem !important;
+  box-sizing: border-box !important;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+
+  /* Theme-adaptive text gradient: Royal Blue -> Sky Blue in light mode */
+  background: linear-gradient(135deg, #1d4ed8 0%, #0284c7 50%, #0d9488 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  /* Initial state: fully clipped/hidden from bottom up */
+  clip-path: inset(100% 0 0 0);
+  -webkit-clip-path: inset(100% 0 0 0);
+  will-change: clip-path, -webkit-clip-path; /* Optimizes GPU performance for butter-smooth scrubbing */
+}
+
+/* Theme-adaptive text gradient: Blue -> Cyan -> Mint in dark mode */
+.dark .scroll-fill-container .scroll-text-fill,
+.dark .scroll-fill-container .text-fill {
+  background: linear-gradient(135deg, #2563eb 0%, #22d3ee 50%, #89D3BD 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-fill-glow {
+  filter: drop-shadow(0 0 16px rgba(2, 132, 199, 0.35));
+}
+
+.dark .text-fill-glow {
+  filter: drop-shadow(0 0 16px rgba(137, 211, 189, 0.4)) drop-shadow(0 0 30px rgba(34, 211, 238, 0.25));
 }
