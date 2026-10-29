@@ -43,60 +43,20 @@ const StudyBackground = ({
 
     const isDarkMode = () => document.documentElement.classList.contains("dark");
 
-    const handleResize = () => {
-      const parent = canvas.parentElement;
-      if (!parent) return;
-      const rect = parent.getBoundingClientRect();
-      if (rect.width === 0 || rect.height === 0) return;
-      const dpr = Math.min(window.devicePixelRatio || 1, 2);
-      const oldWidth = width;
-      width = rect.width;
-      height = rect.height;
-
-      canvas.width = width * dpr;
-      canvas.height = height * dpr;
-      canvas.style.width = `${width}px`;
-      canvas.style.height = `${height}px`;
-
-      ctx.setTransform(1, 0, 0, 1, 0, 0);
-      ctx.scale(dpr, dpr);
-
-      // When expanding width (e.g. switching from mobile to desktop), redistribute particles across full width
-      if (oldWidth > 0 && width > oldWidth) {
-        particles.forEach((p) => {
-          if (p.x < oldWidth && Math.random() > 0.4) {
-            p.x = Math.random() * width;
-            p.y = Math.random() * height;
-          }
-        });
-      }
-
-      // Ensure animation loop is immediately active after resize
-      cancelAnimationFrame(animationFrameId);
-      animationFrameId = requestAnimationFrame(render);
-    };
-
-    handleResize();
-    window.addEventListener("resize", handleResize);
-
-    const resizeObserver = new ResizeObserver(() => {
-      handleResize();
-    });
-    if (canvas.parentElement) {
-      resizeObserver.observe(canvas.parentElement);
-    }
-
-    // Particle pool - allow custom particle count
+    // 1. Initialize particle pool
     const particleCount = customParticleCount !== undefined
       ? customParticleCount
       : Math.min(48, Math.max(20, Math.floor((window.innerWidth * 38) / 1440)));
     const particles: Particle[] = [];
 
+    const initWidth = canvas.parentElement?.getBoundingClientRect().width || window.innerWidth;
+    const initHeight = canvas.parentElement?.getBoundingClientRect().height || 800;
+
     for (let i = 0; i < particleCount; i++) {
       const isTeal = i % 2 === 0;
       particles.push({
-        x: Math.random() * (width || window.innerWidth),
-        y: Math.random() * (height || 800),
+        x: Math.random() * initWidth,
+        y: Math.random() * initHeight,
         vx: (Math.random() - 0.5) * 0.45,
         vy: (Math.random() - 0.5) * 0.45,
         radius: isTeal ? 1.6 + Math.random() * 1.5 : 1.4 + Math.random() * 1.4,
@@ -108,43 +68,7 @@ const StudyBackground = ({
       });
     }
 
-    // Mouse tracker attached to section
-    const section = canvas.closest("section") || canvas.parentElement;
-    const handleMouseMove = (e: MouseEvent) => {
-      if (!canvas) return;
-      const rect = canvas.getBoundingClientRect();
-      mouse.x = e.clientX - rect.left;
-      mouse.y = e.clientY - rect.top;
-      mouse.active = true;
-    };
-
-    const handleMouseLeave = () => {
-      mouse.x = -9999;
-      mouse.y = -9999;
-      mouse.active = false;
-    };
-
-    if (section) {
-      section.addEventListener("mousemove", handleMouseMove, { passive: true });
-      section.addEventListener("mouseleave", handleMouseLeave, { passive: true });
-    }
-
-    // Intersection observer to track visibility
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          const wasVisible = isVisible;
-          isVisible = entry.isIntersecting;
-          if (isVisible && !wasVisible) {
-            cancelAnimationFrame(animationFrameId);
-            animationFrameId = requestAnimationFrame(render);
-          }
-        });
-      },
-      { threshold: 0.01 }
-    );
-    observer.observe(canvas);
-
+    // 2. Define render loop
     let tick = 0;
 
     const render = () => {
@@ -274,6 +198,80 @@ const StudyBackground = ({
       }
     };
 
+    // 3. Define resize handler (now particles and render are both in scope)
+    const handleResize = () => {
+      const parent = canvas.parentElement;
+      if (!parent) return;
+      const rect = parent.getBoundingClientRect();
+      if (rect.width === 0 || rect.height === 0) return;
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      const oldWidth = width;
+      width = rect.width;
+      height = rect.height;
+
+      canvas.width = width * dpr;
+      canvas.height = height * dpr;
+      canvas.style.width = `${width}px`;
+      canvas.style.height = `${height}px`;
+
+      ctx.setTransform(1, 0, 0, 1, 0, 0);
+      ctx.scale(dpr, dpr);
+
+      // When expanding width (e.g. switching from mobile to desktop), redistribute particles across full width
+      if (oldWidth > 0 && width > oldWidth) {
+        particles.forEach((p) => {
+          if (p.x < oldWidth && Math.random() > 0.4) {
+            p.x = Math.random() * width;
+            p.y = Math.random() * height;
+          }
+        });
+      }
+    };
+
+    // Initial resize setup
+    handleResize();
+    window.addEventListener("resize", handleResize);
+
+    const resizeObserver = new ResizeObserver(() => {
+      handleResize();
+    });
+    if (canvas.parentElement) {
+      resizeObserver.observe(canvas.parentElement);
+    }
+
+    // Mouse tracker attached to section
+    const section = canvas.closest("section") || canvas.parentElement;
+    const handleMouseMove = (e: MouseEvent) => {
+      if (!canvas) return;
+      const rect = canvas.getBoundingClientRect();
+      mouse.x = e.clientX - rect.left;
+      mouse.y = e.clientY - rect.top;
+      mouse.active = true;
+    };
+
+    const handleMouseLeave = () => {
+      mouse.x = -9999;
+      mouse.y = -9999;
+      mouse.active = false;
+    };
+
+    if (section) {
+      section.addEventListener("mousemove", handleMouseMove, { passive: true });
+      section.addEventListener("mouseleave", handleMouseLeave, { passive: true });
+    }
+
+    // Intersection observer to track visibility
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          isVisible = entry.isIntersecting;
+        });
+      },
+      { threshold: 0.01 }
+    );
+    observer.observe(canvas);
+
+    // Start animation loop
     animationFrameId = requestAnimationFrame(render);
 
     return () => {
