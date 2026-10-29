@@ -10,6 +10,7 @@ import {
   Share2,
 } from "lucide-react";
 import SocialIcons from "./SocialIcons";
+import ScrollFillText from "./ScrollFillText";
 import { smoothScrollToTarget } from "@/lib/scrollUtils";
 
 const Footer: React.FC = () => {
@@ -47,12 +48,13 @@ const Footer: React.FC = () => {
   };
 
   return (
-    <footer className="relative z-20 w-full py-6 sm:py-10 lg:py-12 px-2.5 sm:px-4 lg:px-6 xl:px-8">
-      <div className="max-w-[94rem] mx-auto rounded-[1.75rem] sm:rounded-[2.5rem] lg:rounded-[3rem] p-5 sm:p-8 lg:p-12 transition-all duration-500 border relative overflow-hidden font-sans bg-[#080B10] text-white [background-image:radial-gradient(circle_at_50%_-20%,rgba(59,130,246,0.16),transparent_65%),radial-gradient(rgba(255,255,255,0.12)_1.25px,transparent_1.25px)] [background-size:100%_100%,22px_22px] border-white/15 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.7)] dark:bg-[#F4EFEA] dark:text-[#111318] dark:[background-image:radial-gradient(circle_at_50%_-20%,rgba(137,211,189,0.32),transparent_65%),radial-gradient(rgba(0,0,0,0.08)_1.25px,transparent_1.25px)] dark:border-stone-300/80 dark:shadow-[0_25px_60px_-15px_rgba(0,0,0,0.15)] before:absolute before:inset-x-0 before:top-0 before:h-px before:bg-gradient-to-r before:from-transparent before:via-blue-500/50 dark:before:via-blue-600/40 before:to-transparent">
+    <footer className="relative z-20 w-full pt-4 sm:pt-6 pb-0 px-0 overflow-hidden">
+      <div className="w-full px-2.5 sm:px-4 lg:px-6 xl:px-8">
+        <div className="max-w-[94rem] mx-auto rounded-[1.75rem] sm:rounded-[2.5rem] lg:rounded-[3rem] p-5 sm:p-8 lg:p-12 transition-all duration-500 border relative overflow-hidden font-sans bg-[#080B10] text-white [background-image:radial-gradient(circle_at_50%_-20%,rgba(59,130,246,0.16),transparent_65%),radial-gradient(rgba(255,255,255,0.12)_1.25px,transparent_1.25px)] [background-size:100%_100%,22px_22px] border-white/15 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.7)] dark:bg-[#F4EFEA] dark:text-[#111318] dark:[background-image:radial-gradient(circle_at_50%_-20%,rgba(137,211,189,0.32),transparent_65%),radial-gradient(rgba(0,0,0,0.08)_1.25px,transparent_1.25px)] dark:border-stone-300/80 dark:shadow-[0_25px_60px_-15px_rgba(0,0,0,0.15)] before:absolute before:inset-x-0 before:top-0 before:h-px before:bg-gradient-to-r before:from-transparent before:via-blue-500/50 dark:before:via-blue-600/40 before:to-transparent">
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-10 pb-5 sm:pb-7">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-10 pb-5 sm:pb-7 lg:items-center">
           
-          <div className="lg:col-span-4 space-y-3 sm:space-y-4 text-center sm:text-left">
+          <div className="lg:col-span-4 space-y-3 sm:space-y-4 text-center sm:text-left flex flex-col justify-center my-auto">
             <div className="flex flex-col sm:flex-row items-center justify-center sm:justify-start gap-2.5 sm:gap-3">
               <Code2 className="w-6 h-6 sm:w-6 sm:h-6 text-[#89D3BD] dark:text-blue-700 stroke-[2.5] shrink-0" />
               <span className="text-xl sm:text-2xl font-black tracking-tight text-white dark:text-[#111318] uppercase">
@@ -146,7 +148,7 @@ const Footer: React.FC = () => {
             </div>
           </div>
 
-          <div className="lg:col-span-3 flex flex-col justify-start space-y-4 sm:space-y-5 text-center items-center">
+          <div className="lg:col-span-3 flex flex-col justify-center space-y-4 sm:space-y-5 text-center items-center my-auto">
             <div className="space-y-2 text-center w-full flex flex-col items-center">
               <div>
                 <h4 className="text-xs sm:text-sm font-bold uppercase tracking-wider text-white dark:text-[#111318] inline-flex items-center justify-center gap-1.5">
@@ -202,6 +204,10 @@ const Footer: React.FC = () => {
         </div>
 
       </div>
+      </div>
+
+      {/* Very bottom - Scroll Fill Text Effect below the footer card */}
+      <ScrollFillText />
     </footer>
   );
 };
