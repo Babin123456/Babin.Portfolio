@@ -66,11 +66,14 @@ const Index = () => {
             <AchievementsPreview />
           </ScrollStackSection>
 
-          <ScrollStackSection zIndex={7} isLast>
+          <ScrollStackSection zIndex={7}>
             <Contact />
           </ScrollStackSection>
+
+          <ScrollStackSection zIndex={8} isLast>
+            <Footer />
+          </ScrollStackSection>
         </main>
-        <Footer />
         <BackToTop />
       </div>
     </ThemeProvider>
