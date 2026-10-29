@@ -27,7 +27,8 @@ export function previewThenDownload(filePath: string, filename?: string) {
       document.body.appendChild(link);
       link.click();
       link.remove();
-    } catch (e) {
+    } catch {
+      // Fallback or ignore download errors
     }
   }
 }
