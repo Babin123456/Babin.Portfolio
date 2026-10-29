@@ -1,4 +1,5 @@
 import { useRef, useState, useEffect, ReactNode } from "react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 interface ScrollStackSectionProps {
   children: ReactNode;
@@ -13,6 +14,7 @@ const ScrollStackSection = ({
   zIndex,
   className = "",
   isFirst = false,
+  isLast = false,
 }: ScrollStackSectionProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [stickyTop, setStickyTop] = useState<number>(0);
@@ -22,8 +24,18 @@ const ScrollStackSection = ({
   });
 
   useEffect(() => {
+    let timer: ReturnType<typeof setTimeout>;
+
     const handleCheckDesktop = () => {
-      setIsDesktop(window.innerWidth >= 1024);
+      const desktop = window.innerWidth >= 1024;
+      setIsDesktop(desktop);
+      clearTimeout(timer);
+      timer = setTimeout(() => {
+        if (typeof window !== "undefined") {
+          window.lenis?.resize();
+          ScrollTrigger.refresh();
+        }
+      }, 150);
     };
 
     const updateStickyOffset = () => {
@@ -40,7 +52,13 @@ const ScrollStackSection = ({
 
     updateStickyOffset();
 
-    const ro = new ResizeObserver(updateStickyOffset);
+    const ro = new ResizeObserver(() => {
+      updateStickyOffset();
+      if (typeof window !== "undefined") {
+        window.lenis?.resize();
+      }
+    });
+
     if (containerRef.current) {
       ro.observe(containerRef.current);
     }
@@ -48,6 +66,7 @@ const ScrollStackSection = ({
     window.addEventListener("resize", updateStickyOffset);
 
     return () => {
+      clearTimeout(timer);
       ro.disconnect();
       window.removeEventListener("resize", handleCheckDesktop);
       window.removeEventListener("resize", updateStickyOffset);
@@ -91,7 +110,7 @@ const ScrollStackSection = ({
           </div>
         )}
 
-        <div className="relative z-10 w-full pb-8 sm:pb-14 lg:pb-24">
+        <div className={`relative z-10 w-full ${isLast ? "pb-0" : "pb-8 sm:pb-14 lg:pb-24"}`}>
           {children}
         </div>
       </div>
