@@ -19,6 +19,7 @@ export default {
       body: ["'Times New Roman'", "'Roca Two'", "'Roca One'", "'Roca'", 'Times', 'serif'],
       kaushan: ["'Kaushan Script'", 'cursive', 'sans-serif'],
       heading: ["'Kaushan Script'", 'cursive', 'sans-serif'],
+      'great-vibes': ["'Great Vibes'", 'cursive'],
     },
     extend: {
       fontFamily: {
@@ -28,6 +29,7 @@ export default {
         cosmic: ["'Times New Roman'", "'Roca Two'", "'Roca One'", "'Roca'", 'Times', 'serif'],
         kaushan: ["'Kaushan Script'", 'cursive', 'sans-serif'],
         heading: ["'Kaushan Script'", 'cursive', 'sans-serif'],
+        'great-vibes': ["'Great Vibes'", 'cursive'],
       },
       colors: {
         border: "hsl(var(--border))",
