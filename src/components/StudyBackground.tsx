@@ -47,7 +47,9 @@ const StudyBackground = ({
       const parent = canvas.parentElement;
       if (!parent) return;
       const rect = parent.getBoundingClientRect();
+      if (rect.width === 0 || rect.height === 0) return;
       const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      const oldWidth = width;
       width = rect.width;
       height = rect.height;
 
@@ -58,10 +60,31 @@ const StudyBackground = ({
 
       ctx.setTransform(1, 0, 0, 1, 0, 0);
       ctx.scale(dpr, dpr);
+
+      // When expanding width (e.g. switching from mobile to desktop), redistribute particles across full width
+      if (oldWidth > 0 && width > oldWidth) {
+        particles.forEach((p) => {
+          if (p.x < oldWidth && Math.random() > 0.4) {
+            p.x = Math.random() * width;
+            p.y = Math.random() * height;
+          }
+        });
+      }
+
+      // Ensure animation loop is immediately active after resize
+      cancelAnimationFrame(animationFrameId);
+      animationFrameId = requestAnimationFrame(render);
     };
 
     handleResize();
     window.addEventListener("resize", handleResize);
+
+    const resizeObserver = new ResizeObserver(() => {
+      handleResize();
+    });
+    if (canvas.parentElement) {
+      resizeObserver.observe(canvas.parentElement);
+    }
 
     // Particle pool - allow custom particle count
     const particleCount = customParticleCount !== undefined
@@ -106,7 +129,7 @@ const StudyBackground = ({
       section.addEventListener("mouseleave", handleMouseLeave, { passive: true });
     }
 
-    // Intersection observer to halt render when offscreen
+    // Intersection observer to track visibility
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -118,14 +141,17 @@ const StudyBackground = ({
           }
         });
       },
-      { threshold: 0.05 }
+      { threshold: 0.01 }
     );
     observer.observe(canvas);
 
     let tick = 0;
 
     const render = () => {
-      if (!isVisible) {
+      // Keep RAF loop alive continuously so resizing and visibility toggles never permanently freeze it
+      animationFrameId = requestAnimationFrame(render);
+
+      if (!isVisible || width === 0 || height === 0) {
         return;
       }
 
@@ -246,8 +272,6 @@ const StudyBackground = ({
 
         ctx.fill();
       }
-
-      animationFrameId = requestAnimationFrame(render);
     };
 
     animationFrameId = requestAnimationFrame(render);
@@ -255,6 +279,7 @@ const StudyBackground = ({
     return () => {
       cancelAnimationFrame(animationFrameId);
       window.removeEventListener("resize", handleResize);
+      resizeObserver.disconnect();
       observer.disconnect();
       if (section) {
         section.removeEventListener("mousemove", handleMouseMove);
