@@ -1223,6 +1223,14 @@ export const achievementsData: AchievementCategory[] = [
                 "file": "/Achievements/LeetCode/May_LeetCode.webp"
             },
             {
+                "title": "October LeetCode",
+                "file": "/Achievements/LeetCode/October_LeetCode_Badge.gif"
+            },
+            {
+                "title": "October LeetCode",
+                "file": "/Achievements/LeetCode/October_LeetCode.webp"
+            },
+            {
                 "title": "Quest Architecture",
                 "file": "/Achievements/LeetCode/Quest_Architecture.gif"
             },
